@@ -4,4 +4,12 @@
     <string name="taotaikhoan">Tạo Tài Khoản</string>
     <string name="ho">Họ</string>
     <string name="ten">Tên</string>
+    <string name="mail">Mail</string>
+    <string name="pass">Mật Khẩu</string>
+    <string name="repass">Nhập Lại Mật Khẩu</string>
+    <string name="sdt">Số điện thoại</string>
+    <string name="diachi">Địa Chỉ</string>
+    <string name="GT">Giới Tính</string>
+    <string name="Nam">Nam</string>
+    <string name="Nu">Nữ</string>
 </resources>
