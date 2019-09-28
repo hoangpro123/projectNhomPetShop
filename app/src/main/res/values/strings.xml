@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">project</string>
     <string name="chuyen">GO</string>
+    <string name="taotaikhoan">Tạo Tài Khoản</string>
+    <string name="ho">Họ</string>
+    <string name="ten">Tên</string>
 </resources>
