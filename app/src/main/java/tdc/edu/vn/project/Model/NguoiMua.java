@@ -1,4 +1,4 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Model;
 
 import java.util.ArrayList;
 
