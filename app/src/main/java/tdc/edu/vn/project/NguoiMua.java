@@ -4,17 +4,15 @@ import java.util.ArrayList;
 
 public class NguoiMua {
     public static ArrayList<NguoiMua> list_nguoi_mua = new ArrayList<>();
-    String id, name, username, password, phone, adress, image, id_don_hang;
+    String id, name, username, password, phone, adress, image;
 
-    public NguoiMua(String name, String username, String password, String phone, String adress, String image, String id_don_hang) {
-        this.id = "nm001";
+    public NguoiMua(String name, String username, String password, String phone, String adress, String image) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.phone = phone;
         this.adress = adress;
         this.image = image;
-        this.id_don_hang = id_don_hang;
     }
 
     public NguoiMua() {
@@ -76,11 +74,4 @@ public class NguoiMua {
         this.image = image;
     }
 
-    public String getId_don_hang() {
-        return id_don_hang;
-    }
-
-    public void setId_don_hang(String id_don_hang) {
-        this.id_don_hang = id_don_hang;
-    }
 }
