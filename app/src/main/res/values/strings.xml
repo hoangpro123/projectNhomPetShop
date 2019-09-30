@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">project</string>
     <string name="chuyen">GO</string>
+
+
+<!--    Home client -->
+    <string name="search">PetShop</string>
 </resources>
