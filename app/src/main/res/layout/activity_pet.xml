@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#fcfcfc">
+    android:background="#43313131">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -35,14 +35,13 @@
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
-<!--            <TextView-->
-<!--                android:id="@+id/txtCat"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Category"-->
-<!--                android:background="#edecec"-->
-<!--                android:padding="8dp"-->
-<!--                android:layout_marginTop="10dp"/>-->
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="price"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:id="@+id/txtDesc"
@@ -51,12 +50,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description"/>
-
-
-
         </LinearLayout>
-
-
-
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

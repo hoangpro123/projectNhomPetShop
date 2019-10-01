@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="155dp"
-    android:layout_height="200dp"
+    android:layout_height="210dp"
     android:id="@+id/cardview_id"
     android:layout_margin="5dp">
 
@@ -15,6 +15,7 @@
             android:layout_width="150dp"
             android:layout_height="160dp"
             android:background="#2d2d2d"
+            android:layout_marginTop="2dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop">
 

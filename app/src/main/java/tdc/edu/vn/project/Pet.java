@@ -14,13 +14,12 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(String title, String Price, String description, int thumbnail) {
+    public Pet(String title, String price, String description, int thumbnail) {
         Title = title;
-        Price = Price;
+        Price = price;
         Description = description;
         Thumbnail = thumbnail;
     }
-
 
     public String getTitle() {
         return Title;
@@ -43,7 +42,7 @@ public class Pet {
         Title = title;
     }
 
-    public void setPrice(String category) {
+    public void setPrice(String price) {
         Price = Price;
     }
 

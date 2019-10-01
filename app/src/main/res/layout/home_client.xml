@@ -5,63 +5,80 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:padding="8dp">
+    tools:context=".HomeClient"
+    android:padding="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:background="@color/nen">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="5dp"
+                android:scaleType="centerCrop"
                 android:background="@drawable/logo"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4">
+            android:layout_weight="5">
             <SearchView
+
                 android:id="@+id/searchview"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:iconifiedByDefault="true"
-                android:background="#fff"
-                android:queryHint="@string/search"/>
+                android:background="#A8A8A8"
+                android:queryHint="@string/search" />
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="center">
             <Button
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_margin="5dp"
 
                 android:background="@drawable/ic_shopping_cart_24dp"/>
         </LinearLayout>
     </LinearLayout>
 
-
-    <android.support.v7.widget.RecyclerView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:id="@+id/recyclerview">
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <com.daimajia.slider.library.SliderLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/slider">
+            </com.daimajia.slider.library.SliderLayout>
 
-    </android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:id="@+id/recyclerview">
+            </android.support.v7.widget.RecyclerView>
 
-
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -10,13 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
-
     private Context mContext ;
     private List<Pet> mData ;
 
@@ -27,7 +25,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view ;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
         view = mInflater.inflate(R.layout.card_view_item,parent,false);
@@ -36,28 +33,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-
         holder.tv_pet_title.setText(mData.get(position).getTitle());
         holder.tv_price.setText(mData.get(position).getPrice());
         holder.img_pet.setImageResource(mData.get(position).getThumbnail());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(mContext,PetActivity.class);
-
                 // passing data to the book activity
                 intent.putExtra("Title",mData.get(position).getTitle());
+                intent.putExtra("Price", mData.get(position).getPrice());
                 intent.putExtra("Description",mData.get(position).getDescription());
                 intent.putExtra("Thumbnail",mData.get(position).getThumbnail());
                 // start the activity
                 mContext.startActivity(intent);
-
             }
         });
-
-
-
     }
 
     @Override
@@ -74,15 +65,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public MyViewHolder(View itemView) {
             super(itemView);
-
             tv_pet_title = (TextView) itemView.findViewById(R.id.pettitle) ;
             tv_price = (TextView) itemView.findViewById(R.id.price);
             img_pet = (ImageView) itemView.findViewById(R.id.petimg);
             cardView = (CardView) itemView.findViewById(R.id.cardview_id);
-
-
         }
     }
-
-
 }
