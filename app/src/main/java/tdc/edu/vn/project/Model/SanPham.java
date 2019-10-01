@@ -1,7 +1,7 @@
 package tdc.edu.vn.project.Model;
 
-public class SanPham {
-    String id, name, description, price, image, ngay_dang_ban, id_nguoi_ban;
+public class SanPham extends PetShopModel{
+    String name, description, price, image, ngay_dang_ban, id_nguoi_ban;
 
 
 
@@ -16,12 +16,14 @@ public class SanPham {
     public SanPham() {
     }
 
+    @Override
     public String getId() {
-        return id;
+        return super.getId();
     }
 
+    @Override
     public void setId(String id) {
-        this.id = id;
+        super.setId(id);
     }
 
     public String getName() {

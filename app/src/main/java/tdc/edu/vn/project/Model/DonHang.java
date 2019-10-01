@@ -1,7 +1,7 @@
 package tdc.edu.vn.project.Model;
 
-public class DonHang {
-    String id, id_nguoi_mua, id_san_pham, id_giao, so_luong, tong_tien, tinh_trang;
+public class DonHang extends PetShopModel{
+    String id_nguoi_mua, id_san_pham, id_giao, so_luong, tong_tien, tinh_trang;
 
     public DonHang(String id_nguoi_mua, String id_san_pham, String id_giao, String so_luong, String tong_tien, String tinh_trang) {
         this.id_nguoi_mua = id_nguoi_mua;
@@ -15,12 +15,14 @@ public class DonHang {
     public DonHang() {
     }
 
+    @Override
     public String getId() {
-        return id;
+        return super.getId();
     }
 
+    @Override
     public void setId(String id) {
-        this.id = id;
+        super.setId(id);
     }
 
     public String getId_nguoi_mua() {

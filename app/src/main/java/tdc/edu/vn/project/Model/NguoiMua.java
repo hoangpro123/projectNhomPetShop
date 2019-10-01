@@ -2,28 +2,30 @@ package tdc.edu.vn.project.Model;
 
 import java.util.ArrayList;
 
-public class NguoiMua {
+public class NguoiMua extends PetShopModel{
     public static ArrayList<NguoiMua> list_nguoi_mua = new ArrayList<>();
-    String id, name, username, password, phone, adress, image;
+    String name, username, password, phone, address, image;
 
     public NguoiMua(String name, String username, String password, String phone, String adress, String image) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.phone = phone;
-        this.adress = adress;
+        this.address = adress;
         this.image = image;
     }
 
     public NguoiMua() {
     }
 
+    @Override
     public String getId() {
-        return id;
+        return super.getId();
     }
 
+    @Override
     public void setId(String id) {
-        this.id = id;
+        super.setId(id);
     }
 
     public String getName() {
@@ -58,12 +60,12 @@ public class NguoiMua {
         this.phone = phone;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getImage() {

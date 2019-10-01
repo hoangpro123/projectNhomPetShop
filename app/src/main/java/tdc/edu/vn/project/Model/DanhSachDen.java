@@ -1,22 +1,25 @@
 package tdc.edu.vn.project.Model;
 
-public class DanhSachDen {
-    String id, id_nguoi_ban, id_nguoi_mua;
+public class DanhSachDen extends PetShopModel{
+    String id_nguoi_ban, id_nguoi_mua;
 
     public DanhSachDen(String id_nguoi_ban, String id_nguoi_mua) {
         this.id_nguoi_ban = id_nguoi_ban;
         this.id_nguoi_mua = id_nguoi_mua;
+
     }
 
     public DanhSachDen() {
     }
 
+    @Override
     public String getId() {
-        return id;
+        return super.getId();
     }
 
+    @Override
     public void setId(String id) {
-        this.id = id;
+        super.setId(id);
     }
 
     public String getId_nguoi_ban() {

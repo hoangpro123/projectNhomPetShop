@@ -1,7 +1,7 @@
 package tdc.edu.vn.project.Model;
 
-public class QuanLy {
-    String id, name, username, password;
+public class QuanLy extends PetShopModel{
+    String name, username, password;
 
     public QuanLy(String name, String username, String password) {
         this.name = name;
@@ -9,12 +9,14 @@ public class QuanLy {
         this.password = password;
     }
 
+    @Override
     public String getId() {
-        return id;
+        return super.getId();
     }
 
+    @Override
     public void setId(String id) {
-        this.id = id;
+        super.setId(id);
     }
 
     public String getName() {

@@ -1,14 +1,14 @@
 package tdc.edu.vn.project.Model;
 
-public class NguoiBan {
-    String id, name, username, password, phone, adress, image, id_hoa_hong;
+public class NguoiBan extends PetShopModel{
+    String name, username, password, phone, address, image, id_hoa_hong;
 
     public NguoiBan(String name, String username, String password, String phone, String adress, String image, String id_hoa_hong) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.phone = phone;
-        this.adress = adress;
+        this.address = adress;
         this.image = image;
         this.id_hoa_hong = id_hoa_hong;
     }
@@ -16,12 +16,14 @@ public class NguoiBan {
     public NguoiBan() {
     }
 
+    @Override
     public String getId() {
-        return id;
+        return super.getId();
     }
 
+    @Override
     public void setId(String id) {
-        this.id = id;
+        super.setId(id);
     }
 
     public String getName() {
@@ -56,12 +58,12 @@ public class NguoiBan {
         this.phone = phone;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getImage() {

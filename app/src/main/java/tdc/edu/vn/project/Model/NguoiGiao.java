@@ -1,7 +1,7 @@
 package tdc.edu.vn.project.Model;
 
-public class NguoiGiao {
-    String id, name, phone, tinh_trang;
+public class NguoiGiao extends PetShopModel{
+    String name, phone, tinh_trang;
 
     public NguoiGiao(String name, String phone, String tinh_trang) {
         this.name = name;
@@ -12,12 +12,14 @@ public class NguoiGiao {
     public NguoiGiao() {
     }
 
+    @Override
     public String getId() {
-        return id;
+        return super.getId();
     }
 
+    @Override
     public void setId(String id) {
-        this.id = id;
+        super.setId(id);
     }
 
     public String getName() {

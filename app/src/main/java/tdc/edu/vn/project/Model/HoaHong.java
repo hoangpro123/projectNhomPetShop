@@ -1,7 +1,7 @@
 package tdc.edu.vn.project.Model;
 
-public class HoaHong {
-    String id, ty_le, thoi_gian_dong_tien, so_tien;
+public class HoaHong extends PetShopModel{
+    String ty_le, thoi_gian_dong_tien, so_tien;
 
     public HoaHong(String ty_le, String thoi_gian_dong_tien, String so_tien) {
         this.ty_le = ty_le;
@@ -12,12 +12,14 @@ public class HoaHong {
     public HoaHong() {
     }
 
+    @Override
     public String getId() {
-        return id;
+        return super.getId();
     }
 
+    @Override
     public void setId(String id) {
-        this.id = id;
+        super.setId(id);
     }
 
     public String getTy_le() {
