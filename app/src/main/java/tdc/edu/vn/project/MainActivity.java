@@ -15,12 +15,15 @@ Button go;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danh_muc_thu_cung);
+        setControl();
         setEvent();
-        ActionBar actionBar = getSupportActionBar();
-
-        actionBar.hide();
     }
 
+    private void setControl() {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
+    }
 
 
     private void setEvent() {

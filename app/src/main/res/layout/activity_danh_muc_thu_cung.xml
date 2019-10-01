@@ -5,20 +5,72 @@
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/actionBar">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/petShop"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/petshop"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4">
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:iconifiedByDefault="true"
+                android:background="#fff"
+                android:queryHint="@string/search"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/shopCart"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+
+                android:background="@drawable/ic_add_shopping_cart_black_24dp"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="horizontal">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-50dp"
             android:orientation="vertical">
             <LinearLayout
+                android:id="@+id/llCho"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
                 android:orientation="horizontal"
-                android:background="#F44336"
+                android:background="@drawable/shape_danh_muc"
                 android:padding="10dp">
                 <ImageView
                     android:layout_width="50dp"
@@ -33,15 +85,16 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:text="@string/cho"
-                    android:textSize="25dp" />
+                    android:textSize="25sp" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llMeo"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
                 android:orientation="horizontal"
-                android:background="#F44336"
+                android:background="@drawable/shape_danh_muc"
                 android:padding="10dp">
                 <ImageView
                     android:layout_width="50dp"
@@ -55,15 +108,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
-                    android:text="@string/cho"
-                    android:textSize="25dp" />
+                    android:text="@string/meo"
+                    android:textSize="25sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
                 android:orientation="horizontal"
-                android:background="#F44336"
+                android:background="@drawable/shape_danh_muc"
                 android:padding="10dp">
                 <ImageView
                     android:layout_width="50dp"
@@ -78,15 +131,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/cho"
-                    android:textSize="25dp" />
+                    android:text="@string/chim"
+                    android:textSize="25sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
                 android:orientation="horizontal"
-                android:background="#F44336"
+                android:background="@drawable/shape_danh_muc"
                 android:padding="10dp">
                 <ImageView
                     android:layout_width="50dp"
@@ -100,22 +153,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
-                    android:text="@string/cho"
-                    android:textSize="25dp" />
+                    android:text="@string/ca"
+                    android:textSize="25sp" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="-50dp"
-            android:layout_marginLeft="20dp">
+            android:layout_marginLeft="30dp">
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
                 android:orientation="horizontal"
-                android:background="#F44336"
+                android:background="@drawable/shape_danh_muc"
                 android:padding="10dp">
                 <ImageView
                     android:layout_width="50dp"
@@ -129,15 +181,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
-                    android:text="@string/cho"
-                    android:textSize="25dp" />
+                    android:text="@string/bosat"
+                    android:textSize="25sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
                 android:orientation="horizontal"
-                android:background="#F44336"
+                android:background="@drawable/shape_danh_muc"
                 android:padding="10dp">
                 <ImageView
                     android:layout_width="50dp"
@@ -152,14 +204,14 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:text="@string/cho"
-                    android:textSize="25dp" />
+                    android:textSize="25sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
                 android:orientation="horizontal"
-                android:background="#F44336"
+                android:background="@drawable/shape_danh_muc"
                 android:padding="10dp">
                 <ImageView
                     android:layout_width="50dp"
@@ -174,14 +226,14 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:text="@string/cho"
-                    android:textSize="25dp" />
+                    android:textSize="25sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
                 android:orientation="horizontal"
-                android:background="#F44336"
+                android:background="@drawable/shape_danh_muc"
                 android:padding="10dp">
                 <ImageView
                     android:layout_width="50dp"
@@ -195,8 +247,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
-                    android:text="@string/cho"
-                    android:textSize="25dp" />
+                    android:text="@string/khac"
+                    android:textSize="25sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

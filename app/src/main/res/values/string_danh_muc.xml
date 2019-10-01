@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="cho">Chó</string>
-    <string name="meo">Chó</string>
-    <string name="chim">Chó</string>
-    <string name="ca">Chó</string>
-    <string name="bosat">Chó</string>
-    <string name="khac">Chó</string>
+    <string name="meo">Mèo</string>
+    <string name="chim">Chim</string>
+    <string name="ca">Cá</string>
+    <string name="bosat">Bò Sát</string>
+    <string name="khac">Khác</string>
     <string name="search">Search</string>
     <string name="trangchu">TrangChu</string>
     <string name="shopcart">Shopcart</string>
