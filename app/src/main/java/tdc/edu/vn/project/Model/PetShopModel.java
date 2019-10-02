@@ -1,7 +1,7 @@
 package tdc.edu.vn.project.Model;
 
 public abstract class PetShopModel {
-    String id;
+    String id = "null";
 
     public String getId() {
         return id;

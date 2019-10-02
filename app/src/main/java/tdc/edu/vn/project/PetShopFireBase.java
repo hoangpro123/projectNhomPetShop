@@ -1,6 +1,7 @@
 package tdc.edu.vn.project;
 
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,7 +14,18 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+import tdc.edu.vn.project.Model.DanhGia;
+import tdc.edu.vn.project.Model.DanhSachDen;
+import tdc.edu.vn.project.Model.DonHang;
+import tdc.edu.vn.project.Model.GiaoHang;
+import tdc.edu.vn.project.Model.GioHang;
+import tdc.edu.vn.project.Model.HoaHong;
+import tdc.edu.vn.project.Model.NguoiBan;
+import tdc.edu.vn.project.Model.NguoiGiao;
+import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
+import tdc.edu.vn.project.Model.QuanLy;
+import tdc.edu.vn.project.Model.SanPham;
 
 public class PetShopFireBase {
     public static DatabaseReference db = FirebaseDatabase.getInstance().getReference();
@@ -66,7 +78,7 @@ public class PetShopFireBase {
             public void run() {
                 if(table.status_last_id && table.status_count && table.status_TABLE){
                     String id = item.getId();
-                    if(item.getId() == null)
+                    if(id.equals("null"))
                         id = getNewID(table);
                     item.setId(id);
                     table.TABLE.child(id).setValue(item);
@@ -210,6 +222,42 @@ public class PetShopFireBase {
                 return item;
         }
         return null;
+    }
+    public static void initial() {
+        TABLE_NGUOI_MUA.TABLE.child("dg001").setValue(new NguoiMua("nm001", "nm001", "nm001", "nb001", "ndsfs", "5"));
+        TABLE_DANH_GIA.TABLE.child("dg001").setValue(new DanhGia("nm001", "nb001", "ndsfs", "5"));
+        TABLE_DANH_SACH_DEN.TABLE.child("dg001").setValue(new DanhSachDen("nm001", "nb001"));
+        TABLE_DON_HANG.TABLE.child("dg001").setValue(new DonHang("nm001", "nb001", "ndsfs", "5", "abc", "abc"));
+        TABLE_GIAO_HANG.TABLE.child("dg001").setValue(new GiaoHang("nm001", "11-11-2011"));
+        TABLE_GIO_HANG.TABLE.child("dg001").setValue(new GioHang("nm001", "nb001"));
+        TABLE_HOA_HONG.TABLE.child("dg001").setValue(new HoaHong("nm001", "nb001", "ndsfs"));
+        TABLE_NGUOI_BAN.TABLE.child("dg001").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "abc"));
+        TABLE_NGUOI_GIAO.TABLE.child("dg001").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));
+        TABLE_QUAN_LY.TABLE.child("dg001").setValue(new QuanLy("nm001", "nb001", "ndsfs"));
+        TABLE_SAN_PHAM.TABLE.child("dg001").setValue(new SanPham("nm001", "nb001", "ndsfs", "5", "abc", "abc"));
+        //
+        TABLE_LAST_ID.child(TABLE_NGUOI_MUA.key).setValue(1);
+        TABLE_LAST_ID.child(TABLE_DANH_GIA.key).setValue(1);
+        TABLE_LAST_ID.child(TABLE_DANH_SACH_DEN.key).setValue(1);
+        TABLE_LAST_ID.child(TABLE_DON_HANG.key).setValue(1);
+        TABLE_LAST_ID.child(TABLE_GIAO_HANG.key).setValue(1);
+        TABLE_LAST_ID.child(TABLE_GIO_HANG.key).setValue(1);
+        TABLE_LAST_ID.child(TABLE_HOA_HONG.key).setValue(1);
+        TABLE_LAST_ID.child(TABLE_NGUOI_BAN.key).setValue(1);
+        TABLE_LAST_ID.child(TABLE_NGUOI_GIAO.key).setValue(1);
+        TABLE_LAST_ID.child(TABLE_QUAN_LY.key).setValue(1);
+        TABLE_LAST_ID.child(TABLE_SAN_PHAM.key).setValue(1);
+        //
+        TABLE_COUNT.child(TABLE_NGUOI_MUA.key).setValue(1);
+        TABLE_COUNT.child(TABLE_DANH_GIA.key).setValue(1);
+        TABLE_COUNT.child(TABLE_DANH_SACH_DEN.key).setValue(1);
+        TABLE_COUNT.child(TABLE_DON_HANG.key).setValue(1);
+        TABLE_COUNT.child(TABLE_GIAO_HANG.key).setValue(1);
+        TABLE_COUNT.child(TABLE_GIO_HANG.key).setValue(1);
+        TABLE_COUNT.child(TABLE_HOA_HONG.key).setValue(1);
+        TABLE_COUNT.child(TABLE_NGUOI_GIAO.key).setValue(1);
+        TABLE_COUNT.child(TABLE_QUAN_LY.key).setValue(1);
+        TABLE_COUNT.child(TABLE_SAN_PHAM.key).setValue(1);
     }
     public enum eTable {
         NguoiMua   ("TABLE_NGUOI_MUA",     "nm",   3, new ArrayList<tdc.edu.vn.project.Model.NguoiMua>(), tdc.edu.vn.project.Model.NguoiMua.class),
