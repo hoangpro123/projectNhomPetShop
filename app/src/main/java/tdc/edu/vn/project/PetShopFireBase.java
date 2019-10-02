@@ -1,7 +1,6 @@
 package tdc.edu.vn.project;
 
 import android.os.Handler;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +13,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.PetShopModel;
 
 public class PetShopFireBase {
@@ -22,32 +20,32 @@ public class PetShopFireBase {
     public static DatabaseReference TABLE_COUNT = db.child("count");
     public static DatabaseReference TABLE_LAST_ID = db.child("last_id");
     //
-    public static eTable nm = eTable.NguoiMua;
-    public static eTable nb = eTable.NguoiBan;
-    public static eTable dg = eTable.DanhGia;
-    public static eTable dsd = eTable.DanhSachDen;
-    public static eTable dh = eTable.DonHang;
-    public static eTable cart = eTable.GioHang;
-    public static eTable hh = eTable.HoaHong;
-    public static eTable gh = eTable.GiaoHang;
-    public static eTable ng = eTable.NguoiGiao;
-    public static eTable ql = eTable.QuanLy;
-    public static eTable sp = eTable.SanPham;
+    public static eTable TABLE_NGUOI_MUA = eTable.NguoiMua;
+    public static eTable TABLE_NGUOI_BAN = eTable.NguoiBan;
+    public static eTable TABLE_DANH_GIA = eTable.DanhGia;
+    public static eTable TABLE_DANH_SACH_DEN = eTable.DanhSachDen;
+    public static eTable TABLE_DON_HANG = eTable.DonHang;
+    public static eTable TABLE_GIO_HANG = eTable.GioHang;
+    public static eTable TABLE_HOA_HONG = eTable.HoaHong;
+    public static eTable TABLE_GIAO_HANG = eTable.GiaoHang;
+    public static eTable TABLE_NGUOI_GIAO = eTable.NguoiGiao;
+    public static eTable TABLE_QUAN_LY = eTable.QuanLy;
+    public static eTable TABLE_SAN_PHAM = eTable.SanPham;
     //
     public static Handler handler = new Handler();
     //
     static {
-        nm.TABLE = db.child(nm.name);
-        nb.TABLE = db.child(nb.name);
-        dg.TABLE = db.child(dg.name);
-        dsd.TABLE = db.child(dsd.name);
-        dh.TABLE = db.child(dh.name);
-        cart.TABLE = db.child(cart.name);
-        hh.TABLE = db.child(hh.name);
-        gh.TABLE = db.child(gh.name);
-        ng.TABLE = db.child(ng.name);
-        ql.TABLE = db.child(ql.name);
-        sp.TABLE = db.child(sp.name);
+        TABLE_NGUOI_MUA.TABLE = db.child(TABLE_NGUOI_MUA.name);
+        TABLE_NGUOI_BAN.TABLE = db.child(TABLE_NGUOI_BAN.name);
+        TABLE_DANH_GIA.TABLE = db.child(TABLE_DANH_GIA.name);
+        TABLE_DANH_SACH_DEN.TABLE = db.child(TABLE_DANH_SACH_DEN.name);
+        TABLE_DON_HANG.TABLE = db.child(TABLE_DON_HANG.name);
+        TABLE_GIO_HANG.TABLE = db.child(TABLE_GIO_HANG.name);
+        TABLE_HOA_HONG.TABLE = db.child(TABLE_HOA_HONG.name);
+        TABLE_GIAO_HANG.TABLE = db.child(TABLE_GIAO_HANG.name);
+        TABLE_NGUOI_GIAO.TABLE = db.child(TABLE_NGUOI_GIAO.name);
+        TABLE_QUAN_LY.TABLE = db.child(TABLE_QUAN_LY.name);
+        TABLE_SAN_PHAM.TABLE = db.child(TABLE_SAN_PHAM.name);
     }
     //
 

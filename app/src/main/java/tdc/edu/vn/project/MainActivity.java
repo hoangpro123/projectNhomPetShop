@@ -1,7 +1,6 @@
 package tdc.edu.vn.project;
 
 import android.os.Bundle;
-import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,43 +21,43 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
+    }
     void initial() {
-        PetShopFireBase.nm.TABLE.child("dg001").setValue(new NguoiMua("nm001", "nm001", "nm001", "nb001", "ndsfs", "5"));
-        PetShopFireBase.dg.TABLE.child("dg001").setValue(new DanhGia("nm001", "nb001", "ndsfs", "5"));
-        PetShopFireBase.dsd.TABLE.child("dg001").setValue(new DanhSachDen("nm001", "nb001"));
-        PetShopFireBase.dh.TABLE.child("dg001").setValue(new DonHang("nm001", "nb001", "ndsfs", "5", "abc", "abc"));
-        PetShopFireBase.gh.TABLE.child("dg001").setValue(new GiaoHang("nm001", "11-11-2011"));
-        PetShopFireBase.cart.TABLE.child("dg001").setValue(new GioHang("nm001", "nb001"));
-        PetShopFireBase.hh.TABLE.child("dg001").setValue(new HoaHong("nm001", "nb001", "ndsfs"));
-        PetShopFireBase.nb.TABLE.child("dg001").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "abc"));
-        PetShopFireBase.ng.TABLE.child("dg001").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));
-        PetShopFireBase.ql.TABLE.child("dg001").setValue(new QuanLy("nm001", "nb001", "ndsfs"));
-        PetShopFireBase.sp.TABLE.child("dg001").setValue(new SanPham("nm001", "nb001", "ndsfs", "5", "abc", "abc"));
+        PetShopFireBase.TABLE_NGUOI_MUA.TABLE.child("dg001").setValue(new NguoiMua("nm001", "nm001", "nm001", "nb001", "ndsfs", "5"));
+        PetShopFireBase.TABLE_DANH_GIA.TABLE.child("dg001").setValue(new DanhGia("nm001", "nb001", "ndsfs", "5"));
+        PetShopFireBase.TABLE_DANH_SACH_DEN.TABLE.child("dg001").setValue(new DanhSachDen("nm001", "nb001"));
+        PetShopFireBase.TABLE_DON_HANG.TABLE.child("dg001").setValue(new DonHang("nm001", "nb001", "ndsfs", "5", "abc", "abc"));
+        PetShopFireBase.TABLE_GIAO_HANG.TABLE.child("dg001").setValue(new GiaoHang("nm001", "11-11-2011"));
+        PetShopFireBase.TABLE_GIO_HANG.TABLE.child("dg001").setValue(new GioHang("nm001", "nb001"));
+        PetShopFireBase.TABLE_HOA_HONG.TABLE.child("dg001").setValue(new HoaHong("nm001", "nb001", "ndsfs"));
+        PetShopFireBase.TABLE_NGUOI_BAN.TABLE.child("dg001").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "abc"));
+        PetShopFireBase.TABLE_NGUOI_GIAO.TABLE.child("dg001").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));
+        PetShopFireBase.TABLE_QUAN_LY.TABLE.child("dg001").setValue(new QuanLy("nm001", "nb001", "ndsfs"));
+        PetShopFireBase.TABLE_SAN_PHAM.TABLE.child("dg001").setValue(new SanPham("nm001", "nb001", "ndsfs", "5", "abc", "abc"));
         //
-        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.nm.key).setValue(1);
-        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.dg.key).setValue(1);
-        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.dsd.key).setValue(1);
-        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.dh.key).setValue(1);
-        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.gh.key).setValue(1);
-        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.cart.key).setValue(1);
-        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.hh.key).setValue(1);
-        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.nb.key).setValue(1);
-        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.ng.key).setValue(1);
-        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.ql.key).setValue(1);
-        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.sp.key).setValue(1);
+        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.TABLE_NGUOI_MUA.key).setValue(1);
+        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.TABLE_DANH_GIA.key).setValue(1);
+        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.TABLE_DANH_SACH_DEN.key).setValue(1);
+        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.TABLE_DON_HANG.key).setValue(1);
+        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.TABLE_GIAO_HANG.key).setValue(1);
+        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.TABLE_GIO_HANG.key).setValue(1);
+        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.TABLE_HOA_HONG.key).setValue(1);
+        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.TABLE_NGUOI_BAN.key).setValue(1);
+        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.TABLE_NGUOI_GIAO.key).setValue(1);
+        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.TABLE_QUAN_LY.key).setValue(1);
+        PetShopFireBase.TABLE_LAST_ID.child(PetShopFireBase.TABLE_SAN_PHAM.key).setValue(1);
         //
-        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.nm.key).setValue(1);
-        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.dg.key).setValue(1);
-        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.dsd.key).setValue(1);
-        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.dh.key).setValue(1);
-        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.gh.key).setValue(1);
-        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.cart.key).setValue(1);
-        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.hh.key).setValue(1);
-        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.nb.key).setValue(1);
-        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.ng.key).setValue(1);
-        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.ql.key).setValue(1);
-        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.sp.key).setValue(1);
+        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.TABLE_NGUOI_MUA.key).setValue(1);
+        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.TABLE_DANH_GIA.key).setValue(1);
+        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.TABLE_DANH_SACH_DEN.key).setValue(1);
+        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.TABLE_DON_HANG.key).setValue(1);
+        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.TABLE_GIAO_HANG.key).setValue(1);
+        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.TABLE_GIO_HANG.key).setValue(1);
+        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.TABLE_HOA_HONG.key).setValue(1);
+        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.TABLE_NGUOI_BAN.key).setValue(1);
+        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.TABLE_NGUOI_GIAO.key).setValue(1);
+        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.TABLE_QUAN_LY.key).setValue(1);
+        PetShopFireBase.TABLE_COUNT.child(PetShopFireBase.TABLE_SAN_PHAM.key).setValue(1);
     }
 }
