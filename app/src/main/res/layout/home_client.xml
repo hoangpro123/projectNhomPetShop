@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomeClient"
+android:background="#E9E8E8"
+    android:id="@+id/home"
     android:padding="0dp">
 
     <LinearLayout
@@ -32,13 +34,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="5">
             <SearchView
-
                 android:id="@+id/searchview"
-                android:layout_width="280dp"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:iconifiedByDefault="true"
                 android:background="#A8A8A8"
+                android:iconifiedByDefault="true"
                 android:queryHint="@string/search" />
         </LinearLayout>
 
@@ -71,14 +72,14 @@
             </com.daimajia.slider.library.SliderLayout>
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="10dp"
                 android:layout_gravity="center"
-                android:id="@+id/recyclerview">
-            </android.support.v7.widget.RecyclerView>
+                android:padding="10dp"></android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
     </ScrollView>
+
 
 </LinearLayout>

@@ -5,4 +5,5 @@
 
     <color name="colorAccent">#D81B60</color>
     <color name="nen">#16CEEA</color>
+    <color name="bgBottomNavigation">#fe485a</color>
 </resources>
