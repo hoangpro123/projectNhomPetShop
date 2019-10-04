@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="danhmuc">Danh mục</string>
+    <string name="loai">Loại</string>
+    <string name="gia">Giá</string>
+</resources>

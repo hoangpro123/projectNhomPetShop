@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 
 
-public class MainActivity extends AppCompatActivity {
+public class DanhMucThuCungActivity extends AppCompatActivity {
 Button go;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +20,6 @@ Button go;
     }
 
     private void setControl() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
 
     }
 

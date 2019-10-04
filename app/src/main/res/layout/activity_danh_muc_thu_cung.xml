@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/actionBar">
+        android:background="@color/actionBar"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/petShop"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/petshop"/>
+                android:layout_marginTop="5dp"
+                android:background="@drawable/petshop" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4">
+
             <SearchView
                 android:id="@+id/searchView"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:background="#FFFFFF"
                 android:iconifiedByDefault="true"
-                android:background="#fff"
-                android:queryHint="@string/search"/>
+                android:queryHint="@string/search" />
         </LinearLayout>
 
 
@@ -41,49 +44,50 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
+
             <Button
                 android:id="@+id/shopCart"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_margin="5dp"
-
-                android:background="@drawable/ic_add_shopping_cart_black_24dp"/>
-
-
+                android:background="@drawable/ic_shopping_cart_white_24dp" />
         </LinearLayout>
-
-
-
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#fff"
+        >
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:id="@+id/llCho"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
-                android:orientation="horizontal"
                 android:background="@drawable/shape_danh_muc"
+                android:orientation="horizontal"
                 android:padding="10dp">
+
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/chan_meo"
                     android:textSize="20dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/cho"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -93,36 +97,40 @@
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
-                android:orientation="horizontal"
                 android:background="@drawable/shape_danh_muc"
+                android:orientation="horizontal"
                 android:padding="10dp">
+
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/chan_meo"
                     android:textSize="20dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/meo"
                     android:textSize="25sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
-                android:orientation="horizontal"
                 android:background="@drawable/shape_danh_muc"
+                android:orientation="horizontal"
                 android:padding="10dp">
+
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/chan_meo"
                     android:textSize="20dp" />
 
@@ -134,119 +142,135 @@
                     android:text="@string/chim"
                     android:textSize="25sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
-                android:orientation="horizontal"
                 android:background="@drawable/shape_danh_muc"
+                android:orientation="horizontal"
                 android:padding="10dp">
+
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/chan_meo"
                     android:textSize="20dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/ca"
                     android:textSize="25sp" />
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="30dp">
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
-                android:orientation="horizontal"
                 android:background="@drawable/shape_danh_muc"
+                android:orientation="horizontal"
                 android:padding="10dp">
+
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/chan_meo"
                     android:textSize="20dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
                     android:text="@string/bosat"
                     android:textSize="25sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
-                android:orientation="horizontal"
                 android:background="@drawable/shape_danh_muc"
+                android:orientation="horizontal"
                 android:padding="10dp">
+
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/chan_meo"
                     android:textSize="20dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/cho"
                     android:textSize="25sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
-                android:orientation="horizontal"
                 android:background="@drawable/shape_danh_muc"
+                android:orientation="horizontal"
                 android:padding="10dp">
+
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/chan_meo"
                     android:textSize="20dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/cho"
                     android:textSize="25sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
-                android:orientation="horizontal"
                 android:background="@drawable/shape_danh_muc"
+                android:orientation="horizontal"
                 android:padding="10dp">
+
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/chan_meo"
                     android:textSize="20dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/khac"
                     android:textSize="25sp" />
             </LinearLayout>
