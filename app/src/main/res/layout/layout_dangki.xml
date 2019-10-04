@@ -23,12 +23,7 @@
             android:textColor="@color/white"
             android:textSize="25sp"></TextView>
     </LinearLayout>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
 
-        android:src="@drawable/pet"
-        android:layout_marginTop="20dp"></ImageView>
     <LinearLayout
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
