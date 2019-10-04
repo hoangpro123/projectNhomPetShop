@@ -2,6 +2,7 @@ package tdc.edu.vn.project;
 
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 import tdc.edu.vn.project.Model.DanhGia;
@@ -46,21 +48,61 @@ public class PetShopFireBase {
     //
     public static Handler handler = new Handler();
     //
-    static {
-        TABLE_NGUOI_MUA.TABLE = db.child(TABLE_NGUOI_MUA.name);
-        TABLE_NGUOI_BAN.TABLE = db.child(TABLE_NGUOI_BAN.name);
-        TABLE_DANH_GIA.TABLE = db.child(TABLE_DANH_GIA.name);
-        TABLE_DANH_SACH_DEN.TABLE = db.child(TABLE_DANH_SACH_DEN.name);
-        TABLE_DON_HANG.TABLE = db.child(TABLE_DON_HANG.name);
-        TABLE_GIO_HANG.TABLE = db.child(TABLE_GIO_HANG.name);
-        TABLE_HOA_HONG.TABLE = db.child(TABLE_HOA_HONG.name);
-        TABLE_GIAO_HANG.TABLE = db.child(TABLE_GIAO_HANG.name);
-        TABLE_NGUOI_GIAO.TABLE = db.child(TABLE_NGUOI_GIAO.name);
-        TABLE_QUAN_LY.TABLE = db.child(TABLE_QUAN_LY.name);
-        TABLE_SAN_PHAM.TABLE = db.child(TABLE_SAN_PHAM.name);
-    }
-    //
 
+    //
+    void sortList(String sField , eTable table, boolean inc){
+        final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
+        Class<?> clss = null;
+
+        for(PetShopModel item: data){
+            switch (table){
+                case DanhGia:
+                    clss = ((DanhGia)item).getClass();
+                    break;
+                case DanhSachDen:
+                    clss = ((DanhSachDen)item).getClass();
+                    break;
+                case DonHang:
+                    clss = ((DonHang)item).getClass();
+                    break;
+                case GiaoHang:
+                    clss = ((GiaoHang)item).getClass();
+                    break;
+                case GioHang:
+                    clss = ((GioHang)item).getClass();
+                    break;
+                case HoaHong:
+                    clss = ((HoaHong)item).getClass();
+                    break;
+                case NguoiBan:
+                    clss = ((NguoiBan)item).getClass();
+                    break;
+                case NguoiGiao:
+                    clss = ((NguoiGiao)item).getClass();
+                    break;
+                case NguoiMua:
+                    clss = ((NguoiMua)item).getClass();
+                    break;
+                case QuanLy:
+                    clss = ((QuanLy)item).getClass();
+                    break;
+                case SanPham:
+                    clss = ((SanPham)item).getClass();
+                    break;
+            }
+            try {
+                Field field = clss.getDeclaredField(sField);
+                field.setAccessible(true);
+                Object value = field.get(item);
+
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
     public static void removeItem(final String id, final eTable table){
         handler.post(new Runnable() {
             @Override
@@ -258,6 +300,19 @@ public class PetShopFireBase {
         TABLE_COUNT.child(TABLE_NGUOI_GIAO.key).setValue(1);
         TABLE_COUNT.child(TABLE_QUAN_LY.key).setValue(1);
         TABLE_COUNT.child(TABLE_SAN_PHAM.key).setValue(1);
+    }
+    static {
+        TABLE_NGUOI_MUA.TABLE = db.child(TABLE_NGUOI_MUA.name);
+        TABLE_NGUOI_BAN.TABLE = db.child(TABLE_NGUOI_BAN.name);
+        TABLE_DANH_GIA.TABLE = db.child(TABLE_DANH_GIA.name);
+        TABLE_DANH_SACH_DEN.TABLE = db.child(TABLE_DANH_SACH_DEN.name);
+        TABLE_DON_HANG.TABLE = db.child(TABLE_DON_HANG.name);
+        TABLE_GIO_HANG.TABLE = db.child(TABLE_GIO_HANG.name);
+        TABLE_HOA_HONG.TABLE = db.child(TABLE_HOA_HONG.name);
+        TABLE_GIAO_HANG.TABLE = db.child(TABLE_GIAO_HANG.name);
+        TABLE_NGUOI_GIAO.TABLE = db.child(TABLE_NGUOI_GIAO.name);
+        TABLE_QUAN_LY.TABLE = db.child(TABLE_QUAN_LY.name);
+        TABLE_SAN_PHAM.TABLE = db.child(TABLE_SAN_PHAM.name);
     }
     public enum eTable {
         NguoiMua   ("TABLE_NGUOI_MUA",     "nm",   3, new ArrayList<tdc.edu.vn.project.Model.NguoiMua>(), tdc.edu.vn.project.Model.NguoiMua.class),

@@ -19,6 +19,7 @@ import tdc.edu.vn.project.Model.HoaHong;
 import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiGiao;
 import tdc.edu.vn.project.Model.NguoiMua;
+import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.QuanLy;
 import tdc.edu.vn.project.Model.SanPham;
 
@@ -27,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
 
     }
