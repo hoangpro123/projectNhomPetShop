@@ -1,24 +1,17 @@
 package tdc.edu.vn.project.Model;
 
-public class DanhGia {
-    String id,id_nguoi_bi_danh_gia, id_nguoi_danh_gia, comment, rate;
+public class DanhGia extends PetShopModel {
+    String id_nguoi_bi_danh_gia, id_nguoi_danh_gia, content;
+    Float rate;
 
-    public DanhGia(String id_nguoi_bi_danh_gia, String id_nguoi_danh_gia, String comment, String rate) {
+    public DanhGia(String id_nguoi_bi_danh_gia, String id_nguoi_danh_gia, String content, Float rate) {
         this.id_nguoi_bi_danh_gia = id_nguoi_bi_danh_gia;
         this.id_nguoi_danh_gia = id_nguoi_danh_gia;
-        this.comment = comment;
+        this.content = content;
         this.rate = rate;
     }
 
     public DanhGia() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getId_nguoi_bi_danh_gia() {
@@ -37,19 +30,20 @@ public class DanhGia {
         this.id_nguoi_danh_gia = id_nguoi_danh_gia;
     }
 
-    public String getComment() {
-        return comment;
+
+    public String getContent() {
+        return content;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getRate() {
+    public Float getRate() {
         return rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(Float rate) {
         this.rate = rate;
     }
 }

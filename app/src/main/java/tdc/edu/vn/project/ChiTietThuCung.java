@@ -28,7 +28,7 @@ public class ChiTietThuCung extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_chitietthucung);
 
-        sliderLayout = (SliderLayout)findViewById(R.id.slider);
+
 
         //Call this method if you want to add images from URL .
         //AddImagesUrlOnline();

@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:background="@color/blue"
+
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="90dp"
             android:text="Tạo Tài Khoản"
-            android:textColor="@color/white"
+
             android:textSize="25sp"></TextView>
     </LinearLayout>
     <ImageView
@@ -39,11 +39,11 @@
         <EditText
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="@string/ho"></EditText>
+            ></EditText>
         <EditText
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:hint="@string/ten"></EditText>
+           ></EditText>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,17 +55,17 @@
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/mail"></EditText>
+            ></EditText>
         <EditText
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/pass"></EditText>
+            ></EditText>
         <EditText
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/repass"></EditText>
+           ></EditText>
         <EditText
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
@@ -83,27 +83,27 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/GT"></TextView>
+                ></TextView>
             <RadioButton
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Nam"></RadioButton>
+                ></RadioButton>
             <RadioButton
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Nu"></RadioButton>
+                ></RadioButton>
         </RadioGroup>
     </LinearLayout>
 
     <Button
         android:layout_marginTop="50dp"
         android:background="@drawable/vienbutton"
-        android:textColor="@color/white"
+
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tao"></Button>
+       ></Button>
 
 </LinearLayout>
