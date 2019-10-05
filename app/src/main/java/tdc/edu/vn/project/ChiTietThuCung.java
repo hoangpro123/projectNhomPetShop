@@ -1,6 +1,5 @@
 package tdc.edu.vn.project;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -10,6 +9,8 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import java.util.HashMap;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ChiTietThuCung extends AppCompatActivity
         implements BaseSliderView.OnSliderClickListener,

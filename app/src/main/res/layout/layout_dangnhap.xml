@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -21,6 +23,7 @@
             android:orientation="vertical"
             style="@style/canle_dangnhap">
             <EditText
+                android:id="@+id/edtTaiKhoan"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/vuilongnhaptaikhoan"
@@ -28,6 +31,7 @@
                 android:drawableLeft="@drawable/ic_person_black_24dp"
                 android:drawablePadding="10dp"></EditText>
             <EditText
+                android:id="@+id/edtMatKhau"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:hint="@string/vuilongnhapmatkhau"
@@ -66,6 +70,7 @@
             android:layout_weight="1"
             android:gravity="center|top">
             <Button
+                android:id="@+id/btnDangNhap"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:text="@string/dangnhap"
