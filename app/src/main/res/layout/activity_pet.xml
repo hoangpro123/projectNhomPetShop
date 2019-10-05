@@ -7,7 +7,7 @@
     tools:context=".MainActivity"
     android:background="#43313131">
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
@@ -51,5 +51,5 @@
                 android:layout_height="wrap_content"
                 android:text="Description"/>
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

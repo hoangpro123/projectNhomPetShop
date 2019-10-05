@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomeClient"
-android:background="#E9E8E8"
+    android:background="#E9E8E8"
     android:id="@+id/home"
     android:padding="0dp">
 
@@ -71,12 +71,12 @@ android:background="#E9E8E8"
                 android:id="@+id/slider">
             </com.daimajia.slider.library.SliderLayout>
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:padding="10dp"></android.support.v7.widget.RecyclerView>
+                android:padding="10dp"></androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
     </ScrollView>
