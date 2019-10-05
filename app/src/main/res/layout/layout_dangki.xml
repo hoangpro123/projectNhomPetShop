@@ -32,10 +32,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <EditText
+            android:id="@+id/edHo"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:hint="@string/ho"></EditText>
         <EditText
+            android:id="@+id/edTen"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:hint="@string/ten"></EditText>
@@ -47,31 +49,41 @@
         android:paddingRight="15dp"
         android:paddingLeft="15dp">
         <EditText
+            android:inputType="textEmailAddress"
+            android:id="@+id/edMail"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/mail"></EditText>
         <EditText
+            android:inputType="textPassword"
+            android:id="@+id/edpass"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/pass"></EditText>
         <EditText
+            android:inputType="textPassword"
+            android:id="@+id/edRepass"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/repass"></EditText>
         <EditText
+            android:inputType="number"
+            android:id="@+id/edSDT"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/sdt"></EditText>
         <EditText
+            android:id="@+id/edDC"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/diachi"></EditText>
         <RadioGroup
+            android:id="@+id/gr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -80,11 +92,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/GT"></TextView>
             <RadioButton
+                android:checked="true"
+                android:id="@+id/nam"
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Nam"></RadioButton>
             <RadioButton
+                android:id="@+id/nu"
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,8 +108,9 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnTao"
         android:layout_marginTop="50dp"
-        android:background="@drawable/vienbutton"
+
         android:textColor="@color/white"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
