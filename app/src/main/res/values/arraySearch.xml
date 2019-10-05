@@ -16,10 +16,8 @@
         <item>5</item>
     </string-array>
     <string-array name="gia">
-        <item>1000</item>
-        <item>2000</item>
-        <item>3000</item>
-        <item>4000</item>
-        <item>5000</item>
+        <item>Thấp đến cao</item>
+        <item>Cao đến thấp</item>
+
     </string-array>
 </resources>

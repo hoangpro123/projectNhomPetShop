@@ -5,13 +5,12 @@
     android:layout_height="match_parent"
     android:background="#fcfcfc"
     tools:context=".ChiTietThuCungActivity">
-
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:padding="10dp">
-
+        android:padding="10dp"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -51,7 +50,5 @@
                 android:textColor="#050505"
                 android:textSize="18sp" />
         </LinearLayout>
-
-
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="155dp"
     android:layout_height="210dp"
     android:id="@+id/cardview_id"
@@ -14,7 +14,7 @@
             android:id="@+id/petimg"
             android:layout_width="150dp"
             android:layout_height="160dp"
-            android:background="#2d2d2d"
+            android:background="#FDFDFD"
             android:layout_marginTop="2dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop">
@@ -39,4 +39,4 @@
 
         </TextView>
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>
