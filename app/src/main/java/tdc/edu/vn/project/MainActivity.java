@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.layout_dangnhap);
 
         setControl();
@@ -38,5 +39,8 @@ public class MainActivity extends AppCompatActivity {
         edtTaiKhoan = (EditText)findViewById(R.id.edtTaiKhoan);
         edtMatKhau = (EditText)findViewById(R.id.edtMatKhau);
         btnDangNhap = (Button)findViewById(R.id.btnDangNhap);
+
+        setContentView(R.layout.layout_dangki);
+
     }
 }
