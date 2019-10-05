@@ -13,7 +13,7 @@ public class HoaHong extends PetShopModel{
         this.so_tien = so_tien;
     }
 
-    public HoaHong() {
+    public HoaHong(double v, Date thoi_gian_dong_tien, int i) {
     }
 
 

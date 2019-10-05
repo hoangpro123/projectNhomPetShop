@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 import tdc.edu.vn.project.Model.DanhGia;
 import tdc.edu.vn.project.Model.DanhSachDen;
@@ -203,17 +204,17 @@ public class PetShopFireBase {
         });
     }
     public static void initial() {
-        /*TABLE_NGUOI_MUA.TABLE.child("null").setValue(new NguoiMua("nm001", "nm001", "nm001", "nb001", "ndsfs", "5", "Nữ"));
-        TABLE_DANH_GIA.TABLE.child("null").setValue(new DanhGia("nm001", "nb001", "ndsfs", "5"));
+        TABLE_NGUOI_MUA.TABLE.child("null").setValue(new NguoiMua("NguoiMua", "nm001", "123456", "09123456789", "hcm", "link", "Nữ"));
+        TABLE_DANH_GIA.TABLE.child("null").setValue(new DanhGia("nm001", "nb001", "ndsfs", (float) 3));
         TABLE_DANH_SACH_DEN.TABLE.child("null").setValue(new DanhSachDen("nm001", "nb001"));
-        TABLE_DON_HANG.TABLE.child("null").setValue(new DonHang("nm001", "nb001", "ndsfs", "5", "abc", "abc"));
-        TABLE_GIAO_HANG.TABLE.child("null").setValue(new GiaoHang("nm001", "11-11-2011"));
+        TABLE_DON_HANG.TABLE.child("null").setValue(new DonHang("nm001", "nb001", "ndsfs", 2, 1, (double) 120000));
+        TABLE_GIAO_HANG.TABLE.child("null").setValue(new GiaoHang("nm001", new Date()));
         TABLE_GIO_HANG.TABLE.child("null").setValue(new GioHang("nm001", "nb001"));
-        TABLE_HOA_HONG.TABLE.child("null").setValue(new HoaHong("nm001", "nb001", "ndsfs"));
+        TABLE_HOA_HONG.TABLE.child("null").setValue(new HoaHong((float) 0.01, new Date(), (double) 5630000));
         TABLE_NGUOI_BAN.TABLE.child("null").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "Nam", "hh001"));
         TABLE_NGUOI_GIAO.TABLE.child("null").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));
         TABLE_QUAN_LY.TABLE.child("null").setValue(new QuanLy("nm001", "nb001", "ndsfs"));
-        TABLE_SAN_PHAM.TABLE.child("null").setValue(new SanPham("nm001", "nb001", "ndsfs", "5", "abc", "abc"));*/
+        TABLE_SAN_PHAM.TABLE.child("null").setValue(new SanPham("nm001", "nb001", "ndsfs", "nb003", (double) 1930000, new Date()));
         //
         TABLE_LAST_ID.child(TABLE_NGUOI_MUA.name).setValue(1);
         TABLE_LAST_ID.child(TABLE_DANH_GIA.name).setValue(1);
