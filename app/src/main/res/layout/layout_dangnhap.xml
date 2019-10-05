@@ -8,7 +8,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:src="@drawable/pet"
-        android:layout_marginTop="20dp"></ImageView>
+        style="@style/margintop20"></ImageView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -18,27 +18,25 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            style="@style/canle_dangnhap">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Vui lòng nhập tài khoản"
+                android:hint="@string/vuilongnhaptaikhoan"
                 android:layout_marginBottom="20dp"
                 android:drawableLeft="@drawable/ic_person_black_24dp"
                 android:drawablePadding="10dp"></EditText>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Vui lòng nhập mật khẩu"
+                android:hint="@string/vuilongnhapmatkhau"
                 android:drawableLeft="@drawable/ic_lock_black_24dp"
                 android:drawablePadding="10dp">></EditText>
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ghi nhớ"
+                android:text="@string/ghinho"
                 android:layout_marginTop="20dp"></CheckBox>
             <RadioGroup
                 android:layout_width="match_parent"
@@ -49,17 +47,17 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Người mua"></RadioButton>
+                    android:text="@string/nguoimua"></RadioButton>
                 <RadioButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Người bán"></RadioButton>
+                    android:text="@string/nguoiban"></RadioButton>
                 <RadioButton
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Quản lý"></RadioButton>
+                    android:text="@string/quanly"></RadioButton>
             </RadioGroup>
         </LinearLayout>
         <LinearLayout
@@ -70,10 +68,9 @@
             <Button
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:text="Đăng nhập"
+                android:text="@string/dangnhap"
                 android:background="@drawable/vienbutton"
-                android:textColor="#FFFFFF"
-                android:textSize="20dp"></Button>
+                style="@style/buttondangnhap1"></Button>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -85,7 +82,7 @@
                 android:textColor="@drawable/button_deskop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tạo tài khoản"></TextView>
+                android:text="@string/taotaikhoan"></TextView>
             <TextView
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -96,7 +93,7 @@
                 android:textColor="@drawable/button_deskop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quên mật khẩu"></TextView>
+                android:text="@string/quenmatkhau"></TextView>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

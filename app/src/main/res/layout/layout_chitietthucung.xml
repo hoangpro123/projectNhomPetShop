@@ -23,10 +23,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CHI TIẾT THÚ CƯNG"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:textSize="20dp">
+                android:text="@string/title_chitietthucung"
+                style="@style/titleheader_chitietthucung">
             </TextView>
         </LinearLayout>
         <LinearLayout
@@ -64,41 +62,34 @@
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MÈO ANH LÔNG NGẮN"
-                        android:textSize="20dp"
-                        android:textColor="#000"
-                        android:textStyle="bold"></TextView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="10"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    style="@style/canle_chitietthucung">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tenthucung_chitietthucung"
+                            style="@style/title_chitietthucung"></TextView>
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center|left"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="5dp">
+                        android:gravity="center|left">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Giá:"
-                            android:textSize="20dp"
-                            android:textColor="@color/Yellow"></TextView>
+                            android:text="@string/gia"
+                            style="@style/gia_chitietthucung"></TextView>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="4.000.000đ"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="20dp"></TextView>
+                            android:text="@string/sotien"
+                            style="@style/sotien_chitietthucung"></TextView>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -108,228 +99,191 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:gravity="left"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="10dp">
+                            android:gravity="left">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Cửa hàng:"
-                                android:textSize="20dp"
-                                android:textStyle="bold"
-                                android:textColor="#000"></TextView>
+                                android:text="@string/cuahang"
+                                style="@style/title_chitietthucung"></TextView>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Anh Khiêm"
-                                android:textSize="20dp"
-                                android:layout_marginLeft="10dp"
-                                android:textStyle="bold"
-                                android:textColor="#000"></TextView>
+                                android:text="@string/tenchucuahang"
+                                style="@style/tenchucuahang_chitietthucung"></TextView>
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/star"
-                                android:layout_marginLeft="50dp"></ImageView>
+                                style="@style/marginleft50"></ImageView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="20dp">
+                            android:layout_height="wrap_content">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Chi tiết thú cưng"
-                                android:textSize="20dp"
-                                android:textColor="#000"
-                                android:textStyle="bold"></TextView>
+                                android:text="@string/chitietthucung"
+                                style="@style/title_chitietthucung"></TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:gravity="left"
-                            android:layout_marginLeft="20dp">
+                            android:gravity="left">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Giống:"
+                                android:text="@string/giong"
+                                style="@style/textsize20"></TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tenthucung_chitietthucung"
+                                style="@style/noidungchitiet_chitietthucung"></TextView>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="left">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/mau"
+                                style="@style/textsize20"></TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/chitietmauthucung"
+                                style="@style/noidungchitiet_chitietthucung"></TextView>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="left">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/gioitinh"
+                                style="@style/textsize20"></TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/chitietgioitinhthucung"
+                                style="@style/noidungchitiet_chitietthucung"></TextView>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="left">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tuoi"
                                 android:textSize="20dp"></TextView>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Anh lông ngắn"
-                                android:textSize="20dp"
-                                android:layout_marginLeft="10dp"></TextView>
+                                android:text="@string/chitiettuoithucung"
+                                style="@style/noidungchitiet_chitietthucung"></TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:gravity="left"
-                            android:layout_marginLeft="20dp">
+                            android:gravity="left">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Màu:"
-                                android:textSize="20dp"></TextView>
+                                android:text="@string/thongtinlienhe"
+                                style="@style/textsize20"></TextView>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Xám xanh"
-                                android:textSize="20dp"
-                                android:layout_marginLeft="10dp"></TextView>
+                                android:text="@string/tenchucuahang"
+                                style="@style/noidungchitiet_chitietthucung"></TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:gravity="left"
-                            android:layout_marginLeft="20dp">
+                            android:gravity="left">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Giới tính:"
-                                android:textSize="20dp"></TextView>
+                                android:text="@string/sdt"
+                                style="@style/textsize20"></TextView>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Đực"
-                                android:textSize="20dp"
-                                android:layout_marginLeft="10dp"></TextView>
+                                android:text="@string/chitietsdt"
+                                style="@style/noidungchitiet_chitietthucung"></TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:gravity="left"
-                            android:layout_marginLeft="20dp">
+                            android:gravity="left">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Số tuổi:"
-                                android:textSize="20dp"></TextView>
+                                android:text="@string/diachi"
+                                style="@style/textsize20"></TextView>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Ba tháng"
-                                android:textSize="20dp"
-                                android:layout_marginLeft="10dp"></TextView>
+                                android:text="@string/chitietdiachi"
+                                style="@style/noidungchitiet_chitietthucung"></TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:gravity="left"
-                            android:layout_marginLeft="20dp">
+                            android:gravity="left">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Thông tin liên hệ:"
-                                android:textSize="20dp"></TextView>
+                                android:text="@string/danhgiacuahang"
+                                style="@style/title_chitietthucung"></TextView>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Anh Khiêm"
-                                android:textSize="20dp"
-                                android:layout_marginLeft="10dp"></TextView>
+                                android:text="@string/soluocdanhgia"
+                                style="@style/noidungchitiet_chitietthucung"></TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:gravity="left"
-                            android:layout_marginLeft="20dp">
+                            android:gravity="left">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Số điện thoại:"
-                                android:textSize="20dp"></TextView>
+                                android:text="@string/tenkhachhang1"
+                                style="@style/textsize20"></TextView>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="0833535318"
-                                android:textSize="20dp"
-                                android:layout_marginLeft="10dp"></TextView>
+                                android:text="@string/noidungdanhgia1"
+                                style="@style/noidungchitiet_chitietthucung"></TextView>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:gravity="left"
-                            android:layout_marginLeft="20dp">
+                            android:gravity="left">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Địa chỉ:"
-                                android:textSize="20dp"></TextView>
+                                android:text="@string/tenkhachhang2"
+                                style="@style/textsize20"></TextView>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="53 Võ Văn Ngân, Linh Chiểu, Thủ Đức, Hồ Chí Minh"
-                                android:textSize="20dp"
-                                android:layout_marginLeft="10dp"></TextView>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="left"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="20dp">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Đánh giá cửa hàng"
-                                android:textSize="20dp"
-                                android:textStyle="bold"
-                                android:textColor="#000"></TextView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="(2 đánh giá)"
-                                android:textSize="20dp"
-                                android:textStyle="bold"
-                                android:layout_marginLeft="10dp"></TextView>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="left"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="5dp">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Văn Chiến:"
-                                android:textSize="20dp"></TextView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Nuôi con này tốn cơm"
-                                android:textSize="20dp"
-                                android:layout_marginLeft="10dp"></TextView>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="left"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginTop="5dp">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Hòng set:"
-                                android:textSize="20dp"></TextView>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Thịt mều này ngon lắm, làm món canh mều là hết sãy"
-                                android:textSize="20dp"
-                                android:layout_marginLeft="10dp"></TextView>
+                                android:text="@string/noidungdanhgia2"
+                                style="@style/noidungchitiet_chitietthucung"></TextView>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -341,24 +295,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="left"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="5dp">
+        style="@style/footerchitietthucung">
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="Thêm vào giỏ hàng"
+            android:text="@string/themvaogiohang"
             android:background="@drawable/vienbutton"
-            android:textColor="#fff"></Button>
+            style="@style/buttonchitietthucung1"></Button>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Mua ngay"
+            android:text="@string/muangay"
             android:background="@drawable/vienbutton"
-            android:textColor="#fff"></Button>
+            style="@style/buttonchitietthucung2"></Button>
     </LinearLayout>
 </LinearLayout>
