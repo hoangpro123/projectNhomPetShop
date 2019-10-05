@@ -5,6 +5,7 @@ import android.os.Bundle;
 //import android.support.v7.widget.RecyclerView;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,12 +17,15 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import tdc.edu.vn.project.Model.PetShopModel;
+import tdc.edu.vn.project.Model.SanPham;
 
 
 public class DanhSachThuCungActivity extends AppCompatActivity {
     Spinner spDanhMuc, spLoai, spGia;
     TextView tvDanhMuc, tvLoai, tvGia;
     List<Pet> listPet ;
+    ArrayList<SanPham> data;
     String[] stringDanhMuc;
     String[] stringGia;
     String[] stringLoai;
@@ -31,6 +35,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         setContentView(R.layout.activity_danh_sach_thu_cung);
 
         //set data
+
         setData();
         setControl();
         setEvent();
@@ -85,13 +90,37 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         spDanhMuc = (Spinner)findViewById(R.id.SpDanhMuc);
         spGia = (Spinner)findViewById(R.id.SpGia);
         spLoai = (Spinner)findViewById(R.id.SpLoai);
+
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
-        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,listPet);
+        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,data);
+        myrv.setLayoutManager(new GridLayoutManager(this,2));
+        myrv.setAdapter(myAdapter);
+
+        getFirebaseSanPham();
+
+
+
         stringDanhMuc = getResources().getStringArray(R.array.danhmuc);
         stringGia = getResources().getStringArray(R.array.gia);
         stringLoai = getResources().getStringArray(R.array.loai);
-        myrv.setLayoutManager(new GridLayoutManager(this,2));
-        myrv.setAdapter(myAdapter);
+
+
+
+    }
+
+    private void getFirebaseSanPham() {
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id && PetShopFireBase.TABLE_SAN_PHAM.status_count && PetShopFireBase.TABLE_SAN_PHAM.status_TABLE){
+
+                    data = (ArrayList<SanPham>)PetShopFireBase.TABLE_SAN_PHAM.data;
+                    
+                }
+                else handler.postDelayed(this, 1000);
+            }
+        });
     }
 
     private void setData() {

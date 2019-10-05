@@ -8,17 +8,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+import tdc.edu.vn.project.Model.PetShopModel;
+import tdc.edu.vn.project.Model.SanPham;
 
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private Context mContext ;
-    private List<Pet> mData ;
+    private ArrayList<SanPham> mData ;
 
-    public RecyclerViewAdapter(Context mContext, List<Pet> mData) {
+    public RecyclerViewAdapter(Context mContext, ArrayList<SanPham> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -33,18 +37,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.tv_pet_title.setText(mData.get(position).getTitle());
-        holder.tv_price.setText(mData.get(position).getPrice());
-        holder.img_pet.setImageResource(mData.get(position).getThumbnail());
+        holder.tv_pet_title.setText(mData.get(position).getName());
+        holder.tv_price.setText(mData.get(position).getPrice().toString());
+        holder.img_pet.setImageResource(Integer.parseInt(mData.get(position).getImage()));
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ChiTietThuCungActivity.class);
                 // passing data to the book activity
-                intent.putExtra("Title",mData.get(position).getTitle());
-                intent.putExtra("Price", mData.get(position).getPrice());
+                intent.putExtra("Title",mData.get(position).getPrice().toString());
+                intent.putExtra("Price", Integer.parseInt(mData.get(position).getImage()));
                 intent.putExtra("Description",mData.get(position).getDescription());
-                intent.putExtra("Thumbnail",mData.get(position).getThumbnail());
+                intent.putExtra("Thumbnail",Integer.parseInt(mData.get(position).getImage()));
                 // start the activity
                 mContext.startActivity(intent);
             }
