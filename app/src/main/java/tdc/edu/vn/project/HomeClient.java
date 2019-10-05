@@ -8,6 +8,8 @@ import java.util.List;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,6 +19,9 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import java.util.HashMap;
+
+import tdc.edu.vn.project.Model.NguoiMua;
+import tdc.edu.vn.project.Model.SanPham;
 
 public class HomeClient extends AppCompatActivity
         implements BaseSliderView.OnSliderClickListener,
@@ -126,26 +131,45 @@ public class HomeClient extends AppCompatActivity
     }
 
     public void KhoiTao(){
+        PetShopFireBase.loadTable(PetShopFireBase.TABLE_SAN_PHAM);
         listPet = new ArrayList<>();
-        listPet.add(new Pet("The Vegitarian","500000","Description book",R.drawable.logo));
-        listPet.add(new Pet("The Wild Robot","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("Maria Semples","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("The Martian","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("He Died with...","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("The Wild Robot","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("Maria Semples","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("The Martian","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("He Died with...","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("The Wild Robot","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("Maria Semples","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("The Martian","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("He Died with...","Categorie Book","Description book",R.drawable.logo));
-        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book",R.drawable.logo));
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id && PetShopFireBase.TABLE_SAN_PHAM.status_count && PetShopFireBase.TABLE_SAN_PHAM.status_TABLE){
+                    ArrayList<SanPham> data = (ArrayList<SanPham>)PetShopFireBase.TABLE_SAN_PHAM.data;
+                    for (int i = 0; i < data.size(); i++){
+                        listPet.add(new Pet(data.get(i).getName(),data.get(i).getPrice(),data.get(i).getDescription(),R.drawable.logo));
+                    }
 
+                    Log.d("ggg", data.size() + "");
+                }
+                else handler.postDelayed(this, 1000);
+            }
+        });
+
+
+
+        listPet.add(new Pet("The Vegitarian","500000","Description book",R.drawable.logo));
+        /*listPet.add(new Pet("The Wild Robot","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("Maria Semples","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("The Martian","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("He Died with...","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("The Wild Robot","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("Maria Semples","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("The Martian","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("He Died with...","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("The Wild Robot","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("Maria Semples","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("The Martian","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("He Died with...","Categorie Book","Description book",R.drawable.logo));
+        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book",R.drawable.logo));
+*/
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,listPet);
         myrv.setLayoutManager(new GridLayoutManager(this,2));

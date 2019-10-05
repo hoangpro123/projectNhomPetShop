@@ -49,12 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
-            <Button
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="5dp"
 
-                android:background="@drawable/ic_shopping_cart_24dp"/>
         </LinearLayout>
     </LinearLayout>
 
