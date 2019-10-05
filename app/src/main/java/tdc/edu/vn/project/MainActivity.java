@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setEvent() {
+
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
