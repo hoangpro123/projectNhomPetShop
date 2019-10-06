@@ -11,8 +11,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -48,61 +51,115 @@ public class PetShopFireBase {
     public static eTable TABLE_SAN_PHAM = eTable.SanPham;
     //
     public static Handler handler = new Handler();
-    //
-    public static void sortList(final String sField , final eTable table, final boolean inc){
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                if(table.status_last_id && table.status_count && table.status_TABLE){
-                    final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
-                    if(data.size() < 2) return;
-                    //
 
-                }
-                else handler.postDelayed(this, 1000);
-            }
-        });
-    }
-    public static void removeItem(final String id, final eTable table){
+    //
+    public static void onTableLoaded(Class clss, String sMethod, eTable table){
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(table.status_last_id && table.status_count && table.status_TABLE){
+                if (table.status_last_id && table.status_count && table.status_TABLE) {
+                    try {
+                        clss.getDeclaredMethod(sMethod).invoke(null);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    }
+                } else handler.postDelayed(this, 1000);
+            }
+        });
+    }
+
+    public static void sortList(final String sField, final eTable table, final boolean inc) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (table.status_last_id && table.status_count && table.status_TABLE) {
+                    final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
+                    if (data.size() < 2) return;
+                    //
+                    for (int i = 0; i < data.size() - 1; i++) {
+                        int s = i;
+                        for (int j = i + 1; j < data.size(); j++) {
+                            Object oS = getValueField(sField, data.get(s));
+                            Object oJ = getValueField(sField, data.get(j));
+                            if(inc){
+                                if (oS.getClass().equals(String.class)) {
+                                    if(((String) oS).compareTo((String) oJ) > 0) s = j;
+                                } else if (oS.getClass().equals(Integer.class)) {
+                                    if(((Integer) oS).compareTo((Integer) oJ) > 0) s = j;
+                                } else if (oS.getClass().equals(Float.class)) {
+                                    if(((Float) oS).compareTo((Float) oJ) > 0) s = j;
+                                } else if (oS.getClass().equals(Double.class)) {
+                                    if(((Double) oS).compareTo((Double) oJ) > 0) s = j;
+                                } else if (oS.getClass().equals(Date.class)) {
+                                    if(((Date) oS).compareTo((Date) oJ) > 0) s = j;
+                                }
+                            }
+                            else {
+                                if (oS.getClass().equals(String.class)) {
+                                    if(((String) oS).compareTo((String) oJ) < 0) s = j;
+                                } else if (oS.getClass().equals(Integer.class)) {
+                                    if(((Integer) oS).compareTo((Integer) oJ) < 0) s = j;
+                                } else if (oS.getClass().equals(Float.class)) {
+                                    if(((Float) oS).compareTo((Float) oJ) < 0) s = j;
+                                } else if (oS.getClass().equals(Double.class)) {
+                                    if(((Double) oS).compareTo((Double) oJ) < 0) s = j;
+                                } else if (oS.getClass().equals(Date.class)) {
+                                    if(((Date) oS).compareTo((Date) oJ) < 0) s = j;
+                                }
+                            }
+                        }
+                        if(i != s) Collections.swap(data, i, s);
+                    }
+                } else handler.postDelayed(this, 1000);
+            }
+        });
+    }
+
+    public static void removeItem(final String id, final eTable table) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (table.status_last_id && table.status_count && table.status_TABLE) {
                     table.TABLE.child(id).setValue(null);
-                }
-                else handler.postDelayed(this, 1000);
+                } else handler.postDelayed(this, 1000);
             }
         });
     }
-    public static void pushItem(final PetShopModel item, final eTable table){
+
+    public static void pushItem(final PetShopModel item, final eTable table) {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(table.status_last_id && table.status_count && table.status_TABLE){
+                if (table.status_last_id && table.status_count && table.status_TABLE) {
                     String id = item.getId();
-                    if(id.equals("null"))
+                    if (id.equals("null"))
                         id = getNewID(table);
                     item.setId(id);
                     table.TABLE.child(id).setValue(item);
-                }
-                else handler.postDelayed(this, 1000);
+                } else handler.postDelayed(this, 1000);
             }
         });
     }
-    public static void loadTable(final eTable table){
+
+    public static void loadTable(final eTable table) {
         final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
         data.clear();
         TABLE_LAST_ID.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if(dataSnapshot.getKey().equals(table.getName())){
+                if (dataSnapshot.getKey().equals(table.getName())) {
                     table.last_id = Integer.parseInt(dataSnapshot.getValue().toString());
                     table.setStatus_last_id(true);
                 }
             }
+
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if(dataSnapshot.getKey().equals(table.getName())){
+                if (dataSnapshot.getKey().equals(table.getName())) {
                     table.last_id = Integer.parseInt(dataSnapshot.getValue().toString());
                     table.setStatus_last_id(true);
                 }
@@ -125,7 +182,7 @@ public class PetShopFireBase {
         TABLE_COUNT.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if(dataSnapshot.getKey().equals(table.getName())){
+                if (dataSnapshot.getKey().equals(table.getName())) {
                     table.setCount(Integer.parseInt(dataSnapshot.getValue().toString()));
                     table.setStatus_count(true);
                 }
@@ -133,7 +190,7 @@ public class PetShopFireBase {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if(dataSnapshot.getKey().equals(table.getName())){
+                if (dataSnapshot.getKey().equals(table.getName())) {
                     table.setCount(Integer.parseInt(dataSnapshot.getValue().toString()));
                     table.setStatus_count(true);
                 }
@@ -158,16 +215,16 @@ public class PetShopFireBase {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(table.status_count){
+                if (table.status_count) {
                     table.TABLE.addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                             PetShopModel item = (PetShopModel) dataSnapshot.getValue(table.cClass);
                             data.add(item);
-                            if((data.size() == table.count)){
+                            if ((data.size() == table.count)) {
                                 table.setStatus_TABLE(true);
                             }
-                            if((data.size() > table.count)){
+                            if ((data.size() > table.count)) {
                                 table.count = data.size();
                                 TABLE_COUNT.child(table.getName()).setValue(table.count);
                                 TABLE_LAST_ID.child(table.getName()).setValue(table.last_id + 1);
@@ -198,19 +255,19 @@ public class PetShopFireBase {
                         }
                     });
 
-                }
-                else handler.postDelayed(this, 1000);
+                } else handler.postDelayed(this, 1000);
             }
         });
     }
+
     public static void initial() {
         TABLE_NGUOI_MUA.TABLE.child("null").setValue(new NguoiMua("NguoiMua", "nm001", "123456", "09123456789", "hcm", "link", "Nữ"));
-        TABLE_DANH_GIA.TABLE.child("null").setValue(new DanhGia("nm001", "nb001", "ndsfs", (float) 3));
+        TABLE_DANH_GIA.TABLE.child("null").setValue(new DanhGia("nm001", "nb001", "ndsfs", (float) 3.5));
         TABLE_DANH_SACH_DEN.TABLE.child("null").setValue(new DanhSachDen("nm001", "nb001"));
         TABLE_DON_HANG.TABLE.child("null").setValue(new DonHang("nm001", "nb001", "ndsfs", 2, 1, (double) 120000));
         TABLE_GIAO_HANG.TABLE.child("null").setValue(new GiaoHang("nm001", new Date()));
         TABLE_GIO_HANG.TABLE.child("null").setValue(new GioHang("nm001", "nb001"));
-        TABLE_HOA_HONG.TABLE.child("null").setValue(new HoaHong((float) 0.01, new Date(), (double) 5630000));
+        TABLE_HOA_HONG.TABLE.child("null").setValue(new HoaHong((float) 1, new Date(), (double) 563.333));
         TABLE_NGUOI_BAN.TABLE.child("null").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "Nam", "hh001"));
         TABLE_NGUOI_GIAO.TABLE.child("null").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));
         TABLE_QUAN_LY.TABLE.child("null").setValue(new QuanLy("nm001", "nb001", "ndsfs"));
@@ -239,10 +296,11 @@ public class PetShopFireBase {
         TABLE_COUNT.child(TABLE_QUAN_LY.name).setValue(1);
         TABLE_COUNT.child(TABLE_SAN_PHAM.name).setValue(1);
     }
+
     //
-    public static Object getValueField(String sField, PetShopModel item){
+    public static Object getValueField(String sField, PetShopModel item) {
         try {
-            Field field = SanPham.class.getDeclaredField(sField);
+            Field field = item.getClass().getDeclaredField(sField);
             field.setAccessible(true);
             return field.get(item);
         } catch (NoSuchFieldException e) {
@@ -252,27 +310,30 @@ public class PetShopFireBase {
         }
         return null;
     }
-    private static String getNewID(eTable table){
+
+    private static String getNewID(eTable table) {
         String key = table.getKey();
         int id_length = 0;
-        for(int i = table.last_id + 1; i > 0; i /= 10){
+        for (int i = table.last_id + 1; i > 0; i /= 10) {
             id_length++;
         }
-        if(id_length == 0) id_length = 1;
-        for(int i = table.max_length - id_length; i > 0; i--){
+        if (id_length == 0) id_length = 1;
+        for (int i = table.max_length - id_length; i > 0; i--) {
             key += "0";
         }
         key += String.valueOf(table.last_id + 1);
         return key;
     }
-    private static PetShopModel findItem(String id, eTable table){
+
+    private static PetShopModel findItem(String id, eTable table) {
         final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
-        for(PetShopModel item: data){
-            if(item.getId().equals(id))
+        for (PetShopModel item : data) {
+            if (item.getId().equals(id))
                 return item;
         }
         return null;
     }
+
     //
     static {
         TABLE_NGUOI_MUA.TABLE = db.child(TABLE_NGUOI_MUA.name);
@@ -287,18 +348,19 @@ public class PetShopFireBase {
         TABLE_QUAN_LY.TABLE = db.child(TABLE_QUAN_LY.name);
         TABLE_SAN_PHAM.TABLE = db.child(TABLE_SAN_PHAM.name);
     }
+
     public enum eTable {
-        NguoiMua   ("TABLE_NGUOI_MUA",     "nm",   3, new ArrayList<tdc.edu.vn.project.Model.NguoiMua>(), tdc.edu.vn.project.Model.NguoiMua.class),
-        NguoiBan   ("TABLE_NGUOI_BAN",     "nb",   3, new ArrayList<tdc.edu.vn.project.Model.NguoiBan>(), tdc.edu.vn.project.Model.NguoiBan.class),
-        DanhGia    ("TABLE_DANH_GIA",      "dg",   3, new ArrayList<tdc.edu.vn.project.Model.DanhGia>(), tdc.edu.vn.project.Model.DanhGia.class),
-        DanhSachDen("TABLE_DANH_SACH_DEN", "dsd",  3, new ArrayList<tdc.edu.vn.project.Model.DanhSachDen>(), tdc.edu.vn.project.Model.DanhSachDen.class),
-        DonHang    ("TABLE_DON_HANG",      "dh",   3, new ArrayList<tdc.edu.vn.project.Model.DonHang>(), tdc.edu.vn.project.Model.DonHang.class),
-        GioHang    ("TABLE_GIO_HANG",      "cart", 3, new ArrayList<tdc.edu.vn.project.Model.GioHang>(), tdc.edu.vn.project.Model.GioHang.class),
-        HoaHong    ("TABLE_HOA_HONG",      "hh",   3, new ArrayList<tdc.edu.vn.project.Model.HoaHong>(), tdc.edu.vn.project.Model.HoaHong.class),
-        GiaoHang   ("TABLE_GIAO_HANG",     "gh",   3, new ArrayList<tdc.edu.vn.project.Model.GiaoHang>(), tdc.edu.vn.project.Model.GiaoHang.class),
-        NguoiGiao  ("TABLE_NGUOI_GIAO",    "ng",   3, new ArrayList<tdc.edu.vn.project.Model.NguoiGiao>(), tdc.edu.vn.project.Model.NguoiGiao.class),
-        QuanLy     ("TABLE_QUAN_LY",       "ql",   3, new ArrayList<tdc.edu.vn.project.Model.QuanLy>(), tdc.edu.vn.project.Model.QuanLy.class),
-        SanPham    ("TABLE_SAN_PHAM",      "sp",   3, new ArrayList<tdc.edu.vn.project.Model.SanPham>(), tdc.edu.vn.project.Model.SanPham.class);
+        NguoiMua("TABLE_NGUOI_MUA", "nm", 3, new ArrayList<tdc.edu.vn.project.Model.NguoiMua>(), tdc.edu.vn.project.Model.NguoiMua.class),
+        NguoiBan("TABLE_NGUOI_BAN", "nb", 3, new ArrayList<tdc.edu.vn.project.Model.NguoiBan>(), tdc.edu.vn.project.Model.NguoiBan.class),
+        DanhGia("TABLE_DANH_GIA", "dg", 3, new ArrayList<tdc.edu.vn.project.Model.DanhGia>(), tdc.edu.vn.project.Model.DanhGia.class),
+        DanhSachDen("TABLE_DANH_SACH_DEN", "dsd", 3, new ArrayList<tdc.edu.vn.project.Model.DanhSachDen>(), tdc.edu.vn.project.Model.DanhSachDen.class),
+        DonHang("TABLE_DON_HANG", "dh", 3, new ArrayList<tdc.edu.vn.project.Model.DonHang>(), tdc.edu.vn.project.Model.DonHang.class),
+        GioHang("TABLE_GIO_HANG", "cart", 3, new ArrayList<tdc.edu.vn.project.Model.GioHang>(), tdc.edu.vn.project.Model.GioHang.class),
+        HoaHong("TABLE_HOA_HONG", "hh", 3, new ArrayList<tdc.edu.vn.project.Model.HoaHong>(), tdc.edu.vn.project.Model.HoaHong.class),
+        GiaoHang("TABLE_GIAO_HANG", "gh", 3, new ArrayList<tdc.edu.vn.project.Model.GiaoHang>(), tdc.edu.vn.project.Model.GiaoHang.class),
+        NguoiGiao("TABLE_NGUOI_GIAO", "ng", 3, new ArrayList<tdc.edu.vn.project.Model.NguoiGiao>(), tdc.edu.vn.project.Model.NguoiGiao.class),
+        QuanLy("TABLE_QUAN_LY", "ql", 3, new ArrayList<tdc.edu.vn.project.Model.QuanLy>(), tdc.edu.vn.project.Model.QuanLy.class),
+        SanPham("TABLE_SAN_PHAM", "sp", 3, new ArrayList<tdc.edu.vn.project.Model.SanPham>(), tdc.edu.vn.project.Model.SanPham.class);
 
         public String name, key;
         public int last_id, count, max_length;
