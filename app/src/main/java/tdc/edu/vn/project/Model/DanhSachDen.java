@@ -12,15 +12,6 @@ public class DanhSachDen extends PetShopModel{
     public DanhSachDen() {
     }
 
-    @Override
-    public String getId() {
-        return super.getId();
-    }
-
-    @Override
-    public void setId(String id) {
-        super.setId(id);
-    }
 
     public String getId_nguoi_ban() {
         return id_nguoi_ban;
