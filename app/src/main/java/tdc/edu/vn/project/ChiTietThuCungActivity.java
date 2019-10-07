@@ -1,9 +1,12 @@
 package tdc.edu.vn.project;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,13 +29,14 @@ public class ChiTietThuCungActivity extends AppCompatActivity {
         String Title = intent.getExtras().getString("Title");
         String price = intent.getExtras().getString("Price");
         String Description = intent.getExtras().getString("Description");
-        int image = intent.getExtras().getInt("Thumbnail") ;
+        String image = intent.getExtras().getString("Thumbnail") ;
+
 
         // Setting values
         tvtitle.setText(Title);
         tvprice.setText(price);
         tvdescription.setText(Description);
-        img.setImageResource(image);
+        Picasso.with(this).load(image).into(img);
     }
 
     private void setControl() {

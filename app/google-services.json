@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "1015836754933",
-    "firebase_url": "https://petshop-98c8f.firebaseio.com",
-    "project_id": "petshop-98c8f",
-    "storage_bucket": "petshop-98c8f.appspot.com"
+    "project_number": "645414940328",
+    "firebase_url": "https://chuyendedidongnhom3.firebaseio.com",
+    "project_id": "chuyendedidongnhom3",
+    "storage_bucket": "chuyendedidongnhom3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1015836754933:android:e58c903709ba2588ead6bc",
+        "mobilesdk_app_id": "1:645414940328:android:cb5245b08f2b8b275c9c9d",
         "android_client_info": {
           "package_name": "tdc.edu.vn.project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1015836754933-l58ni2e9cu837odmpqn69ls9109ibk96.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "tdc.edu.vn.project",
-            "certificate_hash": "25b9687079d52427ef91b42ba972f32ee39fc657"
-          }
-        },
-        {
-          "client_id": "1015836754933-7opfb99e5f97kldlg2l7vkhj82pjl9cn.apps.googleusercontent.com",
+          "client_id": "645414940328-b94g7pg52kn4te71bf639erb8005qeju.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBoBX5ADGudLQMC83vgGoUhXjtzy9hfUIA"
+          "current_key": "AIzaSyA7CaqT0z-gB3nwRS6UTq2L2U-EcCO5lg0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1015836754933-7opfb99e5f97kldlg2l7vkhj82pjl9cn.apps.googleusercontent.com",
+              "client_id": "645414940328-b94g7pg52kn4te71bf639erb8005qeju.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

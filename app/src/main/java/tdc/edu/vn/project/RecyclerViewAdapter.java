@@ -2,11 +2,16 @@ package tdc.edu.vn.project;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.storage.FirebaseStorage;
+import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -21,6 +26,7 @@ import tdc.edu.vn.project.Model.SanPham;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private Context mContext ;
     private ArrayList<SanPham> mData ;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
 
     public RecyclerViewAdapter(Context mContext, ArrayList<SanPham> mData) {
         this.mContext = mContext;
@@ -39,11 +45,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.tv_pet_title.setText(mData.get(position).getName());
         holder.tv_price.setText(String.valueOf(mData.get(position).getPrice()));
-//        holder.tv_price.setText(mData.get(position).getImage());
-        holder.img_pet.setImageResource(R.drawable.chan_meo);
+        //holder.img_pet.setImageDrawable(Drawable.createFromPath(mData.get(position).getImage()));
+        //holder.img_pet.setImageURI(Uri.parse(mData.get(position).getImage()));
 
-
-
+        Picasso.with(mContext).load(Uri.parse(mData.get(position).getImage())).into(holder.img_pet);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
