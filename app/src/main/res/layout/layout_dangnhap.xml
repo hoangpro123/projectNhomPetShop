@@ -88,36 +88,26 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal">
-            <Button
-                android:id="@+id/txtTaoTaiKhoan"
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/taotaikhoan"></Button>
             <TextView
+                android:textColor="@color/Yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTaoTaiKhoan"
+                android:text="@string/taotaikhoan"></TextView>
+            <TextView
+
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="|"></TextView>
+
             <TextView
                 android:id="@+id/txtQuenMatKhau"
-                android:textColor="@drawable/button_deskop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/quenmatkhau"></TextView>
+                android:text="@string/quenmatkhau"
+                android:textColor="@color/Yellow"></TextView>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
