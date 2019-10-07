@@ -49,13 +49,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center">
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
 
+                android:background="@drawable/ic_shopping_cart_24dp"/>
         </LinearLayout>
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="2"
         >
 
         <LinearLayout
@@ -77,31 +83,35 @@
 
         </LinearLayout>
     </ScrollView>
+
+
+
     <TableLayout android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+
         android:layout_gravity="center"
         android:gravity="center">
         <TableRow>
 
             <Button
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="2dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/button_tablayout"
                 android:text="Trang Chủ"
                 android:textColor="#fff" />
 
             <Button
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="2dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_tablayout"
                 android:text="Danh Mục"
                 android:textColor="#fff" />
             <Button android:text="Thông Báo"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="2dp"
                 android:background="@drawable/button_tablayout"
                 android:textColor="#fff"/>
             <Button android:text="Cá Nhân"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="2dp"
                 android:background="@drawable/button_tablayout"
                 android:textColor="#fff"/>
         </TableRow>
