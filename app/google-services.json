@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "645414940328",
+    "firebase_url": "https://chuyendedidongnhom3.firebaseio.com",
+    "project_id": "chuyendedidongnhom3",
+    "storage_bucket": "chuyendedidongnhom3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645414940328:android:cb5245b08f2b8b275c9c9d",
+        "android_client_info": {
+          "package_name": "tdc.edu.vn.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645414940328-b94g7pg52kn4te71bf639erb8005qeju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7CaqT0z-gB3nwRS6UTq2L2U-EcCO5lg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645414940328-b94g7pg52kn4te71bf639erb8005qeju.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,29 +1,23 @@
 package tdc.edu.vn.project.Model;
 
+import java.util.Date;
+
 public class SanPham extends PetShopModel{
-    String name, description, price, image, ngay_dang_ban, id_nguoi_ban;
+    String name, description, image, id_nguoi_ban;
+    Double price;
+    Date ngay_dang_ban;
 
 
-
-    public SanPham(String name, String description, String price, String image, String ngay_dang_ban, String id_nguoi_ban) {
+    public SanPham(String name, String description, String image, String id_nguoi_ban, Double price, Date ngay_dang_ban) {
         this.name = name;
         this.description = description;
-        this.price = price;
         this.image = image;
-        this.ngay_dang_ban = ngay_dang_ban;
         this.id_nguoi_ban = id_nguoi_ban;
+        this.price = price;
+        this.ngay_dang_ban = ngay_dang_ban;
     }
+
     public SanPham() {
-    }
-
-    @Override
-    public String getId() {
-        return super.getId();
-    }
-
-    @Override
-    public void setId(String id) {
-        super.setId(id);
     }
 
     public String getName() {
@@ -42,14 +36,6 @@ public class SanPham extends PetShopModel{
         this.description = description;
     }
 
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
     public String getImage() {
         return image;
     }
@@ -58,19 +44,27 @@ public class SanPham extends PetShopModel{
         this.image = image;
     }
 
-    public String getNgay_dang_ban() {
-        return ngay_dang_ban;
-    }
-
-    public void setNgay_dang_ban(String ngay_dang_ban) {
-        this.ngay_dang_ban = ngay_dang_ban;
-    }
-
     public String getId_nguoi_ban() {
         return id_nguoi_ban;
     }
 
     public void setId_nguoi_ban(String id_nguoi_ban) {
         this.id_nguoi_ban = id_nguoi_ban;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Date getNgay_dang_ban() {
+        return ngay_dang_ban;
+    }
+
+    public void setNgay_dang_ban(Date ngay_dang_ban) {
+        this.ngay_dang_ban = ngay_dang_ban;
     }
 }

@@ -4,12 +4,14 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -32,7 +34,7 @@ public class HomeClient extends AppCompatActivity
 
     HashMap<String, Integer> HashMapForLocalRes ;
 
-    List<Pet> listPet ;
+    ArrayList<SanPham> listPet ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +133,7 @@ public class HomeClient extends AppCompatActivity
     }
 
     public void KhoiTao(){
+        final RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
         PetShopFireBase.loadTable(PetShopFireBase.TABLE_SAN_PHAM);
         listPet = new ArrayList<>();
         final Handler handler = new Handler();
@@ -139,9 +142,10 @@ public class HomeClient extends AppCompatActivity
             public void run() {
                 if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id && PetShopFireBase.TABLE_SAN_PHAM.status_count && PetShopFireBase.TABLE_SAN_PHAM.status_TABLE){
                     ArrayList<SanPham> data = (ArrayList<SanPham>)PetShopFireBase.TABLE_SAN_PHAM.data;
-                    for (int i = 0; i < data.size(); i++){
-                        listPet.add(new Pet(data.get(i).getName(),data.get(i).getPrice(),data.get(i).getDescription(),R.drawable.logo));
-                    }
+                    listPet = data;
+                    RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(HomeClient.this,listPet);
+                    myrv.setLayoutManager(new GridLayoutManager(HomeClient.this,2));
+                    myrv.setAdapter(myAdapter);
 
                     Log.d("ggg", data.size() + "");
                 }
@@ -151,7 +155,7 @@ public class HomeClient extends AppCompatActivity
 
 
 
-        listPet.add(new Pet("The Vegitarian","500000","Description book",R.drawable.logo));
+
         /*listPet.add(new Pet("The Wild Robot","Categorie Book","Description book",R.drawable.logo));
         listPet.add(new Pet("Maria Semples","Categorie Book","Description book",R.drawable.logo));
         listPet.add(new Pet("The Martian","Categorie Book","Description book",R.drawable.logo));
@@ -170,10 +174,8 @@ public class HomeClient extends AppCompatActivity
         listPet.add(new Pet("He Died with...","Categorie Book","Description book",R.drawable.logo));
         listPet.add(new Pet("The Vegitarian","Categorie Book","Description book",R.drawable.logo));
 */
-        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
-        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,listPet);
-        myrv.setLayoutManager(new GridLayoutManager(this,2));
-        myrv.setAdapter(myAdapter);
+
+
     }
 
 }

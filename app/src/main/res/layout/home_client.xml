@@ -55,26 +55,56 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        >
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slider"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:id="@+id/slider">
-            </com.daimajia.slider.library.SliderLayout>
+                android:layout_height="150dp"></com.daimajia.slider.library.SliderLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="300dp"
                 android:layout_gravity="center"
                 android:padding="10dp"></androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
     </ScrollView>
+    <TableLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <TableRow>
 
+            <Button
+                android:layout_marginLeft="10dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_tablayout"
+                android:text="Trang Chủ"
+                android:textColor="#fff" />
+
+            <Button
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_tablayout"
+                android:text="Danh Mục"
+                android:textColor="#fff" />
+            <Button android:text="Thông Báo"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_tablayout"
+                android:textColor="#fff"/>
+            <Button android:text="Cá Nhân"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_tablayout"
+                android:textColor="#fff"/>
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>

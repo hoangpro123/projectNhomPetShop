@@ -1,9 +1,10 @@
 package tdc.edu.vn.project.Model;
 
-public class DanhGia extends PetShopModel{
-    String id_nguoi_bi_danh_gia, id_nguoi_danh_gia, content, rate;
+public class DanhGia extends PetShopModel {
+    String id_nguoi_bi_danh_gia, id_nguoi_danh_gia, content;
+    Float rate;
 
-    public DanhGia(String id_nguoi_bi_danh_gia, String id_nguoi_danh_gia, String content, String rate) {
+    public DanhGia(String id_nguoi_bi_danh_gia, String id_nguoi_danh_gia, String content, Float rate) {
         this.id_nguoi_bi_danh_gia = id_nguoi_bi_danh_gia;
         this.id_nguoi_danh_gia = id_nguoi_danh_gia;
         this.content = content;
@@ -11,16 +12,6 @@ public class DanhGia extends PetShopModel{
     }
 
     public DanhGia() {
-    }
-
-    @Override
-    public String getId() {
-        return super.getId();
-    }
-
-    @Override
-    public void setId(String id) {
-        super.setId(id);
     }
 
     public String getId_nguoi_bi_danh_gia() {
@@ -39,6 +30,7 @@ public class DanhGia extends PetShopModel{
         this.id_nguoi_danh_gia = id_nguoi_danh_gia;
     }
 
+
     public String getContent() {
         return content;
     }
@@ -47,11 +39,11 @@ public class DanhGia extends PetShopModel{
         this.content = content;
     }
 
-    public String getRate() {
+    public Float getRate() {
         return rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(Float rate) {
         this.rate = rate;
     }
 }

@@ -12,15 +12,6 @@ public class NguoiGiao extends PetShopModel{
     public NguoiGiao() {
     }
 
-    @Override
-    public String getId() {
-        return super.getId();
-    }
-
-    @Override
-    public void setId(String id) {
-        super.setId(id);
-    }
 
     public String getName() {
         return name;
