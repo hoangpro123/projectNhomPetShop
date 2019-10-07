@@ -6,12 +6,14 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,7 @@ import tdc.edu.vn.project.Model.SanPham;
 public class DanhSachThuCungActivity extends AppCompatActivity {
     Spinner spDanhMuc, spLoai, spGia;
     TextView tvDanhMuc, tvLoai, tvGia;
-    List<Pet> listPet ;
+
     ArrayList<SanPham> data;
     String[] stringDanhMuc;
     String[] stringGia;
@@ -36,7 +38,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
 
         //set data
 
-        setData();
+
         setControl();
         setEvent();
 
@@ -91,10 +93,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         spGia = (Spinner)findViewById(R.id.SpGia);
         spLoai = (Spinner)findViewById(R.id.SpLoai);
 
-        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
-        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this,data);
-        myrv.setLayoutManager(new GridLayoutManager(this,2));
-        myrv.setAdapter(myAdapter);
+
 
         getFirebaseSanPham();
 
@@ -109,41 +108,26 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
     }
 
     private void getFirebaseSanPham() {
+        PetShopFireBase.loadTable(PetShopFireBase.TABLE_SAN_PHAM);
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
                 if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id && PetShopFireBase.TABLE_SAN_PHAM.status_count && PetShopFireBase.TABLE_SAN_PHAM.status_TABLE){
-
                     data = (ArrayList<SanPham>)PetShopFireBase.TABLE_SAN_PHAM.data;
-                    
+                    RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
+                    RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(DanhSachThuCungActivity.this,data);
+                    myrv.setLayoutManager(new GridLayoutManager(DanhSachThuCungActivity.this,2));
+                    myrv.setAdapter(myAdapter);
                 }
                 else handler.postDelayed(this, 1000);
             }
         });
+
+
+
     }
 
-    private void setData() {
-        listPet = new ArrayList<>();
-        listPet.add(new Pet("The Vegitarian","500000","Description book", R.drawable.petshop));
-        listPet.add(new Pet("The Wild Robot","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("Maria Semples","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("The Martian","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("He Died with...","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("The Wild Robot","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("Maria Semples","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("The Martian","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("He Died with...","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("The Wild Robot","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("Maria Semples","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("The Martian","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("He Died with...","Categorie Book","Description book", R.drawable.petshop));
-        listPet.add(new Pet("The Vegitarian","Categorie Book","Description book", R.drawable.petshop));
-    }
     private void setSpinner(String[] array, Spinner spinner) {
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, array);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -38,17 +38,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.tv_pet_title.setText(mData.get(position).getName());
-        holder.tv_price.setText(mData.get(position).getPrice().toString());
-        holder.img_pet.setImageResource(Integer.parseInt(mData.get(position).getImage()));
+        holder.tv_price.setText(String.valueOf(mData.get(position).getPrice()));
+//        holder.tv_price.setText(mData.get(position).getImage());
+        holder.img_pet.setImageResource(R.drawable.chan_meo);
+
+
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, ChiTietThuCungActivity.class);
+                Intent intent = new Intent(mContext,ChiTietThuCungActivity.class);
                 // passing data to the book activity
-                intent.putExtra("Title",mData.get(position).getPrice().toString());
-                intent.putExtra("Price", Integer.parseInt(mData.get(position).getImage()));
+                intent.putExtra("Title",mData.get(position).getName());
+                intent.putExtra("Price", mData.get(position).getPrice());
                 intent.putExtra("Description",mData.get(position).getDescription());
-                intent.putExtra("Thumbnail",Integer.parseInt(mData.get(position).getImage()));
+                intent.putExtra("Thumbnail",mData.get(position).getImage());
                 // start the activity
                 mContext.startActivity(intent);
             }
