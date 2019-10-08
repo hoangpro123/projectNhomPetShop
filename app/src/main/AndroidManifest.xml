@@ -13,6 +13,7 @@
         <activity android:name=".PetActivity"></activity>
         <activity android:name=".HomeClient"></activity>
         <activity android:name=".ChiTietThuCung"></activity>
+        <activity android:name=".User.ThongTinUser"></activity>
         <activity android:name=".User.Login"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>

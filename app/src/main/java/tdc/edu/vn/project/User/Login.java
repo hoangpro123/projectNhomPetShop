@@ -54,6 +54,7 @@ public class Login extends AppCompatActivity {
     EditText edtTaiKhoan, edtMatKhau;
     Button btnDangNhap;
     RadioGroup rdbLuaChon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,21 +79,18 @@ public class Login extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if(PetShopFireBase.TABLE_NGUOI_MUA.status_last_id && PetShopFireBase.TABLE_NGUOI_MUA.status_count && PetShopFireBase.TABLE_NGUOI_MUA.status_TABLE){
-                            ArrayList<NguoiMua> data = (ArrayList<NguoiMua>)PetShopFireBase.TABLE_NGUOI_MUA.data;
-                            for (int i = 0; i < data.size(); i++){
-                                if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())){
+                        if (PetShopFireBase.TABLE_NGUOI_MUA.status_last_id && PetShopFireBase.TABLE_NGUOI_MUA.status_count && PetShopFireBase.TABLE_NGUOI_MUA.status_TABLE) {
+                            ArrayList<NguoiMua> data = (ArrayList<NguoiMua>) PetShopFireBase.TABLE_NGUOI_MUA.data;
+                            for (int i = 0; i < data.size(); i++) {
+                                if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())) {
                                     Intent intent = new Intent(Login.this, HomeClient.class);
                                     startActivity(intent);
-                                    Toast.makeText(Login.this, "OK", Toast.LENGTH_SHORT).show();
-                                }else {
-                                    Toast.makeText(Login.this, "Ngu", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                    return;
                                 }
                             }
-
-                            Log.d("ggg", data.size() + "");
-                        }
-                        else handler.postDelayed(this, 1000);
+                            Toast.makeText(Login.this, "Ngu", Toast.LENGTH_SHORT).show();
+                        } else handler.postDelayed(this, 1000);
                     }
                 });
 
@@ -102,10 +100,10 @@ public class Login extends AppCompatActivity {
     }
 
     private void setControl() {
-        edtTaiKhoan = (EditText)findViewById(R.id.edtTaiKhoan);
-        edtMatKhau = (EditText)findViewById(R.id.edtMatKhau);
-        btnDangNhap = (Button)findViewById(R.id.btnDangNhap);
-        rdbLuaChon = (RadioGroup)findViewById(R.id.rdbLuaChon);
+        edtTaiKhoan = (EditText) findViewById(R.id.edtTaiKhoan);
+        edtMatKhau = (EditText) findViewById(R.id.edtMatKhau);
+        btnDangNhap = (Button) findViewById(R.id.btnDangNhap);
+        rdbLuaChon = (RadioGroup) findViewById(R.id.rdbLuaChon);
     }
 
 

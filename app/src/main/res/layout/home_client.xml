@@ -101,6 +101,7 @@
                 android:background="@drawable/button_tablayout"
                 android:textColor="#fff"/>
             <Button android:text="Cá Nhân"
+                android:id="@+id/btnCaNhan"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/button_tablayout"
                 android:textColor="#fff"/>

@@ -1,18 +1,18 @@
 package tdc.edu.vn.project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
-import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -22,8 +22,8 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import java.util.HashMap;
 
-import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.User.ThongTinUser;
 
 public class HomeClient extends AppCompatActivity
         implements BaseSliderView.OnSliderClickListener,
@@ -38,10 +38,18 @@ public class HomeClient extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button user;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_client);
         KhoiTao();
-
+        user = findViewById(R.id.btnCaNhan);
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeClient.this, ThongTinUser.class);
+                startActivity(intent);
+            }
+        });
         sliderLayout = (SliderLayout)findViewById(R.id.slider);
 
         //Call this method if you want to add images from URL .
