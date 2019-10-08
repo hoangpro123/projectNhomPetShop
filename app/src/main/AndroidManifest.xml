@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".GioHang"></activity>
+        <activity android:name=".ThongTinUser" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".ChiTietThuCung" />
-        <activity android:name=".ThongTinUser">
+        <activity android:name=".ThongTinTaiKhoan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

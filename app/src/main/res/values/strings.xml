@@ -47,4 +47,13 @@
     <string name="xoa">Xóa</string>
     <string name="xemthem">Xem thêm</string>
     <string name="chontatca">Chọn tất cả</string>
+    <string name="giohang">GIỎ HÀNG</string>
+    <string name="datmua">Đặt mua</string>
+    <string name="thanhtien">Thành tiền:</string>
+    <string name="khongdong">0đ</string>
+    <string name="sanpham">Sản phẩm</string>
+    <string name="dongia">Đơn giá</string>
+    <string name="thongtintaikhoan">THÔNG TIN TÀI KHOẢN</string>
+    <string name="luu">Lưu</string>
+    <string name="doimatkhau">Đổi mật khẩu</string>
 </resources>
