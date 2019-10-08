@@ -37,4 +37,14 @@
     <string name="dangnhap">Đăng nhập</string>
     <string name="taotaikhoan">Tạo tài khoản</string>
     <string name="quenmatkhau">Quên mật khẩu</string>
+    <string name="dangxuat">Đăng xuất</string>
+    <string name="canhan">CÁ NHÂN</string>
+    <string name="chinhsua">Chỉnh sửa</string>
+    <string name="emailuser">ntk@yahoo.com</string>
+    <string name="quanlydonhang">Quản lý đơn hàng</string>
+    <string name="tendonhan">Tên đơn hàng</string>
+    <string name="trangthai">Trạng thái</string>
+    <string name="xoa">Xóa</string>
+    <string name="xemthem">Xem thêm</string>
+    <string name="chontatca">Chọn tất cả</string>
 </resources>
