@@ -47,4 +47,12 @@
     <string name="tao">Tạo</string>
     <string name="dk">Thông Báo</string>
     <string name="ss">Đăng Kí Thành Công</string>
+
+
+    <!--    Home client -->
+    <string name="search">PetShop</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

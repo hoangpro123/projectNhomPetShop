@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomeClient"
+    android:background="#E9E8E8"
+    android:id="@+id/home"
+    android:padding="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/nen">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/logo"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+            <SearchView
+                android:id="@+id/searchview"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#A8A8A8"
+                android:iconifiedByDefault="true"
+                android:queryHint="@string/search" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"></com.daimajia.slider.library.SliderLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:padding="10dp"></androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+    </ScrollView>
+    <TableLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <TableRow>
+
+            <Button
+                android:layout_marginLeft="10dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_tablayout"
+                android:text="Trang Chủ"
+                android:textColor="#fff" />
+
+            <Button
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_tablayout"
+                android:text="Danh Mục"
+                android:textColor="#fff" />
+            <Button android:text="Thông Báo"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_tablayout"
+                android:textColor="#fff"/>
+            <Button android:text="Cá Nhân"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_tablayout"
+                android:textColor="#fff"/>
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

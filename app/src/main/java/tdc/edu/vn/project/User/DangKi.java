@@ -2,16 +2,17 @@ package tdc.edu.vn.project.User;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.support.annotation.Nullable;
-import android.text.Editable;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ import tdc.edu.vn.project.R;
 public class DangKi  extends AppCompatActivity {
     EditText ho, ten, mail, sdt, pass, repass,diachi;
     RadioButton gender;
+    ImageButton btnback;
     RadioGroup group;
     Button tao;
     @Override
@@ -66,6 +68,13 @@ public class DangKi  extends AppCompatActivity {
                 }
             }
         });
+        btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DangKi.this, Login.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void AnhXa(){
@@ -82,7 +91,7 @@ public class DangKi  extends AppCompatActivity {
             diachi = findViewById(R.id.edDC);
 
 
-
+            btnback = findViewById(R.id.btnBack);
             tao = findViewById(R.id.btnTao);
 
     }
