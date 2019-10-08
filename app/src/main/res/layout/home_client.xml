@@ -96,23 +96,23 @@
             <Button
                 android:layout_marginLeft="2dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/button_tablayout"
+                android:background="@drawable/btnchon"
                 android:text="Trang Chủ"
                 android:textColor="#fff" />
 
             <Button
                 android:layout_marginLeft="2dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_tablayout"
+                android:background="@drawable/btnchon"
                 android:text="Danh Mục"
                 android:textColor="#fff" />
             <Button android:text="Thông Báo"
                 android:layout_marginLeft="2dp"
-                android:background="@drawable/button_tablayout"
+                android:background="@drawable/btnchon"
                 android:textColor="#fff"/>
             <Button android:text="Cá Nhân"
                 android:layout_marginLeft="2dp"
-                android:background="@drawable/button_tablayout"
+                android:background="@drawable/btnchon"
                 android:textColor="#fff"/>
         </TableRow>
     </TableLayout>
