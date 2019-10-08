@@ -1,13 +1,38 @@
 package tdc.edu.vn.project.User;
 
+import android.app.Application;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.IntentSender;
+import android.content.ServiceConnection;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.database.DatabaseErrorHandler;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Handler;
+import android.os.Looper;
+import android.os.UserHandle;
 import android.text.Editable;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +40,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
@@ -22,6 +54,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.function.Function;
 
+import tdc.edu.vn.project.MainActivity;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.SanPham;
@@ -39,11 +72,15 @@ public class DangKi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_dangki);
 
+
+
         AnhXa();
         PetShopFireBase.loadTable(PetShopFireBase.TABLE_NGUOI_MUA);
         tao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(DangKi.this,PetShopFireBase.TABLE_NGUOI_MUA.status_TABLE+"" , Toast.LENGTH_SHORT).show();
+
                 if (pass.getText().toString().equals(repass.getText().toString())) {
                     int re = group.getCheckedRadioButtonId();
                     gender = findViewById(re);

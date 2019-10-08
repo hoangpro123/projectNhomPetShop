@@ -1,22 +1,42 @@
 package tdc.edu.vn.project;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
@@ -32,8 +52,11 @@ import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.QuanLy;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.User.DangKi;
 
 public class PetShopFireBase {
+    public static StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://chuyendedidongnhom3.appspot.com");
+    //
     public static DatabaseReference db = FirebaseDatabase.getInstance().getReference();
     public static DatabaseReference TABLE_COUNT = db.child("count");
     public static DatabaseReference TABLE_LAST_ID = db.child("last_id");
@@ -52,7 +75,7 @@ public class PetShopFireBase {
     //
     public static Handler handler = new Handler();
 
-    //
+    //suspended
     public static void onTableLoaded(Class clss, String sMethod, eTable table){
         handler.post(new Runnable() {
             @Override
@@ -298,7 +321,7 @@ public class PetShopFireBase {
     }
 
     //
-    public static Object getValueField(String sField, PetShopModel item) {
+    private static Object getValueField(String sField, PetShopModel item) {
         try {
             Field field = item.getClass().getDeclaredField(sField);
             field.setAccessible(true);
