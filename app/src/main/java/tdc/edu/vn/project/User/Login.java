@@ -1,5 +1,6 @@
 package tdc.edu.vn.project.User;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.os.Handler;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
+import tdc.edu.vn.project.HomeClient;
 import tdc.edu.vn.project.Model.DanhGia;
 import tdc.edu.vn.project.Model.DanhSachDen;
 import tdc.edu.vn.project.Model.DonHang;
@@ -80,6 +82,8 @@ public class Login extends AppCompatActivity {
                             ArrayList<NguoiMua> data = (ArrayList<NguoiMua>)PetShopFireBase.TABLE_NGUOI_MUA.data;
                             for (int i = 0; i < data.size(); i++){
                                 if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())){
+                                    Intent intent = new Intent(Login.this, HomeClient.class);
+                                    startActivity(intent);
                                     Toast.makeText(Login.this, "OK", Toast.LENGTH_SHORT).show();
                                 }else {
                                     Toast.makeText(Login.this, "Ngu", Toast.LENGTH_SHORT).show();

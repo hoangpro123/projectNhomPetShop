@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".User.DangKi"></activity>
+        <activity android:name=".PetActivity"></activity>
+        <activity android:name=".HomeClient"></activity>
+        <activity android:name=".ChiTietThuCung"></activity>
         <activity android:name=".User.Login"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>

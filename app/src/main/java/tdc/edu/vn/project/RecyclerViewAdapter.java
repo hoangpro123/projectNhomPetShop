@@ -41,7 +41,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext,PetActivity.class);
+                Intent intent = new Intent(mContext,ChiTietThuCung.class);
                 // passing data to the book activity
                 intent.putExtra("Title",mData.get(position).getName());
                 intent.putExtra("Price", mData.get(position).getPrice());

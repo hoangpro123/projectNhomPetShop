@@ -124,11 +124,11 @@ public class HomeClient extends AppCompatActivity
     public void AddImageUrlFormLocalRes(){
 
         HashMapForLocalRes = new HashMap<String, Integer>();
-        HashMapForLocalRes.put("Hinh1", R.drawable.logo);
-        HashMapForLocalRes.put("Hinh2", R.drawable.logo);
-        HashMapForLocalRes.put("Hinh3", R.drawable.logo);
-        HashMapForLocalRes.put("Hinh4", R.drawable.logo);
-        HashMapForLocalRes.put("Hinh5", R.drawable.logo);
+        HashMapForLocalRes.put("Hinh1", R.drawable.meo1);
+        HashMapForLocalRes.put("Hinh2", R.drawable.meo2);
+        HashMapForLocalRes.put("Hinh3", R.drawable.meo3);
+        HashMapForLocalRes.put("Hinh4", R.drawable.meo4);
+        HashMapForLocalRes.put("Hinh5", R.drawable.meo5);
 
     }
 
