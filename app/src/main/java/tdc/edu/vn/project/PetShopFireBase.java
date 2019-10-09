@@ -35,6 +35,8 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -73,10 +75,36 @@ public class PetShopFireBase {
     public static eTable TABLE_QUAN_LY = eTable.QuanLy;
     public static eTable TABLE_SAN_PHAM = eTable.SanPham;
     //
-    public static Handler handler = new Handler();
+    private static Handler handler = new Handler();
+
+
+    public static ArrayList<PetShopModel> search(String field, Object value, eTable table) {
+        ArrayList<PetShopModel> results = new ArrayList<>();
+        ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.getData();
+        for (PetShopModel item : data) {
+            try {
+                Field f = item.getClass().getDeclaredField(field);
+                f.setAccessible(true);
+                Object v = f.get(item);
+                boolean b = v.equals(value);
+                if (b) results.add(item);
+                if (!b && v instanceof Date) {
+                    Date d1 = (Date) value;
+                    Date d2 = (Date) v;
+                    if (d1.getYear() == d2.getYear() && d1.getMonth() == d2.getMonth() && d1.getDate() == d2.getDate() && d1.getHours() == d2.getHours() && d1.getMinutes() == d2.getMinutes() && d1.getSeconds() == d2.getSeconds())
+                        results.add(item);
+                }
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return results;
+    }
 
     //suspended
-    public static void onTableLoaded(Class clss, String sMethod, eTable table){
+    public static void onTableLoaded(Class clss, String sMethod, eTable table) {
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -96,6 +124,7 @@ public class PetShopFireBase {
     }
 
     public static void sortList(final String sField, final eTable table, final boolean inc) {
+
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -108,34 +137,13 @@ public class PetShopFireBase {
                         for (int j = i + 1; j < data.size(); j++) {
                             Object oS = getValueField(sField, data.get(s));
                             Object oJ = getValueField(sField, data.get(j));
-                            if(inc){
-                                if (oS.getClass().equals(String.class)) {
-                                    if(((String) oS).compareTo((String) oJ) > 0) s = j;
-                                } else if (oS.getClass().equals(Integer.class)) {
-                                    if(((Integer) oS).compareTo((Integer) oJ) > 0) s = j;
-                                } else if (oS.getClass().equals(Float.class)) {
-                                    if(((Float) oS).compareTo((Float) oJ) > 0) s = j;
-                                } else if (oS.getClass().equals(Double.class)) {
-                                    if(((Double) oS).compareTo((Double) oJ) > 0) s = j;
-                                } else if (oS.getClass().equals(Date.class)) {
-                                    if(((Date) oS).compareTo((Date) oJ) > 0) s = j;
-                                }
-                            }
-                            else {
-                                if (oS.getClass().equals(String.class)) {
-                                    if(((String) oS).compareTo((String) oJ) < 0) s = j;
-                                } else if (oS.getClass().equals(Integer.class)) {
-                                    if(((Integer) oS).compareTo((Integer) oJ) < 0) s = j;
-                                } else if (oS.getClass().equals(Float.class)) {
-                                    if(((Float) oS).compareTo((Float) oJ) < 0) s = j;
-                                } else if (oS.getClass().equals(Double.class)) {
-                                    if(((Double) oS).compareTo((Double) oJ) < 0) s = j;
-                                } else if (oS.getClass().equals(Date.class)) {
-                                    if(((Date) oS).compareTo((Date) oJ) < 0) s = j;
-                                }
+                            if (inc) {
+                                if (compare(oS, oJ)) s = j;
+                            } else{
+                                if (!compare(oS, oJ)) s = j;
                             }
                         }
-                        if(i != s) Collections.swap(data, i, s);
+                        if (i != s) Collections.swap(data, i, s);
                     }
                 } else handler.postDelayed(this, 1000);
             }
@@ -277,7 +285,6 @@ public class PetShopFireBase {
 
                         }
                     });
-
                 } else handler.postDelayed(this, 1000);
             }
         });
@@ -321,6 +328,15 @@ public class PetShopFireBase {
     }
 
     //
+    private static Boolean compare(Object o1, Object o2) {
+        if (o1 instanceof String) return ((String) o1).compareTo((String) o2) > 0;
+        if (o1 instanceof Integer) return ((Integer) o1).compareTo((Integer) o2) > 0;
+        if (o1 instanceof Float) return ((Float) o1).compareTo((Float) o2) > 0;
+        if (o1 instanceof Double) return ((Double) o1).compareTo((Double) o2) > 0;
+        if (o1 instanceof Date) return ((Date) o1).compareTo((Date) o2) > 0;
+        return false;
+}
+
     private static Object getValueField(String sField, PetShopModel item) {
         try {
             Field field = item.getClass().getDeclaredField(sField);
@@ -373,17 +389,17 @@ public class PetShopFireBase {
     }
 
     public enum eTable {
-        NguoiMua("TABLE_NGUOI_MUA", "nm", 3, new ArrayList<tdc.edu.vn.project.Model.NguoiMua>(), tdc.edu.vn.project.Model.NguoiMua.class),
-        NguoiBan("TABLE_NGUOI_BAN", "nb", 3, new ArrayList<tdc.edu.vn.project.Model.NguoiBan>(), tdc.edu.vn.project.Model.NguoiBan.class),
-        DanhGia("TABLE_DANH_GIA", "dg", 3, new ArrayList<tdc.edu.vn.project.Model.DanhGia>(), tdc.edu.vn.project.Model.DanhGia.class),
-        DanhSachDen("TABLE_DANH_SACH_DEN", "dsd", 3, new ArrayList<tdc.edu.vn.project.Model.DanhSachDen>(), tdc.edu.vn.project.Model.DanhSachDen.class),
-        DonHang("TABLE_DON_HANG", "dh", 3, new ArrayList<tdc.edu.vn.project.Model.DonHang>(), tdc.edu.vn.project.Model.DonHang.class),
-        GioHang("TABLE_GIO_HANG", "cart", 3, new ArrayList<tdc.edu.vn.project.Model.GioHang>(), tdc.edu.vn.project.Model.GioHang.class),
-        HoaHong("TABLE_HOA_HONG", "hh", 3, new ArrayList<tdc.edu.vn.project.Model.HoaHong>(), tdc.edu.vn.project.Model.HoaHong.class),
-        GiaoHang("TABLE_GIAO_HANG", "gh", 3, new ArrayList<tdc.edu.vn.project.Model.GiaoHang>(), tdc.edu.vn.project.Model.GiaoHang.class),
-        NguoiGiao("TABLE_NGUOI_GIAO", "ng", 3, new ArrayList<tdc.edu.vn.project.Model.NguoiGiao>(), tdc.edu.vn.project.Model.NguoiGiao.class),
-        QuanLy("TABLE_QUAN_LY", "ql", 3, new ArrayList<tdc.edu.vn.project.Model.QuanLy>(), tdc.edu.vn.project.Model.QuanLy.class),
-        SanPham("TABLE_SAN_PHAM", "sp", 3, new ArrayList<tdc.edu.vn.project.Model.SanPham>(), tdc.edu.vn.project.Model.SanPham.class);
+        NguoiMua("TABLE_NGUOI_MUA", "nm", 3, tdc.edu.vn.project.Model.NguoiMua.class),
+        NguoiBan("TABLE_NGUOI_BAN", "nb", 3, tdc.edu.vn.project.Model.NguoiBan.class),
+        DanhGia("TABLE_DANH_GIA", "dg", 3, tdc.edu.vn.project.Model.DanhGia.class),
+        DanhSachDen("TABLE_DANH_SACH_DEN", "dsd", 3, tdc.edu.vn.project.Model.DanhSachDen.class),
+        DonHang("TABLE_DON_HANG", "dh", 3, tdc.edu.vn.project.Model.DonHang.class),
+        GioHang("TABLE_GIO_HANG", "cart", 3, tdc.edu.vn.project.Model.GioHang.class),
+        HoaHong("TABLE_HOA_HONG", "hh", 3, tdc.edu.vn.project.Model.HoaHong.class),
+        GiaoHang("TABLE_GIAO_HANG", "gh", 3, tdc.edu.vn.project.Model.GiaoHang.class),
+        NguoiGiao("TABLE_NGUOI_GIAO", "ng", 3, tdc.edu.vn.project.Model.NguoiGiao.class),
+        QuanLy("TABLE_QUAN_LY", "ql", 3, tdc.edu.vn.project.Model.QuanLy.class),
+        SanPham("TABLE_SAN_PHAM", "sp", 3, tdc.edu.vn.project.Model.SanPham.class);
 
         public String name, key;
         public int last_id, count, max_length;
@@ -392,13 +408,13 @@ public class PetShopFireBase {
         public boolean status_last_id, status_count, status_TABLE;
         Class cClass;
 
-        eTable(String name, String key, int max_length, Object data, Class cClass) {
+        eTable(String name, String key, int max_length, Class cClass) {
             this.name = name;
             this.key = key;
             this.max_length = max_length;
-            this.data = data;
             this.cClass = cClass;
 
+            this.data = new ArrayList<PetShopModel>();
             this.last_id = 0;
             this.count = 0;
             this.status_last_id = this.status_count = this.status_TABLE = false;
