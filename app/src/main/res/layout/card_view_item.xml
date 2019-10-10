@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="155dp"
-    android:layout_height="210dp"
+    android:layout_height="230dp"
     android:id="@+id/cardview_id"
     android:layout_margin="5dp">
 
@@ -23,11 +23,17 @@
         </ImageView>
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/line_item"></TextView>
+        <TextView
             android:id="@+id/pettitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginLeft="5dp"
+
             android:textColor="#000"
             android:text="@string/app_name">
 

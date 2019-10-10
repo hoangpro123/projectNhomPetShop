@@ -10,8 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".User.Login"></activity>
+        <activity android:name=".Screen.ChiTietThuCung"></activity>
+        <activity android:name=".Screen.GioHang"></activity>
         <activity android:name=".User.DangKi"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".Screen.PetActivity"></activity>
+        <activity android:name=".FragmentMainActivity"
+           >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,18 +1,13 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Screen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Handler;
-import android.provider.ContactsContract;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -22,14 +17,14 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import java.util.HashMap;
 
-import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.R;
 
 public class ChiTietThuCung extends AppCompatActivity
         implements BaseSliderView.OnSliderClickListener,
         ViewPagerEx.OnPageChangeListener {
     SliderLayout sliderLayout ;
-
+    TextView Name, Price, Des;
     HashMap<String, String> HashMapForURL ;
 
     HashMap<String, Integer> HashMapForLocalRes ;
@@ -42,7 +37,8 @@ public class ChiTietThuCung extends AppCompatActivity
         setContentView(R.layout.layout_chitietthucung);
 
         sliderLayout = (SliderLayout)findViewById(R.id.slider);
-
+        AnhXa();
+        GetInfor();
         //Call this method if you want to add images from URL .
         //AddImagesUrlOnline();
 
@@ -117,6 +113,20 @@ public class ChiTietThuCung extends AppCompatActivity
         HashMapForLocalRes.put("Hinh3", R.drawable.meo3);
         HashMapForLocalRes.put("Hinh4", R.drawable.meo4);
         HashMapForLocalRes.put("Hinh5", R.drawable.meo5);
+    }
+
+    public void AnhXa(){
+        Name = findViewById(R.id.NamePet);
+        Price = findViewById(R.id.Price);
+        Des = findViewById(R.id.des);
+    }
+
+    public void GetInfor(){
+        Intent intent = getIntent();
+        String name, price, des;
+        Name.setText(intent.getStringExtra("Title"));
+        Price.setText(intent.getStringExtra("Price"));
+        Des.setText(intent.getStringExtra("Description"));
     }
 
 }

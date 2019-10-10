@@ -1,16 +1,17 @@
-package tdc.edu.vn.project.User;
+package tdc.edu.vn.project;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
-import tdc.edu.vn.project.R;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ThongTinUser extends Fragment {
+import androidx.fragment.app.Fragment;
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class UsageInfo extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,4 +24,5 @@ public class ThongTinUser extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.layout_thongtinuser, container, false);
     }
+
 }

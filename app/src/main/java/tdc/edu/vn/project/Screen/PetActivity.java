@@ -1,10 +1,12 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Screen;
 
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import tdc.edu.vn.project.R;
 
 public class PetActivity extends AppCompatActivity {
 
