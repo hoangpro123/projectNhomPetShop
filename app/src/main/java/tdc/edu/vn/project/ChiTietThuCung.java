@@ -1,8 +1,20 @@
 package tdc.edu.vn.project;
 
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Handler;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
+
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -10,25 +22,26 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import java.util.HashMap;
 
-import androidx.appcompat.app.AppCompatActivity;
+import tdc.edu.vn.project.Model.NguoiMua;
+import tdc.edu.vn.project.Model.SanPham;
 
 public class ChiTietThuCung extends AppCompatActivity
         implements BaseSliderView.OnSliderClickListener,
-        ViewPagerEx.OnPageChangeListener
-{
-
+        ViewPagerEx.OnPageChangeListener {
     SliderLayout sliderLayout ;
 
     HashMap<String, String> HashMapForURL ;
 
     HashMap<String, Integer> HashMapForLocalRes ;
 
+    ArrayList<SanPham> listPet ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_chitietthucung);
 
-
+        sliderLayout = (SliderLayout)findViewById(R.id.slider);
 
         //Call this method if you want to add images from URL .
         //AddImagesUrlOnline();
@@ -96,17 +109,6 @@ public class ChiTietThuCung extends AppCompatActivity
 
     }
 
-    public void AddImagesUrlOnline(){
-
-        HashMapForURL = new HashMap<String, String>();
-
-        HashMapForURL.put("Hinh1", "https://dogily.vn/wp-content/uploads/2019/09/trai-meo-anh-long-ngan-tai-chau-au.jpg");
-        HashMapForURL.put("Hinh2", "https://dogily.vn/wp-content/uploads/2019/09/trai-meo-anh-long-ngan-tai-chau-au.jpg");
-        HashMapForURL.put("Hinh3", "https://dogily.vn/wp-content/uploads/2019/09/trai-meo-anh-long-ngan-tai-chau-au.jpg");
-        HashMapForURL.put("Hinh4", "https://dogily.vn/wp-content/uploads/2019/09/trai-meo-anh-long-ngan-tai-chau-au.jpg");
-        HashMapForURL.put("Hinh5", "https://dogily.vn/wp-content/uploads/2019/09/trai-meo-anh-long-ngan-tai-chau-au.jpg");
-    }
-
     public void AddImageUrlFormLocalRes(){
 
         HashMapForLocalRes = new HashMap<String, Integer>();
@@ -115,6 +117,6 @@ public class ChiTietThuCung extends AppCompatActivity
         HashMapForLocalRes.put("Hinh3", R.drawable.meo3);
         HashMapForLocalRes.put("Hinh4", R.drawable.meo4);
         HashMapForLocalRes.put("Hinh5", R.drawable.meo5);
-
     }
+
 }

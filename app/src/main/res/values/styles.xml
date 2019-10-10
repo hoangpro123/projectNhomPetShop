@@ -103,4 +103,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="size20denthuong">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
 </resources>
