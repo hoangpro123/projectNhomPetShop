@@ -31,7 +31,6 @@ public class ChiTietThuCungActivity extends AppCompatActivity {
         String Description = intent.getExtras().getString("Description");
         String image = intent.getExtras().getString("Thumbnail") ;
 
-
         // Setting values
         tvtitle.setText(Title);
         tvprice.setText(price);

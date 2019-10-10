@@ -1,6 +1,8 @@
 package tdc.edu.vn.project.Model;
 
+import java.text.Normalizer;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 public class SanPham extends PetShopModel{
     String name, description, image, id_nguoi_ban;
@@ -22,6 +24,12 @@ public class SanPham extends PetShopModel{
 
     public String getName() {
         return name;
+    }
+    public static String removeAccent(String s) {
+
+        String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(temp).replaceAll("");
     }
 
     public void setName(String name) {

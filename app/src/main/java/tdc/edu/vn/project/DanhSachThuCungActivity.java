@@ -10,24 +10,41 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.regex.Pattern;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.SanPham;
 
+import static java.util.Locale.getDefault;
+
 
 public class DanhSachThuCungActivity extends AppCompatActivity {
     Spinner spDanhMuc, spLoai, spGia;
     TextView tvDanhMuc, tvLoai, tvGia;
-
+    SearchView searchView;
+    RecyclerViewAdapter myAdapter;
     ArrayList<SanPham> data;
+    DatabaseReference mDatabase;
     String[] stringDanhMuc;
     String[] stringGia;
     String[] stringLoai;
@@ -81,6 +98,31 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
 
             }
         });
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Toast.makeText(DanhSachThuCungActivity.this, s, Toast.LENGTH_SHORT).show();
+                //String text = editsearch.getText().toString().toLowerCase(Locale.getDefault());
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                myAdapter.filter(s);
+                return false;
+            }
+        });
+
+
+
+
+
+
+
+
+
     }
 
 
@@ -92,8 +134,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         spDanhMuc = (Spinner)findViewById(R.id.SpDanhMuc);
         spGia = (Spinner)findViewById(R.id.SpGia);
         spLoai = (Spinner)findViewById(R.id.SpLoai);
-
-
+        searchView = (SearchView) findViewById(R.id.searchview);
 
         getFirebaseSanPham();
 
@@ -116,7 +157,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
                 if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id && PetShopFireBase.TABLE_SAN_PHAM.status_count && PetShopFireBase.TABLE_SAN_PHAM.status_TABLE){
                     data = (ArrayList<SanPham>)PetShopFireBase.TABLE_SAN_PHAM.data;
                     RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
-                    RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(DanhSachThuCungActivity.this,data);
+                    myAdapter = new RecyclerViewAdapter(DanhSachThuCungActivity.this,data);
                     myrv.setLayoutManager(new GridLayoutManager(DanhSachThuCungActivity.this,2));
                     myrv.setAdapter(myAdapter);
                 }
@@ -124,13 +165,17 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     private void setSpinner(String[] array, Spinner spinner) {
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, array);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
+    }
+    public static String removeAccent(String s) {
+
+        String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(temp).replaceAll("");
     }
 }
