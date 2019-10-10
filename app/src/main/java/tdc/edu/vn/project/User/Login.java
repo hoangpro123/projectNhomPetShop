@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity {
         setControl();
 
         setEvent();
-        PetShopFireBase.loadTable(PetShopFireBase.TABLE_NGUOI_MUA);
+
     }
 
     private void setEvent() {
@@ -72,10 +72,12 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Toast.makeText(Login.this, PetShopFireBase.TABLE_NGUOI_MUA.data.toString(), Toast.LENGTH_SHORT).show();
                 final Handler handler = new Handler();
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
+                        PetShopFireBase.loadTable(PetShopFireBase.TABLE_NGUOI_MUA);
                         if(PetShopFireBase.TABLE_NGUOI_MUA.status_last_id && PetShopFireBase.TABLE_NGUOI_MUA.status_count && PetShopFireBase.TABLE_NGUOI_MUA.status_TABLE){
                             ArrayList<NguoiMua> data = (ArrayList<NguoiMua>)PetShopFireBase.TABLE_NGUOI_MUA.data;
                             for (int i = 0; i < data.size(); i++){
