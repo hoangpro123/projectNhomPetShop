@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class SanPham extends PetShopModel{
     String name, description, image, id_nguoi_ban;
-    Double price;
+    private Double price;
     Date ngay_dang_ban;
 
 

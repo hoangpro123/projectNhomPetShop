@@ -69,7 +69,8 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         spDanhMuc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                tvDanhMuc.setText(stringDanhMuc[position]);
+                //tvDanhMuc.setText(stringDanhMuc[position]);
+                
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -79,7 +80,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         spLoai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                tvLoai.setText(stringLoai[position]);
+                //tvLoai.setText(stringLoai[position]);
             }
 
             @Override
@@ -89,10 +90,25 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         });
         spGia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                tvGia.setText(stringGia[position]);
-            }
+            public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
+                if(stringGia[position] == "Thấp đến cao"){
+                    PetShopFireBase.sortList( "price", PetShopFireBase.TABLE_SAN_PHAM, false);
+                }else if(stringGia[position] == "Cao đến thấp"){
+                    PetShopFireBase.sortList( "price", PetShopFireBase.TABLE_SAN_PHAM, true);
+                }
 
+                PetShopFireBase.loadTable(PetShopFireBase.TABLE_SAN_PHAM);
+                final Handler handler = new Handler();
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id && PetShopFireBase.TABLE_SAN_PHAM.status_count && PetShopFireBase.TABLE_SAN_PHAM.status_TABLE){
+                            myAdapter.notifyDataSetChanged();
+                        }
+                        else handler.postDelayed(this, 1000);
+                    }
+                });
+            };
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -104,7 +120,6 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 Toast.makeText(DanhSachThuCungActivity.this, s, Toast.LENGTH_SHORT).show();
-                //String text = editsearch.getText().toString().toLowerCase(Locale.getDefault());
                 return false;
             }
 
@@ -118,19 +133,12 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
     }
 
 
 
     private void setControl() {
-        tvDanhMuc = (TextView) findViewById(R.id.tvDanhMuc);
-        tvGia = (TextView) findViewById(R.id.tvGia);
-        tvLoai = (TextView) findViewById(R.id.tvLoai);
+
         spDanhMuc = (Spinner)findViewById(R.id.SpDanhMuc);
         spGia = (Spinner)findViewById(R.id.SpGia);
         spLoai = (Spinner)findViewById(R.id.SpLoai);
@@ -138,13 +146,9 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
 
         getFirebaseSanPham();
 
-
-
         stringDanhMuc = getResources().getStringArray(R.array.danhmuc);
         stringGia = getResources().getStringArray(R.array.gia);
         stringLoai = getResources().getStringArray(R.array.loai);
-
-
 
     }
 

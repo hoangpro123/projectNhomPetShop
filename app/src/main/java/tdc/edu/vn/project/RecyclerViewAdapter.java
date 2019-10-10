@@ -53,8 +53,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         holder.tv_pet_title.setText(mData.get(position).getName());
         holder.tv_price.setText(String.valueOf(mData.get(position).getPrice()));
-        //holder.img_pet.setImageDrawable(Drawable.createFromPath(mData.get(position).getImage()));
-        //holder.img_pet.setImageURI(Uri.parse(mData.get(position).getImage()));
 
         Picasso.with(mContext).load(Uri.parse(mData.get(position).getImage())).into(holder.img_pet);
         holder.cardView.setOnClickListener(new View.OnClickListener() {

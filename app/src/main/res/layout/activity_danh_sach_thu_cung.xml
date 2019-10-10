@@ -58,53 +58,26 @@
         android:layout_marginTop="8dp"
         android:layout_marginLeft="10dp"
         >
-        <TextView
-            android:id="@+id/tvDanhMuc"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="@string/danhmuc"
-            android:gravity="center"
-            android:textColor="@color/text"
-            android:textSize="@dimen/spinner"/>
 
         <Spinner
             android:id="@+id/SpDanhMuc"
-            android:layout_width="30dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/ic_arrow_drop_down_black_24dp"
             />
-        <TextView
-            android:id="@+id/tvLoai"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="@string/loai"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:textColor="@color/text"
-            android:textSize="@dimen/spinner"/>
+
         <Spinner
             android:id="@+id/SpLoai"
-            android:layout_width="30dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/ic_arrow_drop_down_black_24dp"
             android:layout_marginRight="10dp"/>
-        <TextView
-            android:id="@+id/tvGia"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="@string/gia"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/text"
-            android:gravity="center"
-            android:textSize="@dimen/spinner"/>
+
         <Spinner
             android:id="@+id/SpGia"
             android:layout_marginLeft="5dp"
-            android:background="@drawable/ic_arrow_drop_down_black_24dp"
-            android:layout_width="30dp"
+            android:layout_width="150dp"
             android:layout_height="30dp"/>
     </LinearLayout>
 
@@ -120,9 +93,5 @@
         android:layout_gravity="center"
         android:id="@+id/recyclerview"
         />
-
-
-
-
 
 </LinearLayout>
