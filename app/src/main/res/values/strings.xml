@@ -3,6 +3,8 @@
     <string name="chuyen">GO</string>
     <string name="title_chitietthucung">CHI TIẾT THÚ CƯNG</string>
     <string name="tenthucung_chitietthucung">MÈO ANH LÔNG NGẮN</string>
+    <string name="hoten">Họ tên:</string>
+    <string name="email">Email:</string>
     <string name="gia">Giá:</string>
     <string name="sotien">4.000.000đ</string>
     <string name="cuahang">Cửa hàng:</string>
@@ -14,12 +16,16 @@
     <string name="tuoi">Số tuổi:</string>
     <string name="thongtinlienhe">Thông tin liên hệ:</string>
     <string name="sdt">Số điện thoại:</string>
+    <string name="sdt1">SĐT:</string>
+    <string name="nam">Nam</string>
+    <string name="nu">Nữ</string>
     <string name="diachi">Địa chỉ:</string>
     <string name="danhgiacuahang">Đánh giá cửa hàng</string>
     <string name="chitietmauthucung">Xám xanh</string>
     <string name="chitietgioitinhthucung">Đực</string>
     <string name="chitiettuoithucung">Hai tháng</string>
     <string name="chitietsdt">0833535318</string>
+    <string name="chitietemail">anhkhiem123@gmail.com</string>
     <string name="chitietdiachi">53 Võ Văn Ngân, Linh Chiểu, Thủ Đức, Hồ Chí Minh</string>
     <string name="soluocdanhgia">(2 đánh giá)</string>
     <string name="tenkhachhang1">Văn Chiến:</string>
@@ -56,4 +62,11 @@
     <string name="thongtintaikhoan">THÔNG TIN TÀI KHOẢN</string>
     <string name="luu">Lưu</string>
     <string name="doimatkhau">Đổi mật khẩu</string>
+    <string name="doimatkhauin">ĐỔI MẬT KHẨU</string>
+    <string name="nhapemail">Nhập email</string>
+    <string name="laylaimatkhau">Lấy lại mật khẩu</string>
+    <string name="quenmatkhauin">QUÊN MẬT KHẨU</string>
+    <string name="nhapmatkhauhientai">Nhập mật khẩu hiện tại</string>
+    <string name="nhapmatkhaumoi">Nhập mật khẩu mới</string>
+    <string name="nhaplaimatkhaumoi">Nhập lại mật khẩu mới</string>
 </resources>
