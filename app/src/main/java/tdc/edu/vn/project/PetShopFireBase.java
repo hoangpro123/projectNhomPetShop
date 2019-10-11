@@ -17,6 +17,7 @@ import com.google.firebase.storage.StorageReference;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
@@ -210,36 +211,18 @@ public class PetShopFireBase {
 
     private static void loadTable(final eTable table) {
         final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
-        table.TABLE_LAST_ID.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                table.setLast_id(Integer.parseInt(dataSnapshot.getValue().toString()));
-                table.setStatus_last_id(true);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
         //
         table.TABLE_DATA.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot item : dataSnapshot.getChildren())
-                    data.add((PetShopModel) item.getValue(table.getcClass()));
-
+                long count = dataSnapshot.getChildrenCount();
                 table.TABLE_DATA.removeEventListener(this);
-                final int[] count = {0};
                 table.TABLE_DATA.addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                        count[0]++;
-                        if (count[0] == data.size()) table.setStatus_data(true);
-                        if (count[0] > data.size()) {
-                            data.add((PetShopModel) dataSnapshot.getValue(table.getcClass()));
-                            table.TABLE_LAST_ID.setValue(table.last_id + 1);
-                        }
+                        data.add((PetShopModel) dataSnapshot.getValue(table.getcClass()));
+                        if (data.size() == count) table.setStatus_data(true);
+                        if (data.size() > count) table.TABLE_LAST_ID.setValue(table.last_id + 1);
                     }
 
                     @Override
@@ -255,19 +238,28 @@ public class PetShopFireBase {
 
                     @Override
                     public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
                     }
                 });
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+        //
+        table.TABLE_LAST_ID.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                table.setLast_id(Integer.parseInt(dataSnapshot.getValue().toString()));
+                table.setStatus_last_id(true);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
     }

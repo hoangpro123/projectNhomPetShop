@@ -15,6 +15,8 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
@@ -37,8 +39,6 @@ public class DangKi extends AppCompatActivity {
         tao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DangKi.this,PetShopFireBase.TABLE_NGUOI_MUA.status_data +"" , Toast.LENGTH_SHORT).show();
-
                 if (pass.getText().toString().equals(repass.getText().toString())) {
                     int re = group.getCheckedRadioButtonId();
                     gender = findViewById(re);
