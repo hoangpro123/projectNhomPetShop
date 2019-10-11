@@ -1,6 +1,5 @@
 package tdc.edu.vn.project.User;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -15,11 +14,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
-import tdc.edu.vn.project.Model.HoaHong;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.SanPham;
@@ -38,11 +34,10 @@ public class DangKi extends AppCompatActivity {
         setContentView(R.layout.layout_dangki);
 
         AnhXa();
-        PetShopFireBase.loadTable(PetShopFireBase.TABLE_NGUOI_MUA);
         tao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DangKi.this,PetShopFireBase.TABLE_NGUOI_MUA.status_TABLE+"" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(DangKi.this,PetShopFireBase.TABLE_NGUOI_MUA.status_data +"" , Toast.LENGTH_SHORT).show();
 
                 if (pass.getText().toString().equals(repass.getText().toString())) {
                     int re = group.getCheckedRadioButtonId();
@@ -62,12 +57,8 @@ public class DangKi extends AppCompatActivity {
             }
         });
     }
-
     public void AnhXa(){
-
-
             group = findViewById(R.id.gr);
-
             ho = findViewById(R.id.edHo);
             ten = findViewById(R.id.edTen);
             mail = findViewById(R.id.edMail);
@@ -75,11 +66,6 @@ public class DangKi extends AppCompatActivity {
             pass = findViewById(R.id.edpass);
             repass = findViewById(R.id.edRepass);
             diachi = findViewById(R.id.edDC);
-
-
-
             tao = findViewById(R.id.btnTao);
-
     }
-
 }

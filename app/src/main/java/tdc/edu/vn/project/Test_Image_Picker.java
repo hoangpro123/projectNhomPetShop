@@ -1,7 +1,6 @@
 package tdc.edu.vn.project;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -9,11 +8,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,12 +24,9 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.lang.reflect.Field;
 import java.util.Calendar;
-import java.util.Properties;
 
 import tdc.edu.vn.project.Model.NguoiMua;
-import tdc.edu.vn.project.Model.SanPham;
 
 public class Test_Image_Picker extends AppCompatActivity {
     ImageButton btnPick;
@@ -58,7 +51,7 @@ public class Test_Image_Picker extends AppCompatActivity {
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                 byte[] bytes = byteArrayOutputStream.toByteArray();
 
-                UploadTask uploadTask = PetShopFireBase.storageReference.child("img" + Calendar.getInstance().getTimeInMillis()).putBytes(bytes);
+                UploadTask uploadTask = PetShopFireBase.fireBaseStorage.child("img" + Calendar.getInstance().getTimeInMillis()).putBytes(bytes);
                 uploadTask.addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
@@ -70,7 +63,6 @@ public class Test_Image_Picker extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
                                 String link = task.getResult().toString();
-                                PetShopFireBase.loadTable(PetShopFireBase.TABLE_NGUOI_MUA);
                                 NguoiMua nm = new NguoiMua("tao", "tk@gmail","123", "0123", "hn", link ,"Nam");
                                 PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
                             }
