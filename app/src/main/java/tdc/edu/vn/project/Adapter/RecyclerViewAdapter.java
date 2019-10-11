@@ -45,8 +45,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ChiTietThuCung.class);
                 // passing data to the book activity
+                intent.putExtra("ID", mData.get(position).getId());
                 intent.putExtra("Title",mData.get(position).getName());
-                intent.putExtra("Price", mData.get(position).getPrice());
+                intent.putExtra("Price", mData.get(position).getPrice().toString());
                 intent.putExtra("Description",mData.get(position).getDescription());
                 intent.putExtra("Thumbnail",mData.get(position).getImage());
                 // start the activity

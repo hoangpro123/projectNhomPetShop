@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +18,10 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import java.util.HashMap;
 
+import tdc.edu.vn.project.Model.GiaoHang;
+import tdc.edu.vn.project.Model.GioHang;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 
 public class ChiTietThuCung extends AppCompatActivity
@@ -25,6 +29,7 @@ public class ChiTietThuCung extends AppCompatActivity
         ViewPagerEx.OnPageChangeListener {
     SliderLayout sliderLayout ;
     TextView Name, Price, Des;
+    Button btnThemGioHang;
     HashMap<String, String> HashMapForURL ;
 
     HashMap<String, Integer> HashMapForLocalRes ;
@@ -116,6 +121,7 @@ public class ChiTietThuCung extends AppCompatActivity
     }
 
     public void AnhXa(){
+        btnThemGioHang = findViewById(R.id.btnThem);
         Name = findViewById(R.id.NamePet);
         Price = findViewById(R.id.Price);
         Des = findViewById(R.id.des);
@@ -127,6 +133,12 @@ public class ChiTietThuCung extends AppCompatActivity
         Name.setText(intent.getStringExtra("Title"));
         Price.setText(intent.getStringExtra("Price"));
         Des.setText(intent.getStringExtra("Description"));
+
+        PetShopFireBase.loadTable(PetShopFireBase.TABLE_GIO_HANG);
+        PetShopFireBase.TABLE_GIO_HANG.name.toString();
+        GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString());
+        Log.d("gh",gioHang.getId_nguoi_mua());
+        PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
     }
 
 }

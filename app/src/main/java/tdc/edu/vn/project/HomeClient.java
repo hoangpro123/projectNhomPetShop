@@ -28,6 +28,7 @@ import java.util.HashMap;
 
 import tdc.edu.vn.project.Adapter.RecyclerViewAdapter;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.Screen.ChiTietThuCung;
 import tdc.edu.vn.project.Screen.GioHang;
 
 public class HomeClient extends Fragment
@@ -67,7 +68,9 @@ public class HomeClient extends Fragment
                     ArrayList<SanPham> data = (ArrayList<SanPham>)PetShopFireBase.TABLE_SAN_PHAM.data;
                     listPet = data;
                     RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getActivity(),listPet);
-                   // RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(HomeClien, 2);
+
+
+                    // RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(HomeClien, 2);
                     myrv.setLayoutManager(new GridLayoutManager(getActivity(),2));
                     myrv.setAdapter(myAdapter);
 
@@ -172,13 +175,15 @@ public class HomeClient extends Fragment
     public void AddImageUrlFormLocalRes(){
 
         HashMapForLocalRes = new HashMap<String, Integer>();
-        HashMapForLocalRes.put("Hinh1", R.drawable.logo);
-        HashMapForLocalRes.put("Hinh2", R.drawable.logo);
-        HashMapForLocalRes.put("Hinh3", R.drawable.logo);
-        HashMapForLocalRes.put("Hinh4", R.drawable.logo);
-        HashMapForLocalRes.put("Hinh5", R.drawable.logo);
+        HashMapForLocalRes.put("Hinh1", R.drawable.meo1);
+        HashMapForLocalRes.put("Hinh2", R.drawable.meo2);
+        HashMapForLocalRes.put("Hinh3", R.drawable.meo3);
+        HashMapForLocalRes.put("Hinh4", R.drawable.meo4);
+        HashMapForLocalRes.put("Hinh5", R.drawable.meo5);
 
     }
+
+
 
 //    public void KhoiTao() {
 //        final RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
