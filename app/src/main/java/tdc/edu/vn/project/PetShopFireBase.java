@@ -105,7 +105,7 @@ public class PetShopFireBase {
     }
 
     //suspended
-    public static void onTableLoaded(Class clss, String sMethod, eTable table) {
+    public static void onTableLoaded(final Class clss, final String sMethod, final eTable table) {
         handler.post(new Runnable() {
             @Override
             public void run() {
