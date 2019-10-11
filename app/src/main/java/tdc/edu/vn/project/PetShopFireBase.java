@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -139,7 +140,7 @@ public class PetShopFireBase {
                             Object oJ = getValueField(sField, data.get(j));
                             if (inc) {
                                 if (compare(oS, oJ)) s = j;
-                            } else{
+                            } else {
                                 if (!compare(oS, oJ)) s = j;
                             }
                         }
@@ -252,12 +253,10 @@ public class PetShopFireBase {
                         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                             PetShopModel item = (PetShopModel) dataSnapshot.getValue(table.cClass);
                             data.add(item);
-                            if ((data.size() == table.count)) {
+                            if ((data.size() == table.count))
                                 table.setStatus_TABLE(true);
-                            }
-                            if ((data.size() > table.count)) {
-                                table.count = data.size();
-                                TABLE_COUNT.child(table.getName()).setValue(table.count);
+                            if ((table.count < data.size())) {
+                                TABLE_COUNT.child(table.getName()).setValue(data.size());
                                 TABLE_LAST_ID.child(table.getName()).setValue(table.last_id + 1);
                             }
                         }
@@ -272,7 +271,7 @@ public class PetShopFireBase {
                         @Override
                         public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                             data.remove(findItem(dataSnapshot.getKey(), table));
-                            TABLE_COUNT.child(table.getName()).setValue(table.count - 1);
+                            TABLE_COUNT.child(table.getName()).setValue(data.size());
                         }
 
                         @Override
@@ -335,7 +334,7 @@ public class PetShopFireBase {
         if (o1 instanceof Double) return ((Double) o1).compareTo((Double) o2) > 0;
         if (o1 instanceof Date) return ((Date) o1).compareTo((Date) o2) > 0;
         return false;
-}
+    }
 
     private static Object getValueField(String sField, PetShopModel item) {
         try {
