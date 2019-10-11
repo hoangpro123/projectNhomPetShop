@@ -75,6 +75,7 @@ public class PetShopFireBase {
         }
         return results;
     }
+
     //suspended
     public static void onTableLoaded(final Class clss, final String sMethod, final eTable table) {
         handler.post(new Runnable() {
@@ -146,6 +147,7 @@ public class PetShopFireBase {
             }
         });
     }
+
     //
     private static Boolean compare(Object o1, Object o2) {
         if (o1 instanceof String) return ((String) o1).compareTo((String) o2) > 0;
@@ -192,7 +194,7 @@ public class PetShopFireBase {
         return null;
     }
 
-    static{
+    static {
         loadTable(TABLE_NGUOI_MUA);
         loadTable(TABLE_NGUOI_BAN);
         loadTable(TABLE_DANH_GIA);
@@ -224,18 +226,22 @@ public class PetShopFireBase {
         table.TABLE_DATA.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot item: dataSnapshot.getChildren()) data.add((PetShopModel) item.getValue(table.getcClass()));
-                table.setStatus_data(true);
+                for (DataSnapshot item : dataSnapshot.getChildren())
+                    data.add((PetShopModel) item.getValue(table.getcClass()));
+
                 table.TABLE_DATA.removeEventListener(this);
                 final int[] count = {0};
                 table.TABLE_DATA.addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                        if(++count[0] > data.size()){
+                        count[0]++;
+                        if (count[0] == data.size()) table.setStatus_data(true);
+                        if (count[0] > data.size()) {
                             data.add((PetShopModel) dataSnapshot.getValue(table.getcClass()));
                             table.TABLE_LAST_ID.setValue(table.last_id + 1);
                         }
                     }
+
                     @Override
                     public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                         data.remove(findItem(dataSnapshot.getKey(), table));
