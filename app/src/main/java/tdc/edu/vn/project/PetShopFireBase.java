@@ -215,7 +215,7 @@ public class PetShopFireBase {
         table.TABLE_DATA.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                long count = dataSnapshot.getChildrenCount();
+                final long count = dataSnapshot.getChildrenCount();
                 table.TABLE_DATA.removeEventListener(this);
                 table.TABLE_DATA.addChildEventListener(new ChildEventListener() {
                     @Override
