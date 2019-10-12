@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title">Hoàng Shop</string>
+    <string name="toi">Tôi</string>
+    <string name="add">Thêm sản phẩm</string>
+    <string name="danhsachden">Danh sách đen</string>
+    <string name="dangban">Đang bán</string>
+    <string name="xacnhan">Xác Nhận</string>
+    <string name="dangxuat">Đăng xuất</string>
+</resources>

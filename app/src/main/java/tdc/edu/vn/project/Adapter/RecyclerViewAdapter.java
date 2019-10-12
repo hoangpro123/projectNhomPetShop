@@ -1,8 +1,7 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +12,16 @@ import android.widget.TextView;
 import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import tdc.edu.vn.project.Model.PetShopModel;
+import tdc.edu.vn.project.ChiTietThuCungActivity;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.R;
 
 import static java.util.Locale.getDefault;
 
@@ -60,7 +58,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext,ChiTietThuCungActivity.class);
+                Intent intent = new Intent(mContext, ChiTietThuCungActivity.class);
                 // passing data to the book activity
                 intent.putExtra("Title",mData.get(position).getName());
                 intent.putExtra("Price", mData.get(position).getPrice());

@@ -6,33 +6,23 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Filter;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 import java.util.regex.Pattern;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-import tdc.edu.vn.project.Model.PetShopModel;
+import tdc.edu.vn.project.Adapter.RecyclerViewAdapter;
 import tdc.edu.vn.project.Model.SanPham;
 
 import static java.util.Locale.getDefault;
@@ -54,8 +44,6 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         setContentView(R.layout.activity_danh_sach_thu_cung);
 
         //set data
-
-        PetShopFireBase.loadTable(PetShopFireBase.TABLE_SAN_PHAM);
 
         setControl();
         setEvent();
@@ -116,7 +104,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id && PetShopFireBase.TABLE_SAN_PHAM.status_count && PetShopFireBase.TABLE_SAN_PHAM.status_TABLE){
+                        if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id  && PetShopFireBase.TABLE_SAN_PHAM.status_data){
                             myAdapter.notifyDataSetChanged();
                         }
                         else handler.postDelayed(this, 1000);
@@ -171,7 +159,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id && PetShopFireBase.TABLE_SAN_PHAM.status_count && PetShopFireBase.TABLE_SAN_PHAM.status_TABLE){
+                if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id  && PetShopFireBase.TABLE_SAN_PHAM.status_data){
                     data = (ArrayList<SanPham>)PetShopFireBase.TABLE_SAN_PHAM.data;
                     RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
                     myAdapter = new RecyclerViewAdapter(DanhSachThuCungActivity.this,data);
