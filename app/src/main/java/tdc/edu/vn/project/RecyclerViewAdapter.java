@@ -32,6 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext ;
     private ArrayList<SanPham> mData ;
     private ArrayList<SanPham> arrayList ;
+
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
     public RecyclerViewAdapter(Context mContext, ArrayList<SanPham> mData) {
@@ -55,6 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.tv_price.setText(String.valueOf(mData.get(position).getPrice()));
 
         Picasso.with(mContext).load(Uri.parse(mData.get(position).getImage())).into(holder.img_pet);
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
