@@ -1,42 +1,21 @@
 package tdc.edu.vn.project;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Handler;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -54,14 +33,11 @@ import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.QuanLy;
 import tdc.edu.vn.project.Model.SanPham;
-import tdc.edu.vn.project.User.DangKi;
 
 public class PetShopFireBase {
-    public static StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://chuyendedidongnhom3.appspot.com");
-    //
-    public static DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-    public static DatabaseReference TABLE_COUNT = db.child("count");
-    public static DatabaseReference TABLE_LAST_ID = db.child("last_id");
+    private static Handler handler = new Handler();
+    public static StorageReference fireBaseStorage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://chuyendedidongnhom3.appspot.com");
+    public static DatabaseReference fireBase = FirebaseDatabase.getInstance().getReference();
     //
     public static eTable TABLE_NGUOI_MUA = eTable.NguoiMua;
     public static eTable TABLE_NGUOI_BAN = eTable.NguoiBan;
@@ -74,8 +50,6 @@ public class PetShopFireBase {
     public static eTable TABLE_NGUOI_GIAO = eTable.NguoiGiao;
     public static eTable TABLE_QUAN_LY = eTable.QuanLy;
     public static eTable TABLE_SAN_PHAM = eTable.SanPham;
-    //
-    private static Handler handler = new Handler();
 
 
     public static ArrayList<PetShopModel> search(String field, Object value, eTable table) {
@@ -108,7 +82,7 @@ public class PetShopFireBase {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if (table.status_last_id && table.status_count && table.status_TABLE) {
+                if (table.status_last_id && table.status_data) {
                     try {
                         clss.getDeclaredMethod(sMethod).invoke(null);
                     } catch (IllegalAccessException e) {
@@ -124,11 +98,10 @@ public class PetShopFireBase {
     }
 
     public static void sortList(final String sField, final eTable table, final boolean inc) {
-
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if (table.status_last_id && table.status_count && table.status_TABLE) {
+                if (table.status_last_id && table.status_data) {
                     final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
                     if (data.size() < 2) return;
                     //
@@ -139,7 +112,7 @@ public class PetShopFireBase {
                             Object oJ = getValueField(sField, data.get(j));
                             if (inc) {
                                 if (compare(oS, oJ)) s = j;
-                            } else{
+                            } else {
                                 if (!compare(oS, oJ)) s = j;
                             }
                         }
@@ -154,8 +127,8 @@ public class PetShopFireBase {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if (table.status_last_id && table.status_count && table.status_TABLE) {
-                    table.TABLE.child(id).setValue(null);
+                if (table.status_last_id && table.status_data) {
+                    table.TABLE_DATA.child(id).setValue(null);
                 } else handler.postDelayed(this, 1000);
             }
         });
@@ -165,166 +138,15 @@ public class PetShopFireBase {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if (table.status_last_id && table.status_count && table.status_TABLE) {
+                if (table.status_last_id && table.status_data) {
                     String id = item.getId();
                     if (id.equals("null"))
                         id = getNewID(table);
                     item.setId(id);
-                    table.TABLE.child(id).setValue(item);
+                    table.TABLE_DATA.child(id).setValue(item);
                 } else handler.postDelayed(this, 1000);
             }
         });
-    }
-
-    public static void loadTable(final eTable table) {
-        final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
-        data.clear();
-        TABLE_LAST_ID.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if (dataSnapshot.getKey().equals(table.getName())) {
-                    table.last_id = Integer.parseInt(dataSnapshot.getValue().toString());
-                    table.setStatus_last_id(true);
-                }
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if (dataSnapshot.getKey().equals(table.getName())) {
-                    table.last_id = Integer.parseInt(dataSnapshot.getValue().toString());
-                    table.setStatus_last_id(true);
-                }
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        TABLE_COUNT.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if (dataSnapshot.getKey().equals(table.getName())) {
-                    table.setCount(Integer.parseInt(dataSnapshot.getValue().toString()));
-                    table.setStatus_count(true);
-                }
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                if (dataSnapshot.getKey().equals(table.getName())) {
-                    table.setCount(Integer.parseInt(dataSnapshot.getValue().toString()));
-                    table.setStatus_count(true);
-                }
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        //
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (table.status_count) {
-                    table.TABLE.addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                            PetShopModel item = (PetShopModel) dataSnapshot.getValue(table.cClass);
-                            data.add(item);
-                            if ((data.size() == table.count)) {
-                                table.setStatus_TABLE(true);
-                            }
-                            if ((data.size() > table.count)) {
-                                table.count = data.size();
-                                TABLE_COUNT.child(table.getName()).setValue(table.count);
-                                TABLE_LAST_ID.child(table.getName()).setValue(table.last_id + 1);
-                            }
-                        }
-
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                            PetShopModel item = (PetShopModel) dataSnapshot.getValue(table.cClass);
-                            data.remove(findItem(dataSnapshot.getKey(), table));
-                            data.add(item);
-                        }
-
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                            data.remove(findItem(dataSnapshot.getKey(), table));
-                            TABLE_COUNT.child(table.getName()).setValue(table.count - 1);
-                        }
-
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-                } else handler.postDelayed(this, 1000);
-            }
-        });
-    }
-
-    public static void initial() {
-        TABLE_NGUOI_MUA.TABLE.child("null").setValue(new NguoiMua("NguoiMua", "nm001", "123456", "09123456789", "hcm", "link", "Nữ"));
-        TABLE_DANH_GIA.TABLE.child("null").setValue(new DanhGia("nm001", "nb001", "ndsfs", (float) 3.5));
-        TABLE_DANH_SACH_DEN.TABLE.child("null").setValue(new DanhSachDen("nm001", "nb001"));
-        TABLE_DON_HANG.TABLE.child("null").setValue(new DonHang("nm001", "nb001", "ndsfs", 2, 1, (double) 120000));
-        TABLE_GIAO_HANG.TABLE.child("null").setValue(new GiaoHang("nm001", new Date()));
-        TABLE_GIO_HANG.TABLE.child("null").setValue(new GioHang("nm001", "nb001"));
-        TABLE_HOA_HONG.TABLE.child("null").setValue(new HoaHong((float) 1, new Date(), (double) 563.333));
-        TABLE_NGUOI_BAN.TABLE.child("null").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "Nam", "hh001"));
-        TABLE_NGUOI_GIAO.TABLE.child("null").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));
-        TABLE_QUAN_LY.TABLE.child("null").setValue(new QuanLy("nm001", "nb001", "ndsfs"));
-        TABLE_SAN_PHAM.TABLE.child("null").setValue(new SanPham("nm001", "nb001", "ndsfs", "nb003", (double) 1930000, new Date()));
-        //
-        TABLE_LAST_ID.child(TABLE_NGUOI_MUA.name).setValue(1);
-        TABLE_LAST_ID.child(TABLE_DANH_GIA.name).setValue(1);
-        TABLE_LAST_ID.child(TABLE_DANH_SACH_DEN.name).setValue(1);
-        TABLE_LAST_ID.child(TABLE_DON_HANG.name).setValue(1);
-        TABLE_LAST_ID.child(TABLE_GIAO_HANG.name).setValue(1);
-        TABLE_LAST_ID.child(TABLE_GIO_HANG.name).setValue(1);
-        TABLE_LAST_ID.child(TABLE_HOA_HONG.name).setValue(1);
-        TABLE_LAST_ID.child(TABLE_NGUOI_BAN.name).setValue(1);
-        TABLE_LAST_ID.child(TABLE_NGUOI_GIAO.name).setValue(1);
-        TABLE_LAST_ID.child(TABLE_QUAN_LY.name).setValue(1);
-        TABLE_LAST_ID.child(TABLE_SAN_PHAM.name).setValue(1);
-        //
-        TABLE_COUNT.child(TABLE_NGUOI_MUA.name).setValue(1);
-        TABLE_COUNT.child(TABLE_DANH_GIA.name).setValue(1);
-        TABLE_COUNT.child(TABLE_DANH_SACH_DEN.name).setValue(1);
-        TABLE_COUNT.child(TABLE_DON_HANG.name).setValue(1);
-        TABLE_COUNT.child(TABLE_GIAO_HANG.name).setValue(1);
-        TABLE_COUNT.child(TABLE_GIO_HANG.name).setValue(1);
-        TABLE_COUNT.child(TABLE_HOA_HONG.name).setValue(1);
-        TABLE_COUNT.child(TABLE_NGUOI_GIAO.name).setValue(1);
-        TABLE_COUNT.child(TABLE_QUAN_LY.name).setValue(1);
-        TABLE_COUNT.child(TABLE_SAN_PHAM.name).setValue(1);
     }
 
     //
@@ -335,7 +157,7 @@ public class PetShopFireBase {
         if (o1 instanceof Double) return ((Double) o1).compareTo((Double) o2) > 0;
         if (o1 instanceof Date) return ((Date) o1).compareTo((Date) o2) > 0;
         return false;
-}
+    }
 
     private static Object getValueField(String sField, PetShopModel item) {
         try {
@@ -373,19 +195,99 @@ public class PetShopFireBase {
         return null;
     }
 
-    //
     static {
-        TABLE_NGUOI_MUA.TABLE = db.child(TABLE_NGUOI_MUA.name);
-        TABLE_NGUOI_BAN.TABLE = db.child(TABLE_NGUOI_BAN.name);
-        TABLE_DANH_GIA.TABLE = db.child(TABLE_DANH_GIA.name);
-        TABLE_DANH_SACH_DEN.TABLE = db.child(TABLE_DANH_SACH_DEN.name);
-        TABLE_DON_HANG.TABLE = db.child(TABLE_DON_HANG.name);
-        TABLE_GIO_HANG.TABLE = db.child(TABLE_GIO_HANG.name);
-        TABLE_HOA_HONG.TABLE = db.child(TABLE_HOA_HONG.name);
-        TABLE_GIAO_HANG.TABLE = db.child(TABLE_GIAO_HANG.name);
-        TABLE_NGUOI_GIAO.TABLE = db.child(TABLE_NGUOI_GIAO.name);
-        TABLE_QUAN_LY.TABLE = db.child(TABLE_QUAN_LY.name);
-        TABLE_SAN_PHAM.TABLE = db.child(TABLE_SAN_PHAM.name);
+        loadTable(TABLE_NGUOI_MUA);
+        loadTable(TABLE_NGUOI_BAN);
+        loadTable(TABLE_DANH_GIA);
+        loadTable(TABLE_DANH_SACH_DEN);
+        loadTable(TABLE_DON_HANG);
+        loadTable(TABLE_GIO_HANG);
+        loadTable(TABLE_HOA_HONG);
+        loadTable(TABLE_GIAO_HANG);
+        loadTable(TABLE_NGUOI_GIAO);
+        loadTable(TABLE_QUAN_LY);
+        loadTable(TABLE_SAN_PHAM);
+    }
+
+    private static void loadTable(final eTable table) {
+        final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
+        //
+        table.TABLE_DATA.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                long count = dataSnapshot.getChildrenCount();
+                table.TABLE_DATA.removeEventListener(this);
+                table.TABLE_DATA.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        data.add((PetShopModel) dataSnapshot.getValue(table.getcClass()));
+                        if (data.size() == count) table.setStatus_data(true);
+                        if (data.size() > count) table.TABLE_LAST_ID.setValue(table.last_id + 1);
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        data.remove(findItem(dataSnapshot.getKey(), table));
+                        data.add((PetShopModel) dataSnapshot.getValue(table.cClass));
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                        data.remove(findItem(dataSnapshot.getKey(), table));
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+        //
+        table.TABLE_LAST_ID.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                table.setLast_id(Integer.parseInt(dataSnapshot.getValue().toString()));
+                table.setStatus_last_id(true);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+    public static void initial() {
+        TABLE_NGUOI_MUA.TABLE_DATA.child("null").setValue(new NguoiMua("NguoiMua", "nm001", "123456", "09123456789", "hcm", "link", "Nữ"));
+        TABLE_DANH_GIA.TABLE_DATA.child("null").setValue(new DanhGia("nm001", "nb001", "ndsfs", (float) 3.5));
+        TABLE_DANH_SACH_DEN.TABLE_DATA.child("null").setValue(new DanhSachDen("nm001", "nb001"));
+        TABLE_DON_HANG.TABLE_DATA.child("null").setValue(new DonHang("nm001", "nb001", "ndsfs", 2, 1, (double) 120000));
+        TABLE_GIAO_HANG.TABLE_DATA.child("null").setValue(new GiaoHang("nm001", new Date()));
+        TABLE_GIO_HANG.TABLE_DATA.child("null").setValue(new GioHang("nm001", "nb001"));
+        TABLE_HOA_HONG.TABLE_DATA.child("null").setValue(new HoaHong((float) 1, new Date(), (double) 563.333));
+        TABLE_NGUOI_BAN.TABLE_DATA.child("null").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "Nam", "hh001"));
+        TABLE_NGUOI_GIAO.TABLE_DATA.child("null").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));
+        TABLE_QUAN_LY.TABLE_DATA.child("null").setValue(new QuanLy("nm001", "nb001", "ndsfs"));
+        TABLE_SAN_PHAM.TABLE_DATA.child("null").setValue(new SanPham("nm001", "nb001", "ndsfs", "nb003", (double) 1930000, new Date()));
+        //
+        TABLE_NGUOI_MUA.TABLE_LAST_ID.setValue(1);
+        TABLE_DANH_GIA.TABLE_LAST_ID.setValue(1);
+        TABLE_DANH_SACH_DEN.TABLE_LAST_ID.setValue(1);
+        TABLE_DON_HANG.TABLE_LAST_ID.setValue(1);
+        TABLE_GIAO_HANG.TABLE_LAST_ID.setValue(1);
+        TABLE_HOA_HONG.TABLE_LAST_ID.setValue(1);
+        TABLE_NGUOI_BAN.TABLE_LAST_ID.setValue(1);
+        TABLE_NGUOI_GIAO.TABLE_LAST_ID.setValue(1);
+        TABLE_QUAN_LY.TABLE_LAST_ID.setValue(1);
+        TABLE_SAN_PHAM.TABLE_LAST_ID.setValue(1);
+        //
     }
 
     public enum eTable {
@@ -402,10 +304,10 @@ public class PetShopFireBase {
         SanPham("TABLE_SAN_PHAM", "sp", 3, tdc.edu.vn.project.Model.SanPham.class);
 
         public String name, key;
-        public int last_id, count, max_length;
+        public int last_id, max_length;
         public Object data;
-        public DatabaseReference TABLE;
-        public boolean status_last_id, status_count, status_TABLE;
+        public DatabaseReference TABLE_DATA, TABLE_LAST_ID;
+        public boolean status_last_id, status_data;
         Class cClass;
 
         eTable(String name, String key, int max_length, Class cClass) {
@@ -414,66 +316,12 @@ public class PetShopFireBase {
             this.max_length = max_length;
             this.cClass = cClass;
 
-            this.data = new ArrayList<PetShopModel>();
-            this.last_id = 0;
-            this.count = 0;
-            this.status_last_id = this.status_count = this.status_TABLE = false;
-        }
+            data = new ArrayList<PetShopModel>();
+            last_id = 0;
+            status_last_id = this.status_data = false;
 
-        public Class getcClass() {
-            return cClass;
-        }
-
-        public void setcClass(Class cClass) {
-            this.cClass = cClass;
-        }
-
-        public boolean isStatus_last_id() {
-            return status_last_id;
-        }
-
-        public void setStatus_last_id(boolean status_last_id) {
-            this.status_last_id = status_last_id;
-        }
-
-        public boolean isStatus_count() {
-            return status_count;
-        }
-
-        public void setStatus_count(boolean status_count) {
-            this.status_count = status_count;
-        }
-
-        public boolean isStatus_TABLE() {
-            return status_TABLE;
-        }
-
-        public void setStatus_TABLE(boolean status_TABLE) {
-            this.status_TABLE = status_TABLE;
-        }
-
-        public Object getData() {
-            return data;
-        }
-
-        public void setData(Object data) {
-            this.data = data;
-        }
-
-        public DatabaseReference getTABLE() {
-            return TABLE;
-        }
-
-        public void setTABLE(DatabaseReference TABLE) {
-            this.TABLE = TABLE;
-        }
-
-        public int getMax_length() {
-            return max_length;
-        }
-
-        public void setMax_length(int max_length) {
-            this.max_length = max_length;
+            TABLE_DATA = fireBase.child(name);
+            TABLE_LAST_ID = fireBase.child("last_id").child(name);
         }
 
         public String getName() {
@@ -500,12 +348,60 @@ public class PetShopFireBase {
             this.last_id = last_id;
         }
 
-        public int getCount() {
-            return count;
+        public int getMax_length() {
+            return max_length;
         }
 
-        public void setCount(int count) {
-            this.count = count;
+        public void setMax_length(int max_length) {
+            this.max_length = max_length;
+        }
+
+        public Object getData() {
+            return data;
+        }
+
+        public void setData(Object data) {
+            this.data = data;
+        }
+
+        public DatabaseReference getTABLE_DATA() {
+            return TABLE_DATA;
+        }
+
+        public void setTABLE_DATA(DatabaseReference TABLE_DATA) {
+            this.TABLE_DATA = TABLE_DATA;
+        }
+
+        public DatabaseReference getTABLE_LAST_ID() {
+            return TABLE_LAST_ID;
+        }
+
+        public void setTABLE_LAST_ID(DatabaseReference TABLE_LAST_ID) {
+            this.TABLE_LAST_ID = TABLE_LAST_ID;
+        }
+
+        public boolean isStatus_last_id() {
+            return status_last_id;
+        }
+
+        public void setStatus_last_id(boolean status_last_id) {
+            this.status_last_id = status_last_id;
+        }
+
+        public boolean isStatus_data() {
+            return status_data;
+        }
+
+        public void setStatus_data(boolean status_data) {
+            this.status_data = status_data;
+        }
+
+        public Class getcClass() {
+            return cClass;
+        }
+
+        public void setcClass(Class cClass) {
+            this.cClass = cClass;
         }
     }
 }
