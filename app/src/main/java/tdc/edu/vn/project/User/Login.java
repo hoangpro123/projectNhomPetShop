@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setControl();
 
         setEvent();
-        //PetShopFireBase.loadTable(PetShopFireBase.TABLE_NGUOI_MUA);
+        PetShopFireBase.loadTable(PetShopFireBase.TABLE_NGUOI_MUA);
     }
 
     private void setEvent() {
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if(PetShopFireBase.TABLE_NGUOI_MUA.status_data ){
+                        if(PetShopFireBase.TABLE_NGUOI_MUA.status_last_id && PetShopFireBase.TABLE_NGUOI_MUA.status_count && PetShopFireBase.TABLE_NGUOI_MUA.status_TABLE){
                             ArrayList<NguoiMua> data = (ArrayList<NguoiMua>)PetShopFireBase.TABLE_NGUOI_MUA.data;
                             for (int i = 0; i < data.size(); i++){
                                 if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())){

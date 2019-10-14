@@ -37,6 +37,16 @@
     <string name="dangnhap">Đăng nhập</string>
     <string name="taotaikhoan">Tạo tài khoản</string>
     <string name="quenmatkhau">Quên mật khẩu</string>
+    <string name="ho">Họ</string>
+    <string name="ten">Tên</string>
+    <string name="mail">Email</string>
+    <string name="pass">Mật khẩu</string>
+    <string name="repass">Nhập lại mật khẩu</string>
+    <string name="nam">Nam</string>
+    <string name="nu">Nữ</string>
+    <string name="tao">Tạo</string>
+    <string name="dk">Thông Báo</string>
+    <string name="ss">Đăng Kí Thành Công</string>
 
 
     <!--    Home client -->
@@ -57,4 +67,23 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dangxuat">Đăng xuất</string>
+    <string name="canhan">CÁ NHÂN</string>
+    <string name="chinhsua">Chỉnh sửa</string>
+    <string name="emailuser">ntk@yahoo.com</string>
+    <string name="quanlydonhang">Quản lý đơn hàng</string>
+    <string name="tendonhan">Tên đơn hàng</string>
+    <string name="trangthai">Trạng thái</string>
+    <string name="xoa">Xóa</string>
+    <string name="xemthem">Xem thêm</string>
+    <string name="chontatca">Chọn tất cả</string>
+    <string name="giohang">GIỎ HÀNG</string>
+    <string name="datmua">Đặt mua</string>
+    <string name="thanhtien">Thành tiền:</string>
+    <string name="khongdong">0đ</string>
+    <string name="sanpham">Sản phẩm</string>
+    <string name="dongia">Đơn giá</string>
+    <string name="thongtintaikhoan">THÔNG TIN TÀI KHOẢN</string>
+    <string name="luu">Lưu</string>
+    <string name="doimatkhau">Đổi mật khẩu</string>
 </resources>

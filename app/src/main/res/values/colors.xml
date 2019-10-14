@@ -8,6 +8,10 @@
     <color name="Header">#16CEEA</color>
     <color name="Yellow">#FFE100</color>
     <color name="xam">#888576</color>
+    <color name="white">#FFFFFF</color>
     <color name="nen">#16CEEA</color>
     <color name="bgBottomNavigation">#fe485a</color>
+    <color name="xamnhat">#B8B7B2</color>
+    <color name="xanh">#31FF00</color>
+    <color name="opacity">#002FFF00</color>
 </resources>

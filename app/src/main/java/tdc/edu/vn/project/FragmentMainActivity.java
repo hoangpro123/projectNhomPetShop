@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
+import tdc.edu.vn.project.Adapter.FragmentAdapter;
+
 public class FragmentMainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;

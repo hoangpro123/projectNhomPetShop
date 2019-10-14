@@ -9,10 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FragmentMainActivity"></activity>
-        <activity android:name=".PetActivity" />
-        <activity
-            android:name=".InforUserActivity"
+        <activity android:name=".PetActivity"></activity>
+        <activity android:name=".FragmentMainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
