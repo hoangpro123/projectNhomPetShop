@@ -1,6 +1,8 @@
 package tdc.edu.vn.project;
 
 import android.os.Handler;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +15,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.otto.Bus;
+import com.squareup.otto.ThreadEnforcer;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -33,8 +37,10 @@ import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.QuanLy;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.User.DangKi;
 
 public class PetShopFireBase {
+    public static Bus bus = new Bus();
     private static Handler handler = new Handler();
     public static StorageReference fireBaseStorage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://chuyendedidongnhom3.appspot.com");
     public static DatabaseReference fireBase = FirebaseDatabase.getInstance().getReference();
@@ -57,7 +63,11 @@ public class PetShopFireBase {
         ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.getData();
         for (PetShopModel item : data) {
             try {
-                Field f = item.getClass().getDeclaredField(field);
+                Field f;
+                if (field.equals("id"))
+                    f = PetShopModel.class.getDeclaredField("id");
+                else
+                    f = item.getClass().getDeclaredField(field);
                 f.setAccessible(true);
                 Object v = f.get(item);
                 boolean b = v.equals(value);
@@ -210,30 +220,37 @@ public class PetShopFireBase {
     }
 
     private static void loadTable(final eTable table) {
+        if (table.status_data || table.status_last_id) return;
         final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
         //
         table.TABLE_DATA.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                final long count = dataSnapshot.getChildrenCount();
+                final long[] count = {dataSnapshot.getChildrenCount()};
                 table.TABLE_DATA.removeEventListener(this);
                 table.TABLE_DATA.addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                         data.add((PetShopModel) dataSnapshot.getValue(table.getcClass()));
-                        if (data.size() == count) table.setStatus_data(true);
-                        if (data.size() > count) table.TABLE_LAST_ID.setValue(table.last_id + 1);
+                        if (data.size() == count[0]) table.setStatus_data(true);
+                        if (data.size() > count[0]) {
+                            table.TABLE_LAST_ID.setValue(table.last_id + 1);
+                            count[0] = data.size();
+                            bus.post(table.getName());
+                        }
                     }
 
                     @Override
                     public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                         data.remove(findItem(dataSnapshot.getKey(), table));
                         data.add((PetShopModel) dataSnapshot.getValue(table.cClass));
+                        bus.post(table.getName());
                     }
 
                     @Override
                     public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                         data.remove(findItem(dataSnapshot.getKey(), table));
+                        bus.post(table.getName());
                     }
 
                     @Override
