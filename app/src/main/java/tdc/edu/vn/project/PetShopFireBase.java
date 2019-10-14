@@ -63,13 +63,13 @@ public class PetShopFireBase {
         ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.getData();
         for (PetShopModel item : data) {
             try {
-                Field field;
-                if (sField.equals("id"))
-                    field = PetShopModel.class.getDeclaredField("id");
-                else
-                    field = item.getClass().getDeclaredField(sField);
-                field.setAccessible(true);
-                Object v = field.get(item);
+                Object v;
+                if (sField.equals("id")) v = item.getId();
+                else{
+                    Field field = item.getClass().getDeclaredField(sField);
+                    field.setAccessible(true);
+                    v = field.get(item);
+                }
                 boolean b = v.equals(value);
                 if (b) results.add(item);
                 if (!b && v instanceof Date) {
