@@ -58,18 +58,18 @@ public class PetShopFireBase {
     public static eTable TABLE_SAN_PHAM = eTable.SanPham;
 
 
-    public static ArrayList<PetShopModel> search(String field, Object value, eTable table) {
+    public static ArrayList<PetShopModel> search(String sField, Object value, eTable table) {
         ArrayList<PetShopModel> results = new ArrayList<>();
         ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.getData();
         for (PetShopModel item : data) {
             try {
-                Field f;
-                if (field.equals("id"))
-                    f = PetShopModel.class.getDeclaredField("id");
+                Field field;
+                if (sField.equals("id"))
+                    field = PetShopModel.class.getDeclaredField("id");
                 else
-                    f = item.getClass().getDeclaredField(field);
-                f.setAccessible(true);
-                Object v = f.get(item);
+                    field = item.getClass().getDeclaredField(sField);
+                field.setAccessible(true);
+                Object v = field.get(item);
                 boolean b = v.equals(value);
                 if (b) results.add(item);
                 if (!b && v instanceof Date) {
@@ -171,6 +171,7 @@ public class PetShopFireBase {
 
     private static Object getValueField(String sField, PetShopModel item) {
         try {
+            if(sField.equals("id")) return item.getId();
             Field field = item.getClass().getDeclaredField(sField);
             field.setAccessible(true);
             return field.get(item);
