@@ -83,9 +83,5 @@ public class DonHangActivity extends AppCompatActivity {
         etContent = findViewById(R.id.etContent);
         btnGui = findViewById(R.id.btnGui);
 
-        LayerDrawable layerDrawable = (LayerDrawable) rating.getProgressDrawable();
-        layerDrawable.getDrawable(2).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
-        layerDrawable.getDrawable(0).setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
-        layerDrawable.getDrawable(1).setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_ATOP);
     }
 }
