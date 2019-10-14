@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
+import tdc.edu.vn.project.FragmentMainActivity;
 import tdc.edu.vn.project.HomeClient;
 import tdc.edu.vn.project.Model.DanhGia;
 import tdc.edu.vn.project.Model.DanhSachDen;
@@ -68,47 +69,31 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void setEvent() {
-
-
+    public void  setEvent(){
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
 
-                Toast.makeText(Login.this, PetShopFireBase.TABLE_NGUOI_MUA.data.toString(), Toast.LENGTH_SHORT).show();
-                final Handler handler = new Handler();
+                final Handler handler =  new Handler();
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        PetShopFireBase.loadTable(PetShopFireBase.TABLE_NGUOI_MUA);
-                        if(PetShopFireBase.TABLE_NGUOI_MUA.status_last_id && PetShopFireBase.TABLE_NGUOI_MUA.status_count && PetShopFireBase.TABLE_NGUOI_MUA.status_TABLE){
+                        if(PetShopFireBase.TABLE_NGUOI_MUA.status_data){
+                            Toast.makeText(getApplicationContext(), PetShopFireBase.TABLE_NGUOI_MUA.data.toString(),Toast.LENGTH_LONG).show();
                             ArrayList<NguoiMua> data = (ArrayList<NguoiMua>)PetShopFireBase.TABLE_NGUOI_MUA.data;
                             for (int i = 0; i < data.size(); i++){
                                 if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())){
-                                    Intent intent = new Intent(Login.this, HomeClient.class);
-                                    Intent intent1 = new Intent(Login.this, ChiTietThuCung.class);
-                                    intent1.putExtra("IDNGMUA",data.get(i).getId());
-                                    intent1.putExtra("TENNGMUA",data.get(i).getName());
-                                    intent1.putExtra("SDT",data.get(i).getPhone());
-                                    intent1.putExtra("User",data.get(i).getUsername());
-                                    Log.d("ggg", intent.toString());
+                                    Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
                                     startActivity(intent);
-                                    startActivity(intent1);
-                                    Toast.makeText(Login.this, "OK", Toast.LENGTH_SHORT).show();
-                                }else {
-                                    Toast.makeText(Login.this, "Ngu", Toast.LENGTH_SHORT).show();
+
                                 }
                             }
-
-                            Log.d("ggg", data.size() + "");
                         }
                         else handler.postDelayed(this, 1000);
                     }
                 });
-
             }
         });
-
     }
 
     private void setControl() {

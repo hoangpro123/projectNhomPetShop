@@ -134,7 +134,7 @@ public class ChiTietThuCung extends AppCompatActivity
         Price.setText(intent.getStringExtra("Price"));
         Des.setText(intent.getStringExtra("Description"));
 
-        PetShopFireBase.loadTable(PetShopFireBase.TABLE_GIO_HANG);
+
         PetShopFireBase.TABLE_GIO_HANG.name.toString();
         GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString());
         Log.d("gh",gioHang.getId_nguoi_mua());
