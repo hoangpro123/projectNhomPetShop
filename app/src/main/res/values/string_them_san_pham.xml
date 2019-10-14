@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="themSanPham">Thêm Sản Phẩm</string>
+    <string name="themTieuDe">Thêm tiêu đề</string>
+    <string name="editTieuDe">...............................</string>
+    <string name="thongTinSanPham">Thông Tin Sản Phẩm</string>
+    <string name="thongTinNguoiBan">Thông Tin Người Bán</string>
+    <string name="dangTin">Đăng Tin</string>
+</resources>
