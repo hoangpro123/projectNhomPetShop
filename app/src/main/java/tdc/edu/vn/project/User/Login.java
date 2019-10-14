@@ -73,21 +73,23 @@ public class Login extends AppCompatActivity {
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                btnDangNhap.setClickable(false);
                 final Handler handler =  new Handler();
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
                         if(PetShopFireBase.TABLE_NGUOI_MUA.status_data){
-                            Toast.makeText(getApplicationContext(), PetShopFireBase.TABLE_NGUOI_MUA.data.toString(),Toast.LENGTH_LONG).show();
                             ArrayList<NguoiMua> data = (ArrayList<NguoiMua>)PetShopFireBase.TABLE_NGUOI_MUA.data;
                             for (int i = 0; i < data.size(); i++){
                                 if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())){
                                     Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
                                     startActivity(intent);
-
+                                    finish();
+                                    return;
                                 }
                             }
+                            btnDangNhap.setClickable(true);
+                            Toast.makeText(Login.this, "Thông tin không hợp lệ", Toast.LENGTH_SHORT).show();
                         }
                         else handler.postDelayed(this, 1000);
                     }

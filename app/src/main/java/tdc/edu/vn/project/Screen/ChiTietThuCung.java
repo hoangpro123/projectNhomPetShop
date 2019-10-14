@@ -24,9 +24,7 @@ import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 
-public class ChiTietThuCung extends AppCompatActivity
-        implements BaseSliderView.OnSliderClickListener,
-        ViewPagerEx.OnPageChangeListener {
+public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     SliderLayout sliderLayout ;
     TextView Name, Price, Des;
     Button btnThemGioHang;
