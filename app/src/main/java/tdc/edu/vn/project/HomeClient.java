@@ -56,13 +56,12 @@ public class HomeClient extends Fragment
         View view = inflater.inflate(R.layout.home_client, null);
 
         myrv = view.findViewById(R.id.recyclerview);
-        PetShopFireBase.loadTable(PetShopFireBase.TABLE_SAN_PHAM);
         listPet = new ArrayList<>();
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id && PetShopFireBase.TABLE_SAN_PHAM.status_count && PetShopFireBase.TABLE_SAN_PHAM.status_TABLE){
+                if(PetShopFireBase.TABLE_SAN_PHAM.status_data){
                     ArrayList<SanPham> data = (ArrayList<SanPham>)PetShopFireBase.TABLE_SAN_PHAM.data;
                     listPet = data;
                     RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getActivity(),listPet);

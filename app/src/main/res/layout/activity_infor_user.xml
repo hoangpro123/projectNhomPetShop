@@ -64,35 +64,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 android:text="@string/txtName" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 android:text="@string/txtEmail" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 android:text="@string/txtSdt" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 android:text="@string/txtSex" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 android:text="@string/txtAddress" />
 
         </LinearLayout>
@@ -101,6 +101,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
             <EditText
@@ -157,6 +159,7 @@
         android:id="@+id/btnChangePass"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:padding="10dp"
         android:layout_marginTop="150dp"
         android:background="@drawable/vienbutton"
         android:text="@string/btnChangePass"></Button>
