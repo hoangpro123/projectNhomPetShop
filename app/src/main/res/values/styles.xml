@@ -11,11 +11,11 @@
     <style name="titleheader_chitietthucung">
         <item name="android:textColor">#ffffff</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="title_chitietthucung">
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">#000</item>
         <item name="android:textStyle">bold</item>
     </style>
