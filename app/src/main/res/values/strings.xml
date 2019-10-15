@@ -69,4 +69,6 @@
     <string name="nhapmatkhauhientai">Nhập mật khẩu hiện tại</string>
     <string name="nhapmatkhaumoi">Nhập mật khẩu mới</string>
     <string name="nhaplaimatkhaumoi">Nhập lại mật khẩu mới</string>
+    <string name="hoanthanh">Hoàn thành</string>
+    <string name="danhgia">Đánh giá</string>
 </resources>

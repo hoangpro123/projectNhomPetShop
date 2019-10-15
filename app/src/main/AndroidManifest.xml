@@ -12,10 +12,10 @@
         <activity android:name=".QuenMatKhau"></activity>
         <activity android:name=".DoiMatKhau" />
         <activity android:name=".ThongTinTaiKhoan" />
-        <activity android:name=".ThongTinUser" />
+        <activity android:name=".GioHang" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ChiTietThuCung" />
-        <activity android:name=".GioHang">
+        <activity android:name=".ThongTinUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
