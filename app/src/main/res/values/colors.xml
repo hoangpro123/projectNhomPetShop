@@ -10,4 +10,11 @@
     <color name="no">#00000000</color>
     <color name="yellow">#FFEB3B</color>
     <color name="gray">#C7C7C7</color>
+    <color name="BGLogin">#6FF3DD</color>
+    <color name="Header">#16CEEA</color>
+    <color name="Yellow">#FFE100</color>
+    <color name="xam">#888576</color>
+    <color name="xamnhat">#B8B7B2</color>
+    <color name="xanh">#31FF00</color>
+    <color name="opacity">#002FFF00</color>
 </resources>

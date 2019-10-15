@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DemoChuyenManHinh">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".ChiTietThuCung" />
+        <activity android:name=".ThongTinUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
