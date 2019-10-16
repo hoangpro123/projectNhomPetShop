@@ -1,14 +1,11 @@
 <resources>
     <string name="app_name">project</string>
     <string name="chuyen">GO</string>
-    <string name="taotaikhoan">Tạo Tài Khoản</string>
     <string name="ho">Họ</string>
     <string name="ten">Tên</string>
     <string name="mail">Mail</string>
     <string name="pass">Mật Khẩu</string>
     <string name="repass">Nhập Lại Mật Khẩu</string>
-    <string name="sdt">Số điện thoại</string>
-    <string name="diachi">Địa Chỉ</string>
     <string name="GT">Giới Tính</string>
     <string name="Nam">Nam</string>
     <string name="Nu">Nữ</string>
@@ -25,7 +22,6 @@
     <string name="gui">Gửi</string>
     <string name="title_chitietthucung">CHI TIẾT THÚ CƯNG</string>
     <string name="tenthucung_chitietthucung">MÈO ANH LÔNG NGẮN</string>
-    <string name="gia">Giá:</string>
     <string name="sotien">4.000.000đ</string>
     <string name="cuahang">Cửa hàng:</string>
     <string name="tenchucuahang">Anh Khiêm</string>
@@ -54,13 +50,11 @@
     <string name="vuilongnhapmatkhau">Vui lòng nhập mật khẩu</string>
     <string name="ghinho">Ghi nhớ</string>
     <string name="nguoimua">Người mua</string>
-    <string name="nguoiban">Người bán</string>
     <string name="quanly">Quản lý</string>
     <string name="dangnhap">Đăng nhập</string>
     <string name="taotaikhoan">Tạo tài khoản</string>
     <string name="quenmatkhau">Quên mật khẩu</string>
     <string name="dangxuat">Đăng xuất</string>
-    <string name="canhan">CÁ NHÂN</string>
     <string name="chinhsua">Chỉnh sửa</string>
     <string name="emailuser">ntk@yahoo.com</string>
     <string name="quanlydonhang">Quản lý đơn hàng</string>
@@ -69,4 +63,5 @@
     <string name="xoa">Xóa</string>
     <string name="xemthem">Xem thêm</string>
     <string name="chontatca">Chọn tất cả</string>
+    <string name="hoanthanh">Hoàn thành</string>
 </resources>
