@@ -6,4 +6,5 @@
     <string name="thongTinSanPham">Thông Tin Sản Phẩm</string>
     <string name="thongTinNguoiBan">Thông Tin Người Bán</string>
     <string name="dangTin">Đăng Tin</string>
+    <string name="Price">Giá </string>
 </resources>
