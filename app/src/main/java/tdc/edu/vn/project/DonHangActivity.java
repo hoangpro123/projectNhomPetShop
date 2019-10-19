@@ -46,9 +46,9 @@ public class DonHangActivity extends AppCompatActivity {
             public void run() {
                 if(PetShopFireBase.TABLE_DON_HANG.status_data && PetShopFireBase.TABLE_SAN_PHAM.status_data && PetShopFireBase.TABLE_NGUOI_BAN.status_data){
                     id = getIntent().getStringExtra("id");
-                    DonHang dh = (DonHang) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_DON_HANG).get(0);
-                    SanPham sp = (SanPham) PetShopFireBase.search("id", dh.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM).get(0);
-                    NguoiBan nb = (NguoiBan) PetShopFireBase.search("id", sp.getId_nguoi_ban(), PetShopFireBase.TABLE_NGUOI_BAN).get(0);
+                    DonHang dh = (DonHang) ((ArrayList<PetShopModel>)PetShopFireBase.search("id", id, PetShopFireBase.TABLE_DON_HANG)).get(0);
+                    SanPham sp = (SanPham) ((ArrayList<PetShopModel>)PetShopFireBase.search("id", dh.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM)).get(0);
+                    NguoiBan nb = (NguoiBan) ((ArrayList<PetShopModel>)PetShopFireBase.search("id", sp.getId_nguoi_ban(), PetShopFireBase.TABLE_NGUOI_BAN)).get(0);
                     tvMaDonHang.setText(dh.getId());
                     tvTenDonHang.setText(sp.getName());
                     tvGia.setText(sp.getPrice() + " đ");

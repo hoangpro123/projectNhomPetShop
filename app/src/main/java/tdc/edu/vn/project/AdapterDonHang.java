@@ -42,7 +42,7 @@ public class AdapterDonHang extends ArrayAdapter<ThongTinDonHang> {
         }
         ThongTinDonHang item = data.get(position);
         holder.btnDanhGia.setVisibility(View.INVISIBLE);
-        if (item.trangThai.equals("Hoàn thành")) holder.btnDanhGia.setVisibility(View.VISIBLE);
+        if (item.trangThai.equals("Đã hoàn thành")) holder.btnDanhGia.setVisibility(View.VISIBLE);
         holder.cbTenHang.setText(item.tenHang);
         holder.txtTrangThai.setText(item.trangThai);
         holder.btnDanhGia.setText(item.danhGia);
