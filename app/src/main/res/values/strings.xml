@@ -71,4 +71,12 @@
     <string name="nhaplaimatkhaumoi">Nhập lại mật khẩu mới</string>
     <string name="hoanthanh">Hoàn thành</string>
     <string name="danhgia">Đánh giá</string>
+    <string name="luuthongtin">Lưu thông tin</string>
+    <string name="thongtin">Thông tin</string>
+    <string name="taikhoan">Tài khoản</string>
+    <string name="matkhau">Mật khẩu</string>
+    <string name="nguoidung">NGƯỜI DÙNG</string>
+    <string name="yeucauchinhsua">Yêu cầu chỉ sửa</string>
+    <string name="xacnhan">XÁC NHẬN</string>
+    <string name="thoigian">20/10 - 8:01</string>
 </resources>
