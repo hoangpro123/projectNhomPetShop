@@ -26,7 +26,7 @@ import tdc.edu.vn.project.Adapter.RecyclerViewAdapter;
 import tdc.edu.vn.project.Model.SanPham;
 
 public class DanhSachSanPhamNguoiBanActivity extends AppCompatActivity {
-
+    String id_nguoi_ban = "null";
     RecyclerViewAdapter myAdapter;
     ArrayList<SanPham> data;
     Button Back;
@@ -61,13 +61,13 @@ public class DanhSachSanPhamNguoiBanActivity extends AppCompatActivity {
     }
 
     private void getFirebaseSanPham() {
-
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id  && PetShopFireBase.TABLE_SAN_PHAM.status_data){
-                    data = (ArrayList<SanPham>)PetShopFireBase.TABLE_SAN_PHAM.data;
+                if(PetShopFireBase.TABLE_SAN_PHAM.status_data){
+                    Object o = PetShopFireBase.search("id_nguoi_ban",id_nguoi_ban, PetShopFireBase.TABLE_SAN_PHAM);
+                    data = (ArrayList<SanPham>) o;
                     RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
                     myAdapter = new RecyclerViewAdapter(DanhSachSanPhamNguoiBanActivity.this,data);
                     myrv.setLayoutManager(new GridLayoutManager(DanhSachSanPhamNguoiBanActivity.this,2));

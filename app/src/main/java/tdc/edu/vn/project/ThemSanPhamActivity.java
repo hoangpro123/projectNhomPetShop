@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -26,16 +27,24 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import tdc.edu.vn.project.Adapter.RecyclerViewAdapter;
+import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
 
 public class ThemSanPhamActivity extends AppCompatActivity {
+    String id = "null";
+    List<NguoiBan> data;
     Button Back, DangTin;
     ImageButton ThemSanPham;
     EditText TieuDe, ThongTinSanPham, Gia;
@@ -46,14 +55,15 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_san_pham);
+        getFirebaseSanPham();
         setControl();
         setEvent();
     }
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        if(requestCode == 69 && permissions[0].equals(Manifest.permission.READ_EXTERNAL_STORAGE) && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-//        }
-//    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == 69 && permissions[0].equals(Manifest.permission.READ_EXTERNAL_STORAGE) && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 96 && resultCode == RESULT_OK && data != null){
@@ -92,6 +102,8 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
     private void setControl() {
         ThemSanPham = (ImageButton) findViewById(R.id.imgThemSanPham);
         TieuDe = (EditText) findViewById(R.id.edTieuDe);
@@ -105,6 +117,8 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 69);
         }
     }
+
+
     private void setEvent() {
         DangTin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +145,27 @@ public class ThemSanPhamActivity extends AppCompatActivity {
                 startActivityForResult(intent, 96);
             }
         });
+//        StringBuilder builder = new StringBuilder();
+//        for (NguoiBan details : data) {
+//            builder.append(details + "\n");
+//        }
+//        ThongTinNguoiBan.setText(builder.toString());
+    }
+
+
+    private void getFirebaseSanPham() {
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if(PetShopFireBase.TABLE_NGUOI_BAN.status_data){
+                    Object o = PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_BAN);
+                    data = (List<NguoiBan>) o;
+                }
+                else handler.postDelayed(this, 1000);
+            }
+        });
+
     }
 
 }
