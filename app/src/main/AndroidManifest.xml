@@ -13,8 +13,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".DemoChuyenManHinh" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".ThongTinNguoiDung"></activity>
+        <activity android:name=".ThongTinTaiKhoan2" />
+        <activity android:name=".ThongTinUser" />
+        <activity android:name=".QuenMatKhau" />
+        <activity android:name=".DoiMatKhau" />
+        <activity android:name=".ThongTinTaiKhoan" />
+        <activity android:name=".GioHang" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".ChiTietThuCung" />
-        <activity android:name=".ThongTinUser">
+        <activity android:name=".QuanLyDonHangNguoiBan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

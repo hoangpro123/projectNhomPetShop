@@ -17,6 +17,10 @@ import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.Model.TinhTrangDonHang;
+import android.widget.Adapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class ThongTinUser extends AppCompatActivity {
     static String id = "nm002";
@@ -27,6 +31,8 @@ public class ThongTinUser extends AppCompatActivity {
     TextView tvName, tvEmail, tvSDT;
     ImageView img;
 
+    private ListView lv1;
+    ArrayList<ThongTinDonHang> data = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
