@@ -31,8 +31,6 @@ public class ThongTinUser extends AppCompatActivity {
     TextView tvName, tvEmail, tvSDT;
     ImageView img;
 
-    private ListView lv1;
-    ArrayList<ThongTinDonHang> data = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

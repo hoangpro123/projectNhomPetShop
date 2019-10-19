@@ -24,7 +24,6 @@
     <string name="tenthucung_chitietthucung">MÈO ANH LÔNG NGẮN</string>
     <string name="hoten">Họ tên:</string>
     <string name="email">Email:</string>
-    <string name="gia">Giá:</string>
     <string name="sotien">4.000.000đ</string>
     <string name="cuahang">Cửa hàng:</string>
     <string name="tenchucuahang">Anh Khiêm</string>
@@ -86,8 +85,7 @@
     <string name="nhapmatkhauhientai">Nhập mật khẩu hiện tại</string>
     <string name="nhapmatkhaumoi">Nhập mật khẩu mới</string>
     <string name="nhaplaimatkhaumoi">Nhập lại mật khẩu mới</string>
-    <string name="hoanthanh">Hoàn thành</string>
-    <string name="danhgia">Đánh giá</string>
+
     <string name="luuthongtin">Lưu thông tin</string>
     <string name="thongtin">Thông tin</string>
     <string name="taikhoan">Tài khoản</string>
@@ -95,6 +93,5 @@
     <string name="nguoidung">NGƯỜI DÙNG</string>
     <string name="yeucauchinhsua">Yêu cầu chỉ sửa</string>
     <string name="xacnhan">XÁC NHẬN</string>
-    <string name="thoigian">20/10 - 8:01</string>
     <string name="hoanthanh">Hoàn thành</string>
 </resources>

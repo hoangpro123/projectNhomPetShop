@@ -67,6 +67,8 @@ public class Test_Image_Picker extends AppCompatActivity {
                                 String link = task.getResult().toString();
                                 NguoiMua nm = new NguoiMua("tao", "tk@gmail","123", "0123", "hn", link ,"Nam");
                                 PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
+
+
                             }
                         });
                     }
