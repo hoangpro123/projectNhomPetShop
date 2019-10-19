@@ -1,6 +1,6 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.User;
 
-
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.os.Handler;
@@ -33,6 +33,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 
+import tdc.edu.vn.project.FragmentMainActivity;
+import tdc.edu.vn.project.HomeClient;
 import tdc.edu.vn.project.Model.DanhGia;
 import tdc.edu.vn.project.Model.DanhSachDen;
 import tdc.edu.vn.project.Model.DonHang;
@@ -45,9 +47,12 @@ import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.QuanLy;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.R;
+import tdc.edu.vn.project.Screen.ChiTietThuCung;
 
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     EditText edtTaiKhoan, edtMatKhau;
     Button btnDangNhap;
     RadioGroup rdbLuaChon;
@@ -61,39 +66,39 @@ public class MainActivity extends AppCompatActivity {
         setControl();
 
         setEvent();
-        PetShopFireBase.loadTable(PetShopFireBase.TABLE_NGUOI_MUA);
+
     }
 
-    private void setEvent() {
-
-
+    public void  setEvent(){
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-                final Handler handler = new Handler();
+            public void onClick(View view) {
+                btnDangNhap.setClickable(false);
+                final Handler handler =  new Handler();
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if(PetShopFireBase.TABLE_NGUOI_MUA.status_last_id && PetShopFireBase.TABLE_NGUOI_MUA.status_count && PetShopFireBase.TABLE_NGUOI_MUA.status_TABLE){
+                        if(PetShopFireBase.TABLE_NGUOI_MUA.status_data){
                             ArrayList<NguoiMua> data = (ArrayList<NguoiMua>)PetShopFireBase.TABLE_NGUOI_MUA.data;
                             for (int i = 0; i < data.size(); i++){
                                 if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())){
-                                    Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_SHORT).show();
-                                }else {
-                                    Toast.makeText(MainActivity.this, "Ngu", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("id", data.get(i).getId());
+                                    intent.putExtras(bundle);
+                                    startActivity(intent);
+                                    finish();
+                                    return;
                                 }
                             }
-
-                            Log.d("ggg", data.size() + "");
+                            btnDangNhap.setClickable(true);
+                            Toast.makeText(Login.this, "Thông tin không hợp lệ", Toast.LENGTH_SHORT).show();
                         }
                         else handler.postDelayed(this, 1000);
                     }
                 });
-
             }
         });
-
     }
 
     private void setControl() {

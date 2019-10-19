@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -29,6 +30,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import java.util.HashMap;
 
+import tdc.edu.vn.project.Adapter.RecyclerViewAdapter;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
 
@@ -44,6 +46,7 @@ public class HomeClient extends Fragment
     private ArrayList<SanPham> listPet ;
 
     private RecyclerView myrv;
+    private TextView textView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,14 +58,27 @@ public class HomeClient extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_client, null);
 
+
+
+        textView= (TextView)view.findViewById(R.id.txt);
+
+        Bundle bundle = getArguments();
+        if (bundle != null){
+            //textView.setText(bundle.getString("id"));
+            String a = getArguments().getString("id");
+            textView.setText(a);
+        }
+
+
+
         myrv = view.findViewById(R.id.recyclerview);
-        PetShopFireBase.loadTable(PetShopFireBase.TABLE_SAN_PHAM);
+        //PetShopFireBase.loadTable(PetShopFireBase.TABLE_SAN_PHAM);
         listPet = new ArrayList<>();
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id && PetShopFireBase.TABLE_SAN_PHAM.status_count && PetShopFireBase.TABLE_SAN_PHAM.status_TABLE){
+                if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id ){
                     ArrayList<SanPham> data = (ArrayList<SanPham>)PetShopFireBase.TABLE_SAN_PHAM.data;
                     listPet = data;
                     RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getActivity(),listPet);

@@ -35,7 +35,7 @@ public class DangKi  extends AppCompatActivity {
         setContentView(R.layout.layout_dangki);
         AnhXa();
 
-        PetShopFireBase.loadTable(PetShopFireBase.TABLE_NGUOI_MUA);
+        //PetShopFireBase.loadTable(PetShopFireBase.TABLE_NGUOI_MUA);
         PetShopFireBase.TABLE_NGUOI_MUA.name.toString();
         tao.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -40,6 +40,9 @@ public class InforUserActivity extends AppCompatActivity {
     }
 
     private void setEvent() {
+       Intent intent = this.getIntent();
+       final String a = intent.getStringExtra("id");
+
         final Handler handler =  new Handler();
         handler.post(new Runnable() {
             @Override
@@ -47,6 +50,7 @@ public class InforUserActivity extends AppCompatActivity {
                 if(PetShopFireBase.TABLE_NGUOI_MUA.status_data){
                     ArrayList<NguoiMua> data = (ArrayList<NguoiMua>)PetShopFireBase.TABLE_NGUOI_MUA.data;
                     editName.setText(data.get(0).getUsername());
+                    editEmail.setText(a);
                 }
                 else handler.postDelayed(this, 1000);
             }

@@ -2,6 +2,8 @@ package tdc.edu.vn.project.Adapter;
 
 //import com.example.selfcare.fragment.AppInfo;
 
+import android.content.Context;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -9,14 +11,20 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import tdc.edu.vn.project.CpuInfo;
 import tdc.edu.vn.project.HomeClient;
+import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.UsageInfo;
 import tdc.edu.vn.project.User.ThongTinUser;
 
 public class FragmentAdapter extends FragmentStatePagerAdapter {
-    private String listTab[] = {"Home","Danh mục", "Thông báo", "Cá nhân"};
+    //private String listTab[] = {"Home","Danh mục", "Thông báo", "Cá nhân"};
 
-    public FragmentAdapter(FragmentManager fm) {
+    private Context context;
+    private  String listTab[];
+
+    public FragmentAdapter(FragmentManager fm, Context context) {
         super(fm);
+        this.context = context;
+        listTab = context.getResources().getStringArray(R.array.tablayout);
     }
 
     @Override

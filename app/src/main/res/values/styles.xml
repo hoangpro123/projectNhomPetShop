@@ -129,7 +129,7 @@
 
     <style name="recycleview_style">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">300dp</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:padding">10dp</item>
     </style>
