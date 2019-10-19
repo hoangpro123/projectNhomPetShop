@@ -56,6 +56,7 @@ public class Login extends AppCompatActivity {
     EditText edtTaiKhoan, edtMatKhau;
     Button btnDangNhap;
     RadioGroup rdbLuaChon;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,40 +70,88 @@ public class Login extends AppCompatActivity {
 
     }
 
-    public void  setEvent(){
+    public void setEvent() {
+        final Handler handler = new Handler();
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnDangNhap.setClickable(false);
-                final Handler handler =  new Handler();
+                int type = rdbLuaChon.getCheckedRadioButtonId();
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if(PetShopFireBase.TABLE_NGUOI_MUA.status_data){
-                            ArrayList<NguoiMua> data = (ArrayList<NguoiMua>)PetShopFireBase.TABLE_NGUOI_MUA.data;
-                            for (int i = 0; i < data.size(); i++){
-                                if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())){
-                                    Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                    return;
-                                }
-                            }
-                            btnDangNhap.setClickable(true);
-                            Toast.makeText(Login.this, "Thông tin không hợp lệ", Toast.LENGTH_SHORT).show();
+                        switch (rdbLuaChon.getCheckedRadioButtonId()) {
+                            case R.id.rdbNguoiMua:
+                                btnDangNhap.setClickable(false);
+
+                                if (PetShopFireBase.TABLE_NGUOI_MUA.status_data) {
+                                    ArrayList<NguoiMua> data = (ArrayList<NguoiMua>) PetShopFireBase.TABLE_NGUOI_MUA.data;
+                                    for (int i = 0; i < data.size(); i++) {
+                                        if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())) {
+                                            Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                            return;
+                                        }
+                                    }
+                                    btnDangNhap.setClickable(true);
+                                    Toast.makeText(Login.this, "Thông tin không hợp lệ", Toast.LENGTH_SHORT).show();
+                                } else handler.postDelayed(this, 1000);
+
+
+                                break;
+                            case R.id.rdbNguoiBan:
+                                btnDangNhap.setClickable(false);
+
+
+                                if (PetShopFireBase.TABLE_NGUOI_BAN.status_data) {
+                                    ArrayList<NguoiBan> dataNguoiBan = (ArrayList<NguoiBan>) PetShopFireBase.TABLE_NGUOI_BAN.data;
+                                    for (int i = 0; i < dataNguoiBan.size(); i++) {
+                                        if (edtTaiKhoan.getText().toString().equals(dataNguoiBan.get(i).getUsername()) && edtMatKhau.getText().toString().equals(dataNguoiBan.get(i).getPassword())) {
+                                            Intent intentNguoiBan = new Intent(getApplication(), FragmentMainActivity.class);
+                                            startActivity(intentNguoiBan);
+                                            finish();
+                                            return;
+                                        }
+                                    }
+                                    btnDangNhap.setClickable(true);
+                                    Toast.makeText(Login.this, "Thông tin không hợp lệ", Toast.LENGTH_SHORT).show();
+                                } else handler.postDelayed(this, 1000);
+
+                                break;
+                            case R.id.rdbQuanLy:
+                                btnDangNhap.setClickable(false);
+
+
+                                if (PetShopFireBase.TABLE_QUAN_LY.status_data) {
+                                    ArrayList<QuanLy> data = (ArrayList<QuanLy>) PetShopFireBase.TABLE_QUAN_LY.data;
+                                    for (int i = 0; i < data.size(); i++) {
+                                        if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())) {
+                                            Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                            return;
+                                        }
+                                    }
+                                    btnDangNhap.setClickable(true);
+                                    Toast.makeText(Login.this, "Thông tin không hợp lệ", Toast.LENGTH_SHORT).show();
+                                } else handler.postDelayed(this, 1000);
+
+                                break;
+
                         }
-                        else handler.postDelayed(this, 1000);
+
                     }
                 });
+
             }
         });
     }
 
     private void setControl() {
-        edtTaiKhoan = (EditText)findViewById(R.id.edtTaiKhoan);
-        edtMatKhau = (EditText)findViewById(R.id.edtMatKhau);
-        btnDangNhap = (Button)findViewById(R.id.btnDangNhap);
-        rdbLuaChon = (RadioGroup)findViewById(R.id.rdbLuaChon);
+        edtTaiKhoan = (EditText) findViewById(R.id.edtTaiKhoan);
+        edtMatKhau = (EditText) findViewById(R.id.edtMatKhau);
+        btnDangNhap = (Button) findViewById(R.id.btnDangNhap);
+        rdbLuaChon = (RadioGroup) findViewById(R.id.rdbLuaChon);
     }
 
 
