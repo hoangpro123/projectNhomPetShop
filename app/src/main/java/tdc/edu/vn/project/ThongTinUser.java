@@ -12,21 +12,17 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import tdc.edu.vn.project.Model.DonHang;
-import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiMua;
-import tdc.edu.vn.project.Model.PetShopModel;
-import tdc.edu.vn.project.Model.SanPham;
-import tdc.edu.vn.project.Model.TinhTrangDonHang;
-import android.widget.Adapter;
-import android.widget.ListView;
 
-import java.util.ArrayList;
+
+import com.squareup.otto.Subscribe;
+
 
 public class ThongTinUser extends AppCompatActivity {
-    static String id = "nm002";
+    static String idnm = "nm002";
     private ListView lv1;
-    AdapterDonHang ad;
-    ArrayList<ThongTinDonHang> data = new ArrayList<>();
+    AdapterDonHangNguoiMua adapter;
+    ArrayList<DonHang> data;
 
     TextView tvName, tvEmail, tvSDT;
     ImageView img;
@@ -37,6 +33,7 @@ public class ThongTinUser extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.layout_thongtinuser);
 
+        PetShopFireBase.bus.register(this);
         setControl();
         setEvent();
 
@@ -52,10 +49,7 @@ public class ThongTinUser extends AppCompatActivity {
     }
 
     public void setEvent() {
-
         khoiTao();
-        ad = new AdapterDonHang(ThongTinUser.this, R.layout.listview_donhang_trangthai, data);
-        lv1.setAdapter(ad);
     }
 
     public void khoiTao() {
@@ -63,25 +57,24 @@ public class ThongTinUser extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(PetShopFireBase.TABLE_NGUOI_MUA.status_data && PetShopFireBase.TABLE_DON_HANG.status_data && PetShopFireBase.TABLE_SAN_PHAM.status_data && PetShopFireBase.TABLE_TINH_TRANG_DON_HANG.status_data){
-                    NguoiMua nguoiMua = ((ArrayList<NguoiMua>)PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_MUA)).get(0);
+                if (PetShopFireBase.TABLE_NGUOI_MUA.status_data && PetShopFireBase.TABLE_DON_HANG.status_data && PetShopFireBase.TABLE_SAN_PHAM.status_data && PetShopFireBase.TABLE_TINH_TRANG_DON_HANG.status_data) {
+                    NguoiMua nguoiMua = ((ArrayList<NguoiMua>) PetShopFireBase.search("id", idnm, PetShopFireBase.TABLE_NGUOI_MUA)).get(0);
                     tvName.setText(nguoiMua.getName());
                     tvEmail.setText(nguoiMua.getUsername());
                     tvSDT.setText(nguoiMua.getPhone());
                     //
-                    ArrayList<DonHang> listDonHang = (ArrayList<DonHang>) PetShopFireBase.TABLE_DON_HANG.getData();
-                    for(DonHang donHang:listDonHang){
-                        if(donHang.getId_nguoi_mua().equals(id)){
-                            SanPham sanPham = ((ArrayList<SanPham>)PetShopFireBase.search("id", donHang.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM)).get(0);
-                            TinhTrangDonHang tinhTrangDonHang = ((ArrayList<TinhTrangDonHang>)PetShopFireBase.search("id", String.valueOf(donHang.getTinh_trang()), PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).get(0);
-                            data.add(new ThongTinDonHang(sanPham.getName(), tinhTrangDonHang.getName(), "Đánh giá"));
-                        }
-                    }
-                    ad.notifyDataSetChanged();
-
-                }
-                else handler.postDelayed(this,1000);
+                    data = (ArrayList<DonHang>) PetShopFireBase.search("id_nguoi_mua",idnm,PetShopFireBase.TABLE_DON_HANG);
+                    adapter = new AdapterDonHangNguoiMua(ThongTinUser.this, R.layout.listview_donhang_trangthai, data);
+                    lv1.setAdapter(adapter);
+                } else handler.postDelayed(this, 1000);
             }
         });
+    }
+
+    @Subscribe
+    public void onChanged(String table_name) {
+        if (table_name.equals(PetShopFireBase.TABLE_NGUOI_MUA.getName()) || table_name.equals(PetShopFireBase.TABLE_DON_HANG.getName()) || table_name.equals(PetShopFireBase.TABLE_SAN_PHAM.getName()) || table_name.equals(PetShopFireBase.TABLE_TINH_TRANG_DON_HANG.getName())) {
+            khoiTao();
+        }
     }
 }
