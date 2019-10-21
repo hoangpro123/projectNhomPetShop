@@ -15,6 +15,7 @@
         android:gravity="center"
         android:background="@drawable/shape_danh_muc_nguoi_ban_title">
         <TextView
+            android:id="@+id/tvNameShop"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:text="@string/title"

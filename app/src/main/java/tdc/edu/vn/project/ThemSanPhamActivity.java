@@ -26,6 +26,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,7 +45,7 @@ import tdc.edu.vn.project.Model.SanPham;
 
 public class ThemSanPhamActivity extends AppCompatActivity {
     String id = "null";
-    List<NguoiBan> data;
+    ArrayList<NguoiBan> data;
     Button Back, DangTin;
     ImageButton ThemSanPham;
     EditText TieuDe, ThongTinSanPham, Gia;
@@ -90,7 +91,6 @@ public class ThemSanPhamActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
                                 link = task.getResult().toString();
-
                             }
                         });
                     }
@@ -112,6 +112,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         Gia = (EditText) findViewById(R.id.edPrice);
         DangTin = (Button) findViewById(R.id.btnDangTin);
         Back = (Button) findViewById(R.id.btnBack);
+
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         if(Build.VERSION.SDK_INT >= 23){
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 69);
@@ -123,7 +124,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         DangTin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SanPham sp = new SanPham(TieuDe.getText().toString(), ThongTinSanPham.getText().toString(), link, "np001", Double.parseDouble(Gia.getText().toString()), new Date());
+                SanPham sp = new SanPham(TieuDe.getText().toString(), ThongTinSanPham.getText().toString(), link, id, Double.parseDouble(Gia.getText().toString()), new Date());
                 PetShopFireBase.pushItem(sp, PetShopFireBase.TABLE_SAN_PHAM);
                 Intent intent = new Intent(ThemSanPhamActivity.this, DanhSachSanPhamNguoiBanActivity.class);
                 startActivity(intent);
@@ -145,11 +146,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
                 startActivityForResult(intent, 96);
             }
         });
-//        StringBuilder builder = new StringBuilder();
-//        for (NguoiBan details : data) {
-//            builder.append(details + "\n");
-//        }
-//        ThongTinNguoiBan.setText(builder.toString());
+
     }
 
 
@@ -159,8 +156,8 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(PetShopFireBase.TABLE_NGUOI_BAN.status_data){
-                    Object o = PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_BAN);
-                    data = (List<NguoiBan>) o;
+                    data = (ArrayList<NguoiBan>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_BAN);
+                    ThongTinNguoiBan.setText("Tên Shop : " + data.get(0).getName() + "\n" + "Địa Chỉ : " + data.get(0).getAddress() + "\n" + "SĐT : "+data.get(0).getPhone());
                 }
                 else handler.postDelayed(this, 1000);
             }

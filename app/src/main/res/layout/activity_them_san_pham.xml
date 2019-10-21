@@ -37,6 +37,7 @@
                     android:textColor="@color/title"/>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -59,6 +60,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:backgroundTint="@color/actionBar"
+                android:textStyle="bold"
+                android:textSize="@dimen/textThemSanPham"
                 />
             <ImageButton
                 android:layout_marginTop="10dp"
@@ -78,6 +81,8 @@
                     android:id="@+id/edPrice"
                     android:backgroundTint="@color/actionBar"
                     android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/textThemSanPham"
                     />
                 <TextView
                     android:layout_marginTop="8dp"
@@ -89,51 +94,61 @@
                     android:textStyle="bold"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:background="@drawable/shape_them_san_pham"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:orientation="vertical"
-                android:gravity="center|top">
-                <TextView
-                    android:layout_marginTop="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/thongTinSanPham"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/textThemSanPham"
-                    />
-
-                <EditText
-                    android:id="@+id/edThongTinSanPham"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:background="@drawable/shape_them_san_pham"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:backgroundTint="@color/actionBar"
-                    />
-
-                <TextView
-                    android:layout_marginTop="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/thongTinNguoiBan"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/textThemSanPham"
-                    />
-
-                <TextView
-                    android:id="@+id/tvThongTinNguoiBan"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="10dp" />
-            </LinearLayout>
+                    android:layout_height="250dp"
+                    android:orientation="vertical"
+                    android:gravity="center|top">
+                    <TextView
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/thongTinSanPham"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textThemSanPham"
+                        />
+
+                    <EditText
+                        android:id="@+id/edThongTinSanPham"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:backgroundTint="@color/actionBar"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textThemSanPham"
+                        />
+
+                    <TextView
+                        android:layout_marginTop="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/thongTinNguoiBan"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textThemSanPham"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvThongTinNguoiBan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textThemSanPham"
+                        />
+                </LinearLayout>
+            </ScrollView>
             <Button
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="30dp"

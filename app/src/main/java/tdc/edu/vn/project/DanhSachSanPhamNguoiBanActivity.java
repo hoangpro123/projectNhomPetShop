@@ -66,8 +66,7 @@ public class DanhSachSanPhamNguoiBanActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(PetShopFireBase.TABLE_SAN_PHAM.status_data){
-                    Object o = PetShopFireBase.search("id_nguoi_ban",id_nguoi_ban, PetShopFireBase.TABLE_SAN_PHAM);
-                    data = (ArrayList<SanPham>) o;
+                    data = (ArrayList<SanPham>) PetShopFireBase.search("id_nguoi_ban",id_nguoi_ban, PetShopFireBase.TABLE_SAN_PHAM);
                     RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
                     myAdapter = new RecyclerViewAdapter(DanhSachSanPhamNguoiBanActivity.this,data);
                     myrv.setLayoutManager(new GridLayoutManager(DanhSachSanPhamNguoiBanActivity.this,2));

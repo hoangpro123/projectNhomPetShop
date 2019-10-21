@@ -52,14 +52,18 @@ public class PetShopFireBase {
     public static eTable TABLE_SAN_PHAM = eTable.SanPham;
 
 
-    public static ArrayList<PetShopModel> search(String field, Object value, eTable table) {
+    public static Object search(String sField, Object value, eTable table) {
         ArrayList<PetShopModel> results = new ArrayList<>();
         ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.getData();
         for (PetShopModel item : data) {
             try {
-                Field f = item.getClass().getDeclaredField(field);
-                f.setAccessible(true);
-                Object v = f.get(item);
+                Object v;
+                if (sField.equals("id")) v = item.getId();
+                else{
+                    Field field = item.getClass().getDeclaredField(sField);
+                    field.setAccessible(true);
+                    v = field.get(item);
+                }
                 boolean b = v.equals(value);
                 if (b) results.add(item);
                 if (!b && v instanceof Date) {
