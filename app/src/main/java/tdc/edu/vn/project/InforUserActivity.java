@@ -1,14 +1,21 @@
 package tdc.edu.vn.project;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import tdc.edu.vn.project.Model.NguoiMua;
+import tdc.edu.vn.project.User.ChangePass;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,7 +24,8 @@ public class InforUserActivity extends AppCompatActivity {
 
     EditText editName, editEmail, editSDT, editAddress;
     Button btnSave, btnChangePass;
-    RadioButton radNam, radNu;
+    RadioButton radGender;
+    RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,8 @@ public class InforUserActivity extends AppCompatActivity {
 
         setControl();
         setEvent();
+        LuuInfor();
+        ChangePass();
     }
 
     private void setControl() {
@@ -34,26 +44,93 @@ public class InforUserActivity extends AppCompatActivity {
         editSDT = (EditText) findViewById(R.id.editSDT);
         editAddress = (EditText) findViewById(R.id.editAddress);
         btnChangePass = (Button) findViewById(R.id.btnChangePass);
-        btnSave = (Button) findViewById(R.id.btnChangePass);
-        radNam = (RadioButton) findViewById(R.id.radNam);
-        radNu = (RadioButton) findViewById(R.id.radNu);
+        btnSave = (Button) findViewById(R.id.btnSave);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
     }
 
     private void setEvent() {
-       Intent intent = this.getIntent();
-       final String a = intent.getStringExtra("id");
-
-        final Handler handler =  new Handler();
+        final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(PetShopFireBase.TABLE_NGUOI_MUA.status_data){
-                    ArrayList<NguoiMua> data = (ArrayList<NguoiMua>)PetShopFireBase.TABLE_NGUOI_MUA.data;
-                    editName.setText(data.get(0).getUsername());
-                    editEmail.setText(a);
-                }
-                else handler.postDelayed(this, 1000);
+                if (PetShopFireBase.TABLE_NGUOI_MUA.status_data) {
+                    SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+                    String id = sharedPreferences.getString("id", "");
+                    NguoiMua nm = ((ArrayList<NguoiMua>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_MUA)).get(0);
+                    editName.setText(nm.getName());
+                    editEmail.setText(nm.getUsername());
+                    editSDT.setText(nm.getPhone());
+                    if (nm.getGender().equals("Nam")) {
+                        radioGroup.check(R.id.radNam);
+                    } else {
+                        radioGroup.check(R.id.radNu);
+                    }
+                    editAddress.setText(nm.getAddress());
+
+                } else handler.postDelayed(this, 1000);
             }
         });
     }
+
+    public void LuuInfor() {
+        SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+        final String id = sharedPreferences.getString("id", "");
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (PetShopFireBase.TABLE_NGUOI_MUA.status_data) {
+                    btnSave.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(InforUserActivity.this);
+                            builder.setTitle("Thong bao");
+                            builder.setMessage("Ban co muon sua khong?");
+                            builder.setCancelable(false);
+                            builder.setPositiveButton("Khong", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(InforUserActivity.this, "Khong xoa", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            builder.setNegativeButton("Co", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    NguoiMua nm = ((ArrayList<NguoiMua>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_MUA)).get(0);
+                                    nm.setName(editName.getText().toString());
+                                    nm.setUsername(editEmail.getText().toString());
+                                    nm.setAddress(editAddress.getText().toString());
+                                    nm.setPhone(editSDT.getText().toString());
+                                    int rad = radioGroup.getCheckedRadioButtonId();
+                                    radGender = findViewById(rad);
+                                    nm.setGender(radGender.getText().toString());
+        //                            switch (radioGroup.getCheckedRadioButtonId()) {
+        //                                case R.id.radNam:
+        //                                    nm.setGender("Nam");
+        //                                case R.id.radNu:
+        //                                    nm.setGender("Nu");
+        //                            }
+                                    PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
+                                }
+                            });
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
+                        }
+                    });
+                }else handler.postDelayed(this, 1000);
+            }
+        });
+
+
+    }
+    public void ChangePass(){
+        btnChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InforUserActivity.this, ChangePass.class);
+                startActivity(intent);
+            }
+        });
+    }
+
 }

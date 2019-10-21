@@ -1,5 +1,7 @@
 package tdc.edu.vn.project;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -59,16 +61,9 @@ public class HomeClient extends Fragment
         View view = inflater.inflate(R.layout.home_client, null);
 
 
-
-        textView= (TextView)view.findViewById(R.id.txt);
-
-        Bundle bundle = getArguments();
-        if (bundle != null){
-            //textView.setText(bundle.getString("id"));
-            String a = getArguments().getString("id");
-            textView.setText(a);
-        }
-
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+        String id = sharedPreferences.getString("id", "");
+            ///textView.setText(id);
 
 
         myrv = view.findViewById(R.id.recyclerview);

@@ -1,6 +1,8 @@
 package tdc.edu.vn.project.User;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.os.Handler;
@@ -56,6 +58,7 @@ public class Login extends AppCompatActivity {
     EditText edtTaiKhoan, edtMatKhau;
     Button btnDangNhap;
     RadioGroup rdbLuaChon;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,9 +86,14 @@ public class Login extends AppCompatActivity {
                             for (int i = 0; i < data.size(); i++){
                                 if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())){
                                     Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("id", data.get(i).getId());
-                                    intent.putExtras(bundle);
+//                                    Bundle bundle = new Bundle();
+//                                    bundle.putString("id", data.get(i).getId());
+//                                    intent.putExtras(bundle);
+                                    sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("id", data.get(i).getId()).apply();
+
+
                                     startActivity(intent);
                                     finish();
                                     return;
@@ -106,6 +114,7 @@ public class Login extends AppCompatActivity {
         edtMatKhau = (EditText)findViewById(R.id.edtMatKhau);
         btnDangNhap = (Button)findViewById(R.id.btnDangNhap);
         rdbLuaChon = (RadioGroup)findViewById(R.id.rdbLuaChon);
+
     }
 
 
