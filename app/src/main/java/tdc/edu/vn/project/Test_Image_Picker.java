@@ -1,6 +1,9 @@
 package tdc.edu.vn.project;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.Application;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,6 +32,8 @@ import java.io.InputStream;
 import java.util.Calendar;
 
 import tdc.edu.vn.project.Model.NguoiMua;
+import tdc.edu.vn.project.Model.PetShopModel;
+import tdc.edu.vn.project.Model.SanPham;
 
 public class Test_Image_Picker extends AppCompatActivity {
     ImageButton btnPick;
@@ -86,7 +91,6 @@ public class Test_Image_Picker extends AppCompatActivity {
         setContentView(R.layout.activity_test__image__picker);
 
         btnPick = findViewById(R.id.btnPicker);
-
 
         if(Build.VERSION.SDK_INT >= 23){
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 69);

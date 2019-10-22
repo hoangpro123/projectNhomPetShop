@@ -1,6 +1,7 @@
 package tdc.edu.vn.project;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 import android.view.LayoutInflater;

@@ -2,6 +2,7 @@ package tdc.edu.vn.project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 import tdc.edu.vn.project.Model.DonHang;
 import tdc.edu.vn.project.Model.NguoiMua;
+import tdc.edu.vn.project.Model.SanPham;
 
 
 import com.squareup.otto.Subscribe;
@@ -49,6 +51,7 @@ public class ThongTinUser extends AppCompatActivity {
     }
 
     public void setEvent() {
+        PetShopFireBase.removeItem("null", PetShopFireBase.TABLE_DANH_SACH_DEN);
         khoiTao();
     }
 

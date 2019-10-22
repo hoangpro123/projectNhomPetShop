@@ -196,7 +196,7 @@ public class PetShopFireBase {
         return key;
     }
 
-    private static PetShopModel findItem(String id, eTable table) {
+    public static PetShopModel findItem(String id, eTable table) {
         final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
         for (PetShopModel item : data) {
             if (item.getId().equals(id))
