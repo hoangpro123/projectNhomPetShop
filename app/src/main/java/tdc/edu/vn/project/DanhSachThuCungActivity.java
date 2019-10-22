@@ -60,19 +60,6 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-//                if(stringDanhMuc[position].equals("Chó")){
-//
-//                }
-//                final Handler handler = new Handler();
-//                handler.post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id && PetShopFireBase.TABLE_SAN_PHAM.status_count && PetShopFireBase.TABLE_SAN_PHAM.status_TABLE){
-//                            myAdapter.notifyDataSetChanged();
-//                        }
-//                        else handler.postDelayed(this, 1000);
-//                    }
-//                });
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -82,7 +69,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         spLoai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //tvLoai.setText(stringLoai[position]);
+
             }
 
             @Override
@@ -99,7 +86,6 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
                 }else{
                     PetShopFireBase.sortList( "price", PetShopFireBase.TABLE_SAN_PHAM, false);
                 }
-                //PetShopFireBase.sortList( "price", PetShopFireBase.TABLE_SAN_PHAM, true);
                 final Handler handler = new Handler();
                 handler.post(new Runnable() {
                     @Override
@@ -126,7 +112,6 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
                 Toast.makeText(DanhSachThuCungActivity.this, s, Toast.LENGTH_SHORT).show();
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String s) {
                 myAdapter.filter(s);
@@ -177,6 +162,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
     }
+
     public static String removeAccent(String s) {
 
         String temp = Normalizer.normalize(s, Normalizer.Form.NFD);

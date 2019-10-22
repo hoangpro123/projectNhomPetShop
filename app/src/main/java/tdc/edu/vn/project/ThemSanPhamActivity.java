@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -50,8 +51,9 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     ImageButton ThemSanPham;
     EditText TieuDe, ThongTinSanPham, Gia;
     TextView ThongTinNguoiBan;
-    String link;
+    byte[] bytes = null;
     String currentDateTimeString;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,42 +62,26 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         setControl();
         setEvent();
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == 69 && permissions[0].equals(Manifest.permission.READ_EXTERNAL_STORAGE) && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        if (requestCode == 69 && permissions[0].equals(Manifest.permission.READ_EXTERNAL_STORAGE) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
         }
     }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == 96 && resultCode == RESULT_OK && data != null){
+        if (requestCode == 96 && resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
             ThemSanPham.setImageURI(uri);
             try {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
 
-                //
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-                byte[] bytes = byteArrayOutputStream.toByteArray();
-
-                UploadTask uploadTask = PetShopFireBase.fireBaseStorage.child("img" + Calendar.getInstance().getTimeInMillis()).putBytes(bytes);
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Uri> task) {
-                                link = task.getResult().toString();
-                            }
-                        });
-                    }
-                });
-
+                bytes = byteArrayOutputStream.toByteArray();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -114,26 +100,43 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         Back = (Button) findViewById(R.id.btnBack);
 
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-        if(Build.VERSION.SDK_INT >= 23){
+        if (Build.VERSION.SDK_INT >= 23) {
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 69);
         }
     }
-
 
     private void setEvent() {
         DangTin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SanPham sp = new SanPham(TieuDe.getText().toString(), ThongTinSanPham.getText().toString(), link, id, Double.parseDouble(Gia.getText().toString()), new Date());
-                PetShopFireBase.pushItem(sp, PetShopFireBase.TABLE_SAN_PHAM);
-                Intent intent = new Intent(ThemSanPhamActivity.this, DanhSachSanPhamNguoiBanActivity.class);
-                startActivity(intent);
+                if(bytes == null){
+                    Toast.makeText(getApplicationContext(), "Chưa chọn hình", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    UploadTask uploadTask = PetShopFireBase.fireBaseStorage.child("img" + Calendar.getInstance().getTimeInMillis()).putBytes(bytes);
+                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    String link = task.getResult().toString();
+                                    SanPham sp = new SanPham(TieuDe.getText().toString(), ThongTinSanPham.getText().toString(), link, id, Double.parseDouble(Gia.getText().toString()), new Date());
+                                    PetShopFireBase.pushItem(sp, PetShopFireBase.TABLE_SAN_PHAM);
+                                    Intent intent = new Intent(getApplicationContext(), DanhSachSanPhamNguoiBanActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            });
+                        }
+                    });
+                }
             }
         });
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ThemSanPhamActivity.this, DanhMucNguoiBanActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DanhMucNguoiBanActivity.class);
                 startActivity(intent);
             }
         });
@@ -146,23 +149,19 @@ public class ThemSanPhamActivity extends AppCompatActivity {
                 startActivityForResult(intent, 96);
             }
         });
-
     }
-
 
     private void getFirebaseSanPham() {
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(PetShopFireBase.TABLE_NGUOI_BAN.status_data){
+                if (PetShopFireBase.TABLE_NGUOI_BAN.status_data) {
                     data = (ArrayList<NguoiBan>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_BAN);
-                    ThongTinNguoiBan.setText("Tên Shop : " + data.get(0).getName() + "\n" + "Địa Chỉ : " + data.get(0).getAddress() + "\n" + "SĐT : "+data.get(0).getPhone());
-                }
-                else handler.postDelayed(this, 1000);
+                    ThongTinNguoiBan.setText("Tên Shop : " + data.get(0).getName() + "\n" + "Địa Chỉ : " + data.get(0).getAddress() + "\n" + "SĐT : " + data.get(0).getPhone());
+                } else handler.postDelayed(this, 1000);
             }
         });
-
     }
 
 }
