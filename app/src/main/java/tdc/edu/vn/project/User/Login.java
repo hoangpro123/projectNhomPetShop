@@ -70,7 +70,7 @@ public class Login extends AppCompatActivity {
 
     }
 
-    public void setEvent() {
+    public  void setEvent() {
         final Handler handler = new Handler();
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override

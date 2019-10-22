@@ -77,4 +77,6 @@
     <string name="thongtintaikhoan">THÔNG TIN TÀI KHOẢN</string>
     <string name="luu">Lưu</string>
     <string name="doimatkhau">Đổi mật khẩu</string>
+
+    <string name="danhsachden">Danh Sách Đen</string>
 </resources>
