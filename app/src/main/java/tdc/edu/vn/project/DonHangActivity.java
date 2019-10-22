@@ -1,10 +1,5 @@
 package tdc.edu.vn.project;
 
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -29,7 +24,7 @@ public class DonHangActivity extends AppCompatActivity {
     EditText etContent;
     Button btnGui;
 
-    String id;
+    String iddh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +40,11 @@ public class DonHangActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(PetShopFireBase.TABLE_DON_HANG.status_data && PetShopFireBase.TABLE_SAN_PHAM.status_data && PetShopFireBase.TABLE_NGUOI_BAN.status_data){
-                    id = getIntent().getStringExtra("id");
-                    DonHang dh = (DonHang) ((ArrayList<PetShopModel>)PetShopFireBase.search("id", id, PetShopFireBase.TABLE_DON_HANG)).get(0);
-                    SanPham sp = (SanPham) ((ArrayList<PetShopModel>)PetShopFireBase.search("id", dh.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM)).get(0);
-                    NguoiBan nb = (NguoiBan) ((ArrayList<PetShopModel>)PetShopFireBase.search("id", sp.getId_nguoi_ban(), PetShopFireBase.TABLE_NGUOI_BAN)).get(0);
+                    iddh = getIntent().getStringExtra("id");
+                    DonHang dh = (DonHang) PetShopFireBase.findItem(iddh,PetShopFireBase.TABLE_DON_HANG);
+                    SanPham sp = (SanPham) PetShopFireBase.findItem(dh.getId_san_pham(),PetShopFireBase.TABLE_SAN_PHAM);
+                    NguoiBan nb = (NguoiBan) PetShopFireBase.findItem(sp.getId_nguoi_ban(),PetShopFireBase.TABLE_NGUOI_BAN);
+
                     tvMaDonHang.setText(dh.getId());
                     tvTenDonHang.setText(sp.getName());
                     tvGia.setText(sp.getPrice() + " đ");

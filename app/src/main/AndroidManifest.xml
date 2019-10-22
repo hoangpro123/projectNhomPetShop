@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DemoChuyenManHinh" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         </activity>
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".ThongTinNguoiDung">
@@ -19,19 +20,21 @@
         </activity>
         <activity android:name=".ThongTinTaiKhoan2" />
         <activity android:name=".ThongTinUser" >
+
+        </activity>
+        <activity android:name=".QuenMatKhau" />
+        <activity android:name=".DoiMatKhau" />
+        <activity android:name=".ThongTinTaiKhoan">
+
+        </activity>
+        <activity android:name=".GioHang" />
+        <activity android:name=".ChiTietThuCung" />
+        <activity android:name=".QuanLyDonHangNguoiBan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".QuenMatKhau" />
-        <activity android:name=".DoiMatKhau" />
-        <activity android:name=".ThongTinTaiKhoan" />
-        <activity android:name=".GioHang" />
-        <activity android:name=".ChiTietThuCung" />
-        <activity android:name=".QuanLyDonHangNguoiBan">
-
         </activity>
         <activity android:name=".DonHangActivity">
 

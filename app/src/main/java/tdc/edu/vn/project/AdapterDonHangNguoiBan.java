@@ -60,23 +60,23 @@ public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
 
         holder.tvID_DON_HANG.setText(item.getId());
 
-        TinhTrangDonHang tinhTrangDonHang = ((ArrayList<TinhTrangDonHang>) PetShopFireBase.search("id", String.valueOf(item.getTinh_trang()), PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).get(0);
+        TinhTrangDonHang tinhTrangDonHang = (TinhTrangDonHang) PetShopFireBase.findItem(String.valueOf(item.getTinh_trang()),PetShopFireBase.TABLE_TINH_TRANG_DON_HANG);
 
         holder.tvTINH_TRANG.setText(tinhTrangDonHang.getName());
 
         ArrayList<String> dsSpinner = new ArrayList<>();
         switch (item.getTinh_trang()) {
             case 0:
-                dsSpinner.add(((ArrayList<TinhTrangDonHang>) PetShopFireBase.search("id", "1", PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).get(0).getName());
-                dsSpinner.add(((ArrayList<TinhTrangDonHang>) PetShopFireBase.search("id", "5", PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).get(0).getName());
+                dsSpinner.add(((TinhTrangDonHang) PetShopFireBase.findItem("1",PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).getName());
+                dsSpinner.add(((TinhTrangDonHang) PetShopFireBase.findItem("5",PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).getName());
                 break;
             case 1:
-                dsSpinner.add(((ArrayList<TinhTrangDonHang>) PetShopFireBase.search("id", "2", PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).get(0).getName());
-                dsSpinner.add(((ArrayList<TinhTrangDonHang>) PetShopFireBase.search("id", "5", PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).get(0).getName());
+                dsSpinner.add(((TinhTrangDonHang) PetShopFireBase.findItem("2",PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).getName());
+                dsSpinner.add(((TinhTrangDonHang) PetShopFireBase.findItem("5",PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).getName());
                 break;
             case 2:
-                dsSpinner.add(((ArrayList<TinhTrangDonHang>) PetShopFireBase.search("id", "3", PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).get(0).getName());
-                dsSpinner.add(((ArrayList<TinhTrangDonHang>) PetShopFireBase.search("id", "5", PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).get(0).getName());
+                dsSpinner.add(((TinhTrangDonHang) PetShopFireBase.findItem("3",PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).getName());
+                dsSpinner.add(((TinhTrangDonHang) PetShopFireBase.findItem("5",PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).getName());
                 break;
         }
         if(dsSpinner.size() == 0){
@@ -97,9 +97,6 @@ public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
                 }
             });
         }
-
-
-
         return view;
     }
 

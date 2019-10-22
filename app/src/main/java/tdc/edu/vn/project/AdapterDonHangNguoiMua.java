@@ -44,14 +44,16 @@ public class AdapterDonHangNguoiMua extends ArrayAdapter<DonHang> {
         } else holder = (CountryHolder) view.getTag();
 
         DonHang donHang = data.get(position);
-        SanPham sanPham = ((ArrayList<SanPham>) PetShopFireBase.search("id", donHang.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM)).get(0);
-        TinhTrangDonHang tinhTrangDonHang = ((ArrayList<TinhTrangDonHang>) PetShopFireBase.search("id", String.valueOf(donHang.getTinh_trang()), PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).get(0);
+
+        SanPham sanPham = (SanPham) PetShopFireBase.findItem(donHang.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM);;
+
+        TinhTrangDonHang tinhTrangDonHang = (TinhTrangDonHang) PetShopFireBase.findItem(String.valueOf(donHang.getTinh_trang()),PetShopFireBase.TABLE_TINH_TRANG_DON_HANG);
         //
         holder.cbTenHang.setText(sanPham.getName());
 
         holder.txtTrangThai.setText(tinhTrangDonHang.getName());
 
-        TinhTrangDonHang daHoanThanh = ((ArrayList<TinhTrangDonHang>)PetShopFireBase.search("id", "3", PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).get(0);
+        TinhTrangDonHang daHoanThanh = (TinhTrangDonHang) PetShopFireBase.findItem("3",PetShopFireBase.TABLE_TINH_TRANG_DON_HANG);
         if (tinhTrangDonHang.getName().equals(daHoanThanh.getName())) holder.btnDanhGia.setVisibility(View.VISIBLE);
         else holder.btnDanhGia.setVisibility(View.INVISIBLE);
         holder.btnDanhGia.setOnClickListener(new View.OnClickListener() {

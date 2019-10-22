@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import tdc.edu.vn.project.Model.DonHang;
 import tdc.edu.vn.project.Model.NguoiMua;
@@ -39,6 +40,7 @@ public class ThongTinUser extends AppCompatActivity {
         setControl();
         setEvent();
 
+
     }
 
     public void setControl() {
@@ -61,7 +63,7 @@ public class ThongTinUser extends AppCompatActivity {
             @Override
             public void run() {
                 if (PetShopFireBase.TABLE_NGUOI_MUA.status_data && PetShopFireBase.TABLE_DON_HANG.status_data && PetShopFireBase.TABLE_SAN_PHAM.status_data && PetShopFireBase.TABLE_TINH_TRANG_DON_HANG.status_data) {
-                    NguoiMua nguoiMua = ((ArrayList<NguoiMua>) PetShopFireBase.search("id", idnm, PetShopFireBase.TABLE_NGUOI_MUA)).get(0);
+                    NguoiMua nguoiMua = (NguoiMua) PetShopFireBase.findItem(idnm,PetShopFireBase.TABLE_NGUOI_MUA);
                     tvName.setText(nguoiMua.getName());
                     tvEmail.setText(nguoiMua.getUsername());
                     tvSDT.setText(nguoiMua.getPhone());
