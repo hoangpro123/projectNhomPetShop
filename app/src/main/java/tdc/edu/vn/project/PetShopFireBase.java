@@ -283,34 +283,6 @@ public class PetShopFireBase {
         });
     }
 
-    public static void initial() {
-        TABLE_NGUOI_MUA.TABLE_DATA.child("null").setValue(new NguoiMua("NguoiMua", "nm001", "123456", "09123456789", "hcm", "link", "Nữ"));
-        TABLE_DANH_GIA.TABLE_DATA.child("null").setValue(new DanhGia("nm001", "nb001", "ndsfs", (float) 3.5));
-        TABLE_DANH_SACH_DEN.TABLE_DATA.child("null").setValue(new DanhSachDen("nm001", "nb001"));
-        TABLE_DON_HANG.TABLE_DATA.child("null").setValue(new DonHang("nm001", "nb001", "ndsfs", 2, 1, (double) 120000));
-        TABLE_GIAO_HANG.TABLE_DATA.child("null").setValue(new GiaoHang("nm001", new Date()));
-        TABLE_GIO_HANG.TABLE_DATA.child("null").setValue(new GioHang("nm001", "nb001"));
-        TABLE_HOA_HONG.TABLE_DATA.child("null").setValue(new HoaHong((float) 1, new Date(), (double) 563.333));
-        TABLE_NGUOI_BAN.TABLE_DATA.child("null").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "Nam", "hh001"));
-        TABLE_NGUOI_GIAO.TABLE_DATA.child("null").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));
-        TABLE_QUAN_LY.TABLE_DATA.child("null").setValue(new QuanLy("nm001", "nb001", "ndsfs"));
-        TABLE_SAN_PHAM.TABLE_DATA.child("null").setValue(new SanPham("nm001", "nb001", "ndsfs", "nb003", (double) 1930000, new Date()));
-        TABLE_YEU_CAU_CHINH_SUA.TABLE_DATA.child("null").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "Nam", "hh001"));
-        //
-        TABLE_NGUOI_MUA.TABLE_LAST_ID.setValue(1);
-        TABLE_DANH_GIA.TABLE_LAST_ID.setValue(1);
-        TABLE_DANH_SACH_DEN.TABLE_LAST_ID.setValue(1);
-        TABLE_DON_HANG.TABLE_LAST_ID.setValue(1);
-        TABLE_GIAO_HANG.TABLE_LAST_ID.setValue(1);
-        TABLE_HOA_HONG.TABLE_LAST_ID.setValue(1);
-        TABLE_NGUOI_BAN.TABLE_LAST_ID.setValue(1);
-        TABLE_NGUOI_GIAO.TABLE_LAST_ID.setValue(1);
-        TABLE_QUAN_LY.TABLE_LAST_ID.setValue(1);
-        TABLE_SAN_PHAM.TABLE_LAST_ID.setValue(1);
-        TABLE_YEU_CAU_CHINH_SUA.TABLE_LAST_ID.setValue(1);
-        //
-    }
-
     public enum eTable {
         NguoiMua("TABLE_NGUOI_MUA", "nm", 3, NguoiMua.class),
         NguoiBan("TABLE_NGUOI_BAN", "nb", 3, NguoiBan.class),

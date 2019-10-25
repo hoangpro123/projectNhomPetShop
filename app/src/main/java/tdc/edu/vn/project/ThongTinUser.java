@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import tdc.edu.vn.project.Model.DonHang;
+import tdc.edu.vn.project.Model.GioHang;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
 
@@ -53,7 +54,6 @@ public class ThongTinUser extends AppCompatActivity {
     }
 
     public void setEvent() {
-        PetShopFireBase.removeItem("null", PetShopFireBase.TABLE_DANH_SACH_DEN);
         khoiTao();
     }
 

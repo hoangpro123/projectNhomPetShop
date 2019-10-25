@@ -33,6 +33,10 @@ public class DonHangActivity extends AppCompatActivity {
 
         setControl();
         setEvent();
+
+        Object o = 4;
+        Integer f = 3;
+
     }
     void setEvent(){
         Handler handler = new Handler();

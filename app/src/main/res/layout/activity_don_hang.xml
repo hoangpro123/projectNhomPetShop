@@ -133,11 +133,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
-                android:stepSize="0.5"
                 android:progressBackgroundTint="@color/gray"
                 android:progressTint="@color/yellow"
                 android:rating="2.5"
-                android:secondaryProgressTint="@color/yellow"/>
+                android:secondaryProgressTint="@color/yellow"
+                android:stepSize="0.5" />
 
         </LinearLayout>
 
