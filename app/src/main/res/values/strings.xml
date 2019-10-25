@@ -2,6 +2,7 @@
     <string name="app_name">project</string>
     <string name="chuyen">GO</string>
     <string name="title_chitietthucung">CHI TIẾT THÚ CƯNG</string>
+    <string name="titlt_ttcanhan">Thông tin cá nhân</string>
     <string name="title_ttCaNhan">Thông tin cá nhân</string>
     <string name="tenthucung_chitietthucung">MÈO ANH LÔNG NGẮN</string>
     <string name="gia">Giá:</string>
@@ -31,9 +32,9 @@
     <string name="muangay">Mua ngay</string>
     <string name="vuilongnhaptaikhoan">Vui lòng nhập tài khoản</string>
     <string name="vuilongnhapmatkhau">Vui lòng nhập mật khẩu</string>
-    <string name="matkhaumoi">Vui lòng nhập mật khẩu mới</string>
-    <string name="matkhaumoi1">Vui lòng nhập lại mật khẩu mới</string>
-    <string name="matkhaucu">Vui lòng nhập mật khẩu hiện tại</string>
+    <string name="matkhaumoi">Nhập mật khẩu mới</string>
+    <string name="matkhaumoi1">Nhập lại mật khẩu mới</string>
+    <string name="matkhaucu">Nhập mật khẩu hiện tại</string>
     <string name="ghinho">Ghi nhớ</string>
     <string name="nguoimua">Người mua</string>
     <string name="nguoiban">Người bán</string>
@@ -97,4 +98,15 @@
     <string name="thongtintaikhoan">THÔNG TIN TÀI KHOẢN</string>
     <string name="luu">Lưu</string>
     <string name="doimatkhau">Đổi mật khẩu</string>
+
+
+    <string name="tb">Thông báo</string>
+    <string name="bancomuonsuakhong">Bạn có muốn sửa không?</string>
+    <string name="ko">Không</string>
+    <string name="co">Có</string>
+    <string name="koxoa">Không xóa</string>
+    <string name="mksai">Mật khẩu nhập lại không khớp</string>
+    <string name="saimkhientai">Sai mật khẩu hiện tại</string>
+
+
 </resources>

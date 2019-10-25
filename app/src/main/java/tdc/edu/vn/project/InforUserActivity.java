@@ -84,16 +84,16 @@ public class InforUserActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(InforUserActivity.this);
-                            builder.setTitle("Thong bao");
-                            builder.setMessage("Ban co muon sua khong?");
+                            builder.setTitle(getResources().getString(R.string.tb));
+                            builder.setMessage(getResources().getString(R.string.bancomuonsuakhong));
                             builder.setCancelable(false);
-                            builder.setPositiveButton("Khong", new DialogInterface.OnClickListener() {
+                            builder.setPositiveButton(getResources().getString(R.string.ko), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Toast.makeText(InforUserActivity.this, "Khong xoa", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(InforUserActivity.this, getResources().getString(R.string.koxoa), Toast.LENGTH_SHORT).show();
                                 }
                             });
-                            builder.setNegativeButton("Co", new DialogInterface.OnClickListener() {
+                            builder.setNegativeButton(getResources().getString(R.string.co), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     NguoiMua nm = ((ArrayList<NguoiMua>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_MUA)).get(0);
@@ -111,6 +111,7 @@ public class InforUserActivity extends AppCompatActivity {
         //                                    nm.setGender("Nu");
         //                            }
                                     PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
+                                    Toast.makeText(InforUserActivity.this, "Lưu thành công", Toast.LENGTH_SHORT).show();
                                 }
                             });
                             AlertDialog alertDialog = builder.create();

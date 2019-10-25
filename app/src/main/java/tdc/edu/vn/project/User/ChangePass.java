@@ -1,11 +1,14 @@
 package tdc.edu.vn.project.User;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import tdc.edu.vn.project.InforUserActivity;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,7 +43,7 @@ public class ChangePass extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
         final String id = sharedPreferences.getString("id", "");
 
-        Handler handler = new Handler();
+        final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -48,30 +51,51 @@ public class ChangePass extends AppCompatActivity {
                     btnChangePass.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            NguoiMua nm = ((ArrayList<NguoiMua>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_MUA)).get(0);
-                            String oPass = nm.getPassword();
-                            //editOldPass.setText(oPass);
-                            if(editOldPass.getText().toString().equals(oPass)){
-                                if(editNewPass1.getText().toString().equals(editNewPass.getText().toString())){
-                                    nm.setPassword(editNewPass1.getText().toString());
-                                    PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
-                                } else {
-                                    Toast.makeText(ChangePass.this, "Mật khẩu nhập lại không khớp", Toast.LENGTH_SHORT).show();
-                                }
-                               // Toast.makeText(ChangePass.this, "OK", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(ChangePass.this, "Sai mật khẩu hiện tại", Toast.LENGTH_SHORT).show();
+                            if(!editOldPass.getText().toString().equals("") && !editNewPass1.getText().toString().equals("") && !editNewPass.getText().toString().equals("")){
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ChangePass.this);
+                                builder.setTitle(getResources().getString(R.string.tb));
+                                builder.setMessage(getResources().getString(R.string.bancomuonsuakhong));
+                                builder.setCancelable(false);
+                                builder.setPositiveButton(getResources().getString(R.string.ko), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Toast.makeText(ChangePass.this, getResources().getString(R.string.koxoa), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                builder.setNegativeButton(getResources().getString(R.string.co), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        NguoiMua nm = ((ArrayList<NguoiMua>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_MUA)).get(0);
+                                        String oPass = nm.getPassword();
+                                        //editOldPass.setText(oPass);
+                                        if(editOldPass.getText().toString().equals(oPass)){
+                                            if(editNewPass1.getText().toString().equals(editNewPass.getText().toString())){
+                                                nm.setPassword(editNewPass1.getText().toString());
+                                                PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
+                                            } else {
+                                                Toast.makeText(ChangePass.this, getResources().getString(R.string.mksai), Toast.LENGTH_SHORT).show();
+                                            }
+                                            // Toast.makeText(ChangePass.this, "OK", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(ChangePass.this, getResources().getString(R.string.saimkhientai), Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    }
+                                });
+                                AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
+                            }
+                            else {
+                                Toast.makeText(ChangePass.this, "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
 
                             }
                         }
                     });
                 }
+                else handler.postDelayed(this, 1000);
             }
         });
 
     }
-    public void CheckPass(){
-        SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
-        final String id = sharedPreferences.getString("id", "");
-    }
+
 }

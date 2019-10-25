@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_chitietthucung"
+                android:text="@string/title_ttCaNhan"
                 style="@style/titleheader_chitietthucung">
             </TextView>
         </LinearLayout>
@@ -136,14 +136,14 @@
                     android:checked="true"
                     android:id="@+id/radNam"
                     android:paddingHorizontal="10dp"
-                    android:text="Nam" />
+                    android:text="@string/nam" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/radNu"
                     android:paddingHorizontal="10dp"
-                    android:text="Nữ" />
+                    android:text="@string/nu"/>
             </RadioGroup>
 
             <EditText
