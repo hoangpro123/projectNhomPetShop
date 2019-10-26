@@ -1,17 +1,13 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Screen;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.lang.reflect.Field;
-
-import tdc.edu.vn.project.Model.DonHang;
-import tdc.edu.vn.project.Model.PetShopModel;
+import tdc.edu.vn.project.R;
 
 public class DemoChuyenManHinh extends AppCompatActivity {
 
@@ -23,7 +19,7 @@ public class DemoChuyenManHinh extends AppCompatActivity {
         ((Button) findViewById(R.id.btnChuyen)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DemoChuyenManHinh.this, DonHangActivity.class);
+                Intent intent = new Intent(DemoChuyenManHinh.this, DanhGiaActivity.class);
                 intent.putExtra("id", "dh002");
                 startActivity(intent);
             }

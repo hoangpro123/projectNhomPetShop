@@ -1,7 +1,9 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,9 @@ import java.util.ArrayList;
 import tdc.edu.vn.project.Model.DonHang;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.Model.TinhTrangDonHang;
+import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.R;
+import tdc.edu.vn.project.Screen.DanhGiaActivity;
 
 public class AdapterDonHangNguoiMua extends ArrayAdapter<DonHang> {
     Context context;
@@ -59,7 +64,10 @@ public class AdapterDonHangNguoiMua extends ArrayAdapter<DonHang> {
         holder.btnDanhGia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), donHang.getId(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), DanhGiaActivity.class);
+
+                intent.putExtra("iddh",donHang.getId());
+                getContext().startActivity(intent);
             }
         });
 

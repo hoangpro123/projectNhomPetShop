@@ -1,4 +1,4 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,15 +6,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
 
+import tdc.edu.vn.project.Adapter.AdapterDonHangNguoiBan;
 import tdc.edu.vn.project.Model.DonHang;
 import tdc.edu.vn.project.Model.SanPham;
-import tdc.edu.vn.project.Model.TinhTrangDonHang;
+import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.R;
 
 public class QuanLyDonHangNguoiBan extends AppCompatActivity {
     String id_nguoi_ban = "null";

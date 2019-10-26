@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Test_Image_Picker">
+    tools:context=".etc.Test_Image_Picker">
     <ImageButton
         android:id="@+id/btnPicker"
         android:text="Chọn hình"

@@ -252,6 +252,7 @@ public class PetShopFireBase {
                     @Override
                     public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                         data.remove(findItem(dataSnapshot.getKey(), table));
+                        count[0] = data.size();
                         bus.post(table.getName());
                     }
 

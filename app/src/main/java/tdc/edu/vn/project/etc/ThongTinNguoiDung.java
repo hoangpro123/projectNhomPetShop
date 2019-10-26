@@ -1,14 +1,16 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.etc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class GioHang extends AppCompatActivity {
+import tdc.edu.vn.project.R;
+
+public class ThongTinNguoiDung extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_giohang);
+        setContentView(R.layout.layout_thongtinnguoidung);
     }
 }

@@ -1,4 +1,4 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.etc;
 
 import android.Manifest;
 import android.app.Activity;
@@ -34,6 +34,8 @@ import java.util.Calendar;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.R;
 
 public class Test_Image_Picker extends AppCompatActivity {
     ImageButton btnPick;

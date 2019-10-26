@@ -11,35 +11,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DemoChuyenManHinh" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".Screen.DemoChuyenManHinh" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         </activity>
-        <activity android:name=".ThongTinNguoiDung">
+        <activity android:name=".etc.ThongTinNguoiDung">
 
         </activity>
-        <activity android:name=".ThongTinTaiKhoan2" />
-        <activity android:name=".ThongTinUser" >
+        <activity android:name=".etc.ThongTinTaiKhoan2" />
+        <activity android:name=".Screen.ThongTinUser" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuenMatKhau" />
-        <activity android:name=".DoiMatKhau" />
-        <activity android:name=".ThongTinTaiKhoan">
+        <activity android:name=".etc.QuenMatKhau" />
+        <activity android:name=".etc.DoiMatKhau" />
+        <activity android:name=".etc.ThongTinTaiKhoan">
 
         </activity>
-        <activity android:name=".GioHang" />
-        <activity android:name=".ChiTietThuCung" />
-        <activity android:name=".QuanLyDonHangNguoiBan">
+        <activity android:name=".Screen.GioHangScreen" />
+        <activity android:name=".etc.ChiTietThuCung" />
+        <activity android:name=".Screen.QuanLyDonHangNguoiBan">
 
         </activity>
-        <activity android:name=".DonHangActivity">
+        <activity android:name=".Screen.DanhGiaActivity">
 
         </activity>
-        <activity android:name=".Test_Image_Picker" />
+        <activity android:name=".etc.Test_Image_Picker" />
         <activity
-            android:name=".User.DangKi"
+            android:name=".Screen.DangKi"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 

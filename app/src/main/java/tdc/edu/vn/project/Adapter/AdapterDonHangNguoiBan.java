@@ -1,4 +1,4 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Adapter;
 
 import android.app.Activity;
 import android.app.Application;
@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import tdc.edu.vn.project.Model.DonHang;
 import tdc.edu.vn.project.Model.QuanLy;
 import tdc.edu.vn.project.Model.TinhTrangDonHang;
+import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.R;
 
 public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
     Context context;

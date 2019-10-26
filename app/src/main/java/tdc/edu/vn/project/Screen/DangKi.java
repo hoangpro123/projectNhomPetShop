@@ -1,12 +1,10 @@
-package tdc.edu.vn.project.User;
+package tdc.edu.vn.project.Screen;
 
 import android.os.Bundle;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,15 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.squareup.otto.Subscribe;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
 import tdc.edu.vn.project.Model.NguoiMua;
-import tdc.edu.vn.project.Model.PetShopModel;
-import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 

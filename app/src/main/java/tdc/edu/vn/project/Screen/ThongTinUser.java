@@ -1,22 +1,23 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+import tdc.edu.vn.project.Adapter.AdapterDonHangNguoiMua;
 import tdc.edu.vn.project.Model.DonHang;
-import tdc.edu.vn.project.Model.GioHang;
+import tdc.edu.vn.project.Model.HoaHong;
+import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiMua;
-import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.R;
 
 
 import com.squareup.otto.Subscribe;
@@ -40,7 +41,6 @@ public class ThongTinUser extends AppCompatActivity {
         PetShopFireBase.bus.register(this);
         setControl();
         setEvent();
-
 
     }
 

@@ -1,14 +1,16 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class QuenMatKhau extends AppCompatActivity {
+import tdc.edu.vn.project.R;
+
+public class GioHangScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_quenmatkhau);
+        setContentView(R.layout.layout_giohang);
     }
 }

@@ -1,8 +1,10 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.etc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import tdc.edu.vn.project.R;
 
 public class ThongTinTaiKhoan extends AppCompatActivity {
 
