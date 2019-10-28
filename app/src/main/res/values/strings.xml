@@ -20,6 +20,8 @@
     <string name="nguoiban">Người bán:</string>
     <string name="gui">Gửi</string>
     <string name="title_chitietthucung">CHI TIẾT THÚ CƯNG</string>
+    <string name="titlt_ttcanhan">Thông tin cá nhân</string>
+    <string name="title_ttCaNhan">Thông tin cá nhân</string>
     <string name="tenthucung_chitietthucung">MÈO ANH LÔNG NGẮN</string>
     <string name="hoten">Họ tên:</string>
     <string name="email">Email:</string>
@@ -51,6 +53,9 @@
     <string name="muangay">Mua ngay</string>
     <string name="vuilongnhaptaikhoan">Vui lòng nhập tài khoản</string>
     <string name="vuilongnhapmatkhau">Vui lòng nhập mật khẩu</string>
+    <string name="matkhaumoi">Nhập mật khẩu mới</string>
+    <string name="matkhaumoi1">Nhập lại mật khẩu mới</string>
+    <string name="matkhaucu">Nhập mật khẩu hiện tại</string>
     <string name="ghinho">Ghi nhớ</string>
     <string name="nguoimua">Người mua</string>
     <string name="quanly">Quản lý</string>
@@ -70,6 +75,24 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string-array name="tablayout">
+        <item>Home</item>
+        <item>Danh mục</item>
+        <item>Thông báo</item>
+        <item>Cá nhân</item>
+    </string-array>
+
+    <!--    InforUser-->
+    <string name="btnSave">Lưu</string>
+    <string name="btnChangePass">đổi mật khẩu</string>
+    <string name="txtName">Họ tên</string>
+    <string name="txtEmail">Email</string>
+    <string name="txtSdt">SĐT</string>
+    <string name="txtSex">Giới tính</string>
+    <string name="txtAddress">Địa chỉ</string>
+    <string name="luutc">Lưu thành công</string>
+    <string name="nhaptt">Nhập đầy đủ thông tin</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -109,4 +132,15 @@
     <string name="hoanthanh">Hoàn thành</string>
 
     <string name="danhsachden">Danh Sách Đen</string>
+
+
+    <string name="tb">Thông báo</string>
+    <string name="bancomuonsuakhong">Bạn có muốn sửa không?</string>
+    <string name="ko">Không</string>
+    <string name="co">Có</string>
+    <string name="koxoa">Không xóa</string>
+    <string name="mksai">Mật khẩu nhập lại không khớp</string>
+    <string name="saimkhientai">Sai mật khẩu hiện tại</string>
+
+
 </resources>
