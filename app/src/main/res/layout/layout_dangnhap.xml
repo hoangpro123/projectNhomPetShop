@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".User.Login">
+    tools:context=".Screen.Login">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ghinho"
-                android:layout_marginTop="20dp"></CheckBox>
+                android:layout_marginTop="20dp"/>
             <RadioGroup
                 android:id="@+id/rdbLuaChon"
                 android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/nguoimua"></RadioButton>
+                    android:text="@string/nguoimua"/>
                 <RadioButton
                     android:textSize="10dp"
                     android:id="@+id/rdbNguoiBan"

@@ -8,9 +8,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import tdc.edu.vn.project.CpuInfo;
-import tdc.edu.vn.project.HomeClient;
+import tdc.edu.vn.project.Screen.HomeClient;
 import tdc.edu.vn.project.UsageInfo;
-import tdc.edu.vn.project.User.ThongTinUser;
 
 public class FragmentAdapter extends FragmentStatePagerAdapter {
     private String listTab[] = {"Home","Danh mục", "Thông báo", "Cá nhân"};
@@ -33,7 +32,7 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
                 fragment = new UsageInfo();
                 break;
             case 3:
-                fragment = new ThongTinUser();
+
                 break;
         }
         return fragment;

@@ -1,4 +1,4 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Screen;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,8 +28,8 @@ import java.util.HashMap;
 
 import tdc.edu.vn.project.Adapter.RecyclerViewAdapter;
 import tdc.edu.vn.project.Model.SanPham;
-import tdc.edu.vn.project.Screen.ChiTietThuCung;
-import tdc.edu.vn.project.Screen.GioHang;
+import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.R;
 
 public class HomeClient extends Fragment
         implements BaseSliderView.OnSliderClickListener,

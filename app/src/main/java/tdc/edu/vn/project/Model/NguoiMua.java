@@ -2,31 +2,20 @@ package tdc.edu.vn.project.Model;
 
 import java.util.ArrayList;
 
-public class NguoiMua extends PetShopModel{
-    public static ArrayList<NguoiMua> list_nguoi_mua = new ArrayList<>();
+public class NguoiMua extends PetShopModel {
     String name, username, password, phone, address, image, gender;
 
-    public NguoiMua(String name, String username, String password, String phone, String adress, String image, String gender) {
+    public NguoiMua(String name, String username, String password, String phone, String address, String image, String gender) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.phone = phone;
-        this.address = adress;
+        this.address = address;
         this.image = image;
         this.gender = gender;
     }
 
     public NguoiMua() {
-    }
-
-    @Override
-    public String getId() {
-        return super.getId();
-    }
-
-    @Override
-    public void setId(String id) {
-        super.setId(id);
     }
 
     public String getName() {

@@ -2,7 +2,6 @@ package tdc.edu.vn.project;
 
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,12 +15,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.otto.Bus;
-import com.squareup.otto.ThreadEnforcer;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
@@ -37,7 +34,7 @@ import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.QuanLy;
 import tdc.edu.vn.project.Model.SanPham;
-import tdc.edu.vn.project.User.DangKi;
+import tdc.edu.vn.project.Model.TinhTrangDonHang;
 
 public class PetShopFireBase {
     public static Bus bus = new Bus();
@@ -56,20 +53,22 @@ public class PetShopFireBase {
     public static eTable TABLE_NGUOI_GIAO = eTable.NguoiGiao;
     public static eTable TABLE_QUAN_LY = eTable.QuanLy;
     public static eTable TABLE_SAN_PHAM = eTable.SanPham;
+    public static eTable TABLE_YEU_CAU_CHINH_SUA = eTable.YeuCauChinhSua;
+    public static eTable TABLE_TINH_TRANG_DON_HANG = eTable.TinhTrangDonHang;
 
 
-    public static ArrayList<PetShopModel> search(String field, Object value, eTable table) {
+    public static Object search(String sField, Object value, eTable table) {
         ArrayList<PetShopModel> results = new ArrayList<>();
         ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.getData();
         for (PetShopModel item : data) {
             try {
-                Field f;
-                if (field.equals("id"))
-                    f = PetShopModel.class.getDeclaredField("id");
-                else
-                    f = item.getClass().getDeclaredField(field);
-                f.setAccessible(true);
-                Object v = f.get(item);
+                Object v;
+                if (sField.equals("id")) v = item.getId();
+                else{
+                    Field field = item.getClass().getDeclaredField(sField);
+                    field.setAccessible(true);
+                    v = field.get(item);
+                }
                 boolean b = v.equals(value);
                 if (b) results.add(item);
                 if (!b && v instanceof Date) {
@@ -171,6 +170,7 @@ public class PetShopFireBase {
 
     private static Object getValueField(String sField, PetShopModel item) {
         try {
+            if(sField.equals("id")) return item.getId();
             Field field = item.getClass().getDeclaredField(sField);
             field.setAccessible(true);
             return field.get(item);
@@ -196,7 +196,7 @@ public class PetShopFireBase {
         return key;
     }
 
-    private static PetShopModel findItem(String id, eTable table) {
+    public static PetShopModel findItem(String id, eTable table) {
         final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
         for (PetShopModel item : data) {
             if (item.getId().equals(id))
@@ -217,12 +217,14 @@ public class PetShopFireBase {
         loadTable(TABLE_NGUOI_GIAO);
         loadTable(TABLE_QUAN_LY);
         loadTable(TABLE_SAN_PHAM);
+        loadTable(TABLE_YEU_CAU_CHINH_SUA);
+        loadTable(TABLE_TINH_TRANG_DON_HANG);
     }
 
     private static void loadTable(final eTable table) {
         if (table.status_data || table.status_last_id) return;
-        final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
         //
+        final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
         table.TABLE_DATA.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -250,6 +252,7 @@ public class PetShopFireBase {
                     @Override
                     public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                         data.remove(findItem(dataSnapshot.getKey(), table));
+                        count[0] = data.size();
                         bus.post(table.getName());
                     }
 
@@ -281,44 +284,20 @@ public class PetShopFireBase {
         });
     }
 
-    public static void initial() {
-        TABLE_NGUOI_MUA.TABLE_DATA.child("null").setValue(new NguoiMua("NguoiMua", "nm001", "123456", "09123456789", "hcm", "link", "Nữ"));
-        TABLE_DANH_GIA.TABLE_DATA.child("null").setValue(new DanhGia("nm001", "nb001", "ndsfs", (float) 3.5));
-        TABLE_DANH_SACH_DEN.TABLE_DATA.child("null").setValue(new DanhSachDen("nm001", "nb001"));
-        TABLE_DON_HANG.TABLE_DATA.child("null").setValue(new DonHang("nm001", "nb001", "ndsfs", 2, 1, (double) 120000));
-        TABLE_GIAO_HANG.TABLE_DATA.child("null").setValue(new GiaoHang("nm001", new Date()));
-        TABLE_GIO_HANG.TABLE_DATA.child("null").setValue(new GioHang("nm001", "nb001"));
-        TABLE_HOA_HONG.TABLE_DATA.child("null").setValue(new HoaHong((float) 1, new Date(), (double) 563.333));
-        TABLE_NGUOI_BAN.TABLE_DATA.child("null").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "Nam", "hh001"));
-        TABLE_NGUOI_GIAO.TABLE_DATA.child("null").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));
-        TABLE_QUAN_LY.TABLE_DATA.child("null").setValue(new QuanLy("nm001", "nb001", "ndsfs"));
-        TABLE_SAN_PHAM.TABLE_DATA.child("null").setValue(new SanPham("nm001", "nb001", "ndsfs", "nb003", (double) 1930000, new Date()));
-        //
-        TABLE_NGUOI_MUA.TABLE_LAST_ID.setValue(1);
-        TABLE_DANH_GIA.TABLE_LAST_ID.setValue(1);
-        TABLE_DANH_SACH_DEN.TABLE_LAST_ID.setValue(1);
-        TABLE_DON_HANG.TABLE_LAST_ID.setValue(1);
-        TABLE_GIAO_HANG.TABLE_LAST_ID.setValue(1);
-        TABLE_HOA_HONG.TABLE_LAST_ID.setValue(1);
-        TABLE_NGUOI_BAN.TABLE_LAST_ID.setValue(1);
-        TABLE_NGUOI_GIAO.TABLE_LAST_ID.setValue(1);
-        TABLE_QUAN_LY.TABLE_LAST_ID.setValue(1);
-        TABLE_SAN_PHAM.TABLE_LAST_ID.setValue(1);
-        //
-    }
-
     public enum eTable {
-        NguoiMua("TABLE_NGUOI_MUA", "nm", 3, tdc.edu.vn.project.Model.NguoiMua.class),
-        NguoiBan("TABLE_NGUOI_BAN", "nb", 3, tdc.edu.vn.project.Model.NguoiBan.class),
-        DanhGia("TABLE_DANH_GIA", "dg", 3, tdc.edu.vn.project.Model.DanhGia.class),
-        DanhSachDen("TABLE_DANH_SACH_DEN", "dsd", 3, tdc.edu.vn.project.Model.DanhSachDen.class),
-        DonHang("TABLE_DON_HANG", "dh", 3, tdc.edu.vn.project.Model.DonHang.class),
-        GioHang("TABLE_GIO_HANG", "cart", 3, tdc.edu.vn.project.Model.GioHang.class),
-        HoaHong("TABLE_HOA_HONG", "hh", 3, tdc.edu.vn.project.Model.HoaHong.class),
-        GiaoHang("TABLE_GIAO_HANG", "gh", 3, tdc.edu.vn.project.Model.GiaoHang.class),
-        NguoiGiao("TABLE_NGUOI_GIAO", "ng", 3, tdc.edu.vn.project.Model.NguoiGiao.class),
-        QuanLy("TABLE_QUAN_LY", "ql", 3, tdc.edu.vn.project.Model.QuanLy.class),
-        SanPham("TABLE_SAN_PHAM", "sp", 3, tdc.edu.vn.project.Model.SanPham.class);
+        NguoiMua("TABLE_NGUOI_MUA", "nm", 3, NguoiMua.class),
+        NguoiBan("TABLE_NGUOI_BAN", "nb", 3, NguoiBan.class),
+        DanhGia("TABLE_DANH_GIA", "dg", 3, DanhGia.class),
+        DanhSachDen("TABLE_DANH_SACH_DEN", "dsd", 3, DanhSachDen.class),
+        DonHang("TABLE_DON_HANG", "dh", 3, DonHang.class),
+        GioHang("TABLE_GIO_HANG", "cart", 3, GioHang.class),
+        HoaHong("TABLE_HOA_HONG", "hh", 3, HoaHong.class),
+        GiaoHang("TABLE_GIAO_HANG", "gh", 3, GiaoHang.class),
+        NguoiGiao("TABLE_NGUOI_GIAO", "ng", 3, NguoiGiao.class),
+        QuanLy("TABLE_QUAN_LY", "ql", 3, QuanLy.class),
+        SanPham("TABLE_SAN_PHAM", "sp", 3, SanPham.class),
+        YeuCauChinhSua("TABLE_YEU_CAU_CHINH_SUA", "yccs", 3, NguoiBan.class),
+        TinhTrangDonHang("TABLE_TINH_TRANG_DON_HANG", "ttdh", 3, TinhTrangDonHang.class);
 
         public String name, key;
         public int last_id, max_length;

@@ -2,29 +2,48 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tdc.edu.vn.project">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".User.Login" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".Screen.DemoChuyenManHinh"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
+        <activity android:name=".etc.ThongTinNguoiDung">
+
+        </activity>
+        <activity android:name=".etc.ThongTinTaiKhoan2" />
+        <activity android:name=".Screen.ThongTinUser">
+
+        </activity>
+        <activity
+            android:name=".Screen.GioHang"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".Screen.PetActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".FragmentMainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".etc.QuenMatKhau" />
+        <activity android:name=".Screen.QuanLyDonHangNguoiBan">
+        </activity>
+        <activity android:name=".Screen.DanhGiaActivity"></activity>
+        <activity android:name=".Screen.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Screen.ChiTietThuCung" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".Screen.GioHang" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".User.DangKi"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".Screen.PetActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".FragmentMainActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-           >
-
-        </activity>
+        <activity android:name=".Screen.DangKi"/>
+        <activity android:name=".Screen.ChiTietThuCung"/>
     </application>
 
 </manifest>

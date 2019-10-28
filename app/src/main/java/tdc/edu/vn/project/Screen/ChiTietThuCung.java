@@ -134,7 +134,7 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
 
 
         PetShopFireBase.TABLE_GIO_HANG.name.toString();
-        GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString());
+        GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString(),1);
         Log.d("gh",gioHang.getId_nguoi_mua());
         PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
     }
