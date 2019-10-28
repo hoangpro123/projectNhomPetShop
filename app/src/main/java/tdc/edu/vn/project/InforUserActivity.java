@@ -111,7 +111,7 @@ public class InforUserActivity extends AppCompatActivity {
         //                                    nm.setGender("Nu");
         //                            }
                                     PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
-                                    Toast.makeText(InforUserActivity.this, "Lưu thành công", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(InforUserActivity.this, getResources().getString(R.string.luutc), Toast.LENGTH_SHORT).show();
                                 }
                             });
                             AlertDialog alertDialog = builder.create();

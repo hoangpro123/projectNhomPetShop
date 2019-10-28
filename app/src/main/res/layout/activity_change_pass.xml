@@ -14,55 +14,24 @@
         android:layout_marginTop="180dp"
         android:padding="40dp">
 
-<!--        <EditText-->
-<!--            android:id="@+id/editTaiKhoan"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:drawableLeft="@drawable/ic_person_black_24dp"-->
-<!--            android:drawablePadding="10dp"-->
-<!--            android:hint="@string/vuilongnhaptaikhoan"></EditText>-->
-
         <EditText
             android:id="@+id/editNhapMKCu"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:drawableLeft="@drawable/ic_lock_black_24dp"
-            android:drawablePadding="10dp"
-            android:layout_marginBottom="20dp"
             android:hint="@string/matkhaucu"
-            android:inputType="textPassword"></EditText>
+            style="@style/edit_entercurentpass_style"></EditText>
         <EditText
             android:id="@+id/editNhapMKMoi"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="20dp"
-            android:drawableLeft="@drawable/ic_lock_black_24dp"
-            android:drawablePadding="10dp"
             android:hint="@string/matkhaumoi"
-            android:inputType="textPassword"></EditText>
+            style="@style/edit_enternewpass_style"></EditText>
         <EditText
             android:id="@+id/editNhapLaiMKMoi"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="20dp"
-            android:drawableLeft="@drawable/ic_person_black_24dp"
-            android:drawablePadding="10dp"
-            android:inputType="textPassword"
-            android:hint="@string/matkhaumoi1"></EditText>
+            android:hint="@string/matkhaumoi1"
+            style="@style/edit_enternewpassagain_style"></EditText>
     </LinearLayout>
 
     <Button
-        style="@style/buttonchitietthucung1"
-        android:layout_width="wrap_content"
+        style="@style/btnchangepass_style"
         android:id="@+id/btnChangePass"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="10dp"
-        android:layout_marginTop="120dp"
         android:background="@drawable/vienbutton"
         android:text="@string/btnChangePass"></Button>
-
-
 
 </LinearLayout>

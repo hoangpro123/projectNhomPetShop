@@ -86,7 +86,7 @@ public class ChangePass extends AppCompatActivity {
                                 alertDialog.show();
                             }
                             else {
-                                Toast.makeText(ChangePass.this, "Nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChangePass.this, getResources().getString(R.string.nhaptt), Toast.LENGTH_SHORT).show();
 
                             }
                         }
