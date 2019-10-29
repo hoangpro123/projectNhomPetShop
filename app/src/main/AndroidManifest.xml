@@ -21,7 +21,10 @@
         </activity>
         <activity android:name=".etc.ThongTinTaiKhoan2" />
         <activity android:name=".Screen.ThongTinUser">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Screen.GioHang"
@@ -37,23 +40,13 @@
         </activity>
         <activity android:name=".Screen.DanhGiaActivity"></activity>
         <activity android:name=".Screen.Login">
-        android:theme="@style/AppTheme">
+
+        </activity>
         <activity android:name=".User.ChangePass"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".InforUserActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".FragmentMainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".User.Login"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".Screen.DangKi"/>
         <activity android:name=".Screen.ChiTietThuCung"/>
     </application>

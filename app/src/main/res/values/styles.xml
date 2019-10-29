@@ -199,11 +199,6 @@
     </style>
 
 
-    <style name="titleheader_chitietthucung">
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">20dp</item>
-    </style>
     <style name="titlerow_donhang">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">18sp</item>

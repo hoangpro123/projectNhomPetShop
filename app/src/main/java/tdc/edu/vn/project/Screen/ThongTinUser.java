@@ -35,7 +35,6 @@ public class ThongTinUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.layout_thongtinuser);
 
         PetShopFireBase.bus.register(this);

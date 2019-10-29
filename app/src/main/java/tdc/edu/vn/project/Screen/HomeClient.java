@@ -1,6 +1,7 @@
 package tdc.edu.vn.project.Screen;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -22,6 +23,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+
 import java.util.HashMap;
 
 import tdc.edu.vn.project.Adapter.RecyclerViewAdapter;
@@ -38,17 +41,15 @@ import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 
-public class HomeClient extends Fragment
-        implements BaseSliderView.OnSliderClickListener,
-        ViewPagerEx.OnPageChangeListener {
+public class HomeClient extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     Button btnCart;
-    private SliderLayout sliderLayout ;
+    private SliderLayout sliderLayout;
 
-    private HashMap<String, String> HashMapForURL ;
+    private HashMap<String, String> HashMapForURL;
 
-    private HashMap<String, Integer> HashMapForLocalRes ;
+    private HashMap<String, Integer> HashMapForLocalRes;
 
-    private ArrayList<SanPham> listPet ;
+    private ArrayList<SanPham> listPet;
 
     private RecyclerView myrv;
     private TextView textView;
@@ -63,32 +64,31 @@ public class HomeClient extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_client, null);
 
-                myrv = view.findViewById(R.id.recyclerview);
+        myrv = view.findViewById(R.id.recyclerview);
 
         listPet = new ArrayList<>();
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(PetShopFireBase.TABLE_SAN_PHAM.status_last_id ){
-                    ArrayList<SanPham> data = (ArrayList<SanPham>)PetShopFireBase.TABLE_SAN_PHAM.data;
+                if (PetShopFireBase.TABLE_SAN_PHAM.status_last_id) {
+                    ArrayList<SanPham> data = (ArrayList<SanPham>) PetShopFireBase.TABLE_SAN_PHAM.data;
                     listPet = data;
-                    RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getActivity(),listPet);
+                    RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getActivity(), listPet);
 
 
                     // RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(HomeClien, 2);
-                    myrv.setLayoutManager(new GridLayoutManager(getActivity(),2));
+                    myrv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     myrv.setAdapter(myAdapter);
 
                     Log.d("ggg", data.size() + "");
-                }
-                else handler.postDelayed(this, 1000);
+                } else handler.postDelayed(this, 1000);
             }
         });
 
         View view1 = inflater.inflate(R.layout.layout_giohang, null);
         //KhoiTao();
-        btnCart = (Button)view.findViewById(R.id.shopingcart);
+        btnCart = (Button) view.findViewById(R.id.shopingcart);
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,7 +97,7 @@ public class HomeClient extends Fragment
             }
         });
 
-        sliderLayout = (SliderLayout)view.findViewById(R.id.slider);
+        sliderLayout = (SliderLayout) view.findViewById(R.id.slider);
 
         //Call this method if you want to add images from URL .
         //AddImagesUrlOnline();
@@ -108,7 +108,7 @@ public class HomeClient extends Fragment
         //Call this method to stop automatic sliding.
         //sliderLayout.stopAutoCycle();
 
-        for(String name : HashMapForLocalRes.keySet()){
+        for (String name : HashMapForLocalRes.keySet()) {
 
             TextSliderView textSliderView = new TextSliderView(getActivity());
 
@@ -121,7 +121,7 @@ public class HomeClient extends Fragment
             textSliderView.bundle(new Bundle());
 
             textSliderView.getBundle()
-                    .putString("extra",name);
+                    .putString("extra", name);
 
             sliderLayout.addSlider(textSliderView);
         }
@@ -153,7 +153,8 @@ public class HomeClient extends Fragment
     }
 
     @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    }
 
     @Override
     public void onPageSelected(int position) {
@@ -167,7 +168,7 @@ public class HomeClient extends Fragment
 
     }
 
-    public void AddImagesUrlOnline(){
+    public void AddImagesUrlOnline() {
 
         HashMapForURL = new HashMap<String, String>();
 
@@ -178,7 +179,7 @@ public class HomeClient extends Fragment
         HashMapForURL.put("Hinh5", "https://dogily.vn/wp-content/uploads/2019/09/trai-meo-anh-long-ngan-tai-chau-au.jpg");
     }
 
-    public void AddImageUrlFormLocalRes(){
+    public void AddImageUrlFormLocalRes() {
 
         HashMapForLocalRes = new HashMap<String, Integer>();
         HashMapForLocalRes.put("Hinh1", R.drawable.meo1);
@@ -188,7 +189,6 @@ public class HomeClient extends Fragment
         HashMapForLocalRes.put("Hinh5", R.drawable.meo5);
 
     }
-
 
 
 //    public void KhoiTao() {
