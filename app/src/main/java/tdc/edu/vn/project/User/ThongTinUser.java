@@ -37,7 +37,7 @@ public class ThongTinUser extends Fragment {
 
     private void setControl(View view) {
         btnChinhSua = (Button) view.findViewById(R.id.btnFix);
-        textView = (TextView)view.findViewById(R.id.id);
+        //textView = (TextView)view.findViewById(R.id.id);
     }
 
     private void setEvent() {

@@ -137,32 +137,7 @@
     </style>
 
 <!--    ChangePass-->
-    <style name="edit_entercurentpass_style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:drawableLeft">@drawable/ic_lock_black_24dp</item>
-        <item name="android:drawablePadding">10dp</item>
-        <item name="android:layout_marginBottom">20dp</item>
-        <item name="android:inputType">textPassword</item>
-    </style>
 
-    <style name="edit_enternewpass_style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:layout_marginBottom">20dp</item>
-        <item name="android:drawableLeft">@drawable/ic_lock_black_24dp</item>
-        <item name="android:drawablePadding">10dp</item>
-        <item name="android:inputType">textPassword</item>
-    </style>
-
-    <style name="edit_enternewpassagain_style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:layout_marginBottom">20dp</item>
-        <item name="android:drawableLeft">@drawable/ic_person_black_24dp</item>
-        <item name="android:drawablePadding">10dp</item>
-        <item name="android:inputType">textPassword</item>
-    </style>
 
     <style name="btnchangepass_style" parent="buttonchitietthucung1">
         <item name="android:layout_width">wrap_content</item>

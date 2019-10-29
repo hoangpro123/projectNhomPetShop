@@ -72,6 +72,7 @@ public class ChangePass extends AppCompatActivity {
                                             if(editNewPass1.getText().toString().equals(editNewPass.getText().toString())){
                                                 nm.setPassword(editNewPass1.getText().toString());
                                                 PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
+                                                Toast.makeText(ChangePass.this, "Doi mk thanh cong", Toast.LENGTH_SHORT).show();
                                             } else {
                                                 Toast.makeText(ChangePass.this, getResources().getString(R.string.mksai), Toast.LENGTH_SHORT).show();
                                             }

@@ -15,6 +15,7 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:id="@+id/btnBack"
             android:layout_weight="1"
             android:background="@drawable/ic_navigate_before_black_24dp">
         </Button>

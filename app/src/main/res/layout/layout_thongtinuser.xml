@@ -65,16 +65,6 @@
                 android:gravity="center"
                 android:layout_marginLeft="20dp">
 
-<!--                test-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tenchucuahang"
-                    android:id="@+id/id"
-                    android:paddingBottom="5dp"
-                    style="@style/size20denthuong"></TextView>
-<!--                test-->
-
                 <TextView
                     android:id="@+id/tvName"
                     android:layout_width="match_parent"

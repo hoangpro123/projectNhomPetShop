@@ -10,22 +10,68 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="180dp"
-        android:padding="40dp">
+        android:orientation="horizontal"
+        android:background="@color/Header">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/btnBack"
+            android:layout_weight="1"
+            android:background="@drawable/ic_navigate_before_black_24dp">
+        </Button>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/doimatkhauin"
+                style="@style/titleheader_chitietthucung">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+        </LinearLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="150dp"
+        android:padding="40dp">
         <EditText
             android:id="@+id/editNhapMKCu"
-            android:hint="@string/matkhaucu"
-            style="@style/edit_entercurentpass_style"></EditText>
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/nhapmatkhauhientai"
+            android:inputType="textPassword"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/vien"
+            android:paddingLeft="10dp"></EditText>
         <EditText
             android:id="@+id/editNhapMKMoi"
-            android:hint="@string/matkhaumoi"
-            style="@style/edit_enternewpass_style"></EditText>
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/nhapmatkhaumoi"
+            android:inputType="textPassword"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/vien"
+            android:paddingLeft="10dp"></EditText>
         <EditText
             android:id="@+id/editNhapLaiMKMoi"
-            android:hint="@string/matkhaumoi1"
-            style="@style/edit_enternewpassagain_style"></EditText>
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/nhaplaimatkhaumoi"
+            android:inputType="textPassword"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/vien"
+            android:paddingLeft="10dp"></EditText>
     </LinearLayout>
 
     <Button

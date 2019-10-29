@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.User.ChangePass;
+import tdc.edu.vn.project.User.ThongTinUser;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 public class InforUserActivity extends AppCompatActivity {
 
     EditText editName, editEmail, editSDT, editAddress;
-    Button btnSave, btnChangePass;
+    Button btnSave, btnChangePass, btnBack;
     RadioButton radGender;
     RadioGroup radioGroup;
 
@@ -36,6 +37,7 @@ public class InforUserActivity extends AppCompatActivity {
         setEvent();
         LuuInfor();
         ChangePass();
+        TroVe();
     }
 
     private void setControl() {
@@ -46,6 +48,7 @@ public class InforUserActivity extends AppCompatActivity {
         btnChangePass = (Button) findViewById(R.id.btnChangePass);
         btnSave = (Button) findViewById(R.id.btnSave);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        btnBack = (Button) findViewById(R.id.btnBack);
     }
 
     private void setEvent() {
@@ -133,5 +136,15 @@ public class InforUserActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void TroVe(){
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(InforUserActivity.this, ThongTinUser.class));
+            }
+        });
+    }
+
 
 }
