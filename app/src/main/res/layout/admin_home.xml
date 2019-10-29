@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@drawable/btnchuachon"
+    android:textSize="25sp"
+    android:text="HOME"/>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quản lí người Dùng"/>
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnquanli"
+                android:textColor="@color/cardview_light_background"
+                android:background="@drawable/btnchon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Người Mua"/>
+            <Button
+                android:id="@+id/btngiaodich"
+                android:textColor="@color/cardview_light_background"
+                android:background="@drawable/btnchon"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Người Bán"/>
+            <Button
+                android:id="@+id/btnthem"
+                android:textColor="@color/cardview_light_background"
+                android:background="@drawable/btnchon"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thêm người bán"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quản lí thông tin người bán"/>
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnchinhsua"
+                android:textColor="@color/cardview_light_background"
+                android:background="@drawable/btnchon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Danh Sách Yêu Cầu Chỉnh Sửa"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

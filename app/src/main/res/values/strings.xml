@@ -66,6 +66,7 @@
     <string name="tendonhan">Tên đơn hàng</string>
     <string name="trangthai">Trạng thái</string>
     <string name="xoa">Xóa</string>
+    <string name="xem">Xem</string>
     <string name="xemthem">Xem thêm</string>
     <string name="chontatca">Chọn tất cả</string>
     <string name="giohang">GIỎ HÀNG</string>
@@ -79,4 +80,7 @@
     <string name="doimatkhau">Đổi mật khẩu</string>
 
     <string name="danhsachden">Danh Sách Đen</string>
+    <string name="nguoidung">Quản Lí Người Dùng</string>
+    <string name="giaodich">Quản Lí Giao Dịch</string>
+
 </resources>
