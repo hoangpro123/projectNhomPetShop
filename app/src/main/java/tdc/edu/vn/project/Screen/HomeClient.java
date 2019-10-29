@@ -97,6 +97,7 @@ public class HomeClient extends Fragment implements BaseSliderView.OnSliderClick
             }
         });
 
+
         sliderLayout = (SliderLayout) view.findViewById(R.id.slider);
 
         //Call this method if you want to add images from URL .
