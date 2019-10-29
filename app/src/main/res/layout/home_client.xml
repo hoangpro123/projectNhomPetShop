@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeClient"
+    tools:context=".Screen.HomeClient"
     android:background="#E9E8E8"
     android:id="@+id/home"
     android:padding="0dp">

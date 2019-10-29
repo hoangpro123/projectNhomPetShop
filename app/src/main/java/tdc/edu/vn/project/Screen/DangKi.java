@@ -1,4 +1,4 @@
-package tdc.edu.vn.project.User;
+package tdc.edu.vn.project.Screen;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -22,6 +22,7 @@ import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
+import tdc.edu.vn.project.Screen.Login;
 
 public class DangKi  extends AppCompatActivity {
     EditText ho, ten, mail, sdt, pass, repass,diachi;
@@ -80,19 +81,19 @@ public class DangKi  extends AppCompatActivity {
     public void AnhXa(){
 
 
-            group = findViewById(R.id.gr);
+        group = findViewById(R.id.gr);
 
-            ho = findViewById(R.id.edHo);
-            ten = findViewById(R.id.edTen);
-            mail = findViewById(R.id.edMail);
-            sdt = findViewById(R.id.edSDT);
-            pass = findViewById(R.id.edpass);
-            repass = findViewById(R.id.edRepass);
-            diachi = findViewById(R.id.edDC);
+        ho = findViewById(R.id.edHo);
+        ten = findViewById(R.id.edTen);
+        mail = findViewById(R.id.edMail);
+        sdt = findViewById(R.id.edSDT);
+        pass = findViewById(R.id.edpass);
+        repass = findViewById(R.id.edRepass);
+        diachi = findViewById(R.id.edDC);
 
 
-            btnback = findViewById(R.id.btnBack);
-            tao = findViewById(R.id.btnTao);
+        btnback = findViewById(R.id.btnBack);
+        tao = findViewById(R.id.btnTao);
 
     }
     private void dialog(){
@@ -119,7 +120,7 @@ public class DangKi  extends AppCompatActivity {
         XacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              dialog.cancel();
+                dialog.cancel();
             }
         });
 
@@ -142,12 +143,11 @@ public class DangKi  extends AppCompatActivity {
     }
     public boolean checkPhone()
     {
-       String num = "";
-                   if (sdt.getText().toString().charAt(0) == 0){
-                       return true;
-                   }else {
-                       return false;
-                   }
+        String num = "";
+        if (sdt.getText().toString().charAt(0) == 0){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
-

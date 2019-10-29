@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,7 @@ import tdc.edu.vn.project.R;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private Context mContext ;
     private List<SanPham> mData ;
+
 
     public RecyclerViewAdapter(Context mContext, ArrayList<SanPham> mData) {
         this.mContext = mContext;
@@ -44,8 +47,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ChiTietThuCung.class);
+                SharedPreferences sharedPreferences = mContext.getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+                String id = sharedPreferences.getString("id", "");
                 // passing data to the book activity
                 intent.putExtra("ID", mData.get(position).getId());
+                intent.putExtra("IDNGMUA", id);
                 intent.putExtra("Title",mData.get(position).getName());
                 intent.putExtra("Price", mData.get(position).getPrice().toString());
                 intent.putExtra("Description",mData.get(position).getDescription());

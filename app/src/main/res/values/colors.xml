@@ -4,8 +4,13 @@
     <color name="colorPrimaryDark">#00574B</color>
 
     <color name="colorAccent">#D81B60</color>
-    <color name="BGLogin">#6FF3DD</color>
+    <color name="blue">#03A9F4</color>
     <color name="Header">#16CEEA</color>
+    <color name="black">#000000</color>
+    <color name="no">#00000000</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="gray">#C7C7C7</color>
+    <color name="BGLogin">#6FF3DD</color>
     <color name="Yellow">#FFE100</color>
     <color name="xam">#888576</color>
     <color name="white">#FFFFFF</color>

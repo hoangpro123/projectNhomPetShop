@@ -80,11 +80,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tenchucuahang"
                 style="@style/size20denthuong"></TextView>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit_black_24dp"></ImageView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,11 +101,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/chitietemail"
                 style="@style/size20denthuong"></TextView>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit_black_24dp"></ImageView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,11 +122,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/chitietsdt"
                 style="@style/size20denthuong"></TextView>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit_black_24dp"></ImageView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -168,11 +153,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/nu"></RadioButton>
             </RadioGroup>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit_black_24dp"></ImageView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -194,11 +174,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/chitietdiachi"
                 style="@style/size20denthuong"></TextView>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit_black_24dp"></ImageView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -216,7 +191,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/doimatkhau"
+            android:text="@string/yeucauchinhsua"
             android:background="@drawable/vienbutton"
             style="@style/buttonchitietthucung1"
             android:paddingLeft="20dp"

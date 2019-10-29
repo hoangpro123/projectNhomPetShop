@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
     SliderLayout sliderLayout ;
     TextView Name, Price, Des;
     Button btnThemGioHang;
+    ImageButton btnBack;
     HashMap<String, String> HashMapForURL ;
 
     HashMap<String, Integer> HashMapForLocalRes ;
@@ -42,6 +45,7 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
         sliderLayout = (SliderLayout)findViewById(R.id.slider);
         AnhXa();
         GetInfor();
+        setEvent();
         //Call this method if you want to add images from URL .
         //AddImagesUrlOnline();
 
@@ -123,6 +127,7 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
         Name = findViewById(R.id.NamePet);
         Price = findViewById(R.id.Price);
         Des = findViewById(R.id.des);
+        btnBack = findViewById(R.id.btnBack);
     }
 
     public void GetInfor(){
@@ -134,9 +139,17 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
 
 
         PetShopFireBase.TABLE_GIO_HANG.name.toString();
-        GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString());
+        GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString(),1);
         Log.d("gh",gioHang.getId_nguoi_mua());
         PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
     }
 
+    public void setEvent(){
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+    }
 }

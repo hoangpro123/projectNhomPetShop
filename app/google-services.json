@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "645414940328-7afrpkvo5ltaesl6iml7071d7i49n8jo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tdc.edu.vn.project",
+            "certificate_hash": "395e8de3034ec74d55537a777113490566c67f29"
+          }
+        },
+        {
           "client_id": "645414940328-8b17st6bnla33ton6mcl47dafes6tph0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
