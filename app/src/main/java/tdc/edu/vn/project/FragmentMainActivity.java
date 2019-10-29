@@ -1,20 +1,16 @@
 package tdc.edu.vn.project;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import tdc.edu.vn.project.Adapter.FragmentAdapter;
-import tdc.edu.vn.project.User.ThongTinUser;
 
 public class FragmentMainActivity extends AppCompatActivity {
     private TabLayout tabLayout;

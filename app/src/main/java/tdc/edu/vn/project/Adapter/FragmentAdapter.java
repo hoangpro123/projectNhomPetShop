@@ -12,8 +12,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import tdc.edu.vn.project.CpuInfo;
 import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.Screen.HomeClient;
+import tdc.edu.vn.project.Screen.ThongTinUser;
 import tdc.edu.vn.project.UsageInfo;
-import tdc.edu.vn.project.User.ThongTinUser;
 
 public class FragmentAdapter extends FragmentStatePagerAdapter {
     //private String listTab[] = {"Home","Danh mục", "Thông báo", "Cá nhân"};

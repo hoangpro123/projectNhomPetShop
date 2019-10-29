@@ -3,8 +3,8 @@ package tdc.edu.vn.project;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import tdc.edu.vn.project.Model.NguoiMua;
+import tdc.edu.vn.project.Screen.ThongTinUser;
 import tdc.edu.vn.project.User.ChangePass;
-import tdc.edu.vn.project.User.ThongTinUser;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -141,7 +141,10 @@ public class InforUserActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(InforUserActivity.this, ThongTinUser.class));
+                Intent intent = new Intent(InforUserActivity.this, ThongTinUser.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                finish();
             }
         });
     }
