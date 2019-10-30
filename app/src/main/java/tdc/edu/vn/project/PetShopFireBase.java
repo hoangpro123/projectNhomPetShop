@@ -289,7 +289,7 @@ public class PetShopFireBase {
         TABLE_DANH_SACH_DEN.TABLE_DATA.child("null").setValue(new DanhSachDen("nm001", "nb001"));
         TABLE_DON_HANG.TABLE_DATA.child("null").setValue(new DonHang("nm001", "nb001", "ndsfs", 2, 1, (double) 120000));
         TABLE_GIAO_HANG.TABLE_DATA.child("null").setValue(new GiaoHang("nm001", new Date()));
-        TABLE_GIO_HANG.TABLE_DATA.child("null").setValue(new GioHang("nm001", "nb001"));
+        //TABLE_GIO_HANG.TABLE_DATA.child("null").setValue(new GioHang("nm001", "nb001"));
         TABLE_HOA_HONG.TABLE_DATA.child("null").setValue(new HoaHong((float) 1, new Date(), (double) 563.333));
         TABLE_NGUOI_BAN.TABLE_DATA.child("null").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "Nam", "hh001"));
         TABLE_NGUOI_GIAO.TABLE_DATA.child("null").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));

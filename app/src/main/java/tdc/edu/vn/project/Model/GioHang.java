@@ -1,15 +1,17 @@
 package tdc.edu.vn.project.Model;
 
 public class GioHang extends PetShopModel{
-    String id_nguoi_mua, id_san_pham;
+    String id_nguoi_mua, id_san_pham, donGia, tenSP;
 
-    public GioHang(String id_nguoi_mua, String id_san_pham) {
+    public GioHang(String id_nguoi_mua, String id_san_pham, String donGia, String tenSP) {
         this.id_nguoi_mua = id_nguoi_mua;
         this.id_san_pham = id_san_pham;
-    }
-    public GioHang() {
+        this.donGia = donGia;
+        this.tenSP = tenSP;
     }
 
+    public GioHang() {
+    }
 
     public String getId_nguoi_mua() {
         return id_nguoi_mua;
@@ -27,5 +29,19 @@ public class GioHang extends PetShopModel{
         this.id_san_pham = id_san_pham;
     }
 
+    public String getDonGia() {
+        return donGia;
+    }
 
+    public void setDonGia(String donGia) {
+        this.donGia = donGia;
+    }
+
+    public String getTenSP() {
+        return tenSP;
+    }
+
+    public void setTenSP(String tenSP) {
+        this.tenSP = tenSP;
+    }
 }

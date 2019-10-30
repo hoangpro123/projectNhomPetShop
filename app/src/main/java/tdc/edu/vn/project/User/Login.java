@@ -62,14 +62,9 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.layout_dangnhap);
-
         setControl();
-
         setEvent();
-
     }
 
     public void  setEvent(){
@@ -92,8 +87,6 @@ public class Login extends AppCompatActivity {
                                     sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
                                     editor.putString("id", data.get(i).getId()).apply();
-
-
                                     startActivity(intent);
                                     finish();
                                     return;
