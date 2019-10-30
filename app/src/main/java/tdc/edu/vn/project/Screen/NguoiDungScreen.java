@@ -22,7 +22,6 @@ import tdc.edu.vn.project.Adapter.AdapterDanhSachDen;
 import tdc.edu.vn.project.Adapter.AdapterQuanLiNguoiDung;
 import tdc.edu.vn.project.Model.DanhSachDen;
 import tdc.edu.vn.project.Model.NguoiMua;
-import tdc.edu.vn.project.Pet;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 
