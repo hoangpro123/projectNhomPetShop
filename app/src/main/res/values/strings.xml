@@ -23,9 +23,9 @@
     <string name="titlt_ttcanhan">Thông tin cá nhân</string>
     <string name="title_ttCaNhan">Thông tin cá nhân</string>
     <string name="tenthucung_chitietthucung">MÈO ANH LÔNG NGẮN</string>
+    <string name="sotien">4.000.000đ</string>
     <string name="hoten">Họ tên:</string>
     <string name="email">Email:</string>
-    <string name="sotien">4.000.000đ</string>
     <string name="cuahang">Cửa hàng:</string>
     <string name="tenchucuahang">Anh Khiêm</string>
     <string name="chitietthucung">Chi tiết thú cưng</string>
@@ -62,6 +62,7 @@
     <string name="dangnhap">Đăng nhập</string>
     <string name="taotaikhoan">Tạo tài khoản</string>
     <string name="quenmatkhau">Quên mật khẩu</string>
+
     <string name="nam">Nam</string>
     <string name="nu">Nữ</string>
     <string name="tao">Tạo</string>
@@ -103,6 +104,7 @@
     <string name="tendonhan">Tên đơn hàng</string>
     <string name="trangthai">Trạng thái</string>
     <string name="xoa">Xóa</string>
+    <string name="xem">Xem</string>
     <string name="xemthem">Xem thêm</string>
     <string name="chontatca">Chọn tất cả</string>
     <string name="giohang">GIỎ HÀNG</string>
@@ -131,6 +133,9 @@
     <string name="xacnhan">XÁC NHẬN</string>
     <string name="hoanthanh">Hoàn thành</string>
     <string name="danhsachden">Danh Sách Đen</string>
+    <string name="nguoidunggiaodich">Quản Lí Người Dùng</string>
+    <string name="giaodich">Quản Lí Giao Dịch</string>
+
 
 
     <string name="tb">Thông báo</string>
