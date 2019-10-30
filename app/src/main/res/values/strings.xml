@@ -130,7 +130,6 @@
     <string name="yeucauchinhsua">Yêu cầu chỉ sửa</string>
     <string name="xacnhan">XÁC NHẬN</string>
     <string name="hoanthanh">Hoàn thành</string>
-
     <string name="danhsachden">Danh Sách Đen</string>
 
 
@@ -141,6 +140,6 @@
     <string name="koxoa">Không xóa</string>
     <string name="mksai">Mật khẩu nhập lại không khớp</string>
     <string name="saimkhientai">Sai mật khẩu hiện tại</string>
-
+    <string name="donhanghoanthanh">Đơn hàng hoàn thành</string>
 
 </resources>

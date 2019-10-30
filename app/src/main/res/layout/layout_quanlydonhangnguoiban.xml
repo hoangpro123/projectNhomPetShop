@@ -6,35 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".Screen.QuanLyDonHangNguoiBan"
     android:orientation="vertical">
-    <LinearLayout
+    <TextView
+        android:gravity="center"
+        android:text="@string/donhang"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:background="@color/Header">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/xacnhan"
-                style="@style/titleheader_chitietthucung">
-            </TextView>
-        </LinearLayout>
-    </LinearLayout>
+        android:background="@color/Header"
+        style="@style/titleheader_chitietthucung"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="12"
         android:orientation="horizontal"
-        android:layout_margin="20dp">
+        android:layout_margin="5dp">
         <ListView
-            android:id="@+id/lv2"
+            android:id="@+id/lv_dh"
+            android:background="@drawable/vien"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
 </LinearLayout>

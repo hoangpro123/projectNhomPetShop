@@ -80,8 +80,6 @@ public class HomeClient extends Fragment implements BaseSliderView.OnSliderClick
                     // RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(HomeClien, 2);
                     myrv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     myrv.setAdapter(myAdapter);
-
-                    Log.d("ggg", data.size() + "");
                 } else handler.postDelayed(this, 1000);
             }
         });

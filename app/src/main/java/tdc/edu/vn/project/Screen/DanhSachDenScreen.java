@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 
 import tdc.edu.vn.project.Adapter.AdapterDanhSachDen;
 import tdc.edu.vn.project.Model.DanhSachDen;
-import tdc.edu.vn.project.Pet;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 

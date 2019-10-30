@@ -87,26 +87,6 @@ public class PetShopFireBase {
         return results;
     }
 
-    //suspended
-    public static void onTableLoaded(final Class clss, final String sMethod, final eTable table) {
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (table.status_last_id && table.status_data) {
-                    try {
-                        clss.getDeclaredMethod(sMethod).invoke(null);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (InvocationTargetException e) {
-                        e.printStackTrace();
-                    } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
-                    }
-                } else handler.postDelayed(this, 1000);
-            }
-        });
-    }
-
     public static void sortList(final String sField, final eTable table, final boolean inc) {
         handler.post(new Runnable() {
             @Override

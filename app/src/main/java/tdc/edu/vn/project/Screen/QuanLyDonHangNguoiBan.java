@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.squareup.otto.Subscribe;
 
@@ -18,7 +20,7 @@ import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 
 public class QuanLyDonHangNguoiBan extends AppCompatActivity {
-    String id_nguoi_ban = "null";
+    String id_nguoi_ban = "nb002";
     private ListView lv1;
     Spinner spn;
     ArrayList<DonHang> data;
@@ -28,14 +30,14 @@ public class QuanLyDonHangNguoiBan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_quanlydonhangnguoiban);
+        PetShopFireBase.bus.register(this);
         setControl();
         setEvent();
 
-        PetShopFireBase.bus.register(this);
     }
 
     public void setControl() {
-        lv1 = findViewById(R.id.lv2);
+        lv1 = findViewById(R.id.lv_dh);
         spn = findViewById(R.id.spn);
     }
 
@@ -59,6 +61,8 @@ public class QuanLyDonHangNguoiBan extends AppCompatActivity {
                     adapter = new AdapterDonHangNguoiBan(QuanLyDonHangNguoiBan.this, R.layout.listview_xacnhan_nguoiban, data);
                     lv1.setAdapter(adapter);
                 } else handler.postDelayed(this, 1000);
+                EditText et;
+
             }
         });
     }

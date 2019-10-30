@@ -7,12 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import tdc.edu.vn.project.Adapter.AdapterDonHangNguoiMua;
+import tdc.edu.vn.project.BatteryInfo;
 import tdc.edu.vn.project.Model.DanhGia;
 import tdc.edu.vn.project.Model.DonHang;
 import tdc.edu.vn.project.Model.NguoiBan;
@@ -26,6 +28,7 @@ public class DanhGiaActivity extends AppCompatActivity {
     TextView tvRatingNumber, tvMaDonHang, tvTenDonHang, tvGia, tvNguoiBan;
     EditText etContent;
     Button btnGui;
+    ImageButton btnBack;
 
     DonHang dh;
     String idnb, idnm;
@@ -77,11 +80,13 @@ public class DanhGiaActivity extends AppCompatActivity {
                 PetShopFireBase.pushItem(new DanhGia(idnb,idnm,etContent.getText().toString(),rating.getRating()),PetShopFireBase.TABLE_DANH_GIA);
                 dh.setTinh_trang(4);
                 PetShopFireBase.pushItem(dh,PetShopFireBase.TABLE_DON_HANG);
-
-                Intent intent = new Intent(getApplicationContext(), ThongTinUser.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                finish();
+                onBackPressed();
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     }
@@ -95,6 +100,6 @@ public class DanhGiaActivity extends AppCompatActivity {
         tvNguoiBan = findViewById(R.id.tvNguoiBan);
         etContent = findViewById(R.id.etContent);
         btnGui = findViewById(R.id.btnGui);
-
+        btnBack = findViewById(R.id.btnBack_DanhGia);
     }
 }
