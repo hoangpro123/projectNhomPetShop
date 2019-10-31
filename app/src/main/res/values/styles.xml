@@ -188,4 +188,20 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+
+    <style name="key_row_chitietdonhang">
+        <item name="android:gravity">center|left</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_weight">3</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="value_row_chitietdonhang">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:gravity">center|left</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_weight">4</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
 </resources>

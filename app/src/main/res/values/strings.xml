@@ -137,7 +137,6 @@
     <string name="giaodich">Quản Lí Giao Dịch</string>
 
 
-
     <string name="tb">Thông báo</string>
     <string name="bancomuonsuakhong">Bạn có muốn sửa không?</string>
     <string name="ko">Không</string>
@@ -146,5 +145,6 @@
     <string name="mksai">Mật khẩu nhập lại không khớp</string>
     <string name="saimkhientai">Sai mật khẩu hiện tại</string>
     <string name="donhanghoanthanh">Đơn hàng hoàn thành</string>
-
+    <string name="chonnguoigiao">Chọn người giao</string>
+    <string name="chitietdonhang">Chi tiết đơn hàng</string>
 </resources>

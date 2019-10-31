@@ -14,7 +14,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="iddonhang"
             android:textColor="#000" />
         <TextView
             android:id="@+id/tvTINH_TRANG"
@@ -22,7 +21,6 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:gravity="center_vertical"
-            android:text="tinhtrangdonhang"
             android:textColor="#000" />
     </LinearLayout>
 

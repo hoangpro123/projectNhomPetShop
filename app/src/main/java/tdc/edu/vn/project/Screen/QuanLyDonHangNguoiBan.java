@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.squareup.otto.Subscribe;
 
@@ -19,7 +18,7 @@ import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 
-public class QuanLyDonHangNguoiBan extends AppCompatActivity {
+public class QuanLyDonHangNguoiBan extends AppCompatActivity{
     String id_nguoi_ban = "nb002";
     private ListView lv1;
     Spinner spn;
@@ -33,7 +32,6 @@ public class QuanLyDonHangNguoiBan extends AppCompatActivity {
         PetShopFireBase.bus.register(this);
         setControl();
         setEvent();
-
     }
 
     public void setControl() {
@@ -50,25 +48,25 @@ public class QuanLyDonHangNguoiBan extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if (PetShopFireBase.TABLE_DON_HANG.status_data && PetShopFireBase.TABLE_TINH_TRANG_DON_HANG.status_data) {
+                if (PetShopFireBase.TABLE_DON_HANG.status_data && PetShopFireBase.TABLE_TINH_TRANG_DON_HANG.status_data && PetShopFireBase.TABLE_SAN_PHAM.status_data) {
                     data = new ArrayList<>();
                     ArrayList<DonHang> listDonHang = (ArrayList<DonHang>) PetShopFireBase.TABLE_DON_HANG.getData();
                     for (DonHang donHang : listDonHang) {
-                        SanPham sanPham = (SanPham) PetShopFireBase.findItem(donHang.getId_san_pham(),PetShopFireBase.TABLE_SAN_PHAM);
+                        SanPham sanPham = (SanPham) PetShopFireBase.findItem(donHang.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM);
                         if (sanPham.getId_nguoi_ban().equals(id_nguoi_ban))
                             data.add(donHang);
                     }
-                    adapter = new AdapterDonHangNguoiBan(QuanLyDonHangNguoiBan.this, R.layout.listview_xacnhan_nguoiban, data);
+                    adapter = new AdapterDonHangNguoiBan(QuanLyDonHangNguoiBan.this, R.layout.listview_donhang_nguoiban, data);
                     lv1.setAdapter(adapter);
                 } else handler.postDelayed(this, 1000);
-                EditText et;
 
             }
         });
     }
+
     @Subscribe
-    public void onChanged(String table_name){
-        if(table_name.equals(PetShopFireBase.TABLE_DON_HANG.getName()) || table_name.equals(PetShopFireBase.TABLE_TINH_TRANG_DON_HANG.getName())){
+    public void onChanged(String table_name) {
+        if (table_name.equals(PetShopFireBase.TABLE_DON_HANG.getName()) || table_name.equals(PetShopFireBase.TABLE_TINH_TRANG_DON_HANG.getName())) {
             khoiTao();
         }
     }

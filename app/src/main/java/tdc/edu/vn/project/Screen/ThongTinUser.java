@@ -2,14 +2,12 @@ package tdc.edu.vn.project.Screen;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +17,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import androidx.fragment.app.Fragment;
 import tdc.edu.vn.project.Adapter.AdapterDonHangNguoiMua;
 import tdc.edu.vn.project.InforUserActivity;
 import tdc.edu.vn.project.Model.DonHang;
-import tdc.edu.vn.project.Model.HoaHong;
-import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
@@ -98,7 +93,7 @@ public class ThongTinUser extends Fragment {
                     tvSDT.setText(nguoiMua.getPhone());
                     //
                     data = (ArrayList<DonHang>) PetShopFireBase.search("id_nguoi_mua",idnm,PetShopFireBase.TABLE_DON_HANG);
-                    adapter = new AdapterDonHangNguoiMua(getContext(), R.layout.listview_donhang_trangthai, data);
+                    adapter = new AdapterDonHangNguoiMua(getContext(), R.layout.listview_donhang_nguoimua, data);
                     lv1.setAdapter(adapter);
                 } else handler.postDelayed(this, 1000);
             }
