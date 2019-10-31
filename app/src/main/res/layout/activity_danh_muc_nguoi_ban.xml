@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg"
     android:gravity="center">
     <LinearLayout
 
@@ -110,8 +109,8 @@
         android:id="@+id/btnDangXuat"
         android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
         android:text="@string/dangxuat"
-        android:background="@color/none"
-        android:textColor="@color/title"
+        android:background="#00FFFFFF"
+        android:textColor="@color/title_dang_xuat"
         android:textStyle="bold"
         />
 </LinearLayout>

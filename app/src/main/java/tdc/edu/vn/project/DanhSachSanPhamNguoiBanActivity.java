@@ -42,7 +42,6 @@ public class DanhSachSanPhamNguoiBanActivity extends AppCompatActivity {
         setEvent();
     }
     private void setEvent() {
-
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,15 +50,10 @@ public class DanhSachSanPhamNguoiBanActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
     private void setControl() {
-
         Back = (Button) findViewById(R.id.btnBack);
 
     }
-
     private void getFirebaseSanPham() {
         final Handler handler = new Handler();
         handler.post(new Runnable() {
