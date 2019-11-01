@@ -43,7 +43,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danh_sach_thu_cung);
 
-        //set data
+        //set nguoiBan
 
         setControl();
         setEvent();

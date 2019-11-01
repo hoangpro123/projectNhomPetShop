@@ -88,7 +88,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public void filter(String charText) {
         charText = charText.toLowerCase(getDefault());
-        //removeAccent(charText);
         mData.clear();
         if(charText.length() == 0){
             mData.addAll(arrayList);
@@ -103,7 +102,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public static String removeAccent(String s) {
-
         String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(temp).replaceAll("");

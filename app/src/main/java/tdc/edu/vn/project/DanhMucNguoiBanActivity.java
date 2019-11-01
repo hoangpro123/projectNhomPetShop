@@ -17,7 +17,7 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
     String id;
     Button GianHang, ThemSanPham;
     TextView NameShop;
-    ArrayList<NguoiBan> data;
+    NguoiBan nguoiBan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +32,7 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DanhMucNguoiBanActivity.this, DanhSachSanPhamNguoiBanActivity.class);
+                intent.putExtra("id_nguoi_ban", id);
                 startActivity(intent);
             }
         });
@@ -50,7 +51,7 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
         ThemSanPham = (Button) findViewById(R.id.btnThemSanPham);
         NameShop = (TextView) findViewById(R.id.tvNameShop);
         Intent intent = getIntent();
-        id = intent.getExtras().getString("id_nguoi_ban");
+        id = intent.getStringExtra("id_nguoi_ban");
         getFirebaseSanPham();
     }
     private void getFirebaseSanPham() {
@@ -59,8 +60,8 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(PetShopFireBase.TABLE_NGUOI_BAN.status_data){
-                    data = (ArrayList<NguoiBan>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_BAN);
-                    NameShop.setText(data.get(0).getName() + " Shop");
+                    nguoiBan = (NguoiBan) PetShopFireBase.findItem(id, PetShopFireBase.TABLE_NGUOI_BAN);
+                    NameShop.setText(nguoiBan.getName() + " Shop");
                 }
                 else handler.postDelayed(this, 1000);
             }

@@ -4,6 +4,9 @@ package tdc.edu.vn.project;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,17 +18,26 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.squareup.picasso.Picasso;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import tdc.edu.vn.project.Adapter.RecyclerViewAdapter;
+import tdc.edu.vn.project.Model.SanPham;
 
 public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
-
+    Button Back;
+    SanPham sanPham;
+    String ID;
     private TextView tvtitle,tvdescription,tvprice;
     private ImageView img;
     HashMap<String, Integer> HashMapForLocalRes ;
+    private HashMap<String, String> HashMapForURL;
     SliderLayout sliderLayout;
 
     @Override
@@ -37,48 +49,28 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
     }
 
     private void setEvent() {
-        // Recieve data
+        // Recieve nguoiBan
         Intent intent = getIntent();
-        String Title = intent.getExtras().getString("Title");
-        String price = intent.getExtras().getString("Price");
-        String Description = intent.getExtras().getString("Description");
-        String image = intent.getExtras().getString("Thumbnail") ;
+        ID = intent.getStringExtra("ID");
+        String Title = intent.getStringExtra("Title");
+        String price = intent.getStringExtra("Price");
+        String Description = intent.getStringExtra("Description");
+        String image = intent.getStringExtra("Thumbnail") ;
 
         // Setting values
         tvtitle.setText(Title);
         tvprice.setText(price);
         tvdescription.setText(Description);
 //        Picasso.with(this).load(image).into(img);
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
 
-        AddImageUrlFormLocalRes();
 
-        for(String name : HashMapForLocalRes.keySet()){
-
-            TextSliderView textSliderView = new TextSliderView(ChiTietThuCungActivity.this);
-
-            textSliderView
-                    .description(name)
-                    .image(HashMapForLocalRes.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit)
-                    .setOnSliderClickListener(this);
-
-            textSliderView.bundle(new Bundle());
-
-            textSliderView.getBundle()
-                    .putString("extra",name);
-
-            sliderLayout.addSlider(textSliderView);
-        }
-        sliderLayout.setPresetTransformer(SliderLayout.Transformer.DepthPage);
-
-        sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-
-        sliderLayout.setCustomAnimation(new DescriptionAnimation());
-
-        sliderLayout.setDuration(3000);
-
-        sliderLayout.addOnPageChangeListener(ChiTietThuCungActivity.this);
 
 
     }
@@ -88,6 +80,8 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
         tvdescription = (TextView) findViewById(R.id.tvThongTinThuCung);
         tvprice = (TextView) findViewById(R.id.tvGiaThuCung);
         sliderLayout = (SliderLayout) findViewById(R.id.slider);
+        Back = (Button) findViewById(R.id.btnBack);
+        AddImagesUrlOnline();
     }
 
     @Override
@@ -116,16 +110,50 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
     public void onPageScrollStateChanged(int state) {
 
     }
+    public void AddImagesUrlOnline(){
 
+        HashMapForURL = new HashMap<>();
 
-    public void AddImageUrlFormLocalRes(){
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if(PetShopFireBase.TABLE_SAN_PHAM.status_data){
+                    sanPham = (SanPham) PetShopFireBase.findItem(ID, PetShopFireBase.TABLE_SAN_PHAM);
+                    for(int i = 0; i < sanPham.getImages_list().size(); i++){
+                        HashMapForURL.put("Hinh " + (i + 1), sanPham.getImages_list().get(i));
+                    }
+                    for(String name : HashMapForURL.keySet()){
 
-        HashMapForLocalRes = new HashMap<String, Integer>();
-        HashMapForLocalRes.put("Hinh1", R.drawable.petshop);
-        HashMapForLocalRes.put("Hinh2", R.drawable.petshop);
-        HashMapForLocalRes.put("Hinh3", R.drawable.petshop);
-        HashMapForLocalRes.put("Hinh4", R.drawable.petshop);
-        HashMapForLocalRes.put("Hinh5", R.drawable.petshop);
+                        TextSliderView textSliderView = new TextSliderView(ChiTietThuCungActivity.this);
+
+                        textSliderView
+                                .description(name)
+                                .image(HashMapForURL.get(name))
+                                .setScaleType(BaseSliderView.ScaleType.Fit)
+                                .setOnSliderClickListener(ChiTietThuCungActivity.this);
+
+                        textSliderView.bundle(new Bundle());
+
+                        textSliderView.getBundle()
+                                .putString("extra",name);
+
+                        sliderLayout.addSlider(textSliderView);
+                    }
+                    sliderLayout.setPresetTransformer(SliderLayout.Transformer.DepthPage);
+
+                    sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+
+                    sliderLayout.setCustomAnimation(new DescriptionAnimation());
+
+                    sliderLayout.setDuration(3000);
+
+                    sliderLayout.addOnPageChangeListener(ChiTietThuCungActivity.this);
+                    //Toast.makeText(ChiTietThuCungActivity.this, sanPham.getImages_list() +"", Toast.LENGTH_SHORT).show();
+                }
+                else handler.postDelayed(this, 1000);
+            }
+        });
 
     }
 }

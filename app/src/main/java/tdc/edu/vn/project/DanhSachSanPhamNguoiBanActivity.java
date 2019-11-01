@@ -26,7 +26,7 @@ import tdc.edu.vn.project.Adapter.RecyclerViewAdapter;
 import tdc.edu.vn.project.Model.SanPham;
 
 public class DanhSachSanPhamNguoiBanActivity extends AppCompatActivity {
-    String id_nguoi_ban = "null";
+    String id_nguoi_ban;
     RecyclerViewAdapter myAdapter;
     ArrayList<SanPham> data;
     Button Back;
@@ -37,7 +37,7 @@ public class DanhSachSanPhamNguoiBanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_danh_sach_san_pham_nguoi_ban);
 
 
-        getFirebaseSanPham();
+
         setControl();
         setEvent();
     }
@@ -45,14 +45,15 @@ public class DanhSachSanPhamNguoiBanActivity extends AppCompatActivity {
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DanhSachSanPhamNguoiBanActivity.this, DanhMucNguoiBanActivity.class);
-                startActivity(intent);
+               onBackPressed();
             }
         });
     }
     private void setControl() {
         Back = (Button) findViewById(R.id.btnBack);
-
+        Intent intent = getIntent();
+        id_nguoi_ban = intent.getStringExtra("id_nguoi_ban");
+        getFirebaseSanPham();
     }
     private void getFirebaseSanPham() {
         final Handler handler = new Handler();

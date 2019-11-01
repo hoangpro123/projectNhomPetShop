@@ -48,7 +48,7 @@ import tdc.edu.vn.project.Model.SanPham;
 
 public class ThemSanPhamActivity extends AppCompatActivity {
     String id;
-    ArrayList<NguoiBan> data;
+    NguoiBan nguoiBan;
     Button Back, DangTin;
     ImageButton ThemSanPham;
     EditText TieuDe, ThongTinSanPham, Gia;
@@ -63,7 +63,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_san_pham);
-        getFirebaseSanPham();
+
         setControl();
         setEvent();
     }
@@ -120,6 +120,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         Back = (Button) findViewById(R.id.btnBack);
         Intent intent = getIntent();
         id = intent.getExtras().getString("id_nguoi_ban");
+        getFirebaseSanPham();
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         if (Build.VERSION.SDK_INT >= 23) {
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 69);
@@ -188,8 +189,8 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (PetShopFireBase.TABLE_NGUOI_BAN.status_data) {
-                    data = (ArrayList<NguoiBan>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_BAN);
-                    ThongTinNguoiBan.setText("Tên Shop : " + data.get(0).getName() + "\n" + "Địa Chỉ : " + data.get(0).getAddress() + "\n" + "SĐT : " + data.get(0).getPhone());
+                    nguoiBan = (NguoiBan) PetShopFireBase.findItem(id, PetShopFireBase.TABLE_NGUOI_BAN);
+                    ThongTinNguoiBan.setText("Tên Shop : " + nguoiBan.getName() + "\n" + "Địa Chỉ : " + nguoiBan.getAddress() + "\n" + "SĐT : " + nguoiBan.getPhone());
                 } else handler.postDelayed(this, 1000);
             }
         });
