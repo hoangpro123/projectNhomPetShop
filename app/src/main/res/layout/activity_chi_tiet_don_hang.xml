@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Screen.ChiTietDonHang">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/Header"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnBackChiTietDonHang"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ic_navigate_before_black_24dp" />
+
+        <TextView
+            style="@style/titleheader_chitietthucung"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="@string/chitietdonhang" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="12"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/key_row_chitietdonhang"
+                android:text="ID đơn hàng:" />
+
+            <TextView
+                android:id="@+id/tvID_DON_HANG_CTDH"
+                style="@style/value_row_chitietdonhang" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/key_row_chitietdonhang"
+                android:text="Tên sản phẩm:" />
+
+            <TextView
+                android:id="@+id/tvTEN_SAN_PHAM_CTDH"
+                style="@style/value_row_chitietdonhang" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/key_row_chitietdonhang"
+                android:text="Tên người mua:" />
+
+            <TextView
+                android:id="@+id/tvTEN_NGUOI_MUA_CTDH"
+                style="@style/value_row_chitietdonhang" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/key_row_chitietdonhang"
+                android:text="Tổng tiền:" />
+
+            <TextView
+                android:id="@+id/tvTONG_TIEN_CTDH"
+                style="@style/value_row_chitietdonhang" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/key_row_chitietdonhang"
+                android:text="Tình trạng:" />
+
+            <TextView
+                android:id="@+id/tvTINH_TRANG_CTDH"
+                style="@style/value_row_chitietdonhang" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

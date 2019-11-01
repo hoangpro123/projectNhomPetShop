@@ -3,17 +3,18 @@ package tdc.edu.vn.project.Model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class SanPham extends PetShopModel {
+public class SanPham extends PetShopModel{
     String name, description, id_nguoi_ban;
-    String image;
+    ArrayList<String> images_list;
     Double price;
     Date ngay_dang_ban;
 
-    public SanPham(String name, String description, String id_nguoi_ban, String image, Double price, Date ngay_dang_ban) {
+
+    public SanPham(String name, String description, ArrayList<String> images_list, String id_nguoi_ban, Double price, Date ngay_dang_ban) {
         this.name = name;
         this.description = description;
         this.id_nguoi_ban = id_nguoi_ban;
-        this.image = image;
+        this.images_list = images_list;
         this.price = price;
         this.ngay_dang_ban = ngay_dang_ban;
     }
@@ -45,12 +46,12 @@ public class SanPham extends PetShopModel {
         this.id_nguoi_ban = id_nguoi_ban;
     }
 
-    public String getImage() {
-        return image;
+    public ArrayList<String> getImages_list() {
+        return images_list;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImages_list(ArrayList<String> images_list) {
+        this.images_list = images_list;
     }
 
     public Double getPrice() {
@@ -69,3 +70,4 @@ public class SanPham extends PetShopModel {
         this.ngay_dang_ban = ngay_dang_ban;
     }
 }
+
