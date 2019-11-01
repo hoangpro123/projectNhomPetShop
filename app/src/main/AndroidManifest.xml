@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".QuanLyDonHangNguoiBan"></activity>
+        <activity android:name=".DanhSachDen"></activity>
+        <activity android:name=".QuanLyDonHangNguoiBan" />
         <activity android:name=".ThongTinNguoiDung" />
-        <activity android:name=".ThongTinTaiKhoan2" />
+        <activity android:name=".YeuCauChinhSua" />
         <activity android:name=".ThongTinUser" />
         <activity android:name=".QuenMatKhau" />
         <activity android:name=".DoiMatKhau" />
@@ -19,7 +20,7 @@
         <activity android:name=".GioHang" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ChiTietThuCung" />
-        <activity android:name=".DanhSachDen">
+        <activity android:name=".ThongTinTaiKhoan2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

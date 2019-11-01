@@ -75,12 +75,13 @@
                 android:text="@string/hoten"
                 style="@style/title_chitietthucung"
                 android:layout_marginLeft="10dp"></TextView>
-            <TextView
+            <EditText
+                android:id="@+id/edtHoTen"
                 android:layout_width="0dp"
                 android:layout_weight="6"
                 android:layout_height="wrap_content"
                 android:text="@string/tenchucuahang"
-                style="@style/size20denthuong"></TextView>
+                style="@style/size20denthuong"></EditText>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -96,12 +97,13 @@
                 android:text="@string/email"
                 style="@style/title_chitietthucung"
                 android:layout_marginLeft="10dp"></TextView>
-            <TextView
+            <EditText
+                android:id="@+id/edtEmail"
                 android:layout_width="0dp"
                 android:layout_weight="6"
                 android:layout_height="wrap_content"
                 android:text="@string/chitietemail"
-                style="@style/size20denthuong"></TextView>
+                style="@style/size20denthuong"></EditText>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,12 +119,13 @@
                 android:text="@string/sdt1"
                 style="@style/title_chitietthucung"
                 android:layout_marginLeft="10dp"></TextView>
-            <TextView
+            <EditText
+                android:id="@+id/edtSDT"
                 android:layout_width="0dp"
                 android:layout_weight="6"
                 android:layout_height="wrap_content"
                 android:text="@string/chitietsdt"
-                style="@style/size20denthuong"></TextView>
+                style="@style/size20denthuong"></EditText>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -139,16 +142,19 @@
                 style="@style/title_chitietthucung"
                 android:layout_marginLeft="10dp"></TextView>
             <RadioGroup
+                android:id="@+id/rgGioiTinh"
                 android:layout_width="0dp"
                 android:layout_weight="6"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <RadioButton
+                    android:id="@+id/rbNam"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/nam"></RadioButton>
                 <RadioButton
+                    android:id="@+id/rbNu"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
@@ -169,12 +175,13 @@
                 android:text="@string/diachi"
                 style="@style/title_chitietthucung"
                 android:layout_marginLeft="10dp"></TextView>
-            <TextView
+            <EditText
+                android:id="@+id/edtDiaChi"
                 android:layout_width="0dp"
                 android:layout_weight="6"
                 android:layout_height="wrap_content"
                 android:text="@string/chitietdiachi"
-                style="@style/size20denthuong"></TextView>
+                style="@style/size20denthuong"></EditText>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -190,6 +197,7 @@
         android:gravity="center"
         android:padding="10dp">
         <Button
+            android:id="@+id/btnYeuCauChinhSua"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/yeucauchinhsua"
