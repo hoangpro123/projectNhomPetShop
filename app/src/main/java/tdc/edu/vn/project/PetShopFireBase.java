@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.otto.Bus;
@@ -84,26 +85,6 @@ public class PetShopFireBase {
             }
         }
         return results;
-    }
-
-    //suspended
-    public static void onTableLoaded(final Class clss, final String sMethod, final eTable table) {
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (table.status_last_id && table.status_data) {
-                    try {
-                        clss.getDeclaredMethod(sMethod).invoke(null);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (InvocationTargetException e) {
-                        e.printStackTrace();
-                    } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
-                    }
-                } else handler.postDelayed(this, 1000);
-            }
-        });
     }
 
     public static void sortList(final String sField, final eTable table, final boolean inc) {
@@ -196,7 +177,7 @@ public class PetShopFireBase {
         return key;
     }
 
-    private static PetShopModel findItem(String id, eTable table) {
+    public static PetShopModel findItem(String id, eTable table) {
         final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
         for (PetShopModel item : data) {
             if (item.getId().equals(id))
@@ -252,6 +233,7 @@ public class PetShopFireBase {
                     @Override
                     public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                         data.remove(findItem(dataSnapshot.getKey(), table));
+                        count[0] = data.size();
                         bus.post(table.getName());
                     }
 
@@ -281,34 +263,6 @@ public class PetShopFireBase {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-    }
-
-    public static void initial() {
-        TABLE_NGUOI_MUA.TABLE_DATA.child("null").setValue(new NguoiMua("NguoiMua", "nm001", "123456", "09123456789", "hcm", "link", "Nữ"));
-        TABLE_DANH_GIA.TABLE_DATA.child("null").setValue(new DanhGia("nm001", "nb001", "ndsfs", (float) 3.5));
-        TABLE_DANH_SACH_DEN.TABLE_DATA.child("null").setValue(new DanhSachDen("nm001", "nb001"));
-        TABLE_DON_HANG.TABLE_DATA.child("null").setValue(new DonHang("nm001", "nb001", "ndsfs", 2, 1, (double) 120000));
-        TABLE_GIAO_HANG.TABLE_DATA.child("null").setValue(new GiaoHang("nm001", new Date()));
-        TABLE_GIO_HANG.TABLE_DATA.child("null").setValue(new GioHang("nm001", "nb001"));
-        TABLE_HOA_HONG.TABLE_DATA.child("null").setValue(new HoaHong((float) 1, new Date(), (double) 563.333));
-        TABLE_NGUOI_BAN.TABLE_DATA.child("null").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "Nam", "hh001"));
-        TABLE_NGUOI_GIAO.TABLE_DATA.child("null").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));
-        TABLE_QUAN_LY.TABLE_DATA.child("null").setValue(new QuanLy("nm001", "nb001", "ndsfs"));
-        TABLE_SAN_PHAM.TABLE_DATA.child("null").setValue(new SanPham("nm001", "nb001", "ndsfs", "nb003", (double) 1930000, new Date()));
-        TABLE_YEU_CAU_CHINH_SUA.TABLE_DATA.child("null").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "Nam", "hh001"));
-        //
-        TABLE_NGUOI_MUA.TABLE_LAST_ID.setValue(1);
-        TABLE_DANH_GIA.TABLE_LAST_ID.setValue(1);
-        TABLE_DANH_SACH_DEN.TABLE_LAST_ID.setValue(1);
-        TABLE_DON_HANG.TABLE_LAST_ID.setValue(1);
-        TABLE_GIAO_HANG.TABLE_LAST_ID.setValue(1);
-        TABLE_HOA_HONG.TABLE_LAST_ID.setValue(1);
-        TABLE_NGUOI_BAN.TABLE_LAST_ID.setValue(1);
-        TABLE_NGUOI_GIAO.TABLE_LAST_ID.setValue(1);
-        TABLE_QUAN_LY.TABLE_LAST_ID.setValue(1);
-        TABLE_SAN_PHAM.TABLE_LAST_ID.setValue(1);
-        TABLE_YEU_CAU_CHINH_SUA.TABLE_LAST_ID.setValue(1);
-        //
     }
 
     public enum eTable {

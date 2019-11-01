@@ -1,43 +1,46 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Screen;
 
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-
+import tdc.edu.vn.project.Adapter.AdapterDonHangNguoiMua;
+import tdc.edu.vn.project.BatteryInfo;
+import tdc.edu.vn.project.Model.DanhGia;
 import tdc.edu.vn.project.Model.DonHang;
 import tdc.edu.vn.project.Model.NguoiBan;
-import tdc.edu.vn.project.Model.PetShopModel;
+import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.R;
 
-public class DonHangActivity extends AppCompatActivity {
+public class DanhGiaActivity extends AppCompatActivity {
     RatingBar rating;
     TextView tvRatingNumber, tvMaDonHang, tvTenDonHang, tvGia, tvNguoiBan;
     EditText etContent;
     Button btnGui;
+    ImageButton btnBack;
 
-    String id;
+    DonHang dh;
+    String idnb, idnm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_AppCompat_Light_NoActionBar);
-        setContentView(R.layout.activity_don_hang);
+        setContentView(R.layout.activity_danh_gia);
 
         setControl();
         setEvent();
+
     }
     void setEvent(){
         Handler handler = new Handler();
@@ -45,10 +48,15 @@ public class DonHangActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(PetShopFireBase.TABLE_DON_HANG.status_data && PetShopFireBase.TABLE_SAN_PHAM.status_data && PetShopFireBase.TABLE_NGUOI_BAN.status_data){
-                    id = getIntent().getStringExtra("id");
-                    DonHang dh = (DonHang) ((ArrayList<PetShopModel>)PetShopFireBase.search("id", id, PetShopFireBase.TABLE_DON_HANG)).get(0);
-                    SanPham sp = (SanPham) ((ArrayList<PetShopModel>)PetShopFireBase.search("id", dh.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM)).get(0);
-                    NguoiBan nb = (NguoiBan) ((ArrayList<PetShopModel>)PetShopFireBase.search("id", sp.getId_nguoi_ban(), PetShopFireBase.TABLE_NGUOI_BAN)).get(0);
+                    String iddh = getIntent().getStringExtra("iddh");
+
+                    dh = (DonHang) PetShopFireBase.findItem(iddh,PetShopFireBase.TABLE_DON_HANG);
+                    SanPham sp = (SanPham) PetShopFireBase.findItem(dh.getId_san_pham(),PetShopFireBase.TABLE_SAN_PHAM);
+                    NguoiBan nb = (NguoiBan) PetShopFireBase.findItem(sp.getId_nguoi_ban(),PetShopFireBase.TABLE_NGUOI_BAN);
+
+                    idnb = nb.getId();
+                    idnm = dh.getId_nguoi_mua();
+
                     tvMaDonHang.setText(dh.getId());
                     tvTenDonHang.setText(sp.getName());
                     tvGia.setText(sp.getPrice() + " đ");
@@ -69,19 +77,29 @@ public class DonHangActivity extends AppCompatActivity {
         btnGui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                PetShopFireBase.pushItem(new DanhGia(idnb,idnm,etContent.getText().toString(),rating.getRating()),PetShopFireBase.TABLE_DANH_GIA);
+                dh.setTinh_trang(4);
+                PetShopFireBase.pushItem(dh,PetShopFireBase.TABLE_DON_HANG);
+                onBackPressed();
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     }
     void setControl(){
         rating = findViewById(R.id.rbRating);
         tvRatingNumber = findViewById(R.id.tvRatingNumber);
+        tvRatingNumber.setText(String.valueOf(rating.getRating()));
         tvMaDonHang = findViewById(R.id.tvMaDonHang);
         tvTenDonHang = findViewById(R.id.tvTenDonHang);
         tvGia = findViewById(R.id.tvGia);
         tvNguoiBan = findViewById(R.id.tvNguoiBan);
         etContent = findViewById(R.id.etContent);
         btnGui = findViewById(R.id.btnGui);
-
+        btnBack = findViewById(R.id.btnBack_DanhGia);
     }
 }

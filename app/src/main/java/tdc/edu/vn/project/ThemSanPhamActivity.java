@@ -2,6 +2,7 @@ package tdc.edu.vn.project;
 
 
 import android.Manifest;
+import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -46,14 +47,17 @@ import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
 
 public class ThemSanPhamActivity extends AppCompatActivity {
-    String id = "null";
+    String id;
     ArrayList<NguoiBan> data;
     Button Back, DangTin;
     ImageButton ThemSanPham;
     EditText TieuDe, ThongTinSanPham, Gia;
     TextView ThongTinNguoiBan;
-    byte[] bytes = null;
     String currentDateTimeString;
+
+    ArrayList<byte[]> arrBytes = new ArrayList<>();
+    ArrayList<String> image_list = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,15 +78,30 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 96 && resultCode == RESULT_OK && data != null) {
-            Uri uri = data.getData();
-            ThemSanPham.setImageURI(uri);
-            try {
-                InputStream inputStream = getContentResolver().openInputStream(uri);
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            arrBytes.clear();
+            ArrayList<Uri> list_uri = new ArrayList<>();
+            if (data.getClipData() != null) {
+                ClipData clipData = data.getClipData();
+                for (int i = 0; i < clipData.getItemCount(); i++) {
+                    list_uri.add(clipData.getItemAt(i).getUri());
+                }
+            } else if (data.getData() != null) {
+                list_uri.add(data.getData());
+            }
 
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-                bytes = byteArrayOutputStream.toByteArray();
+
+            ThemSanPham.setImageURI(list_uri.get(0));
+            try {
+                for (Uri uri : list_uri) {
+                    InputStream inputStream = getContentResolver().openInputStream(uri);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                    byte[] bytes = byteArrayOutputStream.toByteArray();
+                    arrBytes.add(bytes);
+                }
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -99,7 +118,8 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         Gia = (EditText) findViewById(R.id.edPrice);
         DangTin = (Button) findViewById(R.id.btnDangTin);
         Back = (Button) findViewById(R.id.btnBack);
-
+        Intent intent = getIntent();
+        id = intent.getExtras().getString("id_nguoi_ban");
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         if (Build.VERSION.SDK_INT >= 23) {
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 69);
@@ -110,35 +130,17 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         DangTin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(bytes == null){
+                if (arrBytes.size() == 0) {
                     Toast.makeText(getApplicationContext(), "Chưa chọn hình", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    UploadTask uploadTask = PetShopFireBase.fireBaseStorage.child("img" + Calendar.getInstance().getTimeInMillis()).putBytes(bytes);
-                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Uri> task) {
-                                    String link = task.getResult().toString();
-                                    SanPham sp = new SanPham(TieuDe.getText().toString(), ThongTinSanPham.getText().toString(), link, id, Double.parseDouble(Gia.getText().toString()), new Date());
-                                    PetShopFireBase.pushItem(sp, PetShopFireBase.TABLE_SAN_PHAM);
-                                    Intent intent = new Intent(getApplicationContext(), DanhSachSanPhamNguoiBanActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                            });
-                        }
-                    });
+                } else {
+                    upload(arrBytes,0);
                 }
             }
         });
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DanhMucNguoiBanActivity.class);
-                startActivity(intent);
+                onBackPressed();
             }
         });
         // chuyển qua thư viện
@@ -147,8 +149,35 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true);
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(intent, 96);
+            }
+        });
+    }
+
+    private void upload(ArrayList<byte[]> arrBytes, int i) {
+        if (i >= arrBytes.size()) return;
+        UploadTask uploadTask = PetShopFireBase.fireBaseStorage.child("img" + Calendar.getInstance().getTimeInMillis()).putBytes(arrBytes.get(i));
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        String link = task.getResult().toString();
+                        image_list.add(link);
+                        if(i == arrBytes.size() - 1){
+                            SanPham sp = new SanPham(TieuDe.getText().toString(), ThongTinSanPham.getText().toString(), image_list, id, Double.parseDouble(Gia.getText().toString()), new Date());
+                            PetShopFireBase.pushItem(sp, PetShopFireBase.TABLE_SAN_PHAM);
+                            Intent intent = new Intent(getApplicationContext(), DanhSachSanPhamNguoiBanActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else {
+                            upload(arrBytes, i+1);
+                        }
+                    }
+                });
             }
         });
     }

@@ -4,40 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThongTinUser"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Screen.ThongTinUser">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:background="@color/Header">
+        android:background="@color/Header"
+        android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-        </LinearLayout>
+            android:layout_weight="1"></LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:gravity="center">
+
             <TextView
+                style="@style/titleheader_chitietthucung"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/canhan"
-                style="@style/titleheader_chitietthucung">
-            </TextView>
+                android:text="@string/canhan"></TextView>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_shopping_cart_black_24dp"></ImageView>
+                android:src="@drawable/ic_shopping_cart_black_24dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -46,56 +50,63 @@
         android:layout_height="0dp"
         android:layout_weight="10"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/img"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:src="@drawable/pet"></ImageView>
+                android:layout_weight="1"
+                android:src="@drawable/pet" />
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="3"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="3"
                 android:gravity="center"
-                android:layout_marginLeft="20dp">
+                android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/tvName"
+                    style="@style/size20denthuong"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tenchucuahang"
-                    android:paddingBottom="5dp"
-                    style="@style/size20denthuong"></TextView>
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
                 <TextView
                     android:id="@+id/tvEmail"
+                    style="@style/size20denthuong"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/emailuser"
-                    android:paddingBottom="5dp"
-                    style="@style/size20denthuong">></TextView>
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
                 <TextView
                     android:id="@+id/tvSDT"
+                    style="@style/size20denthuong"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chitietsdt"
-                    style="@style/size20denthuong">></TextView>
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center">
+
                 <Button
+                    android:id="@+id/btnFix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/opacity"
                     android:text="@string/chinhsua"
-                    android:textColor="@color/xanh"
-                    android:background="@color/opacity"></Button>
+                    android:textColor="@color/xanh" />
             </LinearLayout>
         </LinearLayout>
 
@@ -104,143 +115,150 @@
             android:layout_height="0dp"
             android:layout_weight="4"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="@color/xamnhat"></TextView>
+                    android:background="@color/xamnhat" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="7"
                     android:orientation="horizontal">
+
                     <ImageView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ic_view_list_black_24dp"></ImageView>
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_view_list_black_24dp" />
+
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="4"
-                        android:layout_height="match_parent"
-                        android:text="@string/quanlydonhang"
                         style="@style/textsize20"
-                        android:gravity="center|left"></TextView>
-                    <ImageView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ic_keyboard_arrow_down_black_24dp"></ImageView>
+                        android:layout_weight="5"
+                        android:gravity="center|left"
+                        android:text="@string/quanlydonhang" />
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="@color/xamnhat"></TextView>
+                    android:background="@color/xamnhat" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="6"
                 android:orientation="vertical">
+
                 <LinearLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1">
-                    <LinearLayout
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+                    <TextView
+                        style="@style/size20denthuong"
                         android:layout_width="0dp"
-                        android:layout_weight="3"
                         android:layout_height="match_parent"
+                        android:layout_weight="3"
                         android:background="@drawable/vien"
                         android:gravity="center|left"
-                        android:paddingLeft="15dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/tendonhan"
-                            style="@style/size20denthuong"></TextView>
-                    </LinearLayout>
-                    <LinearLayout
+                        android:paddingLeft="15dp"
+                        android:text="@string/tendonhan" />
+                    <TextView
+                        style="@style/size20denthuong"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:background="@drawable/vien"
-                        android:gravity="center">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/trangthai"
-                            style="@style/size20denthuong"></TextView>
-                    </LinearLayout>
+                        android:gravity="center"
+                        android:text="@string/trangthai" />
+
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="9">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/vien">
+
                         <ListView
                             android:id="@+id/lv1"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"></ListView>
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal"
-                android:gravity="left">
+                android:gravity="left"
+                android:orientation="horizontal">
+
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/chontatca"
-                    android:drawableLeft="@drawable/ic_crop_square_black_24dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@color/opacity"></Button>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/xoa"
-                    android:drawableLeft="@drawable/ic_delete_black_24dp"
                     android:layout_marginRight="20dp"
-                    android:background="@color/opacity"></Button>
+                    android:background="@color/opacity"
+                    android:drawableLeft="@drawable/ic_crop_square_black_24dp"
+                    android:text="@string/chontatca" />
+
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/xemthem"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/opacity"
+                    android:drawableLeft="@drawable/ic_delete_black_24dp"
+                    android:text="@string/xoa" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/opacity"
                     android:drawableLeft="@drawable/ic_info_black_24dp"
-                    android:background="@color/opacity"></Button>
+                    android:text="@string/xemthem" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="right">
+        android:gravity="right"
+        android:orientation="horizontal">
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dangxuat"
+            android:background="@color/opacity"
             android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
             android:drawablePadding="10dp"
-            android:background="@color/opacity"></Button>
+            android:text="@string/dangxuat" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:gravity="left">
-    </LinearLayout>
+        android:gravity="left"
+        android:orientation="horizontal"></LinearLayout>
 </LinearLayout>

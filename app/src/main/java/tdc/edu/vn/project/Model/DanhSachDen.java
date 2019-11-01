@@ -1,6 +1,6 @@
 package tdc.edu.vn.project.Model;
 
-public class DanhSachDen extends PetShopModel{
+public class DanhSachDen extends PetShopModel {
     String id_nguoi_ban, id_nguoi_mua;
 
     public DanhSachDen(String id_nguoi_ban, String id_nguoi_mua) {
@@ -11,7 +11,6 @@ public class DanhSachDen extends PetShopModel{
 
     public DanhSachDen() {
     }
-
 
     public String getId_nguoi_ban() {
         return id_nguoi_ban;

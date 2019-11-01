@@ -1,8 +1,18 @@
-package tdc.edu.vn.project;
+package tdc.edu.vn.project.Screen;
 
+import android.content.Intent;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -10,26 +20,32 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import java.util.HashMap;
 
-import androidx.appcompat.app.AppCompatActivity;
+import tdc.edu.vn.project.Model.GiaoHang;
+import tdc.edu.vn.project.Model.GioHang;
+import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.R;
 
-public class ChiTietThuCung extends AppCompatActivity
-        implements BaseSliderView.OnSliderClickListener,
-        ViewPagerEx.OnPageChangeListener
-{
-
+public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     SliderLayout sliderLayout ;
-
+    TextView Name, Price, Des;
+    Button btnThemGioHang;
+    ImageButton btnBack;
     HashMap<String, String> HashMapForURL ;
 
     HashMap<String, Integer> HashMapForLocalRes ;
+
+    ArrayList<SanPham> listPet ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_chitietthucung);
 
-
-
+        sliderLayout = (SliderLayout)findViewById(R.id.slider);
+        AnhXa();
+        GetInfor();
+        setEvent();
         //Call this method if you want to add images from URL .
         //AddImagesUrlOnline();
 
@@ -96,17 +112,6 @@ public class ChiTietThuCung extends AppCompatActivity
 
     }
 
-    public void AddImagesUrlOnline(){
-
-        HashMapForURL = new HashMap<String, String>();
-
-        HashMapForURL.put("Hinh1", "https://dogily.vn/wp-content/uploads/2019/09/trai-meo-anh-long-ngan-tai-chau-au.jpg");
-        HashMapForURL.put("Hinh2", "https://dogily.vn/wp-content/uploads/2019/09/trai-meo-anh-long-ngan-tai-chau-au.jpg");
-        HashMapForURL.put("Hinh3", "https://dogily.vn/wp-content/uploads/2019/09/trai-meo-anh-long-ngan-tai-chau-au.jpg");
-        HashMapForURL.put("Hinh4", "https://dogily.vn/wp-content/uploads/2019/09/trai-meo-anh-long-ngan-tai-chau-au.jpg");
-        HashMapForURL.put("Hinh5", "https://dogily.vn/wp-content/uploads/2019/09/trai-meo-anh-long-ngan-tai-chau-au.jpg");
-    }
-
     public void AddImageUrlFormLocalRes(){
 
         HashMapForLocalRes = new HashMap<String, Integer>();
@@ -115,6 +120,36 @@ public class ChiTietThuCung extends AppCompatActivity
         HashMapForLocalRes.put("Hinh3", R.drawable.meo3);
         HashMapForLocalRes.put("Hinh4", R.drawable.meo4);
         HashMapForLocalRes.put("Hinh5", R.drawable.meo5);
+    }
 
+    public void AnhXa(){
+        btnThemGioHang = findViewById(R.id.btnThem);
+        Name = findViewById(R.id.NamePet);
+        Price = findViewById(R.id.Price);
+        Des = findViewById(R.id.des);
+        btnBack = findViewById(R.id.btnBack);
+    }
+
+    public void GetInfor(){
+        Intent intent = getIntent();
+        String name, price, des;
+        Name.setText(intent.getStringExtra("Title"));
+        Price.setText(intent.getStringExtra("Price"));
+        Des.setText(intent.getStringExtra("Description"));
+
+
+        PetShopFireBase.TABLE_GIO_HANG.name.toString();
+        GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString(),1);
+        Log.d("gh",gioHang.getId_nguoi_mua());
+        PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
+    }
+
+    public void setEvent(){
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 }

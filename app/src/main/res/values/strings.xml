@@ -9,7 +9,6 @@
     <string name="GT">Giới Tính</string>
     <string name="Nam">Nam</string>
     <string name="Nu">Nữ</string>
-    <string name="tao">Taos</string>
     <string name="canhan">CÁ NHÂN</string>
     <string name="donhang">ĐƠN HÀNG</string>
     <string name="donhangthanhcong">ĐƠN HÀNG THÀNH CÔNG</string>
@@ -21,8 +20,12 @@
     <string name="nguoiban">Người bán:</string>
     <string name="gui">Gửi</string>
     <string name="title_chitietthucung">CHI TIẾT THÚ CƯNG</string>
+    <string name="titlt_ttcanhan">Thông tin cá nhân</string>
+    <string name="title_ttCaNhan">Thông tin cá nhân</string>
     <string name="tenthucung_chitietthucung">MÈO ANH LÔNG NGẮN</string>
     <string name="sotien">4.000.000đ</string>
+    <string name="hoten">Họ tên:</string>
+    <string name="email">Email:</string>
     <string name="cuahang">Cửa hàng:</string>
     <string name="tenchucuahang">Anh Khiêm</string>
     <string name="chitietthucung">Chi tiết thú cưng</string>
@@ -32,12 +35,14 @@
     <string name="tuoi">Số tuổi:</string>
     <string name="thongtinlienhe">Thông tin liên hệ:</string>
     <string name="sdt">Số điện thoại:</string>
+    <string name="sdt1">SĐT:</string>
     <string name="diachi">Địa chỉ:</string>
     <string name="danhgiacuahang">Đánh giá cửa hàng</string>
     <string name="chitietmauthucung">Xám xanh</string>
     <string name="chitietgioitinhthucung">Đực</string>
     <string name="chitiettuoithucung">Hai tháng</string>
     <string name="chitietsdt">0833535318</string>
+    <string name="chitietemail">anhkhiem123@gmail.com</string>
     <string name="chitietdiachi">53 Võ Văn Ngân, Linh Chiểu, Thủ Đức, Hồ Chí Minh</string>
     <string name="soluocdanhgia">(2 đánh giá)</string>
     <string name="tenkhachhang1">Văn Chiến:</string>
@@ -48,12 +53,50 @@
     <string name="muangay">Mua ngay</string>
     <string name="vuilongnhaptaikhoan">Vui lòng nhập tài khoản</string>
     <string name="vuilongnhapmatkhau">Vui lòng nhập mật khẩu</string>
+    <string name="matkhaumoi">Nhập mật khẩu mới</string>
+    <string name="matkhaumoi1">Nhập lại mật khẩu mới</string>
+    <string name="matkhaucu">Nhập mật khẩu hiện tại</string>
     <string name="ghinho">Ghi nhớ</string>
     <string name="nguoimua">Người mua</string>
     <string name="quanly">Quản lý</string>
     <string name="dangnhap">Đăng nhập</string>
     <string name="taotaikhoan">Tạo tài khoản</string>
     <string name="quenmatkhau">Quên mật khẩu</string>
+
+    <string name="nam">Nam</string>
+    <string name="nu">Nữ</string>
+    <string name="tao">Tạo</string>
+    <string name="dk">Thông Báo</string>
+    <string name="ss">Đăng Kí Thành Công</string>
+
+
+    <!--    Home client -->
+    <string name="search">PetShop</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string-array name="tablayout">
+        <item>Home</item>
+        <item>Danh mục</item>
+        <item>Thông báo</item>
+        <item>Cá nhân</item>
+    </string-array>
+
+    <!--    InforUser-->
+    <string name="btnSave">Lưu</string>
+    <string name="btnChangePass">đổi mật khẩu</string>
+    <string name="txtName">Họ tên</string>
+    <string name="txtEmail">Email</string>
+    <string name="txtSdt">SĐT</string>
+    <string name="txtSex">Giới tính</string>
+    <string name="txtAddress">Địa chỉ</string>
+    <string name="luutc">Lưu thành công</string>
+    <string name="nhaptt">Nhập đầy đủ thông tin</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dangxuat">Đăng xuất</string>
     <string name="chinhsua">Chỉnh sửa</string>
     <string name="emailuser">ntk@yahoo.com</string>
@@ -61,7 +104,47 @@
     <string name="tendonhan">Tên đơn hàng</string>
     <string name="trangthai">Trạng thái</string>
     <string name="xoa">Xóa</string>
+    <string name="xem">Xem</string>
     <string name="xemthem">Xem thêm</string>
     <string name="chontatca">Chọn tất cả</string>
+    <string name="giohang">GIỎ HÀNG</string>
+    <string name="datmua">Đặt mua</string>
+    <string name="thanhtien">Thành tiền:</string>
+    <string name="khongdong">0đ</string>
+    <string name="sanpham">Sản phẩm</string>
+    <string name="dongia">Đơn giá</string>
+    <string name="thongtintaikhoan">THÔNG TIN TÀI KHOẢN</string>
+    <string name="luu">Lưu</string>
+    <string name="doimatkhau">Đổi mật khẩu</string>
+    <string name="doimatkhauin">ĐỔI MẬT KHẨU</string>
+    <string name="nhapemail">Nhập email</string>
+    <string name="laylaimatkhau">Lấy lại mật khẩu</string>
+    <string name="quenmatkhauin">QUÊN MẬT KHẨU</string>
+    <string name="nhapmatkhauhientai">Nhập mật khẩu hiện tại</string>
+    <string name="nhapmatkhaumoi">Nhập mật khẩu mới</string>
+    <string name="nhaplaimatkhaumoi">Nhập lại mật khẩu mới</string>
+
+    <string name="luuthongtin">Lưu thông tin</string>
+    <string name="thongtin">Thông tin</string>
+    <string name="taikhoan">Tài khoản</string>
+    <string name="matkhau">Mật khẩu</string>
+    <string name="nguoidung">NGƯỜI DÙNG</string>
+    <string name="yeucauchinhsua">Yêu cầu chỉ sửa</string>
+    <string name="xacnhan">XÁC NHẬN</string>
     <string name="hoanthanh">Hoàn thành</string>
+    <string name="danhsachden">Danh Sách Đen</string>
+    <string name="nguoidunggiaodich">Quản Lí Người Dùng</string>
+    <string name="giaodich">Quản Lí Giao Dịch</string>
+
+
+    <string name="tb">Thông báo</string>
+    <string name="bancomuonsuakhong">Bạn có muốn sửa không?</string>
+    <string name="ko">Không</string>
+    <string name="co">Có</string>
+    <string name="koxoa">Không xóa</string>
+    <string name="mksai">Mật khẩu nhập lại không khớp</string>
+    <string name="saimkhientai">Sai mật khẩu hiện tại</string>
+    <string name="donhanghoanthanh">Đơn hàng hoàn thành</string>
+    <string name="chonnguoigiao">Chọn người giao</string>
+    <string name="chitietdonhang">Chi tiết đơn hàng</string>
 </resources>

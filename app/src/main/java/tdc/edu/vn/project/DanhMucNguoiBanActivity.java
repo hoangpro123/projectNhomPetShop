@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import tdc.edu.vn.project.Model.NguoiBan;
 
 public class DanhMucNguoiBanActivity extends AppCompatActivity {
-    String id = "null";
+    String id;
     Button GianHang, ThemSanPham;
     TextView NameShop;
     ArrayList<NguoiBan> data;
@@ -22,7 +22,7 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danh_muc_nguoi_ban);
-        getFirebaseSanPham();
+
         setControl();
         setEvent();
     }
@@ -39,6 +39,7 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DanhMucNguoiBanActivity.this, ThemSanPhamActivity.class);
+                intent.putExtra("id_nguoi_ban", id);
                 startActivity(intent);
             }
         });
@@ -48,6 +49,9 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
         GianHang = (Button) findViewById(R.id.btnGianHang);
         ThemSanPham = (Button) findViewById(R.id.btnThemSanPham);
         NameShop = (TextView) findViewById(R.id.tvNameShop);
+        Intent intent = getIntent();
+        id = intent.getExtras().getString("id_nguoi_ban");
+        getFirebaseSanPham();
     }
     private void getFirebaseSanPham() {
         final Handler handler = new Handler();

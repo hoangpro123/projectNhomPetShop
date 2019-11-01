@@ -4,11 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:background="@color/blue"
+        android:background="@color/Header"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageButton
+            android:id="@+id/btnBack"
             android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -90,20 +91,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/GT"></TextView>
+                android:text="@string/gioitinh"></TextView>
             <RadioButton
                 android:checked="true"
                 android:id="@+id/nam"
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Nam"></RadioButton>
+                android:text="@string/nam"></RadioButton>
             <RadioButton
                 android:id="@+id/nu"
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Nu"></RadioButton>
+                android:text="@string/nu"></RadioButton>
         </RadioGroup>
     </LinearLayout>
 
@@ -115,6 +116,7 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/vienbutton"
         android:text="@string/tao"></Button>
 
 </LinearLayout>
