@@ -1,4 +1,6 @@
-package tdc.edu.vn.project.Model;
+package tdc.edu.vn.project.Adapter;
+
+import tdc.edu.vn.project.Model.PetShopModel;
 
 public class GioHang extends PetShopModel {
     String id_nguoi_mua, id_san_pham;

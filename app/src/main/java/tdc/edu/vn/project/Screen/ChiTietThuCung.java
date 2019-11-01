@@ -1,11 +1,14 @@
 package tdc.edu.vn.project.Screen;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +32,8 @@ import tdc.edu.vn.project.R;
 public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     SliderLayout sliderLayout ;
     TextView Name, Price, Des;
-    Button btnThemGioHang;
+    Button btnThemGioHang, btnMua;
+    ImageButton btnGioHang;
     ImageButton btnBack;
     HashMap<String, String> HashMapForURL ;
 
@@ -127,7 +131,9 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
         Name = findViewById(R.id.NamePet);
         Price = findViewById(R.id.Price);
         Des = findViewById(R.id.des);
+        btnGioHang = findViewById(R.id.btnGioHang);
         btnBack = findViewById(R.id.btnBack);
+        btnMua = findViewById(R.id.btnMua);
     }
 
     public void GetInfor(){
@@ -138,10 +144,10 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
         Des.setText(intent.getStringExtra("Description"));
 
 
-        PetShopFireBase.TABLE_GIO_HANG.name.toString();
-        GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString(),1);
-        Log.d("gh",gioHang.getId_nguoi_mua());
-        PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
+//        PetShopFireBase.TABLE_GIO_HANG.name.toString();
+//        GioHangActivity gioHang = new GioHangActivity(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString(),1);
+//        Log.d("gh",gioHang.getId_nguoi_mua());
+//        PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
     }
 
     public void setEvent(){
@@ -149,6 +155,34 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+
+        btnMua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = getIntent();
+                PetShopFireBase.TABLE_GIO_HANG.name.toString();
+                GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString(),1);
+                Log.d("gh",gioHang.getId_nguoi_mua());
+                PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
+                intent = new Intent(ChiTietThuCung.this, GioHangActivity.class);
+                startActivity(intent);
+            }
+        });
+
+//        SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+//        final String id = sharedPreferences.getString("id", "");
+//        final Handler handler = new Handler();
+        btnThemGioHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = getIntent();
+                PetShopFireBase.TABLE_GIO_HANG.name.toString();
+                GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString(),1);
+                Log.d("gh",gioHang.getId_nguoi_mua());
+                PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
+                Toast.makeText(ChiTietThuCung.this,"Đã thêm vào giỏ hàng" , Toast.LENGTH_SHORT).show();
             }
         });
     }
