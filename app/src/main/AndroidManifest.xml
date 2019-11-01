@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tdc.edu.vn.project">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,12 +22,23 @@
         <activity
             android:name=".DanhMucNguoiBanActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".DemoChuyenManHinh" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name=".ChiTietThuCung" />
+        <activity android:name=".ThongTinUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DonHangActivity">
+
+        </activity>
+        <activity android:name=".Test_Image_Picker" />
+        <activity
+            android:name=".User.DangKi"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
 
         <activity
             android:name=".DanhSachThuCungActivity"
@@ -34,7 +47,5 @@
             android:name=".DanhMucThuCungActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

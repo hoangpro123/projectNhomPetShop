@@ -1,6 +1,7 @@
 package tdc.edu.vn.project;
 
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,11 +14,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.otto.Bus;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
@@ -33,8 +34,10 @@ import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.PetShopModel;
 import tdc.edu.vn.project.Model.QuanLy;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.Model.TinhTrangDonHang;
 
 public class PetShopFireBase {
+    public static Bus bus = new Bus();
     private static Handler handler = new Handler();
     public static StorageReference fireBaseStorage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://chuyendedidongnhom3.appspot.com");
     public static DatabaseReference fireBase = FirebaseDatabase.getInstance().getReference();
@@ -50,6 +53,8 @@ public class PetShopFireBase {
     public static eTable TABLE_NGUOI_GIAO = eTable.NguoiGiao;
     public static eTable TABLE_QUAN_LY = eTable.QuanLy;
     public static eTable TABLE_SAN_PHAM = eTable.SanPham;
+    public static eTable TABLE_YEU_CAU_CHINH_SUA = eTable.YeuCauChinhSua;
+    public static eTable TABLE_TINH_TRANG_DON_HANG = eTable.TinhTrangDonHang;
 
 
     public static Object search(String sField, Object value, eTable table) {
@@ -165,6 +170,7 @@ public class PetShopFireBase {
 
     private static Object getValueField(String sField, PetShopModel item) {
         try {
+            if(sField.equals("id")) return item.getId();
             Field field = item.getClass().getDeclaredField(sField);
             field.setAccessible(true);
             return field.get(item);
@@ -211,33 +217,42 @@ public class PetShopFireBase {
         loadTable(TABLE_NGUOI_GIAO);
         loadTable(TABLE_QUAN_LY);
         loadTable(TABLE_SAN_PHAM);
+        loadTable(TABLE_YEU_CAU_CHINH_SUA);
+        loadTable(TABLE_TINH_TRANG_DON_HANG);
     }
 
     private static void loadTable(final eTable table) {
-        final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
+        if (table.status_data || table.status_last_id) return;
         //
+        final ArrayList<PetShopModel> data = (ArrayList<PetShopModel>) table.data;
         table.TABLE_DATA.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                long count = dataSnapshot.getChildrenCount();
+                final long[] count = {dataSnapshot.getChildrenCount()};
                 table.TABLE_DATA.removeEventListener(this);
                 table.TABLE_DATA.addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                         data.add((PetShopModel) dataSnapshot.getValue(table.getcClass()));
-                        if (data.size() == count) table.setStatus_data(true);
-                        if (data.size() > count) table.TABLE_LAST_ID.setValue(table.last_id + 1);
+                        if (data.size() == count[0]) table.setStatus_data(true);
+                        if (data.size() > count[0]) {
+                            table.TABLE_LAST_ID.setValue(table.last_id + 1);
+                            count[0] = data.size();
+                            bus.post(table.getName());
+                        }
                     }
 
                     @Override
                     public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                         data.remove(findItem(dataSnapshot.getKey(), table));
                         data.add((PetShopModel) dataSnapshot.getValue(table.cClass));
+                        bus.post(table.getName());
                     }
 
                     @Override
                     public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                         data.remove(findItem(dataSnapshot.getKey(), table));
+                        bus.post(table.getName());
                     }
 
                     @Override
@@ -280,6 +295,7 @@ public class PetShopFireBase {
         TABLE_NGUOI_GIAO.TABLE_DATA.child("null").setValue(new NguoiGiao("nm001", "nb001", "ndsfs"));
         TABLE_QUAN_LY.TABLE_DATA.child("null").setValue(new QuanLy("nm001", "nb001", "ndsfs"));
         TABLE_SAN_PHAM.TABLE_DATA.child("null").setValue(new SanPham("nm001", "nb001", "ndsfs", "nb003", (double) 1930000, new Date()));
+        TABLE_YEU_CAU_CHINH_SUA.TABLE_DATA.child("null").setValue(new NguoiBan("nm001", "nb001", "ndsfs", "5", "abc", "abc", "Nam", "hh001"));
         //
         TABLE_NGUOI_MUA.TABLE_LAST_ID.setValue(1);
         TABLE_DANH_GIA.TABLE_LAST_ID.setValue(1);
@@ -291,21 +307,24 @@ public class PetShopFireBase {
         TABLE_NGUOI_GIAO.TABLE_LAST_ID.setValue(1);
         TABLE_QUAN_LY.TABLE_LAST_ID.setValue(1);
         TABLE_SAN_PHAM.TABLE_LAST_ID.setValue(1);
+        TABLE_YEU_CAU_CHINH_SUA.TABLE_LAST_ID.setValue(1);
         //
     }
 
     public enum eTable {
-        NguoiMua("TABLE_NGUOI_MUA", "nm", 3, tdc.edu.vn.project.Model.NguoiMua.class),
-        NguoiBan("TABLE_NGUOI_BAN", "nb", 3, tdc.edu.vn.project.Model.NguoiBan.class),
-        DanhGia("TABLE_DANH_GIA", "dg", 3, tdc.edu.vn.project.Model.DanhGia.class),
-        DanhSachDen("TABLE_DANH_SACH_DEN", "dsd", 3, tdc.edu.vn.project.Model.DanhSachDen.class),
-        DonHang("TABLE_DON_HANG", "dh", 3, tdc.edu.vn.project.Model.DonHang.class),
-        GioHang("TABLE_GIO_HANG", "cart", 3, tdc.edu.vn.project.Model.GioHang.class),
-        HoaHong("TABLE_HOA_HONG", "hh", 3, tdc.edu.vn.project.Model.HoaHong.class),
-        GiaoHang("TABLE_GIAO_HANG", "gh", 3, tdc.edu.vn.project.Model.GiaoHang.class),
-        NguoiGiao("TABLE_NGUOI_GIAO", "ng", 3, tdc.edu.vn.project.Model.NguoiGiao.class),
-        QuanLy("TABLE_QUAN_LY", "ql", 3, tdc.edu.vn.project.Model.QuanLy.class),
-        SanPham("TABLE_SAN_PHAM", "sp", 3, tdc.edu.vn.project.Model.SanPham.class);
+        NguoiMua("TABLE_NGUOI_MUA", "nm", 3, NguoiMua.class),
+        NguoiBan("TABLE_NGUOI_BAN", "nb", 3, NguoiBan.class),
+        DanhGia("TABLE_DANH_GIA", "dg", 3, DanhGia.class),
+        DanhSachDen("TABLE_DANH_SACH_DEN", "dsd", 3, DanhSachDen.class),
+        DonHang("TABLE_DON_HANG", "dh", 3, DonHang.class),
+        GioHang("TABLE_GIO_HANG", "cart", 3, GioHang.class),
+        HoaHong("TABLE_HOA_HONG", "hh", 3, HoaHong.class),
+        GiaoHang("TABLE_GIAO_HANG", "gh", 3, GiaoHang.class),
+        NguoiGiao("TABLE_NGUOI_GIAO", "ng", 3, NguoiGiao.class),
+        QuanLy("TABLE_QUAN_LY", "ql", 3, QuanLy.class),
+        SanPham("TABLE_SAN_PHAM", "sp", 3, SanPham.class),
+        YeuCauChinhSua("TABLE_YEU_CAU_CHINH_SUA", "yccs", 3, NguoiBan.class),
+        TinhTrangDonHang("TABLE_TINH_TRANG_DON_HANG", "ttdh", 3, TinhTrangDonHang.class);
 
         public String name, key;
         public int last_id, max_length;
