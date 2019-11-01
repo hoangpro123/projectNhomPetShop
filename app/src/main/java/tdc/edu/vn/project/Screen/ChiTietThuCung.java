@@ -185,5 +185,12 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
                 Toast.makeText(ChiTietThuCung.this,"Đã thêm vào giỏ hàng" , Toast.LENGTH_SHORT).show();
             }
         });
+
+        btnGioHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ChiTietThuCung.this, GioHangActivity.class));
+            }
+        });
     }
 }

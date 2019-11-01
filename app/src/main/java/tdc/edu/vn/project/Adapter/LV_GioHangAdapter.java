@@ -47,10 +47,10 @@ public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
                 row.setTag(holder);
             }
             GioHang gh = data.get(position);
-            holder.tenSP.setText("yyuy");
+           // holder.tenSP.setText("yyuy");
 //            holder.donGia.setText(gh.getDonGia());
-            holder.id_sanpham.setText(gh.getId_san_pham());
-            holder.id_nguoimua.setText(gh.getId_nguoi_mua());
+//            holder.id_sanpham.setText(gh.getId_san_pham());
+//            holder.id_nguoimua.setText(gh.getId_nguoi_mua());
             return row;
         }
     }
