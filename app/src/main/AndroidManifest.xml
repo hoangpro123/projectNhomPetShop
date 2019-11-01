@@ -24,7 +24,7 @@
 
         </activity>
         <activity
-            android:name=".Screen.GioHang"
+            android:name=".Screen.GioHangActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
             android:name=".Screen.PetActivity"
