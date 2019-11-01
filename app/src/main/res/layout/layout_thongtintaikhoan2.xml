@@ -79,7 +79,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="6"
                 android:layout_height="wrap_content"
-                android:text="@string/tenchucuahang"
                 style="@style/size20denthuong"></EditText>
         </LinearLayout>
         <LinearLayout
@@ -101,7 +100,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="6"
                 android:layout_height="wrap_content"
-                android:text="@string/chitietemail"
                 style="@style/size20denthuong"></EditText>
         </LinearLayout>
         <LinearLayout
@@ -123,7 +121,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="6"
                 android:layout_height="wrap_content"
-                android:text="@string/chitietsdt"
                 style="@style/size20denthuong"></EditText>
         </LinearLayout>
         <LinearLayout
@@ -179,7 +176,6 @@
                 android:layout_width="0dp"
                 android:layout_weight="6"
                 android:layout_height="wrap_content"
-                android:text="@string/chitietdiachi"
                 style="@style/size20denthuong"></EditText>
         </LinearLayout>
         <LinearLayout
