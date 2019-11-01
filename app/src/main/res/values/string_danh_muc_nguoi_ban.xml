@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title">Hoàng Shop</string>
-    <string name="toi">Tôi</string>
-    <string name="add">Thêm sản phẩm</string>
-    <string name="danhsachden">Danh sách đen</string>
-    <string name="gianhang">Gian Hàng</string>
-    <string name="xacnhan">Xác Nhận</string>
-    <string name="dangxuat">Đăng xuất</string>
+    <string name="title_dm_ngBan">Hoàng Shop</string>
+    <string name="toi_dm_ngBan">Tôi</string>
+    <string name="add_dm_ngBan">Thêm sản phẩm</string>
+    <string name="danhsachden_dm_ngBan">Danh sách đen</string>
+    <string name="gianhang_dm_ngBan">Gian Hàng</string>
+    <string name="xacnhan_dm_ngBan">Xác Nhận</string>
+    <string name="dangxuat_dm_ngBan">Đăng xuất</string>
 </resources>

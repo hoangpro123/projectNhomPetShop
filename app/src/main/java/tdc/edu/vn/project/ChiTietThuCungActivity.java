@@ -33,7 +33,7 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_thu_cung);
         setControl();
-        setEvent();w
+        setEvent();
     }
 
     private void setEvent() {

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="themSanPham">Thêm Sản Phẩm</string>
-    <string name="themTieuDe">Thêm tiêu đề</string>
-    <string name="editTieuDe">...............................</string>
-    <string name="thongTinSanPham">Thông Tin Sản Phẩm</string>
-    <string name="thongTinNguoiBan">Thông Tin Người Bán</string>
-    <string name="dangTin">Đăng Tin</string>
+    <string name="title_them_San_Pham">Thêm Sản Phẩm</string>
+    <string name="title_them_Tieu_De">Thêm tiêu đề</string>
+    <string name="edit_Tieu_De">...............................</string>
+    <string name="thong_Tin_San_Pham">Thông Tin Sản Phẩm</string>
+    <string name="thong_Tin_Nguoi_Ban">Thông Tin Người Bán</string>
+    <string name="dang_Tin">Đăng Tin</string>
     <string name="Price">Giá </string>
 </resources>

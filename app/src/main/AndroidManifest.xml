@@ -22,15 +22,17 @@
         <activity
             android:name=".DanhMucNguoiBanActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".DemoChuyenManHinh" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-        <activity android:name=".ChiTietThuCung" />
-        <activity android:name=".ThongTinUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".DemoChuyenManHinh" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity android:name=".ChiTietThuCung" />
+        <activity android:name=".ThongTinUser">
+
         </activity>
         <activity android:name=".DonHangActivity">
 

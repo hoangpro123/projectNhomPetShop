@@ -36,7 +36,7 @@
                 android:layout_margin="5dp"
                 android:iconifiedByDefault="true"
                 android:background="#fff"
-                android:queryHint="@string/search"/>
+                android:queryHint="@string/search_danh_muc_thu_cung"/>
         </LinearLayout>
 
 

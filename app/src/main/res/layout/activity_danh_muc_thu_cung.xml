@@ -36,7 +36,7 @@
                 android:layout_margin="5dp"
                 android:background="#FFFFFF"
                 android:iconifiedByDefault="true"
-                android:queryHint="@string/search" />
+                android:queryHint="@string/search_danh_muc_thu_cung" />
         </LinearLayout>
 
 
@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/cho"
+                    android:text="@string/cho_danh_muc_thu_cung"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/meo"
+                    android:text="@string/meo_danh_muc_thu_cung"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/chim"
+                    android:text="@string/chim_danh_muc_thu_cung"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -164,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/ca"
+                    android:text="@string/ca_danh_muc_thu_cung"
                     android:textSize="25sp" />
             </LinearLayout>
         </LinearLayout>
@@ -196,7 +196,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="@string/bosat"
+                    android:text="@string/bosat_danh_muc_thu_cung"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -221,7 +221,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/cho"
+                    android:text="@string/cho_danh_muc_thu_cung"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -246,7 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/cho"
+                    android:text="@string/cho_danh_muc_thu_cung"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -271,7 +271,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/khac"
+                    android:text="@string/khac_danh_muc_thu_cung"
                     android:textSize="25sp" />
             </LinearLayout>
         </LinearLayout>
