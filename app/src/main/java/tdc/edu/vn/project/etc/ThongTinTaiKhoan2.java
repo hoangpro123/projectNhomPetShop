@@ -2,13 +2,17 @@ package tdc.edu.vn.project.etc;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.squareup.otto.Subscribe;
 
 import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.PetShopFireBase;
@@ -27,10 +31,30 @@ public class ThongTinTaiKhoan2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_thongtintaikhoan2);
 
+        PetShopFireBase.bus.register(this);
         setControl();
         khoiTao();
-    }
+        setEvent();
 
+    }
+    private void setEvent(){
+        btnYeuCauChinhSua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NguoiBan nguoiBan = (NguoiBan) PetShopFireBase.findItem(idnb,PetShopFireBase.TABLE_NGUOI_BAN);
+                nguoiBan.setName(edtHoTen.getText().toString());
+                nguoiBan.setUsername(edtEmail.getText().toString());
+                nguoiBan.setPhone(edtSDT.getText().toString());
+                nguoiBan.setAddress(edtDiaChi.getText().toString());
+
+                RadioButton rdoSelectedGender = findViewById(rgGioiTinh.getCheckedRadioButtonId());
+                nguoiBan.setGender(rdoSelectedGender.getText().toString());
+                PetShopFireBase.pushItem(nguoiBan,PetShopFireBase.TABLE_YEU_CAU_CHINH_SUA);
+
+                Toast.makeText(ThongTinTaiKhoan2.this, "OK", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     private void khoiTao() {
         Handler handler = new Handler();
         handler.post(new Runnable() {
@@ -58,5 +82,20 @@ public class ThongTinTaiKhoan2 extends AppCompatActivity {
         rgGioiTinh = (RadioGroup)findViewById(R.id.rgGioiTinh);
         rbNam = (RadioButton)findViewById(R.id.rbNam);
         rbNu = (RadioButton)findViewById(R.id.rbNu);
+
+        btnYeuCauChinhSua = findViewById(R.id.btnYeuCauChinhSua);
+    }
+
+    @Subscribe
+    public void onChange(String table_name){
+        if(table_name.equals(PetShopFireBase.TABLE_NGUOI_BAN.getName())){
+            khoiTao();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PetShopFireBase.bus.unregister(this);
     }
 }
