@@ -31,14 +31,13 @@ import com.squareup.otto.Subscribe;
 
 
 public class ThongTinUser extends Fragment {
-
-    //static String idnm = "nm002";
     private ListView lv1;
+    private String idnm;
     AdapterDonHangNguoiMua adapter;
-    ArrayList<DonHang> data;
-    Button btnChinhSua;
-    TextView tvName, tvEmail, tvSDT;
-    ImageView img;
+    private ArrayList<DonHang> data;
+    private Button btnChinhSua;
+    private TextView tvName, tvEmail, tvSDT;
+    private ImageView img;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +50,9 @@ public class ThongTinUser extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_thongtinuser, null);
         PetShopFireBase.bus.register(this);
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+        idnm = sharedPreferences.getString("id", "");
         setControl(view);
         setEvent();
         return view;
@@ -71,22 +73,18 @@ public class ThongTinUser extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), InforUserActivity.class);
-//                String a = intent.getStringExtra("id");
-//                textView.setText(a);
                 startActivity(intent);
             }
         });
     }
 
     public void khoiTao() {
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("SaveId", Context.MODE_PRIVATE);
-        final String idnm = sharedPreferences.getString("id", "");
+
         Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
                 if (PetShopFireBase.TABLE_NGUOI_MUA.status_data && PetShopFireBase.TABLE_DON_HANG.status_data && PetShopFireBase.TABLE_SAN_PHAM.status_data && PetShopFireBase.TABLE_TINH_TRANG_DON_HANG.status_data) {
-
                     NguoiMua nguoiMua = (NguoiMua) PetShopFireBase.findItem(idnm,PetShopFireBase.TABLE_NGUOI_MUA);
                     tvName.setText(nguoiMua.getName());
                     tvEmail.setText(nguoiMua.getUsername());
