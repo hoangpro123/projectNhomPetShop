@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tdc.edu.vn.project">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,24 +11,46 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".DanhSachDen"></activity>
-        <activity android:name=".QuanLyDonHangNguoiBan" />
-        <activity android:name=".ThongTinNguoiDung" />
-        <activity android:name=".YeuCauChinhSua" />
-        <activity android:name=".ThongTinUser" />
-        <activity android:name=".QuenMatKhau" />
-        <activity android:name=".DoiMatKhau" />
-        <activity android:name=".ThongTinTaiKhoan" />
-        <activity android:name=".GioHang" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ChiTietThuCung" />
-        <activity android:name=".ThongTinTaiKhoan2">
+        <activity android:name=".Screen.ChiTietDonHang"></activity>
+        <activity android:name=".Screen.ChonNguoiGiaoScreen" />
+        <activity android:name=".etc.ThongTinNguoiDung" />
+        <activity android:name=".etc.ThongTinTaiKhoan2" />
+        <activity android:name=".Screen.ThongTinUser" />
+        <activity
+            android:name=".Screen.GioHang"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".FragmentMainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".etc.QuenMatKhau" />
+        <activity android:name=".Screen.QuanLyDonHangNguoiBan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Screen.DanhGiaActivity" />
+        <activity android:name=".Screen.Login" />
+        <activity
+            android:name=".Screen.AdminHome"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".InforUserActivity" />
+        <activity
+            android:name=".Screen.ChiTietThuCung"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Screen.DangKi"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Screen.NguoiDungScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Screen.NguoiBanScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Screen.ThemNguoiBan"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
