@@ -132,7 +132,6 @@
     <string name="yeucauchinhsua">Yêu cầu chỉ sửa</string>
     <string name="xacnhan">XÁC NHẬN</string>
     <string name="hoanthanh">Hoàn thành</string>
-    <string name="danhsachden">Danh Sách Đen</string>
     <string name="nguoidunggiaodich">Quản Lí Người Dùng</string>
     <string name="giaodich">Quản Lí Giao Dịch</string>
 
@@ -147,6 +146,5 @@
     <string name="donhanghoanthanh">Đơn hàng hoàn thành</string>
     <string name="chonnguoigiao">Chọn người giao</string>
     <string name="chitietdonhang">Chi tiết đơn hàng</string>
-    <string name="thoigian">20/10 - 8:01</string>
-    <string name="danhsachden">ĐANH SÁCH ĐEN</string>
+    <string name="danhsachyeucauchinhsua">DANH SÁCH CHỈNH SỬA</string>
 </resources>
