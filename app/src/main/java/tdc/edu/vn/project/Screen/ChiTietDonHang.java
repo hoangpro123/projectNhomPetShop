@@ -2,6 +2,7 @@ package tdc.edu.vn.project.Screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.squareup.otto.Subscribe;
 import java.security.PublicKey;
 
 import tdc.edu.vn.project.Model.DonHang;
+import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.Model.TinhTrangDonHang;
@@ -69,6 +71,7 @@ public class ChiTietDonHang extends AppCompatActivity {
                     tvTEN_NGUOI_MUA.setText(nguoiMua.getName());
                     tvTONG_TIEN.setText(String.valueOf(donHang.getTong_tien()));
                     tvTINH_TRANG.setText(tinhTrangDonHang.getName());
+
 
                 }else handler.postDelayed(this,1000);
             }

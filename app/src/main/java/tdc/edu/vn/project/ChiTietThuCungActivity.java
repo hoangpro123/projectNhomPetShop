@@ -54,7 +54,7 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
     private void setEvent() {
         // Recieve nguoiBan
         Intent intent = getIntent();
-        ID = intent.getStringExtra("ID");
+        ID = intent.getStringExtra("ID_SanPham");
         String Title = intent.getStringExtra("Title");
         String price = intent.getStringExtra("Price");
         String Description = intent.getStringExtra("Description");

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import tdc.edu.vn.project.ChiTietThuCungActivity;
 import tdc.edu.vn.project.ChiTietThuCungNguoiBanActivity;
 import tdc.edu.vn.project.Model.SanPham;
+import tdc.edu.vn.project.PetShopSharedPreferences;
 import tdc.edu.vn.project.R;
 
 import com.google.firebase.storage.FirebaseStorage;
@@ -33,7 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext ;
     private ArrayList<SanPham> mData ;
     private ArrayList<SanPham> arrayList ;
-    String id;
+    String id_nguoi_mua;
     String id_nguoi_ban;
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
@@ -42,9 +43,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.mData = mData;
         this.arrayList = new ArrayList<SanPham>();
         this.arrayList.addAll(mData);
-        SharedPreferences sharedPreferences = mContext.getSharedPreferences("SaveId", Context.MODE_PRIVATE);
-        this.id = sharedPreferences.getString("id", "");
-        this.id_nguoi_ban = sharedPreferences.getString("id_nguoi_ban", "");
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+        this.id_nguoi_mua = sharedPreferences.getString(PetShopSharedPreferences.idnm, null);
+        this.id_nguoi_ban = sharedPreferences.getString(PetShopSharedPreferences.idnb, null);
     }
 
     @Override
@@ -64,7 +65,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Intent intent;
-                if(id.equals("")){
+                if(id_nguoi_mua == null){
                     intent = new Intent(mContext, ChiTietThuCungNguoiBanActivity.class);
                     Toast.makeText(mContext, "NguoiBan", Toast.LENGTH_SHORT).show();
                 }else{
@@ -72,8 +73,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     Toast.makeText(mContext, "NguoiMua", Toast.LENGTH_SHORT).show();
                 }
                 // passing data to the book activity
-                intent.putExtra("ID", mData.get(position).getId());
-                intent.putExtra("IDNGMUA", id);
+                intent.putExtra("ID_SanPham", mData.get(position).getId());
+                intent.putExtra("IDNGMUA", id_nguoi_mua);
                 intent.putExtra("Title",mData.get(position).getName());
                 intent.putExtra("Price", mData.get(position).getPrice().toString());
                 intent.putExtra("Description",mData.get(position).getDescription());

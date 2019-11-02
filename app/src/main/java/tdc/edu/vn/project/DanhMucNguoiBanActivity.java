@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import tdc.edu.vn.project.Model.NguoiBan;
+import tdc.edu.vn.project.Screen.Login;
 
 public class DanhMucNguoiBanActivity extends AppCompatActivity {
     String id;
@@ -49,9 +50,10 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
         DangXuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
-                sharedPreferences.edit().clear();
-                onBackPressed();
+                SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+                sharedPreferences.edit().putString(PetShopSharedPreferences.idnb, null).apply();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
             }
         });
     }
@@ -61,8 +63,8 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
         ThemSanPham = (Button) findViewById(R.id.btnThemSanPham);
         NameShop = (TextView) findViewById(R.id.tvNameShop);
         DangXuat = (Button) findViewById(R.id.btnDangXuat);
-        Intent intent = getIntent();
-        id = intent.getStringExtra("id_nguoi_ban");
+        SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+        id = sharedPreferences.getString(PetShopSharedPreferences.idnb, null);
         getFirebaseSanPham();
     }
     private void getFirebaseSanPham() {

@@ -21,13 +21,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import tdc.edu.vn.project.Model.SanPham;
 
 public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
-    Button Back;
+    Button Back, Repair, Save;
     SanPham sanPham;
     String ID;
     private TextView tvtitle, tvdescription, tvprice;
     private ImageView img;
     SliderLayout sliderLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,7 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
     private void setEvent() {
         // Recieve nguoiBan
         Intent intent = getIntent();
-        ID = intent.getStringExtra("ID");
+        ID = intent.getStringExtra("ID_SanPham");
         String Title = intent.getStringExtra("Title");
         String price = intent.getStringExtra("Price");
         String Description = intent.getStringExtra("Description");
@@ -56,7 +55,13 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
                 onBackPressed();
             }
         });
-
+        Repair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Repair.setVisibility(View.GONE);
+                Save.setVisibility(View.VISIBLE);
+            }
+        });
 
     }
 
@@ -66,6 +71,8 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
         tvprice = (TextView) findViewById(R.id.tvGiaThuCung);
         sliderLayout = (SliderLayout) findViewById(R.id.slider);
         Back = (Button) findViewById(R.id.btnBack);
+        Repair = (Button) findViewById(R.id.btnRepair);
+        Save = (Button) findViewById(R.id.btnSave);
         AddImagesUrlOnline();
 //        SharedPreferences sharedPreferences = getSharedPreferences("saveIDNguoiBan", Context.MODE_PRIVATE);
 //        String id_nguoi_ban = sharedPreferences.getString("id_nguoi_ban", "");

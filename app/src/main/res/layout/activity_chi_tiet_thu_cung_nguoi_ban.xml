@@ -45,6 +45,14 @@
             android:layout_margin="5dp"
             android:background="@drawable/repair"
             />
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/save"
+                android:visibility="gone"
+                />
         </LinearLayout>
     </LinearLayout>
 
@@ -63,7 +71,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="205dp">
+                    android:layout_height="250dp">
                     <com.daimajia.slider.library.SliderLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

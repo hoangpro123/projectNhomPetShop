@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tdc.edu.vn.project">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".EditSanPhamActivity"></activity>
+        <activity android:name=".DanhSachThuCungActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".ChiTietThuCungActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -26,24 +30,22 @@
             android:name=".DanhMucNguoiBanActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Screen.ChiTietDonHang" />
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".fragment_donHangNguoiMua"></activity>
         <activity android:name=".Screen.ChonNguoiGiaoScreen" />
         <activity android:name=".etc.ThongTinNguoiDung" />
         <activity android:name=".etc.ThongTinTaiKhoan2" />
         <activity android:name=".Screen.ThongTinUser" />
         <activity
-            android:name=".Screen.GioHang"
+            android:name=".Screen.GioHangActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".FragmentMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".etc.QuenMatKhau" />
-        <activity android:name=".Screen.QuanLyDonHangNguoiBan" /> <!-- <activity android:name=".DonHangActivity"> -->
-        <!-- </activity> -->
-        <!-- <activity -->
-        <!-- android:name=".User.DangKi" -->
-        <!-- android:theme="@style/Theme.AppCompat.NoActionBar"></activity> -->
-        <activity
-            android:name=".Screen.Login"
+        <activity android:name=".Screen.QuanLyDonHangNguoiBan"></activity>
+        <activity android:name=".Screen.DanhGiaActivity" />
+        <activity android:name=".Screen.Login"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,16 +54,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DanhSachThuCungActivity"
+            android:name=".Screen.AdminHome"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".InforUserActivity" />
+        <activity
+            android:name=".Screen.ChiTietThuCung"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".DanhMucThuCungActivity"
+            android:name=".Screen.DangKi"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Screen.NguoiDungScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Screen.NguoiBanScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Screen.ThemNguoiBan"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

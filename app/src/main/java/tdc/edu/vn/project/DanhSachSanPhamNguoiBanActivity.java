@@ -1,7 +1,9 @@
 package tdc.edu.vn.project;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -51,8 +53,8 @@ public class DanhSachSanPhamNguoiBanActivity extends AppCompatActivity {
     }
     private void setControl() {
         Back = (Button) findViewById(R.id.btnBack);
-        Intent intent = getIntent();
-        id_nguoi_ban = intent.getStringExtra("id_nguoi_ban");
+        SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+        id_nguoi_ban = sharedPreferences.getString(PetShopSharedPreferences.idnb, null);
         getFirebaseSanPham();
     }
     private void getFirebaseSanPham() {
