@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.os.Handler;
+import android.se.omapi.Session;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.QuanLy;
 import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.PetShopSharedPreferences;
 import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.etc.QuenMatKhau;
 
@@ -44,23 +46,23 @@ public class Login extends AppCompatActivity {
     }
 
     public  void setEvent() {
-        final Handler handler = new Handler();
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnDangNhap.setClickable(false);
+                final Handler handler = new Handler();
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
                         switch (rdbLuaChon.getCheckedRadioButtonId()) {
                             case R.id.rdbNguoiMua:
-                                btnDangNhap.setClickable(false);
                                 if (PetShopFireBase.TABLE_NGUOI_MUA.status_data) {
                                     ArrayList<NguoiMua> data = (ArrayList<NguoiMua>) PetShopFireBase.TABLE_NGUOI_MUA.data;
                                     for (int i = 0; i < data.size(); i++) {
                                         if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())) {
-                                            SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+                                            SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
                                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                                            editor.putString("id", data.get(i).getId()).apply();
+                                            editor.putString(PetShopSharedPreferences.idnm, data.get(i).getId()).apply();
 
 
                                             Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
@@ -74,13 +76,16 @@ public class Login extends AppCompatActivity {
                                 } else handler.postDelayed(this, 1000);
                                 break;
                             case R.id.rdbNguoiBan:
-                                btnDangNhap.setClickable(false);
-
 
                                 if (PetShopFireBase.TABLE_NGUOI_BAN.status_data) {
-                                    ArrayList<NguoiBan> dataNguoiBan = (ArrayList<NguoiBan>) PetShopFireBase.TABLE_NGUOI_BAN.data;
-                                    for (int i = 0; i < dataNguoiBan.size(); i++) {
-                                        if (edtTaiKhoan.getText().toString().equals(dataNguoiBan.get(i).getUsername()) && edtMatKhau.getText().toString().equals(dataNguoiBan.get(i).getPassword())) {
+                                    ArrayList<NguoiBan> data = (ArrayList<NguoiBan>) PetShopFireBase.TABLE_NGUOI_BAN.data;
+                                    for (int i = 0; i < data.size(); i++) {
+                                        if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())) {
+                                            SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString(PetShopSharedPreferences.idnb, data.get(i).getId()).apply();
+
+
                                             Intent intentNguoiBan = new Intent(getApplication(), FragmentMainActivity.class);
                                             startActivity(intentNguoiBan);
                                             finish();
@@ -93,13 +98,14 @@ public class Login extends AppCompatActivity {
 
                                 break;
                             case R.id.rdbQuanLy:
-                                btnDangNhap.setClickable(false);
-
-
                                 if (PetShopFireBase.TABLE_QUAN_LY.status_data) {
                                     ArrayList<QuanLy> data = (ArrayList<QuanLy>) PetShopFireBase.TABLE_QUAN_LY.data;
                                     for (int i = 0; i < data.size(); i++) {
                                         if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())) {
+                                            SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString(PetShopSharedPreferences.idql, data.get(i).getId()).apply();
+
                                             Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
                                             startActivity(intent);
                                             finish();
@@ -109,10 +115,8 @@ public class Login extends AppCompatActivity {
                                     btnDangNhap.setClickable(true);
                                     Toast.makeText(Login.this, "Thông tin không hợp lệ", Toast.LENGTH_SHORT).show();
                                 } else handler.postDelayed(this, 1000);
-
                                 break;
                         }
-
                     }
                 });
 

@@ -11,12 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Screen.ChiTietDonHang"></activity>
+        <activity android:name=".fragment_donHangNguoiMua"></activity>
+        <activity android:name=".Screen.ChiTietDonHang" />
         <activity android:name=".Screen.ChonNguoiGiaoScreen" />
         <activity android:name=".etc.ThongTinNguoiDung" />
-        <activity android:name=".etc.ThongTinTaiKhoan2">
-
-        </activity>
+        <activity android:name=".etc.ThongTinTaiKhoan2"></activity>
         <activity android:name=".Screen.ThongTinUser" />
         <activity
             android:name=".Screen.GioHangActivity"
@@ -25,9 +24,7 @@
             android:name=".FragmentMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".etc.QuenMatKhau" />
-        <activity android:name=".Screen.QuanLyDonHangNguoiBan">
-
-        </activity>
+        <activity android:name=".Screen.QuanLyDonHangNguoiBan"></activity>
         <activity android:name=".Screen.DanhGiaActivity" />
         <activity android:name=".Screen.Login">
             <intent-filter>

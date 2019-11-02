@@ -29,9 +29,6 @@ public class YeuCauChinhSua extends AppCompatActivity {
     }
 
     public void khoiTao(){
-        data.add(new DSChinhSua("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        data.add(new DSChinhSua("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        data.add(new DSChinhSua("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        data.add(new DSChinhSua("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
+
     }
 }

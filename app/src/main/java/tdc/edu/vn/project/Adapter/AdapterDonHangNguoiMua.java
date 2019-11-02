@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,24 +52,32 @@ public class AdapterDonHangNguoiMua extends ArrayAdapter<DonHang> {
 
         DonHang donHang = data.get(position);
 
-        SanPham sanPham = (SanPham) PetShopFireBase.findItem(donHang.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM);;
-
-        TinhTrangDonHang tinhTrangDonHang = (TinhTrangDonHang) PetShopFireBase.findItem(String.valueOf(donHang.getTinh_trang()),PetShopFireBase.TABLE_TINH_TRANG_DON_HANG);
-        //
-        holder.cbTenHang.setText(sanPham.getName());
-
-        holder.txtTrangThai.setText(tinhTrangDonHang.getName());
-
-        TinhTrangDonHang daHoanThanh = (TinhTrangDonHang) PetShopFireBase.findItem("3",PetShopFireBase.TABLE_TINH_TRANG_DON_HANG);
-        if (tinhTrangDonHang.getName().equals(daHoanThanh.getName())) holder.btnDanhGia.setVisibility(View.VISIBLE);
-        else holder.btnDanhGia.setVisibility(View.INVISIBLE);
-        holder.btnDanhGia.setOnClickListener(new View.OnClickListener() {
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), DanhGiaActivity.class);
+            public void run() {
+                if(PetShopFireBase.TABLE_SAN_PHAM.status_data && PetShopFireBase.TABLE_TINH_TRANG_DON_HANG.status_data){
+                    SanPham sanPham = (SanPham) PetShopFireBase.findItem(donHang.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM);;
 
-                intent.putExtra("iddh",donHang.getId());
-                getContext().startActivity(intent);
+                    TinhTrangDonHang tinhTrangDonHang = (TinhTrangDonHang) PetShopFireBase.findItem(String.valueOf(donHang.getTinh_trang()),PetShopFireBase.TABLE_TINH_TRANG_DON_HANG);
+                    //
+                    holder.cbTenHang.setText(sanPham.getName());
+
+                    holder.txtTrangThai.setText(tinhTrangDonHang.getName());
+
+                    TinhTrangDonHang daHoanThanh = (TinhTrangDonHang) PetShopFireBase.findItem("3",PetShopFireBase.TABLE_TINH_TRANG_DON_HANG);
+                    if (tinhTrangDonHang.getName().equals(daHoanThanh.getName())) holder.btnDanhGia.setVisibility(View.VISIBLE);
+                    else holder.btnDanhGia.setVisibility(View.INVISIBLE);
+                    holder.btnDanhGia.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getContext(), DanhGiaActivity.class);
+
+                            intent.putExtra("iddh",donHang.getId());
+                            getContext().startActivity(intent);
+                        }
+                    });
+                }else handler.postDelayed(this,1000);
             }
         });
 
