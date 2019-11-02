@@ -26,7 +26,16 @@
         <activity
             android:name=".FragmentMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Screen.GiaoDichScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".etc.QuenMatKhau" />
+        <activity android:name=".Screen.QuanLyDonHangNguoiBan">
+        </activity>
+      <activity android:name=".Screen.DanhGiaActivity"></activity>
+        <activity android:name=".Admin.AdminHome"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".Screen.Login" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".Screen.QuanLyDonHangNguoiBan"></activity>
         <activity android:name=".Screen.DanhGiaActivity" />
         <activity android:name=".Screen.Login"
@@ -37,9 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Screen.AdminHome"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <activity android:name=".InforUserActivity" />
         <activity
             android:name=".Screen.ChiTietThuCung"
@@ -56,6 +63,9 @@
         <activity
             android:name=".Screen.ThemNguoiBan"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+
+
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import tdc.edu.vn.project.Adapter.FragmentAdapter;
+import tdc.edu.vn.project.Model.NguoiMua;
 
 public class FragmentMainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
@@ -33,6 +34,8 @@ public class FragmentMainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
         String id = sharedPreferences.getString("id", "");
 
+        NguoiMua nguoiMua = (NguoiMua) PetShopFireBase.findItem(id,PetShopFireBase.TABLE_NGUOI_MUA);
+        
 
         FragmentManager manager = getSupportFragmentManager();
 

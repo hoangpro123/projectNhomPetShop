@@ -1,4 +1,4 @@
-package tdc.edu.vn.project.Screen;
+package tdc.edu.vn.project.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import tdc.edu.vn.project.R;
+import tdc.edu.vn.project.Screen.NguoiBanScreen;
+import tdc.edu.vn.project.Screen.NguoiDungScreen;
+import tdc.edu.vn.project.Screen.ThemNguoiBan;
 
 public class AdminHome extends AppCompatActivity {
     Button nguoidung, nguoiban, chinhsua, them;
