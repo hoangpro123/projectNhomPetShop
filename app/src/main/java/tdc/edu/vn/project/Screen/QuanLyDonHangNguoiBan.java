@@ -51,7 +51,7 @@ public class QuanLyDonHangNguoiBan extends AppCompatActivity{
                 if (PetShopFireBase.TABLE_DON_HANG.status_data && PetShopFireBase.TABLE_TINH_TRANG_DON_HANG.status_data && PetShopFireBase.TABLE_SAN_PHAM.status_data) {
                     data = new ArrayList<>();
                     ArrayList<DonHang> listDonHang = (ArrayList<DonHang>) PetShopFireBase.TABLE_DON_HANG.getData();
-                    for (DonHang donHang : listDonHang) {
+                    for (DonHang donHang: listDonHang) {
                         SanPham sanPham = (SanPham) PetShopFireBase.findItem(donHang.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM);
                         if (sanPham.getId_nguoi_ban().equals(id_nguoi_ban))
                             data.add(donHang);

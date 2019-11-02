@@ -14,6 +14,7 @@ import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.Screen.HomeClient;
 import tdc.edu.vn.project.Screen.ThongTinUser;
 import tdc.edu.vn.project.UsageInfo;
+import tdc.edu.vn.project.fragment_donHangNguoiMua;
 
 public class FragmentAdapter extends FragmentStatePagerAdapter {
     //private String listTab[] = {"Home","Danh mục", "Thông báo", "Cá nhân"};
@@ -38,7 +39,7 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
                 fragment = new CpuInfo();
                 break;
             case 2:
-                fragment = new UsageInfo();
+                fragment = new fragment_donHangNguoiMua();
                 break;
             case 3:
                 fragment = new ThongTinUser();
