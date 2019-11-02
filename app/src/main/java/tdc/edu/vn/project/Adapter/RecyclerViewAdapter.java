@@ -12,11 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import tdc.edu.vn.project.Screen.ChiTietThuCung;
+import tdc.edu.vn.project.ChiTietThuCungActivity;
+import tdc.edu.vn.project.ChiTietThuCungNguoiBanActivity;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.R;
 
@@ -24,22 +25,16 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 
 import java.text.Normalizer;
-import java.util.ArrayList;
 import java.util.Locale;
 import java.util.regex.Pattern;
-
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
-import tdc.edu.vn.project.ChiTietThuCungActivity;
-import tdc.edu.vn.project.Model.SanPham;
-import tdc.edu.vn.project.R;
 
 import static java.util.Locale.getDefault;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     private Context mContext ;
     private ArrayList<SanPham> mData ;
     private ArrayList<SanPham> arrayList ;
-
+    String id;
+    String id_nguoi_ban;
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
     public RecyclerViewAdapter(Context mContext, ArrayList<SanPham> mData) {
@@ -47,6 +42,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.mData = mData;
         this.arrayList = new ArrayList<SanPham>();
         this.arrayList.addAll(mData);
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+        this.id = sharedPreferences.getString("id", "");
+        this.id_nguoi_ban = sharedPreferences.getString("id_nguoi_ban", "");
     }
 
     @Override
@@ -65,9 +63,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, ChiTietThuCungActivity.class);
-                SharedPreferences sharedPreferences = mContext.getSharedPreferences("SaveId", Context.MODE_PRIVATE);
-                String id = sharedPreferences.getString("id", "");
+                Intent intent;
+                if(id.equals("")){
+                    intent = new Intent(mContext, ChiTietThuCungNguoiBanActivity.class);
+                    Toast.makeText(mContext, "NguoiBan", Toast.LENGTH_SHORT).show();
+                }else{
+                    intent = new Intent(mContext, ChiTietThuCungActivity.class);
+                    Toast.makeText(mContext, "NguoiMua", Toast.LENGTH_SHORT).show();
+                }
                 // passing data to the book activity
                 intent.putExtra("ID", mData.get(position).getId());
                 intent.putExtra("IDNGMUA", id);

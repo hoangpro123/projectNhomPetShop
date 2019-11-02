@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ import static java.util.Locale.getDefault;
 
 public class DanhSachThuCungActivity extends AppCompatActivity {
     Spinner spDanhMuc, spLoai, spGia;
+    Button Back;
     TextView tvDanhMuc, tvLoai, tvGia;
     SearchView searchView;
     RecyclerViewAdapter myAdapter;
@@ -55,7 +57,12 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         setSpinner(stringGia, spGia);
         setSpinner(stringLoai, spLoai);
         getFirebaseSanPham();
-
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         spDanhMuc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -130,7 +137,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         spLoai = (Spinner)findViewById(R.id.SpLoai);
         searchView = (SearchView) findViewById(R.id.searchview);
 
-        //getFirebaseSanPham();
+        Back = (Button) findViewById(R.id.btnBack);
 
         stringDanhMuc = getResources().getStringArray(R.array.danhmuc);
         stringGia = getResources().getStringArray(R.array.gia);

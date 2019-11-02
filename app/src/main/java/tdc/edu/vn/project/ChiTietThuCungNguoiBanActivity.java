@@ -1,9 +1,9 @@
+
 package tdc.edu.vn.project;
 
-import androidx.appcompat.app.AppCompatActivity;
-import tdc.edu.vn.project.Model.SanPham;
-
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -17,7 +17,10 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 
-public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+import androidx.appcompat.app.AppCompatActivity;
+import tdc.edu.vn.project.Model.SanPham;
+
+public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     Button Back;
     SanPham sanPham;
     String ID;
@@ -28,29 +31,11 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chi_tiet_thu_cung);
+        setContentView(R.layout.activity_chi_tiet_thu_cung_nguoi_ban);
         setControl();
         setEvent();
     }
-    @Override
-    public void onSliderClick(BaseSliderView slider) {
 
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
     private void setEvent() {
         // Recieve nguoiBan
         Intent intent = getIntent();
@@ -82,7 +67,38 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
         sliderLayout = (SliderLayout) findViewById(R.id.slider);
         Back = (Button) findViewById(R.id.btnBack);
         AddImagesUrlOnline();
+//        SharedPreferences sharedPreferences = getSharedPreferences("saveIDNguoiBan", Context.MODE_PRIVATE);
+//        String id_nguoi_ban = sharedPreferences.getString("id_nguoi_ban", "");
     }
+
+    @Override
+    protected void onStop() {
+
+        sliderLayout.stopAutoCycle();
+
+        super.onStop();
+    }
+
+    @Override
+    public void onSliderClick(BaseSliderView slider) {
+
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
     public void AddImagesUrlOnline() {
         final Handler handler = new Handler();
         handler.post(new Runnable() {
@@ -92,13 +108,13 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
                     sanPham = (SanPham) PetShopFireBase.findItem(ID, PetShopFireBase.TABLE_SAN_PHAM);
 
                     for (int i = 0; i < sanPham.getImages_list().size(); i++) {
-                        TextSliderView textSliderView = new TextSliderView(ChiTietThuCungActivity.this);
+                        TextSliderView textSliderView = new TextSliderView(ChiTietThuCungNguoiBanActivity.this);
 
                         textSliderView
                                 .description("hình " + (i + 1))
                                 .image(sanPham.getImages_list().get(i))
                                 .setScaleType(BaseSliderView.ScaleType.Fit)
-                                .setOnSliderClickListener(ChiTietThuCungActivity.this);
+                                .setOnSliderClickListener(ChiTietThuCungNguoiBanActivity.this);
 
                         textSliderView.bundle(new Bundle());
 
@@ -115,7 +131,7 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
 
                     sliderLayout.setDuration(3000);
 
-                    sliderLayout.addOnPageChangeListener(ChiTietThuCungActivity.this);
+                    sliderLayout.addOnPageChangeListener(ChiTietThuCungNguoiBanActivity.this);
                     //Toast.makeText(ChiTietThuCungNguoiBanActivity.this, sanPham.getImages_list() +"", Toast.LENGTH_SHORT).show();
                 } else handler.postDelayed(this, 1000);
             }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ChiTietThuCungActivity"
+    tools:context=".ChiTietThuCungNguoiBanActivity"
     android:background="#FFFFFF">
 
     <LinearLayout
@@ -18,11 +18,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-            <ImageView
+            <Button
+                android:id="@+id/btnBack"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/petshop"/>
+                android:layout_marginTop="5dp"
+                android:background="@drawable/back_white"/>
         </LinearLayout>
 
         <LinearLayout

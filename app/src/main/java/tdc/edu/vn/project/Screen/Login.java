@@ -59,11 +59,10 @@ public class Login extends AppCompatActivity {
                                     ArrayList<NguoiMua> data = (ArrayList<NguoiMua>) PetShopFireBase.TABLE_NGUOI_MUA.data;
                                     for (int i = 0; i < data.size(); i++) {
                                         if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())) {
+
                                             SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
                                             SharedPreferences.Editor editor = sharedPreferences.edit();
                                             editor.putString("id", data.get(i).getId()).apply();
-
-
                                             Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
                                             startActivity(intent);
                                             finish();
@@ -76,13 +75,14 @@ public class Login extends AppCompatActivity {
                                 break;
                             case R.id.rdbNguoiBan:
                                 btnDangNhap.setClickable(false);
-
-
                                 if (PetShopFireBase.TABLE_NGUOI_BAN.status_data) {
                                     ArrayList<NguoiBan> dataNguoiBan = (ArrayList<NguoiBan>) PetShopFireBase.TABLE_NGUOI_BAN.data;
                                     for (int i = 0; i < dataNguoiBan.size(); i++) {
                                         if (edtTaiKhoan.getText().toString().equals(dataNguoiBan.get(i).getUsername()) && edtMatKhau.getText().toString().equals(dataNguoiBan.get(i).getPassword())) {
                                             Intent intentNguoiBan = new Intent(getApplication(), DanhMucNguoiBanActivity.class);
+                                            SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("id_nguoi_ban", dataNguoiBan.get(i).getId()).apply();
                                             intentNguoiBan.putExtra("id_nguoi_ban", dataNguoiBan.get(i).getId());
                                             startActivity(intentNguoiBan);
                                             finish();

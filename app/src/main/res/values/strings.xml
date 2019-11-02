@@ -77,15 +77,9 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <string-array name="tablayout">
-        <item>Home</item>
-        <item>Danh mục</item>
-        <item>Thông báo</item>
-        <item>Cá nhân</item>
-    </string-array>
+    <string name="btnSave">Lưu</string>
 
     <!--    InforUser-->
-    <string name="btnSave">Lưu</string>
     <string name="btnChangePass">đổi mật khẩu</string>
     <string name="txtName">Họ tên</string>
     <string name="txtEmail">Email</string>
@@ -94,9 +88,9 @@
     <string name="txtAddress">Địa chỉ</string>
     <string name="luutc">Lưu thành công</string>
     <string name="nhaptt">Nhập đầy đủ thông tin</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dangxuat">Đăng xuất</string>
     <string name="chinhsua">Chỉnh sửa</string>
     <string name="emailuser">ntk@yahoo.com</string>
@@ -123,8 +117,8 @@
     <string name="nhapmatkhauhientai">Nhập mật khẩu hiện tại</string>
     <string name="nhapmatkhaumoi">Nhập mật khẩu mới</string>
     <string name="nhaplaimatkhaumoi">Nhập lại mật khẩu mới</string>
-
     <string name="luuthongtin">Lưu thông tin</string>
+
     <string name="thongtin">Thông tin</string>
     <string name="taikhoan">Tài khoản</string>
     <string name="matkhau">Mật khẩu</string>
@@ -135,9 +129,9 @@
     <string name="danhsachden">Danh Sách Đen</string>
     <string name="nguoidunggiaodich">Quản Lí Người Dùng</string>
     <string name="giaodich">Quản Lí Giao Dịch</string>
-
-
     <string name="tb">Thông báo</string>
+
+
     <string name="bancomuonsuakhong">Bạn có muốn sửa không?</string>
     <string name="ko">Không</string>
     <string name="co">Có</string>
@@ -147,4 +141,10 @@
     <string name="donhanghoanthanh">Đơn hàng hoàn thành</string>
     <string name="chonnguoigiao">Chọn người giao</string>
     <string name="chitietdonhang">Chi tiết đơn hàng</string>
+    <string-array name="tablayout">
+        <item>Home</item>
+        <item>Danh mục</item>
+        <item>Thông báo</item>
+        <item>Cá nhân</item>
+    </string-array>
 </resources>

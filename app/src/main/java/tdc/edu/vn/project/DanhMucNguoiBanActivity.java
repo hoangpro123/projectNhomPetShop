@@ -2,6 +2,7 @@ package tdc.edu.vn.project;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -15,7 +16,7 @@ import tdc.edu.vn.project.Model.NguoiBan;
 
 public class DanhMucNguoiBanActivity extends AppCompatActivity {
     String id;
-    Button GianHang, ThemSanPham;
+    Button GianHang, ThemSanPham, DangXuat;
     TextView NameShop;
     NguoiBan nguoiBan;
     @Override
@@ -44,12 +45,19 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        DangXuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     private void setControl() {
         GianHang = (Button) findViewById(R.id.btnGianHang);
         ThemSanPham = (Button) findViewById(R.id.btnThemSanPham);
         NameShop = (TextView) findViewById(R.id.tvNameShop);
+        DangXuat = (Button) findViewById(R.id.btnDangXuat);
         Intent intent = getIntent();
         id = intent.getStringExtra("id_nguoi_ban");
         getFirebaseSanPham();

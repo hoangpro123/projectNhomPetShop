@@ -8,50 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/actionBar"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <TextView
+            android:textSize="@dimen/title"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/petShop"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/petshop" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4">
-
-            <SearchView
-                android:id="@+id/searchview"
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="#FFFFFF"
-                android:iconifiedByDefault="true"
-                android:queryHint="@string/search_danh_muc_thu_cung" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/shopCart"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/ic_shopping_cart_white_24dp" />
-        </LinearLayout>
+            android:textColor="@color/title"
+            android:text="@string/title_danh_muc_thu_cung"
+            style="@style/titleheader_chitietthucung">
+        </TextView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -146,7 +115,7 @@
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
-                android:layout_marginBottom="30dp"
+
                 android:background="@drawable/shape_danh_muc"
                 android:orientation="horizontal"
                 android:padding="10dp">
@@ -253,7 +222,7 @@
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="100dp"
-                android:layout_marginBottom="30dp"
+
                 android:background="@drawable/shape_danh_muc"
                 android:orientation="horizontal"
                 android:padding="10dp">
