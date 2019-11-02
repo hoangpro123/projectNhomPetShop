@@ -56,6 +56,8 @@ public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
 
             holder.tenSP.setText(sp.getName());
             holder.donGia.setText(String.valueOf(sp.getPrice()));
+            holder.checkBox.setChecked(true);
+
 //            holder.donGia.setText(gh.getDonGia());
 //            holder.id_sanpham.setText(gh.getId_san_pham());
 //            holder.id_nguoimua.setText(gh.getId_nguoi_mua());
