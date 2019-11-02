@@ -1,6 +1,7 @@
 package tdc.edu.vn.project;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -48,6 +49,8 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
         DangXuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+                sharedPreferences.edit().clear();
                 onBackPressed();
             }
         });

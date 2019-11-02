@@ -33,6 +33,7 @@ import com.squareup.otto.Subscribe;
 public class ThongTinUser extends Fragment {
 
     //static String idnm = "nm002";
+    Button DangXuat;
     private ListView lv1;
     AdapterDonHangNguoiMua adapter;
     ArrayList<DonHang> data;
@@ -63,6 +64,7 @@ public class ThongTinUser extends Fragment {
         tvEmail = view.findViewById(R.id.tvEmail);
         tvSDT = view.findViewById(R.id.tvSDT);
         img = view.findViewById(R.id.img);
+        DangXuat = (Button) view.findViewById(R.id.btnDangXuat);
     }
 
     public void setEvent() {
@@ -74,6 +76,12 @@ public class ThongTinUser extends Fragment {
 //                String a = intent.getStringExtra("id");
 //                textView.setText(a);
                 startActivity(intent);
+            }
+        });
+        DangXuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }

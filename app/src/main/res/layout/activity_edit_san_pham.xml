@@ -39,12 +39,12 @@
             android:layout_weight="1"
             android:gravity="center">
             <Button
-            android:id="@+id/btnRepair"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/repair"
-            />
+                android:id="@+id/btnSave"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/save"
+                />
         </LinearLayout>
     </LinearLayout>
 
@@ -80,12 +80,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center">
-                        <TextView
-                            android:id="@+id/tvTenThuCung"
+                        <EditText
+                            android:id="@+id/edTenThuCung"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/ten_thu_cung"
-                            style="@style/title_chitietthucung"></TextView>
+                            style="@style/title_chitietthucung"></EditText>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -99,8 +99,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/gia"
                             style="@style/gia_chitietthucung"/>
-                        <TextView
-                            android:id="@+id/tvGiaThuCung"
+                        <EditText
+                            android:id="@+id/edGiaThuCung"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/gia_thu_cung"
@@ -140,7 +140,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
-
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -148,33 +147,12 @@
                                 android:layout_marginBottom="5dp"
                                 android:text="@string/thong_tin_chi_tiet_thu_cung"
                                 style="@style/title_chitietthucung"/>
-                            <TextView
-                                android:id="@+id/tvThongTinThuCung"
+                            <EditText
+                                android:id="@+id/edThongTinThuCung"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/thong_tin_chi_tiet_thu_cung"
                                 style="@style/noidungchitiet_chitietthucung"/>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:orientation="horizontal"
-                            android:gravity="left">
-                            <TextView
-                                android:id="@+id/tvKhachHang"
-                                android:layout_width="100dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/ten_khach_hang"
-                                style="@style/title_chitietthucung"></TextView>
-                            <TextView
-                                android:id="@+id/tvDanhGiaKhachHang"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/danh_gia"
-                                style="@style/noidungchitiet_chitietthucung"></TextView>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

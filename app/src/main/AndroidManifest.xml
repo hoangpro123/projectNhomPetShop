@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChiTietThuCungActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".EditSanPhamActivity"></activity>
+        <activity
+            android:name=".ChiTietThuCungActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ChiTietThuCungNguoiBanActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -35,12 +37,13 @@
             android:name=".FragmentMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".etc.QuenMatKhau" />
-        <activity android:name=".Screen.QuanLyDonHangNguoiBan"></activity> <!-- <activity android:name=".DonHangActivity"> -->
+        <activity android:name=".Screen.QuanLyDonHangNguoiBan" /> <!-- <activity android:name=".DonHangActivity"> -->
         <!-- </activity> -->
         <!-- <activity -->
         <!-- android:name=".User.DangKi" -->
         <!-- android:theme="@style/Theme.AppCompat.NoActionBar"></activity> -->
-        <activity android:name=".Screen.Login"
+        <activity
+            android:name=".Screen.Login"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
