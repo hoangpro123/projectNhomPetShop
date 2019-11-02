@@ -15,12 +15,13 @@
     <TextView
         android:id="@+id/dongia"
         android:layout_width="0dp"
-        android:layout_weight="2"
+        android:layout_weight="3"
         android:paddingLeft="50dp"
         android:layout_height="wrap_content"
         android:text="@string/dongia">
     </TextView>
     <CheckBox
+        android:id="@+id/checkbox"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:paddingLeft="10dp"

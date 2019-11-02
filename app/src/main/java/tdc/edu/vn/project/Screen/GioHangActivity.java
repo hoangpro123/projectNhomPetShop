@@ -14,7 +14,7 @@ class GioHangActivity extends AppCompatActivity {
 
     ListView listView;
     ArrayList<GioHang> data = new ArrayList<>();
-    LV_GioHangAdapter adapter = null;
+    LV_GioHangAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
