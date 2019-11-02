@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/vien"
+        android:layout_margin="5dp">
+        <ImageView
+            android:id="@+id/imgNguoiDungnd"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@drawable/pet"
+            android:layout_margin="5dp"></ImageView>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_margin="5dp">
+            <TextView
+                android:id="@+id/txtHond"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tenchucuahang"
+                android:paddingBottom="5dp"
+                style="@style/size20denthuong"></TextView>
+            <TextView
+                android:id="@+id/txtmailnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/emailuser"
+                android:paddingBottom="5dp"
+                style="@style/size20denthuong">></TextView>
+            <TextView
+                android:id="@+id/txtsdtnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/chitietsdt"
+                style="@style/size20denthuong">></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="91dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnXoand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_deskop"
+                android:text="@string/xem"
+                android:textColor="#fff"></Button>
+
+            <Button
+                android:id="@+id/btngd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_deskop"
+                android:text="@string/xemgd"
+                android:textColor="#fff"></Button>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

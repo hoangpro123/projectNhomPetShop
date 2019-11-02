@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import tdc.edu.vn.project.Admin.AdminHome;
 import tdc.edu.vn.project.FragmentMainActivity;
 import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiMua;
@@ -100,7 +101,7 @@ public class Login extends AppCompatActivity {
                                     ArrayList<QuanLy> data = (ArrayList<QuanLy>) PetShopFireBase.TABLE_QUAN_LY.data;
                                     for (int i = 0; i < data.size(); i++) {
                                         if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())) {
-                                            Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
+                                            Intent intent = new Intent(getApplication(), AdminHome.class);
                                             startActivity(intent);
                                             finish();
                                             return;
