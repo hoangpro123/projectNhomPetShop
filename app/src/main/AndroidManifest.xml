@@ -11,31 +11,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".fragment_donHangNguoiMua"></activity>
+        <activity android:name=".Screen.GioHangActivity">
+        </activity>
         <activity android:name=".Screen.ChiTietDonHang" />
         <activity android:name=".Screen.ChonNguoiGiaoScreen" />
         <activity android:name=".etc.ThongTinNguoiDung" />
         <activity android:name=".etc.ThongTinTaiKhoan2"></activity>
         <activity android:name=".Screen.ThongTinUser" />
         <activity
-            android:name=".Screen.GioHangActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:name=".Screen.GioHangActivity2"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
         <activity
             android:name=".FragmentMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Screen.GiaoDichScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".etc.QuenMatKhau" />
+        <activity android:name=".Screen.QuanLyDonHangNguoiBan">
+        </activity>
+      <activity android:name=".Screen.DanhGiaActivity"></activity>
+        <activity android:name=".Admin.AdminHome"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".Screen.Login" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".Screen.QuanLyDonHangNguoiBan"></activity>
         <activity android:name=".Screen.DanhGiaActivity" />
-        <activity android:name=".Screen.Login">
+        <activity android:name=".Screen.Login"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Screen.AdminHome"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <activity android:name=".InforUserActivity" />
         <activity
             android:name=".Screen.ChiTietThuCung"
@@ -52,6 +63,9 @@
         <activity
             android:name=".Screen.ThemNguoiBan"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+
+
     </application>
 
 </manifest>

@@ -54,7 +54,7 @@ public class NguoiBanScreen extends AppCompatActivity {
                 if (PetShopFireBase.TABLE_NGUOI_BAN.status_data){
 
                     data = (ArrayList<NguoiBan>) PetShopFireBase.TABLE_NGUOI_BAN.data;
-                    ad = new AdapterQuanLiNguoiBan(NguoiBanScreen.this,R.layout.item_nguoi_dung,data);
+                    ad = new AdapterQuanLiNguoiBan(NguoiBanScreen.this,R.layout.item_nguoi_ban,data);
                     lv3.setAdapter(ad);
                 }else {
                     handler.postDelayed(this, 1000);

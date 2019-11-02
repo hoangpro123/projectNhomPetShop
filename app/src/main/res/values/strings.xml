@@ -103,8 +103,10 @@
     <string name="quanlydonhang">Quản lý đơn hàng</string>
     <string name="tendonhan">Tên đơn hàng</string>
     <string name="trangthai">Trạng thái</string>
+    <string name="hoahong">Hoa Hồng</string>
     <string name="xoa">Xóa</string>
     <string name="xem">Xem</string>
+    <string name="xemgd">Xem GD</string>
     <string name="xemthem">Xem thêm</string>
     <string name="chontatca">Chọn tất cả</string>
     <string name="giohang">GIỎ HÀNG</string>

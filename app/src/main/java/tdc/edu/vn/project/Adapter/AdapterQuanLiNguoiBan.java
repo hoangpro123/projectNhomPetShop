@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,7 @@ import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.Screen.DanhSachDenScreen;
+import tdc.edu.vn.project.Screen.GiaoDichScreen;
 
 import static java.util.Locale.getDefault;
 
@@ -60,12 +62,13 @@ public class AdapterQuanLiNguoiBan extends ArrayAdapter<NguoiBan> {
             row = inflater.inflate(layoutrs, parent, false);
 
             holder = new CountryHolder();
-            holder.ivHinh = (ImageView) row.findViewById(R.id.imgNguoiDung);
-            holder.txtid = (TextView) row.findViewById(R.id.txtHo);
+            holder.ivHinh = (ImageView) row.findViewById(R.id.imgNguoiDungnd);
+            holder.txtid = (TextView) row.findViewById(R.id.txtHond);
 
-            holder.txtEmail = (TextView) row.findViewById(R.id.txtmail);
-            holder.txtname = (TextView) row.findViewById(R.id.txtsdt);
-            holder.Xoa = (Button) row.findViewById(R.id.btnXoa);
+            holder.txtEmail = (TextView) row.findViewById(R.id.txtmailnd);
+            holder.txtname = (TextView) row.findViewById(R.id.txtsdtnd);
+            holder.Xoa = (Button) row.findViewById(R.id.btnXoand);
+            holder.xemgd = (Button) row.findViewById(R.id.btngd);
             row.setTag(holder);
         } else holder = (CountryHolder) row.getTag();
 
@@ -78,6 +81,14 @@ public class AdapterQuanLiNguoiBan extends ArrayAdapter<NguoiBan> {
             @Override
             public void onClick(View v) {
                 dialognguoimua(item);
+            }
+        });
+
+        holder.xemgd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), GiaoDichScreen.class);
+                context.startActivity(intent);
             }
         });
 
@@ -114,7 +125,7 @@ public class AdapterQuanLiNguoiBan extends ArrayAdapter<NguoiBan> {
         TextView txtid;
         TextView txtEmail;
         TextView txtname;
-        Button Xoa;
+        Button Xoa, xemgd;
     }
 
     private void dialognguoimua(final NguoiBan item){

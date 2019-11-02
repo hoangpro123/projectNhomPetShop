@@ -162,11 +162,8 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
             @Override
             public void onClick(View view) {
                 Intent intent = getIntent();
-                PetShopFireBase.TABLE_GIO_HANG.name.toString();
-                GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString(),1);
-                Log.d("gh",gioHang.getId_nguoi_mua());
-                PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
-                intent = new Intent(ChiTietThuCung.this, GioHangActivity.class);
+                ThemGioHang();
+                intent = new Intent(ChiTietThuCung.this, GioHangActivity2.class);
                 startActivity(intent);
             }
         });
@@ -177,13 +174,29 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
         btnThemGioHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = getIntent();
-                PetShopFireBase.TABLE_GIO_HANG.name.toString();
-                GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString(),1);
-                Log.d("gh",gioHang.getId_nguoi_mua());
-                PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
-                Toast.makeText(ChiTietThuCung.this,"Đã thêm vào giỏ hàng" , Toast.LENGTH_SHORT).show();
+                ThemGioHang();
             }
         });
+
+        btnGioHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ChiTietThuCung.this, GioHangActivity2.class));
+            }
+        });
+    }
+
+    private void ThemGioHang() {
+        Intent intent = getIntent();
+        ArrayList<GioHang> listGH = (ArrayList<GioHang>) PetShopFireBase.search("id_nguoi_mua", intent.getStringExtra("IDNGMUA"), PetShopFireBase.TABLE_GIO_HANG);
+        GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString(),1);
+        for(GioHang gh: listGH){
+            if(gh.getId_san_pham().equals(intent.getStringExtra("ID"))){
+                Toast.makeText(ChiTietThuCung.this, "Da ton tai trong gio hang", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+        PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
+        Toast.makeText(ChiTietThuCung.this,"Đã thêm vào giỏ hàng" , Toast.LENGTH_SHORT).show();
     }
 }
