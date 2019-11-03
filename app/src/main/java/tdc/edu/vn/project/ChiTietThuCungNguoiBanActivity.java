@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,7 +25,8 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
     Button Back, Repair, Save;
     SanPham sanPham;
     String ID;
-    private TextView tvtitle, tvdescription, tvprice;
+    private TextView tvtitle, tvdescription, tvprice ;
+    private EditText  edTitle, edDescription, edPrice;
     private ImageView img;
     SliderLayout sliderLayout;
     @Override
@@ -60,9 +62,40 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
             public void onClick(View view) {
                 Repair.setVisibility(View.GONE);
                 Save.setVisibility(View.VISIBLE);
+
+                tvtitle.setVisibility(View.GONE);
+                edTitle.setText(tvtitle.getText());
+                edTitle.setVisibility(View.VISIBLE);
+
+                tvprice.setVisibility(View.GONE);
+                edPrice.setVisibility(View.VISIBLE);
+                edPrice.setText(tvprice.getText());
+
+                tvdescription.setVisibility(View.GONE);
+                edDescription.setText(tvdescription.getText());
+                edDescription.setVisibility(View.VISIBLE);
+
+                Save.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Save.setVisibility(View.GONE);
+                        Repair.setVisibility(View.VISIBLE);
+
+                        edTitle.setVisibility(View.GONE);
+                        tvtitle.setText(edTitle.getText());
+                        tvtitle.setVisibility(View.VISIBLE);
+
+                        edPrice.setVisibility(View.GONE);
+                        tvprice.setText(edPrice.getText());
+                        tvprice.setVisibility(View.VISIBLE);
+
+                        edDescription.setVisibility(View.GONE);
+                        tvdescription.setText(edDescription.getText());
+                        tvdescription.setVisibility(View.VISIBLE);
+                    }
+                });
             }
         });
-
     }
 
     private void setControl() {
@@ -73,6 +106,9 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
         Back = (Button) findViewById(R.id.btnBack);
         Repair = (Button) findViewById(R.id.btnRepair);
         Save = (Button) findViewById(R.id.btnSave);
+        edTitle = (EditText) findViewById(R.id.edTenThuCung);
+        edPrice = (EditText) findViewById(R.id.edGiaThuCung);
+        edDescription = (EditText) findViewById(R.id.edThongTinThuCung);
         AddImagesUrlOnline();
 //        SharedPreferences sharedPreferences = getSharedPreferences("saveIDNguoiBan", Context.MODE_PRIVATE);
 //        String id_nguoi_ban = sharedPreferences.getString("id_nguoi_ban", "");
@@ -145,4 +181,5 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
         });
 
     }
+    
 }

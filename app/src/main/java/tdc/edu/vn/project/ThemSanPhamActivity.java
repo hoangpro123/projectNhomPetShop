@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +51,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     String id;
     NguoiBan nguoiBan;
     Button Back, DangTin;
-    ImageButton ThemSanPham;
+    ImageView ThemSanPham;
     EditText TieuDe, ThongTinSanPham, Gia;
     TextView ThongTinNguoiBan;
     String currentDateTimeString;
@@ -111,7 +112,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
 
 
     private void setControl() {
-        ThemSanPham = (ImageButton) findViewById(R.id.imgThemSanPham);
+        ThemSanPham = (ImageView) findViewById(R.id.imgThemSanPham);
         TieuDe = (EditText) findViewById(R.id.edTieuDe);
         ThongTinSanPham = (EditText) findViewById(R.id.edThongTinSanPham);
         ThongTinNguoiBan = (TextView) findViewById(R.id.tvThongTinNguoiBan);
