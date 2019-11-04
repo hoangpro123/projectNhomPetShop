@@ -6,13 +6,14 @@ public class HoaHong extends PetShopModel{
     Float ty_le;
     Date thoi_gian_dong_tien;
     Double so_tien;
-    String id_don_hang;
+    String id_don_hang, tinh_trang_hoa_hong;
 
-    public HoaHong(Float ty_le, Date thoi_gian_dong_tien, Double so_tien, String id_don_hang) {
+    public HoaHong(Float ty_le, Date thoi_gian_dong_tien, Double so_tien, String id_don_hang, String tinh_trang_hoa_hong) {
         this.ty_le = ty_le;
         this.thoi_gian_dong_tien = thoi_gian_dong_tien;
         this.so_tien = so_tien;
         this.id_don_hang = id_don_hang;
+        this.tinh_trang_hoa_hong = tinh_trang_hoa_hong;
     }
 
     public HoaHong() {
@@ -48,5 +49,13 @@ public class HoaHong extends PetShopModel{
 
     public void setId_don_hang(String id_don_hang) {
         this.id_don_hang = id_don_hang;
+    }
+
+    public String getTinh_trang_hoa_hong() {
+        return tinh_trang_hoa_hong;
+    }
+
+    public void setTinh_trang_hoa_hong(String tinh_trang_hoa_hong) {
+        this.tinh_trang_hoa_hong = tinh_trang_hoa_hong;
     }
 }
