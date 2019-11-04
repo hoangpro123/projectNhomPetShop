@@ -88,6 +88,7 @@ public class AdapterQuanLiNguoiBan extends ArrayAdapter<NguoiBan> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), GiaoDichScreen.class);
+                intent.putExtra("id", item.getId());
                 context.startActivity(intent);
             }
         });

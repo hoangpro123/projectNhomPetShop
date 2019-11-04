@@ -101,6 +101,7 @@
     <string name="chinhsua">Chỉnh sửa</string>
     <string name="emailuser">ntk@yahoo.com</string>
     <string name="quanlydonhang">Quản lý đơn hàng</string>
+    <string name="Madonhang">Mã đơn hàng</string>
     <string name="tendonhan">Tên đơn hàng</string>
     <string name="trangthai">Trạng thái</string>
     <string name="hoahong">Hoa Hồng</string>
