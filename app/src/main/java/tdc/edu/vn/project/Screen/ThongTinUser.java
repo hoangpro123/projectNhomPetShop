@@ -19,6 +19,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import androidx.fragment.app.Fragment;
+
+import tdc.edu.vn.project.Adapter.AdapterDonHangNguoiBan;
 import tdc.edu.vn.project.Adapter.AdapterDonHangNguoiMua;
 import tdc.edu.vn.project.InforUserActivity;
 import tdc.edu.vn.project.Model.DonHang;
@@ -59,6 +61,7 @@ public class ThongTinUser extends Fragment {
         tvEmail = view.findViewById(R.id.tvEmail);
         tvSDT = view.findViewById(R.id.tvSDT);
         img = view.findViewById(R.id.img);
+
     }
 
     public void setEvent() {

@@ -25,6 +25,7 @@ import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.QuanLy;
 import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.PetShopSharedPreferences;
 import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.etc.QuenMatKhau;
 
@@ -45,6 +46,7 @@ public class Login extends AppCompatActivity {
     }
 
     public  void setEvent() {
+        btnDangNhap.setClickable(false);
         final Handler handler = new Handler();
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,14 +56,13 @@ public class Login extends AppCompatActivity {
                     public void run() {
                         switch (rdbLuaChon.getCheckedRadioButtonId()) {
                             case R.id.rdbNguoiMua:
-                                btnDangNhap.setClickable(false);
                                 if (PetShopFireBase.TABLE_NGUOI_MUA.status_data) {
                                     ArrayList<NguoiMua> data = (ArrayList<NguoiMua>) PetShopFireBase.TABLE_NGUOI_MUA.data;
                                     for (int i = 0; i < data.size(); i++) {
                                         if (edtTaiKhoan.getText().toString().equals(data.get(i).getUsername()) && edtMatKhau.getText().toString().equals(data.get(i).getPassword())) {
-                                            SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
+                                            SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
                                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                                            editor.putString("id", data.get(i).getId()).apply();
+                                            editor.putString(PetShopSharedPreferences.idnm, data.get(i).getId()).apply();
 
 
                                             Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
@@ -75,9 +76,6 @@ public class Login extends AppCompatActivity {
                                 } else handler.postDelayed(this, 1000);
                                 break;
                             case R.id.rdbNguoiBan:
-                                btnDangNhap.setClickable(false);
-
-
                                 if (PetShopFireBase.TABLE_NGUOI_BAN.status_data) {
                                     ArrayList<NguoiBan> dataNguoiBan = (ArrayList<NguoiBan>) PetShopFireBase.TABLE_NGUOI_BAN.data;
                                     for (int i = 0; i < dataNguoiBan.size(); i++) {
@@ -94,9 +92,6 @@ public class Login extends AppCompatActivity {
 
                                 break;
                             case R.id.rdbQuanLy:
-                                btnDangNhap.setClickable(false);
-
-
                                 if (PetShopFireBase.TABLE_QUAN_LY.status_data) {
                                     ArrayList<QuanLy> data = (ArrayList<QuanLy>) PetShopFireBase.TABLE_QUAN_LY.data;
                                     for (int i = 0; i < data.size(); i++) {

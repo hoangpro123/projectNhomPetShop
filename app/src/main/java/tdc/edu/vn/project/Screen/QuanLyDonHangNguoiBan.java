@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -20,7 +19,7 @@ import tdc.edu.vn.project.R;
 
 public class QuanLyDonHangNguoiBan extends AppCompatActivity{
     String id_nguoi_ban = "nb002";
-    private ListView lv1;
+    private ListView lv;
     Spinner spn;
     ArrayList<DonHang> data;
     AdapterDonHangNguoiBan adapter;
@@ -35,7 +34,7 @@ public class QuanLyDonHangNguoiBan extends AppCompatActivity{
     }
 
     public void setControl() {
-        lv1 = findViewById(R.id.lv_dh);
+        lv = findViewById(R.id.lv_dh);
         spn = findViewById(R.id.spn);
     }
 
@@ -57,7 +56,7 @@ public class QuanLyDonHangNguoiBan extends AppCompatActivity{
                             data.add(donHang);
                     }
                     adapter = new AdapterDonHangNguoiBan(QuanLyDonHangNguoiBan.this, R.layout.listview_donhang_nguoiban, data);
-                    lv1.setAdapter(adapter);
+                    lv.setAdapter(adapter);
                 } else handler.postDelayed(this, 1000);
 
             }
