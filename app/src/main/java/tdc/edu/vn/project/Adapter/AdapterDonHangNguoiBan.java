@@ -129,11 +129,11 @@ public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
         return view;
     }
 
-    static class DonHangNguoiBanHolder {
-        LinearLayout llClick;
-        TextView tvID_DON_HANG;
-        TextView tvTINH_TRANG;
-        Spinner spn;
-        Button btn;
+    public static class DonHangNguoiBanHolder {
+        public LinearLayout llClick;
+        public TextView tvID_DON_HANG;
+        public TextView tvTINH_TRANG;
+        public Spinner spn;
+        public Button btn;
     }
 }
