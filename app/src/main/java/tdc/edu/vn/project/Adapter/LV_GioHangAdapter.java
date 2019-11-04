@@ -7,8 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
@@ -18,9 +22,9 @@ import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 
 public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
-    Context context;
-    int layoutResourceId;
-    ArrayList<GioHang> data = null;
+    private Context context;
+    private int layoutResourceId;
+    private ArrayList<GioHang> data;
 
     public LV_GioHangAdapter(Context context, int layoutResourceId, ArrayList<GioHang> data) {
         super(context, layoutResourceId, data);
@@ -28,8 +32,37 @@ public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
         this.layoutResourceId = layoutResourceId;
         this.data = data;
     }
-    public class GioHangHolder{
-        TextView tenSP, donGia, id_nguoimua, id_sanpham;
+
+    @NonNull
+    @Override
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+        View row = convertView;
+        GioHangHolder holder;
+        {
+            if (row != null) {
+                holder = (GioHangHolder) row.getTag();
+            } else {
+                LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+                row = inflater.inflate(layoutResourceId, parent, false);
+
+                holder = new GioHangHolder();
+                holder.checkBox = (CheckBox) row.findViewById(R.id.checkbox);
+                holder.tenSP = (TextView) row.findViewById(R.id.tenSP);
+                holder.donGia = (TextView) row.findViewById(R.id.dongia);
+                row.setTag(holder);
+            }
+            GioHang gh = data.get(position);
+            SanPham sp = (SanPham) PetShopFireBase.findItem(gh.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM);
+
+            holder.tenSP.setText(sp.getName());
+            holder.donGia.setText(String.valueOf(sp.getPrice()));
+            
+            return row;
+        }
+    }
+
+    public class GioHangHolder {
+        TextView tenSP, donGia;
         CheckBox checkBox;
 
         public TextView getTenSP() {
@@ -48,60 +81,12 @@ public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
             this.donGia = donGia;
         }
 
-        public TextView getId_nguoimua() {
-            return id_nguoimua;
-        }
-
-        public void setId_nguoimua(TextView id_nguoimua) {
-            this.id_nguoimua = id_nguoimua;
-        }
-
-        public TextView getId_sanpham() {
-            return id_sanpham;
-        }
-
-        public void setId_sanpham(TextView id_sanpham) {
-            this.id_sanpham = id_sanpham;
-        }
-
         public CheckBox getCheckBox() {
             return checkBox;
         }
 
         public void setCheckBox(CheckBox checkBox) {
             this.checkBox = checkBox;
-        }
-    }
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View row = convertView;
-        GioHangHolder holder = null;
-        {
-            if(row != null)
-            {
-                holder = (GioHangHolder)row.getTag();
-            } else
-            {
-                LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-                row = inflater.inflate(layoutResourceId, parent, false);
-
-                holder = new GioHangHolder();
-                holder.checkBox = (CheckBox) row.findViewById(R.id.checkbox);
-                holder.tenSP = (TextView)row.findViewById(R.id.tenSP);
-                holder.donGia = (TextView)row.findViewById(R.id.dongia);
-                row.setTag(holder);
-            }
-            GioHang gh = data.get(position);
-            SanPham sp = (SanPham) PetShopFireBase.findItem(gh.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM);
-
-            holder.tenSP.setText(sp.getName());
-            holder.donGia.setText(String.valueOf(sp.getPrice()));
-            holder.checkBox.setChecked(false);
-
-//            holder.donGia.setText(gh.getDonGia());
-//            holder.id_sanpham.setText(gh.getId_san_pham());
-//            holder.id_nguoimua.setText(gh.getId_nguoi_mua());
-            return row;
         }
     }
 }

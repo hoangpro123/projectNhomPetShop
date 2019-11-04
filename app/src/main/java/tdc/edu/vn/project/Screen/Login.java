@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import tdc.edu.vn.project.Admin.AdminHome;
 import tdc.edu.vn.project.FragmentMainActivity;
+import tdc.edu.vn.project.Model.GioHang;
 import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.QuanLy;
@@ -46,11 +47,11 @@ public class Login extends AppCompatActivity {
     }
 
     public  void setEvent() {
-        btnDangNhap.setClickable(false);
         final Handler handler = new Handler();
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnDangNhap.setClickable(false);
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
