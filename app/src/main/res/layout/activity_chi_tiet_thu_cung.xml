@@ -212,25 +212,18 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="match_parent"
+        style="@style/footerchitietthucung"
+        android:layout_width="367dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="left"
-        style="@style/footerchitietthucung">
+        android:layout_gravity="center">
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/them_gio_hang"
+            style="@style/themgiohang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/vienbutton"
-            style="@style/buttonchitietthucung1"></Button>
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/mua_ngay"
-            android:background="@drawable/vienbutton"
-            style="@style/buttonchitietthucung2"></Button>
+            android:text="@string/them_gio_hang" />
     </LinearLayout>
 </LinearLayout>
