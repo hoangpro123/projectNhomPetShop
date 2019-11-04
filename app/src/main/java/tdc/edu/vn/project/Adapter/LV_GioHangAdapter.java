@@ -28,9 +28,49 @@ public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
         this.layoutResourceId = layoutResourceId;
         this.data = data;
     }
-    static class GioHangHolder{
+    public class GioHangHolder{
         TextView tenSP, donGia, id_nguoimua, id_sanpham;
         CheckBox checkBox;
+
+        public TextView getTenSP() {
+            return tenSP;
+        }
+
+        public void setTenSP(TextView tenSP) {
+            this.tenSP = tenSP;
+        }
+
+        public TextView getDonGia() {
+            return donGia;
+        }
+
+        public void setDonGia(TextView donGia) {
+            this.donGia = donGia;
+        }
+
+        public TextView getId_nguoimua() {
+            return id_nguoimua;
+        }
+
+        public void setId_nguoimua(TextView id_nguoimua) {
+            this.id_nguoimua = id_nguoimua;
+        }
+
+        public TextView getId_sanpham() {
+            return id_sanpham;
+        }
+
+        public void setId_sanpham(TextView id_sanpham) {
+            this.id_sanpham = id_sanpham;
+        }
+
+        public CheckBox getCheckBox() {
+            return checkBox;
+        }
+
+        public void setCheckBox(CheckBox checkBox) {
+            this.checkBox = checkBox;
+        }
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -56,7 +96,7 @@ public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
 
             holder.tenSP.setText(sp.getName());
             holder.donGia.setText(String.valueOf(sp.getPrice()));
-            holder.checkBox.setChecked(true);
+            holder.checkBox.setChecked(false);
 
 //            holder.donGia.setText(gh.getDonGia());
 //            holder.id_sanpham.setText(gh.getId_san_pham());
@@ -65,3 +105,4 @@ public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
         }
     }
 }
+

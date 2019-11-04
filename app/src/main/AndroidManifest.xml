@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="tdc.edu.vn.project">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -35,11 +36,9 @@
       <activity android:name=".Screen.DanhGiaActivity"></activity>
         <activity android:name=".Admin.AdminHome"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".Screen.Login" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Screen.QuanLyDonHangNguoiBan"></activity>
-        <activity android:name=".Screen.DanhGiaActivity" />
         <activity android:name=".Screen.Login"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:ignore="DuplicateActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

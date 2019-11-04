@@ -190,6 +190,7 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
         Intent intent = getIntent();
         ArrayList<GioHang> listGH = (ArrayList<GioHang>) PetShopFireBase.search("id_nguoi_mua", intent.getStringExtra("IDNGMUA"), PetShopFireBase.TABLE_GIO_HANG);
         GioHang gioHang = new GioHang(intent.getStringExtra("IDNGMUA").toString(), intent.getStringExtra("ID").toString(),1);
+
         for(GioHang gh: listGH){
             if(gh.getId_san_pham().equals(intent.getStringExtra("ID"))){
                 Toast.makeText(ChiTietThuCung.this, "Da ton tai trong gio hang", Toast.LENGTH_SHORT).show();
