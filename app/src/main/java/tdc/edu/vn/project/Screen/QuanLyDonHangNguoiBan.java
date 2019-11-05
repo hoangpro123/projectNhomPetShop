@@ -2,6 +2,8 @@ package tdc.edu.vn.project.Screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ListView;
@@ -15,10 +17,11 @@ import tdc.edu.vn.project.Adapter.AdapterDonHangNguoiBan;
 import tdc.edu.vn.project.Model.DonHang;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.PetShopSharedPreferences;
 import tdc.edu.vn.project.R;
 
 public class QuanLyDonHangNguoiBan extends AppCompatActivity{
-    String id_nguoi_ban = "nb002";
+    String id_nguoi_ban;
     private ListView lv;
     Spinner spn;
     ArrayList<DonHang> data;
@@ -34,6 +37,9 @@ public class QuanLyDonHangNguoiBan extends AppCompatActivity{
     }
 
     public void setControl() {
+        SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+        id_nguoi_ban = sharedPreferences.getString(PetShopSharedPreferences.idnb,null);
+
         lv = findViewById(R.id.lv_dh);
         spn = findViewById(R.id.spn);
     }

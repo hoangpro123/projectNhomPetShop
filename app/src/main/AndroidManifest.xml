@@ -11,27 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        android:theme="@style/AppTheme">
-        <activity android:name=".DanhSachDenNguoiBan"></activity>
-        <activity android:name=".EditSanPhamActivity" />
-        <activity
-            android:name=".DanhSachThuCungActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".ChiTietThuCungActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".ChiTietThuCungNguoiBanActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".ThemSanPhamActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".DanhSachSanPhamNguoiBanActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".DanhMucNguoiBanActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Screen.DanhSachDenScreen"/>
+        <activity android:name=".DanhSachDenNguoiBan"/>
+        <activity android:name=".EditSanPhamActivity"/>
+        <activity android:name=".DanhSachThuCungActivity"/>
+        <activity android:name=".ChiTietThuCungActivity"/>
+        <activity android:name=".ChiTietThuCungNguoiBanActivity"/>
+        <activity android:name=".ThemSanPhamActivity"/>
+        <activity android:name=".DanhSachSanPhamNguoiBanActivity"/>
+        <activity android:name=".DanhMucNguoiBanActivity" />
         <activity android:name=".Screen.ChiTietDonHang" />
         <activity android:name=".fragment_donHangNguoiMua" />
         <activity android:name=".Screen.ChonNguoiGiaoScreen" />
@@ -42,9 +30,7 @@
         <activity android:name=".FragmentMainActivity" />
         <activity android:name=".Screen.GiaoDichScreen" />
         <activity android:name=".etc.QuenMatKhau" />
-        <activity android:name=".Screen.QuanLyDonHangNguoiBan">
-
-        </activity>
+        <activity android:name=".Screen.QuanLyDonHangNguoiBan"/>
         <activity android:name=".Screen.DanhGiaActivity" />
         <activity android:name=".Admin.AdminHome" />
         <activity android:name=".Screen.Login">

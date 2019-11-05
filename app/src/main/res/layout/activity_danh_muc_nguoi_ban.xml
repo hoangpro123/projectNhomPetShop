@@ -88,11 +88,11 @@
                 android:padding="10dp"
                 />
             <Button
-                android:id="@+id/btnXacNhan"
+                android:id="@+id/btnDonHang"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:background="@drawable/shape_danh_muc_nguoi_ban_button"
-                android:text="@string/xacnhan_dm_ngBan"
+                android:text="@string/donhang_dm_ngBan"
 
                 android:textSize="@dimen/text_nguoi_ban"
                 android:layout_marginBottom="30dp"

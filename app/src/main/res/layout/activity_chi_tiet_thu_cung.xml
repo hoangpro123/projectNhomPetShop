@@ -39,12 +39,11 @@
             android:layout_weight="1"
             android:gravity="center">
             <Button
-                android:id="@+id/btnRepair"
+                android:id="@+id/btnShopCart"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/ic_shopping_cart_white_24dp"
-                />
+                android:background="@drawable/ic_shopping_cart_white_24dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -220,6 +219,7 @@
         android:orientation="horizontal"
         android:layout_gravity="center">
         <Button
+            android:id="@+id/btnThem"
             style="@style/themgiohang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

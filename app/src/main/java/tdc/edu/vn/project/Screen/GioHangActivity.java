@@ -17,6 +17,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -59,6 +60,16 @@ public class GioHangActivity extends AppCompatActivity {
             }
         });
 
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for(Integer i:list_checked_item){
+                    GioHang gioHang = data.get(i);
+                    PetShopFireBase.removeItem(gioHang.getId(), PetShopFireBase.TABLE_GIO_HANG);
+                }
+            }
+        });
+
         ckbSeclectAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +87,13 @@ public class GioHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(GioHangActivity.this, "abc", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -137,6 +155,23 @@ public class GioHangActivity extends AppCompatActivity {
         });
     }
 
+    private void datMua() {
+        ArrayList<DonHang> list = new ArrayList<>();
+        for(Integer i:list_checked_item){
+            GioHang gioHang = data.get(i);
+            SanPham sanPham = (SanPham) PetShopFireBase.findItem(gioHang.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM);
+            DonHang donHang = new DonHang(idnm, sanPham.getId(), 1, 0, sanPham.getPrice());
+
+            list.add(donHang);
+        }
+        PetShopFireBase.pushItems(list,PetShopFireBase.TABLE_DON_HANG);
+        for(Integer i:list_checked_item){
+            GioHang gioHang = data.get(i);
+            PetShopFireBase.removeItem(gioHang.getId(), PetShopFireBase.TABLE_GIO_HANG);
+        }
+    }
+
+
     private void deleteItem() {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,25 +196,6 @@ public class GioHangActivity extends AppCompatActivity {
                 });
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-            }
-        });
-    }
-
-    private void datMua() {
-        Handler handler = new Handler();
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (PetShopFireBase.TABLE_GIO_HANG.status_data && PetShopFireBase.TABLE_SAN_PHAM.status_data) {
-                    for(int i = 0; i < list_checked_item.size(); i++){
-                        GioHang gioHang = data.get(list_checked_item.get(i));
-                        SanPham sanPham = (SanPham) PetShopFireBase.findItem(gioHang.getId_san_pham(),PetShopFireBase.TABLE_SAN_PHAM);
-                        DonHang donHang = new DonHang(idnm,sanPham.getId(),1,0,sanPham.getPrice());
-
-                        PetShopFireBase.pushItem(donHang,PetShopFireBase.TABLE_DON_HANG);
-                        PetShopFireBase.removeItem(gioHang.getId(),PetShopFireBase.TABLE_GIO_HANG);
-                    }
-                } else handler.postDelayed(this, 1000);
             }
         });
     }

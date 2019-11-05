@@ -10,16 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import androidx.appcompat.app.AppCompatActivity;
 import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Screen.DanhSachDenScreen;
 import tdc.edu.vn.project.Screen.Login;
+import tdc.edu.vn.project.Screen.QuanLyDonHangNguoiBan;
 
 public class DanhMucNguoiBanActivity extends AppCompatActivity {
     String id;
-    Button GianHang, ThemSanPham, DangXuat, DanhSachDen;
+    Button GianHang, ThemSanPham, DangXuat, DanhSachDen, btnDonHang;
     TextView NameShop;
     NguoiBan nguoiBan;
     @Override
@@ -32,6 +31,13 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
     }
 
     private void setEvent() {
+        btnDonHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DanhMucNguoiBanActivity.this, QuanLyDonHangNguoiBan.class));
+            }
+        });
+
         GianHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,7 +58,6 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), DanhSachDenScreen.class));
-                finish();
             }
         });
         DangXuat.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +77,7 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
         NameShop = (TextView) findViewById(R.id.tvNameShop);
         DangXuat = (Button) findViewById(R.id.btnDangXuat);
         DanhSachDen = (Button) findViewById(R.id.btnDanhSachDen);
+        btnDonHang = findViewById(R.id.btnDonHang);
         SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
         id = sharedPreferences.getString(PetShopSharedPreferences.idnb, null);
         getFirebaseSanPham();

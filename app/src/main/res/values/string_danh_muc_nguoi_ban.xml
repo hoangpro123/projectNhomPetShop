@@ -5,6 +5,6 @@
     <string name="add_dm_ngBan">Thêm sản phẩm</string>
     <string name="danhsachden_dm_ngBan">Danh sách đen</string>
     <string name="gianhang_dm_ngBan">Gian Hàng</string>
-    <string name="xacnhan_dm_ngBan">Xác Nhận</string>
+    <string name="donhang_dm_ngBan">Đơn hàng</string>
     <string name="dangxuat_dm_ngBan">Đăng xuất</string>
 </resources>
