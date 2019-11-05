@@ -2,6 +2,7 @@ package tdc.edu.vn.project.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,8 @@ import tdc.edu.vn.project.Model.GioHang;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
+import tdc.edu.vn.project.Screen.ChiTietThuCung;
+import tdc.edu.vn.project.Screen.GioHangActivity;
 
 public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
     private Context context;
@@ -53,12 +56,24 @@ public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
             }
             GioHang gh = data.get(position);
             SanPham sp = (SanPham) PetShopFireBase.findItem(gh.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM);
-
             holder.tenSP.setText(sp.getName());
             holder.donGia.setText(String.valueOf(sp.getPrice()));
-            
+            holder.tenSP.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, ChiTietThuCung.class);
+                    context.startActivity(intent);
+                    Toast.makeText(context, "abc", Toast.LENGTH_SHORT).show();
+                }
+            });
+
             return row;
         }
+    }
+
+    private void setListItem(){
+        Intent intent = new Intent();
+
     }
 
     public class GioHangHolder {
