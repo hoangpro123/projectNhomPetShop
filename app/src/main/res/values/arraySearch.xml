@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="danhmuc">
+        <item>Tất cả</item>
+        <item>Chó</item>
+        <item>Mèo</item>
+        <item>Chim</item>
+        <item>Cá</item>
+        <item>Khác</item>
+    </string-array>
+    <string-array name="loai">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="gia">
+        <item>Thấp đến cao</item>
+        <item>Cao đến thấp</item>
+
+    </string-array>
+</resources>
