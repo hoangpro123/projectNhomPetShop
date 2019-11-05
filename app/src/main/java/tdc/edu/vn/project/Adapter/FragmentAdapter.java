@@ -10,6 +10,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import tdc.edu.vn.project.CpuInfo;
+import tdc.edu.vn.project.DanhMucThuCungActivity;
+import tdc.edu.vn.project.DanhSachThuCungActivity;
 import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.Screen.HomeClient;
 import tdc.edu.vn.project.Screen.ThongTinUser;
@@ -36,7 +38,7 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
                 fragment = new HomeClient();
                 break;
             case 1:
-                fragment = new CpuInfo();
+                fragment = new DanhMucThuCungActivity();
                 break;
             case 2:
                 fragment = new fragment_donHangNguoiMua();
@@ -53,9 +55,9 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
         return 4;
     }
 
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return listTab[position];
-    }
+//    @Nullable
+//    @Override
+//    public CharSequence getPageTitle(int position) {
+//        return listTab[position];
+//    }
 }

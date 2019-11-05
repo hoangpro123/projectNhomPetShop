@@ -4,6 +4,7 @@ public class GioHang extends PetShopModel {
     String id_nguoi_mua, id_san_pham;
     Integer so_luong;
 
+
     public GioHang(String id_nguoi_mua, String id_san_pham, Integer so_luong) {
         this.id_nguoi_mua = id_nguoi_mua;
         this.id_san_pham = id_san_pham;

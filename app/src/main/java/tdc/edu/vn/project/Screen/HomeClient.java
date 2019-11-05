@@ -82,7 +82,7 @@ public class HomeClient extends Fragment implements BaseSliderView.OnSliderClick
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), GioHangActivity2.class);
+                Intent intent = new Intent(getActivity(), GioHangActivity.class);
                 startActivity(intent);
             }
         });
@@ -183,7 +183,7 @@ public class HomeClient extends Fragment implements BaseSliderView.OnSliderClick
 
 
 //    public void KhoiTao() {
-//        final RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview);
+//        final RecyclerView myrv = (RecyclerView) findViewById(R.idnm.recyclerview);
 //        PetShopFireBase.loadTable(PetShopFireBase.TABLE_SAN_PHAM);
 //        listPet = new ArrayList<>();
 //        final Handler handler = new Handler();

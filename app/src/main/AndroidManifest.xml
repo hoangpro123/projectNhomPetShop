@@ -11,31 +11,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Screen.GioHangActivity">
-        </activity>
+        <activity android:name=".Screen.DanhSachDenScreen"/>
+        <activity android:name=".DanhSachDenNguoiBan"/>
+        <activity android:name=".EditSanPhamActivity"/>
+        <activity android:name=".DanhSachThuCungActivity"/>
+        <activity android:name=".ChiTietThuCungActivity"/>
+        <activity android:name=".ChiTietThuCungNguoiBanActivity"/>
+        <activity android:name=".ThemSanPhamActivity"/>
+        <activity android:name=".DanhSachSanPhamNguoiBanActivity"/>
+        <activity android:name=".DanhMucNguoiBanActivity" />
         <activity android:name=".Screen.ChiTietDonHang" />
+        <activity android:name=".fragment_donHangNguoiMua" />
         <activity android:name=".Screen.ChonNguoiGiaoScreen" />
         <activity android:name=".etc.ThongTinNguoiDung" />
-        <activity android:name=".etc.ThongTinTaiKhoan2"></activity>
+        <activity android:name=".etc.ThongTinTaiKhoan2"/>
         <activity android:name=".Screen.ThongTinUser" />
-        <activity
-            android:name=".Screen.GioHangActivity2"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        </activity>
-        <activity
-            android:name=".FragmentMainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".Screen.GiaoDichScreen"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".Screen.GioHangActivity" />
+        <activity android:name=".FragmentMainActivity" />
+        <activity android:name=".Screen.GiaoDichScreen" />
         <activity android:name=".etc.QuenMatKhau" />
         <activity android:name=".Screen.QuanLyDonHangNguoiBan">
         </activity>
       <activity android:name=".Screen.DanhGiaActivity"></activity>
         <activity android:name=".Admin.AdminHome"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-
         <activity android:name=".Screen.Login"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>

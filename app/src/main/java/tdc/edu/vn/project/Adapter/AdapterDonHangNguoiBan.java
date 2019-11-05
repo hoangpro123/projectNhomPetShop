@@ -3,6 +3,7 @@ package tdc.edu.vn.project.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import tdc.edu.vn.project.Model.DonHang;
+import tdc.edu.vn.project.Model.GiaoHang;
+import tdc.edu.vn.project.Model.GioHang;
+import tdc.edu.vn.project.Model.HoaHong;
+import tdc.edu.vn.project.Model.NguoiGiao;
+import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.Model.TinhTrangDonHang;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
@@ -61,7 +68,7 @@ public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChiTietDonHang.class);
-                intent.putExtra("iddh",item.getId());
+                intent.putExtra("iddh", item.getId());
                 context.startActivity(intent);
             }
         });
@@ -109,8 +116,7 @@ public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
                             context.startActivity(intent);
                         }
                     });
-                }
-                else {
+                } else {
                     holder.btn.setText("Lưu");
                     holder.btn.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -118,10 +124,38 @@ public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
                             TinhTrangDonHang tinhTrangSelected = ((ArrayList<TinhTrangDonHang>) PetShopFireBase.search("name", holder.spn.getSelectedItem().toString(), PetShopFireBase.TABLE_TINH_TRANG_DON_HANG)).get(0);
                             item.setTinh_trang(Integer.parseInt(tinhTrangSelected.getId()));
                             PetShopFireBase.pushItem(item, PetShopFireBase.TABLE_DON_HANG);
+
+                            Handler handler = new Handler();
+                            if (tinhTrangSelected.getId().equals("1")) {
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (PetShopFireBase.TABLE_HOA_HONG.status_data) {
+                                            Float ty_le = (float) 1;
+                                            Double so_tien_dong = item.getTong_tien() * ty_le / 100;
+                                            PetShopFireBase.pushItem(new HoaHong(ty_le, null, so_tien_dong, item.getId(), "Chưa đóng tiền"), PetShopFireBase.TABLE_HOA_HONG);
+                                        } else handler.postDelayed(this, 1000);
+                                    }
+                                });
+                            }
+                            if (tinhTrangSelected.getId().equals("3")) {
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (PetShopFireBase.TABLE_NGUOI_GIAO.status_data && PetShopFireBase.TABLE_GIAO_HANG.status_data) {
+                                            GiaoHang giaoHang = ((ArrayList<GiaoHang>) PetShopFireBase.search("id_don_hang",item.getId(),PetShopFireBase.TABLE_GIAO_HANG)).get(0);
+                                            NguoiGiao nguoiGiao = (NguoiGiao) PetShopFireBase.findItem(giaoHang.getId_nguoi_giao(),PetShopFireBase.TABLE_NGUOI_GIAO);
+                                            nguoiGiao.setTinh_trang("F");
+                                            PetShopFireBase.pushItem(nguoiGiao,PetShopFireBase.TABLE_NGUOI_GIAO);
+                                        } else handler.postDelayed(this, 1000);
+                                    }
+                                });
+                            }
                         }
                     });
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }

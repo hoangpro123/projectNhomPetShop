@@ -1,7 +1,6 @@
 package tdc.edu.vn.project;
 
 import android.os.Handler;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +17,6 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.otto.Bus;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -39,7 +37,7 @@ import tdc.edu.vn.project.Model.TinhTrangDonHang;
 
 public class PetShopFireBase {
     public static Bus bus = new Bus();
-    private static Handler handler = new Handler();
+
     public static StorageReference fireBaseStorage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://chuyendedidongnhom3.appspot.com");
     public static DatabaseReference fireBase = FirebaseDatabase.getInstance().getReference();
     //
@@ -88,6 +86,7 @@ public class PetShopFireBase {
     }
 
     public static void sortList(final String sField, final eTable table, final boolean inc) {
+        Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -114,6 +113,7 @@ public class PetShopFireBase {
     }
 
     public static void removeItem(final String id, final eTable table) {
+        Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -124,7 +124,24 @@ public class PetShopFireBase {
         });
     }
 
+    public static void pushItems(final Object objArr, final eTable table){
+        ArrayList<PetShopModel> list = (ArrayList<PetShopModel>) objArr;
+        if(list.isEmpty())return;
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if(!table.isPushing()){
+                    pushItem(list.get(0),table);
+                    list.remove(0);
+                    pushItems(list,table);
+                }else handler.postDelayed(this,1000);
+            }
+        });
+    }
+
     public static void pushItem(final PetShopModel item, final eTable table) {
+        Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -133,6 +150,7 @@ public class PetShopFireBase {
                     if (id.equals("null"))
                         id = getNewID(table);
                     item.setId(id);
+                    table.setPushing(true);
                     table.TABLE_DATA.child(id).setValue(item);
                 } else handler.postDelayed(this, 1000);
             }
@@ -220,6 +238,7 @@ public class PetShopFireBase {
                             table.TABLE_LAST_ID.setValue(table.last_id + 1);
                             count[0] = data.size();
                             bus.post(table.getName());
+                            table.setPushing(false);
                         }
                     }
 
@@ -284,7 +303,7 @@ public class PetShopFireBase {
         public int last_id, max_length;
         public Object data;
         public DatabaseReference TABLE_DATA, TABLE_LAST_ID;
-        public boolean status_last_id, status_data;
+        public boolean status_last_id, status_data, isPushing;
         Class cClass;
 
         eTable(String name, String key, int max_length, Class cClass) {
@@ -295,7 +314,7 @@ public class PetShopFireBase {
 
             data = new ArrayList<PetShopModel>();
             last_id = 0;
-            status_last_id = this.status_data = false;
+            status_last_id = status_data = isPushing = false;
 
             TABLE_DATA = fireBase.child(name);
             TABLE_LAST_ID = fireBase.child("last_id").child(name);
@@ -371,6 +390,14 @@ public class PetShopFireBase {
 
         public void setStatus_data(boolean status_data) {
             this.status_data = status_data;
+        }
+
+        public boolean isPushing() {
+            return isPushing;
+        }
+
+        public void setPushing(boolean pushing) {
+            isPushing = pushing;
         }
 
         public Class getcClass() {
