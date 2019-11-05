@@ -55,9 +55,9 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
         return 4;
     }
 
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return listTab[position];
-    }
+//    @Nullable
+//    @Override
+//    public CharSequence getPageTitle(int position) {
+//        return listTab[position];
+//    }
 }
