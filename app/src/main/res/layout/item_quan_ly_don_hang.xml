@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:layout_weight="3">
         <TextView
+            android:textSize="15sp"
             android:id="@+id/tvID_DON_HANG"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -16,27 +17,32 @@
             android:gravity="center"
             android:textColor="#000" />
         <TextView
+            android:textSize="15sp"
+            android:paddingLeft="15dp"
             android:id="@+id/tvTINH_TRANG"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="#000" />
+        <TextView
+            android:textSize="15sp"
+            android:id="@+id/thanhtien"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:textColor="#000" />
+        <Button
+            android:text="Cập nhật"
+            android:id="@+id/dongcn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
             android:textColor="#000" />
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spn"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:textAlignment="center" />
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="Lưu"
-        android:textSize="10sp" />
 
 </LinearLayout>

@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"></ImageView>
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -32,29 +32,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textColor="@color/Header"/>
+            />
     </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:textColor="@color/Header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:text="Name: "
-            android:textColor="@color/Header"/>
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/txtname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:textColor="@color/Header"/>
+            android:textStyle="bold" />
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -71,7 +71,7 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -88,7 +88,7 @@
            />
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -105,7 +105,7 @@
            />
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -122,7 +122,7 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView

@@ -3,10 +3,10 @@ package tdc.edu.vn.project.Model;
 import java.util.Date;
 
 public class HoaHong extends PetShopModel{
-    Float ty_le;
-    Date thoi_gian_dong_tien;
-    Double so_tien;
-    String id_don_hang, tinh_trang_hoa_hong;
+   private Float ty_le;
+   private Date thoi_gian_dong_tien;
+   private Double so_tien;
+   private String id_don_hang, tinh_trang_hoa_hong;
 
     public HoaHong(Float ty_le, Date thoi_gian_dong_tien, Double so_tien, String id_don_hang, String tinh_trang_hoa_hong) {
         this.ty_le = ty_le;

@@ -6,9 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:background="@drawable/btnchuachon"
+    android:background="@drawable/btnchon"
     android:textSize="25sp"
-    android:text="HOME"/>
+    android:textColor="@color/white"
+    android:text="HOME"
+    android:padding="10dp"/>
     <LinearLayout
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
@@ -28,14 +30,14 @@
             <Button
                 android:id="@+id/btnquanli"
                 android:textColor="@color/cardview_light_background"
-                android:background="@drawable/btnchon"
+                android:background="@drawable/btnchuachon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Người Mua"/>
             <Button
                 android:id="@+id/btngiaodich"
                 android:textColor="@color/cardview_light_background"
-                android:background="@drawable/btnchon"
+                android:background="@drawable/btnchuachon"
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,7 +45,7 @@
             <Button
                 android:id="@+id/btnthem"
                 android:textColor="@color/cardview_light_background"
-                android:background="@drawable/btnchon"
+                android:background="@drawable/btnchuachon"
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,7 +71,7 @@
             <Button
                 android:id="@+id/btnchinhsua"
                 android:textColor="@color/cardview_light_background"
-                android:background="@drawable/btnchon"
+                android:background="@drawable/btnchuachon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Danh Sách Yêu Cầu Chỉnh Sửa"/>

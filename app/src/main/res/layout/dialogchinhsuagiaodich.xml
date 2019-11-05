@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/dk"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã Đơn Hàng: "
+            android:textColor="@color/Header"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:textColor="@color/Header"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tình Trạng: "
+            android:textColor="@color/Header"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/groupcheck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/dong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đã đóng"/>
+            <RadioButton
+                android:id="@+id/chuadong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chưa Đóng"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tỉ lệ Hoa Hồng: "
+            android:textColor="@color/Header"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edTile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xác Nhận"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xóa"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

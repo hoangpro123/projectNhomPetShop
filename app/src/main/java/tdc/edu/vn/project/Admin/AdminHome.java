@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import tdc.edu.vn.project.R;
+import tdc.edu.vn.project.Screen.ChinhSuaScreen;
 import tdc.edu.vn.project.Screen.NguoiBanScreen;
 import tdc.edu.vn.project.Screen.NguoiDungScreen;
 import tdc.edu.vn.project.Screen.ThemNguoiBan;
@@ -42,6 +43,13 @@ public class AdminHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), ThemNguoiBan.class);
+                startActivity(intent);
+            }
+        });
+        chinhsua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), ChinhSuaScreen.class);
                 startActivity(intent);
             }
         });
