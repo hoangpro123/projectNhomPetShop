@@ -16,7 +16,9 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -52,6 +54,8 @@ public class GioHangActivity extends AppCompatActivity {
     private void setEvent() {
         khoiTao();
 
+        deleteItem();
+
         btnDatMua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +67,6 @@ public class GioHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 CheckBox checkBox = (CheckBox) view;
-
                 for (int i = 0; i < listView.getChildCount(); i++) {
                     LV_GioHangAdapter.GioHangHolder holder = (LV_GioHangAdapter.GioHangHolder) listView.getChildAt(i).getTag();
                     holder.getCheckBox().setChecked(checkBox.isChecked());
@@ -71,11 +74,18 @@ public class GioHangActivity extends AppCompatActivity {
             }
         });
 
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("AAA","OK");
+                Toast.makeText(GioHangActivity.this, "sdad", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -154,8 +164,9 @@ public class GioHangActivity extends AppCompatActivity {
                 builder.setNegativeButton(getResources().getString(R.string.co), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        for (int n = 0; n < listView.getChildCount(); n++) {
-
+                        for(int n = 0; n < list_checked_item.size(); n++){
+                            GioHang gioHang = data.get(list_checked_item.get(n));
+                            PetShopFireBase.removeItem(gioHang.getId(),PetShopFireBase.TABLE_GIO_HANG);
                         }
                     }
                 });
