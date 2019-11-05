@@ -18,6 +18,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.security.Permission;
+import java.util.ArrayList;
+
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
@@ -49,6 +52,13 @@ public class DangKi  extends AppCompatActivity {
                             String Name = "";
                             Name += ho.getText();
                             Name += ten.getText();
+
+                            ArrayList<NguoiMua> results = (ArrayList<NguoiMua>) PetShopFireBase.search("username", mail.getText().toString(),PetShopFireBase.TABLE_NGUOI_MUA);
+                            if(results.size() > 0){
+                                Toast.makeText(DangKi.this, "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+
                             NguoiMua nm = new NguoiMua(Name, mail.getText().toString(), pass.getText().toString(), sdt.getText().toString(), diachi.getText().toString(), " ", gender.getText().toString());
                             PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
                             dialog();

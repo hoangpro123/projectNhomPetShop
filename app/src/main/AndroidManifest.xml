@@ -15,7 +15,7 @@
         <activity android:name=".Screen.ChiTietDonHang" />
         <activity android:name=".Screen.ChonNguoiGiaoScreen" />
         <activity android:name=".etc.ThongTinNguoiDung" />
-        <activity android:name=".etc.ThongTinTaiKhoan2"></activity>
+        <activity android:name=".etc.ThongTinTaiKhoan2"/>
         <activity android:name=".Screen.ThongTinUser" />
         <activity android:name=".Screen.GioHangActivity" />
         <activity android:name=".FragmentMainActivity" />
