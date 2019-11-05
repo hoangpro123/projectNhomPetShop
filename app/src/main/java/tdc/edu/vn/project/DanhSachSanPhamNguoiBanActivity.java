@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
+import com.squareup.otto.Subscribe;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class DanhSachSanPhamNguoiBanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_danh_sach_san_pham_nguoi_ban);
 
 
-
+        PetShopFireBase.bus.register(this);
         setControl();
         setEvent();
     }
@@ -79,5 +80,18 @@ public class DanhSachSanPhamNguoiBanActivity extends AppCompatActivity {
         String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(temp).replaceAll("");
+    }
+
+    @Subscribe
+    public void onChanged(String table_name){
+        if (PetShopFireBase.TABLE_SAN_PHAM.getName().equals(table_name)){
+            getFirebaseSanPham();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PetShopFireBase.bus.unregister(this);
     }
 }

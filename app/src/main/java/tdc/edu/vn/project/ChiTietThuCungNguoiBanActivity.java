@@ -80,20 +80,16 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
             } else if (data.getData() != null) {
                 list_uri.add(data.getData());
             }
-
-
             imgThemSanPham.setImageURI(list_uri.get(0));
             try {
                 for (Uri uri : list_uri) {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
                     Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                     byte[] bytes = byteArrayOutputStream.toByteArray();
                     arrBytes.add(bytes);
                 }
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -176,10 +172,9 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
                         sliderLayout.setVisibility(View.VISIBLE);
                         if (arrBytes.size() == 0) {
                             Toast.makeText(getApplicationContext(), "Chưa chọn hình", Toast.LENGTH_SHORT).show();
-
                         } else {
+                            Toast.makeText(getApplicationContext(), "Đã chọn hình", Toast.LENGTH_SHORT).show();
                             upload(arrBytes,0);
-                            i++;
                         }
                     }
                 });
@@ -233,6 +228,7 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
     }
 
     public void AddImagesUrlOnline() {
+        sliderLayout.removeAllSliders();
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
@@ -285,11 +281,12 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
                             SanPham sp = (SanPham) PetShopFireBase.findItem(ID, PetShopFireBase.TABLE_SAN_PHAM);
                             sp.setName(tvtitle.getText().toString());
                             sp.setPrice(Double.parseDouble(tvprice.getText().toString()));
-                            sp.setDescription(tvdescription.toString());
+                            sp.setDescription(tvdescription.getText().toString());
                             if(arrBytes.size() != 0){
                                 sp.setImages_list(image_list);
                             }
                             PetShopFireBase.pushItem(sp, PetShopFireBase.TABLE_SAN_PHAM);
+                            AddImagesUrlOnline();
                         }
                         else {
                             upload(arrBytes, i+1);
