@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_chi_tiet_thu_cung" >Chi Tiết Thú Cưng</string>
+    <string name="ten_thu_cung">Chó</string>
+    <string name="gia_thu_cung">2500000</string>
+    <string name="cua_hang">Cửa Hàng :</string>
+    <string name="ten_cua_hang">Hoàng</string>
+    <string name="shop_chi_tiet">Shop</string>
+    <string name="thong_tin_chi_tiet_thu_cung">Thông Tin Chi Tiết : </string>
+    <string name="ten_khach_hang">Hòn</string>
+    <string name="danh_gia">Thú cưng đẹp, mập mạp, ăn nhiều, tốn cơm</string>
+    <string name="them_gio_hang">Thêm Giỏ Hàng</string>
+    <string name="mua_ngay">Mua Ngay</string>
+
+</resources>

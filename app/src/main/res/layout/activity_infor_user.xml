@@ -43,7 +43,7 @@
                 android:id="@+id/btnSave"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:background="@color/nen"
+                android:background="@color/none"
                 android:text="@string/btnSave"/>
         </LinearLayout>
     </LinearLayout>

@@ -58,7 +58,6 @@ public class QuanLyDonHangNguoiBan extends AppCompatActivity{
                     adapter = new AdapterDonHangNguoiBan(QuanLyDonHangNguoiBan.this, R.layout.listview_donhang_nguoiban, data);
                     lv.setAdapter(adapter);
                 } else handler.postDelayed(this, 1000);
-
             }
         });
     }

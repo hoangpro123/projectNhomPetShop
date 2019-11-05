@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cho_danh_muc_thu_cung">Chó</string>
+    <string name="meo_danh_muc_thu_cung">Mèo</string>
+    <string name="chim_danh_muc_thu_cung">Chim</string>
+    <string name="ca_danh_muc_thu_cung">Cá</string>
+    <string name="bosat_danh_muc_thu_cung">Bò Sát</string>
+    <string name="khac_danh_muc_thu_cung">Khác</string>
+    <string name="search_danh_muc_thu_cung">Search</string>
+    <string name="trangchu_danh_muc_thu_cung">TrangChu</string>
+    <string name="shopcart_danh_muc_thu_cung">Shopcart</string>
+    <string name="title_danh_muc_thu_cung">Danh Mục</string>
+</resources>

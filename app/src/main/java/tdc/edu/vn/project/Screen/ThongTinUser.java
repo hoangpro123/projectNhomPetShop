@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -80,7 +81,6 @@ public class ThongTinUser extends Fragment {
                 SharedPreferences sharedPreferences = getContext().getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(PetShopSharedPreferences.idnm, null).apply();
-
                 startActivity(new Intent(getContext(), Login.class));
                 getActivity().finish();
             }
@@ -95,6 +95,7 @@ public class ThongTinUser extends Fragment {
             public void run() {
                 if (PetShopFireBase.TABLE_NGUOI_MUA.status_data) {
                     NguoiMua nguoiMua = (NguoiMua) PetShopFireBase.findItem(idnm,PetShopFireBase.TABLE_NGUOI_MUA);
+                    Toast.makeText(getContext(), "" + idnm, Toast.LENGTH_SHORT).show();
                     tvName.setText(nguoiMua.getName());
                     tvEmail.setText(nguoiMua.getUsername());
                     tvSDT.setText(nguoiMua.getPhone());
