@@ -30,9 +30,8 @@ import static java.util.Locale.getDefault;
 
 
 public class DanhSachThuCungActivity extends AppCompatActivity {
-    Spinner spDanhMuc, spLoai, spGia;
+    Spinner spDanhMuc, spGia;
     Button Back;
-    TextView tvDanhMuc, tvLoai, tvGia;
     SearchView searchView;
     RecyclerViewAdapter myAdapter;
     ArrayList<SanPham> data;
@@ -55,7 +54,6 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
     private void setEvent() {
         setSpinner(stringDanhMuc, spDanhMuc);
         setSpinner(stringGia, spGia);
-        setSpinner(stringLoai, spLoai);
         getFirebaseSanPham();
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,25 +64,16 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         spDanhMuc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                if(spDanhMuc.getSelectedItem().toString().equals("Tất cả")){
+                    myAdapter.filter("");
+                }else{
+                    myAdapter.filter(spDanhMuc.getSelectedItem().toString());
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
-        spLoai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         spGia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
@@ -103,9 +92,6 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
                         else handler.postDelayed(this, 1000);
                     }
                 });
-
-                //PetShopFireBase.loadTable(PetShopFireBase.TABLE_SAN_PHAM);
-
             };
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -134,11 +120,8 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
 
         spDanhMuc = (Spinner)findViewById(R.id.SpDanhMuc);
         spGia = (Spinner)findViewById(R.id.SpGia);
-        spLoai = (Spinner)findViewById(R.id.SpLoai);
         searchView = (SearchView) findViewById(R.id.searchview);
-
         Back = (Button) findViewById(R.id.btnBack);
-
         stringDanhMuc = getResources().getStringArray(R.array.danhmuc);
         stringGia = getResources().getStringArray(R.array.gia);
         stringLoai = getResources().getStringArray(R.array.loai);
@@ -146,7 +129,6 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
     }
 
     private void getFirebaseSanPham() {
-
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
@@ -171,9 +153,10 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
     }
 
     public static String removeAccent(String s) {
-
         String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(temp).replaceAll("");
     }
+
+
 }

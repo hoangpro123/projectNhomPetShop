@@ -2,14 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tdc.edu.vn.project">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".DanhSachDenNguoiBan"></activity>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <activity android:name=".DanhSachDenNguoiBan">
+		</activity>
         <activity android:name=".EditSanPhamActivity" />
         <activity
             android:name=".DanhSachThuCungActivity"
@@ -42,7 +46,9 @@
             android:name=".FragmentMainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".etc.QuenMatKhau" />
-        <activity android:name=".Screen.QuanLyDonHangNguoiBan" />
+        <activity android:name=".Screen.QuanLyDonHangNguoiBan">
+
+        </activity>
         <activity android:name=".Screen.DanhGiaActivity" />
         <activity
             android:name=".Screen.Login"
@@ -54,7 +60,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Screen.AdminHome"
+            android:name=".Admin.AdminHome"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".InforUserActivity" />
         <activity
@@ -76,7 +82,5 @@
             android:name=".Screen.DanhSachDenScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

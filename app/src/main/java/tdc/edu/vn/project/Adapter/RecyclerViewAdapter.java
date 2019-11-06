@@ -97,7 +97,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             mData.addAll(arrayList);
         }else {
             for (SanPham sanPham : arrayList){
-                if(removeAccent(sanPham.getName()).toLowerCase(Locale.getDefault()).contains(charText)){
+                if(removeAccent(sanPham.getName()).toLowerCase(Locale.getDefault()).contains(removeAccent(charText))){
+                    mData.add(sanPham);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+    public void DanhMuc(String s){
+        s = s.toLowerCase(getDefault());
+        mData.clear();
+        if(s.length() == 0){
+            mData.addAll(arrayList);
+        }else {
+            for (SanPham sanPham : arrayList){
+                if(removeAccent(sanPham.getName()).toLowerCase(Locale.getDefault()).contains(s)){
                     mData.add(sanPham);
                 }
             }
