@@ -123,7 +123,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/cua_hang"
-                                style="@style/title_chitietthucung"></TextView>
+                                style="@style/title_chitietthucung"/>
                             <TextView
                                 android:id="@+id/tvTenCuaHang"
                                 android:layout_width="wrap_content"
@@ -138,37 +138,17 @@
                                 style="@style/title_chitietthucung"/>
 
                         </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center">
-                            <ImageView
+                            <RatingBar
+                                android:id="@+id/rating"
+                                android:isIndicator="true"
+                                android:layout_gravity="center"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/star"
-                                style="@style/marginleft50"/>
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/star"
-                                style="@style/marginleft50"/>
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/star"
-                                style="@style/marginleft50"/>
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/star"
-                                style="@style/marginleft50"/>
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/star"
-                                style="@style/marginleft50"/>
-                        </LinearLayout>
+                                android:numStars="5"
+                                android:progressBackgroundTint="@color/gray"
+                                android:progressTint="@color/yellow"
+                                android:secondaryProgressTint="@color/yellow"
+                                android:stepSize="0.1" />
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

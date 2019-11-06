@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
+import tdc.edu.vn.project.ChiTietThuCungActivity;
 import tdc.edu.vn.project.Model.GioHang;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
@@ -52,18 +54,19 @@ public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
                 holder.checkBox = (CheckBox) row.findViewById(R.id.checkbox);
                 holder.tenSP = (TextView) row.findViewById(R.id.tenSP);
                 holder.donGia = (TextView) row.findViewById(R.id.dongia);
+                holder.llClick = row.findViewById(R.id.llClick);
                 row.setTag(holder);
             }
             GioHang gh = data.get(position);
             SanPham sp = (SanPham) PetShopFireBase.findItem(gh.getId_san_pham(), PetShopFireBase.TABLE_SAN_PHAM);
             holder.tenSP.setText(sp.getName());
             holder.donGia.setText(String.valueOf(sp.getPrice()));
-            holder.tenSP.setOnClickListener(new View.OnClickListener() {
+            holder.llClick.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, ChiTietThuCung.class);
+                    Intent intent = new Intent(context, ChiTietThuCungActivity.class);
+                    intent.putExtra("ID_SanPham",sp.getId());
                     context.startActivity(intent);
-                    Toast.makeText(context, "abc", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -71,14 +74,11 @@ public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
         }
     }
 
-    private void setListItem(){
-        Intent intent = new Intent();
-
-    }
 
     public class GioHangHolder {
         TextView tenSP, donGia;
         CheckBox checkBox;
+        LinearLayout llClick;
 
         public TextView getTenSP() {
             return tenSP;
@@ -102,6 +102,14 @@ public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
 
         public void setCheckBox(CheckBox checkBox) {
             this.checkBox = checkBox;
+        }
+
+        public LinearLayout getLlClick() {
+            return llClick;
+        }
+
+        public void setLlClick(LinearLayout llClick) {
+            this.llClick = llClick;
         }
     }
 }

@@ -74,11 +74,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 }
                 // passing data to the book activity
                 intent.putExtra("ID_SanPham", mData.get(position).getId());
-                intent.putExtra("IDNGMUA", id_nguoi_mua);
-                intent.putExtra("Title",mData.get(position).getName());
-                intent.putExtra("Price", mData.get(position).getPrice().toString());
-                intent.putExtra("Description",mData.get(position).getDescription());
-                intent.putExtra("Thumbnail",mData.get(position).getImages_list());
                 // start the activity
                 mContext.startActivity(intent);
             }

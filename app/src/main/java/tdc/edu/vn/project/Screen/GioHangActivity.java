@@ -117,7 +117,7 @@ public class GioHangActivity extends AppCompatActivity {
             public void run() {
                 if (PetShopFireBase.TABLE_GIO_HANG.status_data && PetShopFireBase.TABLE_SAN_PHAM.status_data) {
                     data = (ArrayList<GioHang>) PetShopFireBase.search("id_nguoi_mua", idnm, PetShopFireBase.TABLE_GIO_HANG);
-                    adapter = new LV_GioHangAdapter(GioHangActivity.this, R.layout.listview_item, data);
+                    adapter = new LV_GioHangAdapter(GioHangActivity.this, R.layout.listview_gio_hang, data);
                     listView.setAdapter(adapter);
 
                     listView.post(new Runnable() {

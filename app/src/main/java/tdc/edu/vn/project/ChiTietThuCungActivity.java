@@ -2,7 +2,9 @@ package tdc.edu.vn.project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import tdc.edu.vn.project.Model.DanhGia;
 import tdc.edu.vn.project.Model.GioHang;
+import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.Screen.GioHangActivity;
 
@@ -14,6 +16,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,11 +28,12 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 
 import java.util.ArrayList;
 
-public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     Button btnThem, btnShopCart, Back;
     SanPham sanPham;
     String idsp, idnm;
-    private TextView tvtitle, tvdescription, tvprice;
+    RatingBar ratingBar;
+    private TextView tvtitle, tvdescription, tvprice, tvTenCuaHang;
     private ImageView img;
     SliderLayout sliderLayout;
 
@@ -42,19 +46,32 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
     }
 
     private void setEvent() {
-        // Recieve nguoiBan
-        Intent intent = getIntent();
-        idsp = intent.getStringExtra("ID_SanPham");
-        String Title = intent.getStringExtra("Title");
-        String price = intent.getStringExtra("Price");
-        String Description = intent.getStringExtra("Description");
-        String image = intent.getStringExtra("Thumbnail");
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (PetShopFireBase.TABLE_SAN_PHAM.status_data && PetShopFireBase.TABLE_NGUOI_BAN.status_data && PetShopFireBase.TABLE_DANH_GIA.status_data) {
+                    SanPham sanPham = (SanPham) PetShopFireBase.findItem(idsp, PetShopFireBase.TABLE_SAN_PHAM);
+                    NguoiBan nguoiBan = (NguoiBan)PetShopFireBase.findItem(sanPham.getId_nguoi_ban(),PetShopFireBase.TABLE_NGUOI_BAN);
+                    ArrayList<DanhGia> list_danhgia = (ArrayList<DanhGia>) PetShopFireBase.search("id_nguoi_bi_danh_gia",nguoiBan.getId(),PetShopFireBase.TABLE_DANH_GIA);
+                    float rating = 0;
+                    for(DanhGia danhGia: list_danhgia){
+                        rating += danhGia.getRate();
+                    }
+                    rating /= list_danhgia.size();
+                    ratingBar.setRating(rating);
 
-        // Setting values
-        tvtitle.setText(Title);
-        tvprice.setText(price);
-        tvdescription.setText(Description);
+
+                    tvtitle.setText(sanPham.getName());
+                    tvprice.setText(String.valueOf(sanPham.getPrice()));
+                    tvdescription.setText(sanPham.getDescription());
+                    tvTenCuaHang.setText(nguoiBan.getName());
 //        Picasso.with(this).load(image).into(img);
+                } else handler.postDelayed(this, 1000);
+
+            }
+        });
+
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,11 +92,16 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
                 startActivity(new Intent(getApplicationContext(), GioHangActivity.class));
             }
         });
+
     }
 
     private void setControl() {
         SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
         idnm = sharedPreferences.getString(PetShopSharedPreferences.idnm, null);
+        Intent intent = getIntent();
+        idsp = intent.getStringExtra("ID_SanPham");
+        //
+        ratingBar = findViewById(R.id.rating);
         tvtitle = (TextView) findViewById(R.id.tvTenThuCung);
         tvdescription = (TextView) findViewById(R.id.tvThongTinThuCung);
         tvprice = (TextView) findViewById(R.id.tvGiaThuCung);
@@ -87,8 +109,10 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
         Back = (Button) findViewById(R.id.btnBack);
         btnThem = findViewById(R.id.btnThem);
         btnShopCart = findViewById(R.id.btnShopCart);
+        tvTenCuaHang = findViewById(R.id.tvTenCuaHang);
         AddImagesUrlOnline();
     }
+
     public void AddImagesUrlOnline() {
         final Handler handler = new Handler();
         handler.post(new Runnable() {
@@ -134,20 +158,20 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(PetShopFireBase.TABLE_GIO_HANG.status_data){
+                if (PetShopFireBase.TABLE_GIO_HANG.status_data) {
                     Intent intent = getIntent();
                     ArrayList<GioHang> listGH = (ArrayList<GioHang>) PetShopFireBase.search("id_nguoi_mua", intent.getStringExtra("IDNGMUA"), PetShopFireBase.TABLE_GIO_HANG);
-                    GioHang gioHang = new GioHang(idnm, idsp,1);
+                    GioHang gioHang = new GioHang(idnm, idsp, 1);
 
-                    for(GioHang gh: listGH){
-                        if(gh.getId_san_pham().equals(idsp)){
+                    for (GioHang gh : listGH) {
+                        if (gh.getId_san_pham().equals(idsp)) {
                             Toast.makeText(ChiTietThuCungActivity.this, "Da ton tai trong gio hang", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
-                    PetShopFireBase.pushItem(gioHang,PetShopFireBase.TABLE_GIO_HANG);
-                    Toast.makeText(ChiTietThuCungActivity.this,"Đã thêm vào giỏ hàng" , Toast.LENGTH_SHORT).show();
-                }else handler.postDelayed(this,1000);
+                    PetShopFireBase.pushItem(gioHang, PetShopFireBase.TABLE_GIO_HANG);
+                    Toast.makeText(ChiTietThuCungActivity.this, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                } else handler.postDelayed(this, 1000);
             }
         });
 
