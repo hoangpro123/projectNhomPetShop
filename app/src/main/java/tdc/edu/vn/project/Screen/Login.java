@@ -113,7 +113,7 @@ public class Login extends AppCompatActivity {
                                             SharedPreferences.Editor editor = sharedPreferences.edit();
                                             editor.putString(PetShopSharedPreferences.idql, data.get(i).getId()).apply();
 
-                                            Intent intent = new Intent(getApplication(), FragmentMainActivity.class);
+                                            Intent intent = new Intent(getApplication(), AdminHome.class);
                                             startActivity(intent);
                                             finish();
                                             return;

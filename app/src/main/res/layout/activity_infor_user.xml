@@ -9,7 +9,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
         android:background="@color/Header">
         <Button
@@ -50,15 +51,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_height="0dp"
+        android:layout_weight="8"
         android:orientation="horizontal"
-        android:padding="20dp">
-
+        android:padding="2dp">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -82,7 +83,6 @@
                 android:text="@string/txtAddress" />
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -132,10 +132,20 @@
                 android:text="@string/txtAddress" />
         </LinearLayout>
     </LinearLayout>
-
-    <Button
-        style="@style/btnchangepass_style1"
-        android:id="@+id/btnChangePass"
-        android:text="@string/btnChangePass"></Button>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp">
+        <Button
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btnChangePass"
+            android:text="@string/btnChangePass"
+            style="@style/buttonchitietthucung1"
+            android:background="@drawable/vienbutton"></Button>
+    </LinearLayout>
 
 </LinearLayout>

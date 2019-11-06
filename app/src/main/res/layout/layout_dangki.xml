@@ -7,116 +7,155 @@
         android:background="@color/Header"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1">
         <ImageButton
             android:id="@+id/btnBack"
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_navigate_before_black_24dp"></ImageButton>
-
-        <TextView
-
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginLeft="90dp"
+            android:background="@drawable/ic_navigate_before_black_24dp">
+        </ImageButton>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
             android:text="Tạo Tài Khoản"
             android:textColor="@color/white"
-            android:textSize="25sp"></TextView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/edHo"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/ho"></EditText>
-        <EditText
-            android:id="@+id/edTen"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/ten"></EditText>
+            android:textSize="25sp"
+            android:gravity="center"></TextView>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"></TextView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingRight="15dp"
-        android:paddingLeft="15dp">
-        <EditText
-            android:inputType="textEmailAddress"
-            android:id="@+id/edMail"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/mail"></EditText>
-        <EditText
-            android:inputType="textPassword"
-            android:id="@+id/edpass"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/pass"></EditText>
-        <EditText
-            android:inputType="textPassword"
-            android:id="@+id/edRepass"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/repass"></EditText>
-        <EditText
-            android:inputType="number"
-            android:id="@+id/edSDT"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/sdt"></EditText>
-        <EditText
-            android:id="@+id/edDC"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/diachi"></EditText>
-        <RadioGroup
-            android:id="@+id/gr"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="vertical">
+        <LinearLayout
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/edHo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/gioitinh"></TextView>
-            <RadioButton
-                android:checked="true"
-                android:id="@+id/nam"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
+                android:hint="@string/ho"
+                android:background="@drawable/vien"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"></EditText>
+            <EditText
+                android:id="@+id/edTen"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/nam"></RadioButton>
-            <RadioButton
-                android:id="@+id/nu"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
+                android:hint="@string/ten"
+                android:background="@drawable/vien"
+                android:padding="10dp"></EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp">
+            <EditText
+                android:inputType="textEmailAddress"
+                android:id="@+id/edMail"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/nu"></RadioButton>
-        </RadioGroup>
+                android:hint="@string/mail"
+                android:background="@drawable/vien"
+                android:padding="10dp"></EditText>
+            <EditText
+                android:inputType="textPassword"
+                android:id="@+id/edpass"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/pass"
+                android:background="@drawable/vien"
+                android:padding="10dp"></EditText>
+            <EditText
+                android:inputType="textPassword"
+                android:id="@+id/edRepass"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/repass"
+                android:background="@drawable/vien"
+                android:padding="10dp"></EditText>
+            <EditText
+                android:inputType="number"
+                android:id="@+id/edSDT"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/sdt"
+                android:background="@drawable/vien"
+                android:padding="10dp"></EditText>
+            <EditText
+                android:id="@+id/edDC"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/diachi"
+                android:background="@drawable/vien"
+                android:padding="10dp"></EditText>
+            <RadioGroup
+                android:layout_marginTop="15dp"
+                android:id="@+id/gr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/vien"
+                android:padding="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gioitinh"></TextView>
+                <RadioButton
+                    android:checked="true"
+                    android:id="@+id/nam"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nam"></RadioButton>
+                <RadioButton
+                    android:id="@+id/nu"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nu"></RadioButton>
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_margin="10dp">
+        <Button
+            android:id="@+id/btnTao"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/buttonchitietthucung1"
+            android:background="@drawable/vienbutton"
+            android:text="@string/tao"></Button>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnTao"
-        android:layout_marginTop="50dp"
 
-        android:textColor="@color/white"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/vienbutton"
-        android:text="@string/tao"></Button>
 
 </LinearLayout>

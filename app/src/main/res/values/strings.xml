@@ -9,9 +9,9 @@
     <string name="GT">Giới Tính</string>
     <string name="Nam">Nam</string>
     <string name="Nu">Nữ</string>
-    <string name="canhan">CÁ NHÂN</string>
-    <string name="donhang">ĐƠN HÀNG</string>
-    <string name="donhangthanhcong">ĐƠN HÀNG THÀNH CÔNG</string>
+    <string name="canhan">Cá nhân</string>
+    <string name="donhang">Đơn hàng</string>
+    <string name="donhangthanhcong">Đơn hàng thành công</string>
     <string name="madonhang">Mã đơn hàng:</string>
     <string name="tendonhang">Tên đơn hàng:</string>
     <string name="thoigian">Thời gian:</string>
@@ -19,7 +19,7 @@
     <string name="danhgia">ĐÁNH GIÁ</string>
     <string name="nguoiban">Người bán:</string>
     <string name="gui">Gửi</string>
-    <string name="title_chitietthucung">CHI TIẾT THÚ CƯNG</string>
+    <string name="title_chitietthucung">Chi tiết thú cưng</string>
     <string name="titlt_ttcanhan">Thông tin cá nhân</string>
     <string name="title_ttCaNhan">Thông tin cá nhân</string>
     <string name="tenthucung_chitietthucung">MÈO ANH LÔNG NGẮN</string>
@@ -108,7 +108,7 @@
     <string name="xemgd">Xem GD</string>
     <string name="xemthem">Xem thêm</string>
     <string name="chontatca">Chọn tất cả</string>
-    <string name="giohang">GIỎ HÀNG</string>
+    <string name="giohang">Giỏ hàng</string>
     <string name="datmua">Đặt mua</string>
     <string name="thanhtien">Thành tiền:</string>
     <string name="khongdong">0đ</string>
@@ -117,10 +117,10 @@
     <string name="thongtintaikhoan">THÔNG TIN TÀI KHOẢN</string>
     <string name="luu">Lưu</string>
     <string name="doimatkhau">Đổi mật khẩu</string>
-    <string name="doimatkhauin">ĐỔI MẬT KHẨU</string>
+    <string name="doimatkhauin">Đổi mật khẩu</string>
     <string name="nhapemail">Nhập email</string>
     <string name="laylaimatkhau">Lấy lại mật khẩu</string>
-    <string name="quenmatkhauin">QUÊN MẬT KHẨU</string>
+    <string name="quenmatkhauin">Quên mật khẩu</string>
     <string name="nhapmatkhauhientai">Nhập mật khẩu hiện tại</string>
     <string name="nhapmatkhaumoi">Nhập mật khẩu mới</string>
     <string name="nhaplaimatkhaumoi">Nhập lại mật khẩu mới</string>
@@ -130,9 +130,9 @@
 
     <string name="taikhoan">Tài khoản</string>
     <string name="matkhau">Mật khẩu</string>
-    <string name="nguoidung">NGƯỜI DÙNG</string>
+    <string name="nguoidung">Người dùng</string>
     <string name="yeucauchinhsua">Yêu cầu chỉ sửa</string>
-    <string name="xacnhan">XÁC NHẬN</string>
+    <string name="xacnhan">Xác nhận</string>
     <string name="hoanthanh">Hoàn thành</string>
     <string name="danhsachden">Danh Sách Đen</string>
     <string name="nguoidunggiaodich">Quản Lí Người Dùng</string>
