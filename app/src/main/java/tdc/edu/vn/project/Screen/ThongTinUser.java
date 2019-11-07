@@ -95,7 +95,7 @@ public class ThongTinUser extends Fragment {
             public void run() {
                 if (PetShopFireBase.TABLE_NGUOI_MUA.status_data) {
                     NguoiMua nguoiMua = (NguoiMua) PetShopFireBase.findItem(idnm,PetShopFireBase.TABLE_NGUOI_MUA);
-                    Toast.makeText(getContext(), "" + idnm, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "" + idnm, Toast.LENGTH_SHORT).show();
                     tvName.setText(nguoiMua.getName());
                     tvEmail.setText(nguoiMua.getUsername());
                     tvSDT.setText(nguoiMua.getPhone());
