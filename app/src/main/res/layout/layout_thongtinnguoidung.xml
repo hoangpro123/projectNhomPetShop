@@ -68,6 +68,7 @@
                 android:gravity="center"
                 android:layout_marginLeft="20dp">
                 <TextView
+                    android:id="@+id/ten"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/tenchucuahang"
@@ -75,7 +76,7 @@
                     style="@style/size20denthuong"
                     android:layout_marginLeft="15dp"></TextView>
                 <RatingBar
-                    android:id="@+id/rating"
+                    android:id="@+id/ratingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:saveEnabled="true"
@@ -117,6 +118,7 @@
                         style="@style/size20denthuong"
                         android:gravity="center|left"></TextView>
                     <EditText
+                        android:id="@+id/etHoTen"
                         android:layout_width="0dp"
                         android:layout_weight="3"
                         android:layout_height="match_parent"
@@ -139,6 +141,7 @@
                         style="@style/size20denthuong"
                         android:gravity="center|left"></TextView>
                     <EditText
+                        android:id="@+id/etMail"
                         android:layout_width="0dp"
                         android:layout_weight="3"
                         android:layout_height="match_parent"
@@ -161,6 +164,7 @@
                         style="@style/size20denthuong"
                         android:gravity="center|left"></TextView>
                     <EditText
+                        android:id="@+id/etSDT"
                         android:layout_width="0dp"
                         android:layout_weight="3"
                         android:layout_height="match_parent"
@@ -183,6 +187,7 @@
                         style="@style/size20denthuong"
                         android:gravity="center|left"></TextView>
                     <EditText
+                        android:id="@+id/etDiaChi"
                         android:layout_width="0dp"
                         android:layout_weight="3"
                         android:layout_height="match_parent"
@@ -196,56 +201,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="5"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/taikhoan"
-                    style="@style/title_chitietthucung"
-                    android:gravity="center"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"></TextView>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:text="@string/taikhoan"
-                        style="@style/size20denthuong"
-                        android:gravity="center|left"></TextView>
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/vien"
-                        android:padding="5dp"></EditText>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:text="@string/matkhau"
-                        style="@style/size20denthuong"
-                        android:gravity="center|left"></TextView>
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/vien"
-                        android:padding="5dp"></EditText>
-                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>

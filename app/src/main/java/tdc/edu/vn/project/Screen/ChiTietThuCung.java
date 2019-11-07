@@ -129,7 +129,7 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
         Des = findViewById(R.id.des);
         btnGioHang = findViewById(R.id.btnGioHang);
         btnBack = findViewById(R.id.btnBack);
-        btnMua = findViewById(R.id.btnMua);
+        //btnMua = findViewById(R.id.btnMua);
     }
 
     public void GetInfor(){
@@ -154,15 +154,15 @@ public class ChiTietThuCung extends AppCompatActivity implements BaseSliderView.
             }
         });
 
-        btnMua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = getIntent();
-                ThemGioHang();
-                intent = new Intent(ChiTietThuCung.this, GioHangActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btnMua.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = getIntent();
+//                ThemGioHang();
+//                intent = new Intent(ChiTietThuCung.this, GioHangActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 //        SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
 //        final String idnm = sharedPreferences.getString("idnm", "");

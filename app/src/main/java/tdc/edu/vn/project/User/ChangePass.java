@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import tdc.edu.vn.project.InforUserActivity;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.PetShopSharedPreferences;
 import tdc.edu.vn.project.R;
 
 import android.content.Context;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 public class ChangePass extends AppCompatActivity {
 
     EditText editNewPass1, editOldPass, editNewPass;
-    Button btnChangePass;
+    Button btnChangePass, btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +38,12 @@ public class ChangePass extends AppCompatActivity {
         editOldPass = (EditText) findViewById(R.id.editNhapMKCu);
         editNewPass1 = (EditText) findViewById(R.id.editNhapLaiMKMoi);
         btnChangePass = (Button) findViewById(R.id.btnChangePass);
+        btnBack = findViewById(R.id.btnBack);
     }
 
     private void setEvent() {
-        SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
-        final String id = sharedPreferences.getString("id", "");
+        SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+        final String id = sharedPreferences.getString(PetShopSharedPreferences.idnm, null);
 
         final Handler handler = new Handler();
         handler.post(new Runnable() {
@@ -65,7 +67,7 @@ public class ChangePass extends AppCompatActivity {
                                 builder.setNegativeButton(getResources().getString(R.string.co), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        NguoiMua nm = ((ArrayList<NguoiMua>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_MUA)).get(0);
+                                        NguoiMua nm = (NguoiMua) PetShopFireBase.findItem( id, PetShopFireBase.TABLE_NGUOI_MUA);
                                         String oPass = nm.getPassword();
                                         //editOldPass.setText(oPass);
                                         if(editOldPass.getText().toString().equals(oPass)){
@@ -73,6 +75,7 @@ public class ChangePass extends AppCompatActivity {
                                                 nm.setPassword(editNewPass1.getText().toString());
                                                 PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
                                                 Toast.makeText(ChangePass.this, "Doi mk thanh cong", Toast.LENGTH_SHORT).show();
+                                                onBackPressed();
                                             } else {
                                                 Toast.makeText(ChangePass.this, getResources().getString(R.string.mksai), Toast.LENGTH_SHORT).show();
                                             }
@@ -96,7 +99,12 @@ public class ChangePass extends AppCompatActivity {
                 else handler.postDelayed(this, 1000);
             }
         });
-
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
 }

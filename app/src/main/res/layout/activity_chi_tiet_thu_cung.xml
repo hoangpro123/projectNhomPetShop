@@ -52,7 +52,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9">
+        android:layout_weight="13">
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
@@ -77,7 +77,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="3"
                     android:orientation="vertical"
-                    style="@style/canle_chitietthucung">
+                    style="@style/noidungchitiet_chitietthucung">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
 
                         </LinearLayout>
                             <RatingBar
-                                android:id="@+id/rating"
+                                android:id="@+id/ratingBar"
                                 android:isIndicator="true"
                                 android:layout_gravity="center"
                                 android:layout_width="wrap_content"
@@ -199,15 +199,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        style="@style/canle_dangnhap">
         <Button
             android:id="@+id/btnThem"
             style="@style/themgiohang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/vienbutton"
-            android:text="@string/them_gio_hang"
-            android:layout_margin="5dp"/>
+            android:text="@string/them_gio_hang"/>
     </LinearLayout>
 
 </LinearLayout>

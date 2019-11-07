@@ -1,10 +1,14 @@
 package tdc.edu.vn.project.etc;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -16,14 +20,17 @@ import com.squareup.otto.Subscribe;
 
 import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.PetShopSharedPreferences;
 import tdc.edu.vn.project.R;
+import tdc.edu.vn.project.Screen.ChangePassNguoiBan;
 
 public class ThongTinTaiKhoan2 extends AppCompatActivity {
     private EditText edtHoTen, edtEmail, edtSDT, edtDiaChi;
-    private String idnb = "nb001";
+    ImageButton btnBack;
+    private String idnb;
     private RadioGroup rgGioiTinh;
     private RadioButton rbNam, rbNu;
-    private Button btnYeuCauChinhSua;
+    private Button btnYeuCauChinhSua, btnDoiMK;
 
 
     @Override
@@ -38,6 +45,8 @@ public class ThongTinTaiKhoan2 extends AppCompatActivity {
 
     }
     private void setEvent(){
+
+
         btnYeuCauChinhSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +61,20 @@ public class ThongTinTaiKhoan2 extends AppCompatActivity {
                 PetShopFireBase.pushItem(nguoiBan,PetShopFireBase.TABLE_YEU_CAU_CHINH_SUA);
 
                 Toast.makeText(ThongTinTaiKhoan2.this, "OK", Toast.LENGTH_SHORT).show();
+                onBackPressed();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+        btnDoiMK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ThongTinTaiKhoan2.this, ChangePassNguoiBan.class));
             }
         });
     }
@@ -75,13 +98,18 @@ public class ThongTinTaiKhoan2 extends AppCompatActivity {
     }
 
     private void setControl() {
+        SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+        idnb = sharedPreferences.getString(PetShopSharedPreferences.idnb,null);
+
         edtHoTen = (EditText)findViewById(R.id.edtHoTen);
+        btnBack = findViewById(R.id.btnBack);
         edtEmail = (EditText)findViewById(R.id.edtEmail);
         edtSDT = (EditText)findViewById(R.id.edtSDT);
         edtDiaChi= (EditText)findViewById(R.id.edtDiaChi);
         rgGioiTinh = (RadioGroup)findViewById(R.id.rgGioiTinh);
         rbNam = (RadioButton)findViewById(R.id.rbNam);
         rbNu = (RadioButton)findViewById(R.id.rbNu);
+        btnDoiMK = findViewById(R.id.btnDoiMatKhau);
 
         btnYeuCauChinhSua = findViewById(R.id.btnYeuCauChinhSua);
     }

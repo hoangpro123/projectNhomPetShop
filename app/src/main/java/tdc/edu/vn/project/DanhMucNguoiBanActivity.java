@@ -15,10 +15,12 @@ import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Screen.DanhSachDenScreen;
 import tdc.edu.vn.project.Screen.Login;
 import tdc.edu.vn.project.Screen.QuanLyDonHangNguoiBan;
+import tdc.edu.vn.project.etc.ThongTinNguoiDung;
+import tdc.edu.vn.project.etc.ThongTinTaiKhoan2;
 
 public class DanhMucNguoiBanActivity extends AppCompatActivity {
     String id;
-    Button GianHang, ThemSanPham, DangXuat, DanhSachDen, btnDonHang;
+    Button GianHang, ThemSanPham, DangXuat, DanhSachDen, btnDonHang, btnToi;
     TextView NameShop;
     NguoiBan nguoiBan;
     @Override
@@ -69,6 +71,13 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnToi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DanhMucNguoiBanActivity.this, ThongTinTaiKhoan2.class));
+            }
+        });
     }
 
     private void setControl() {
@@ -78,6 +87,7 @@ public class DanhMucNguoiBanActivity extends AppCompatActivity {
         DangXuat = (Button) findViewById(R.id.btnDangXuat);
         DanhSachDen = (Button) findViewById(R.id.btnDanhSachDen);
         btnDonHang = findViewById(R.id.btnDonHang);
+        btnToi = findViewById(R.id.btnToi);
         SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
         id = sharedPreferences.getString(PetShopSharedPreferences.idnb, null);
         getFirebaseSanPham();

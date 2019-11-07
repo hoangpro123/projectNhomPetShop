@@ -101,7 +101,7 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
         Intent intent = getIntent();
         idsp = intent.getStringExtra("ID_SanPham");
         //
-        ratingBar = findViewById(R.id.rating);
+        ratingBar = findViewById(R.id.ratingBar);
         tvtitle = (TextView) findViewById(R.id.tvTenThuCung);
         tvdescription = (TextView) findViewById(R.id.tvThongTinThuCung);
         tvprice = (TextView) findViewById(R.id.tvGiaThuCung);

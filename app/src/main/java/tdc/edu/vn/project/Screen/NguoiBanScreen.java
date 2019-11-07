@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -32,6 +33,7 @@ public class NguoiBanScreen extends AppCompatActivity {
     AdapterQuanLiNguoiBan ad;
     SearchView searchView;
     ArrayList<NguoiBan> data;
+    ImageButton btnBack;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,7 @@ public class NguoiBanScreen extends AppCompatActivity {
     public void setControl(){
         lv3 = (ListView) findViewById(R.id.lvquanli);
         searchView = (SearchView)findViewById(R.id.sreach);
+        btnBack = findViewById(R.id.btnBack);
     }
 
     public void setEvent(){
@@ -61,6 +64,12 @@ public class NguoiBanScreen extends AppCompatActivity {
                     //  Toast.makeText(getApplication(), "Không Có dữ liệu", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
 

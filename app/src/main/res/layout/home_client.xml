@@ -22,7 +22,7 @@
             android:layout_weight="1"
             android:gravity="center">
             <ImageView
-                android:background="@drawable/logo_pet_shops"
+                android:background="@drawable/pet"
                 style="@style/img_logo" />
         </LinearLayout>
 
@@ -54,9 +54,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
-        >
-
+        android:layout_weight="14">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -65,7 +63,7 @@
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"></com.daimajia.slider.library.SliderLayout>
+                android:layout_height="180dp"></com.daimajia.slider.library.SliderLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview"

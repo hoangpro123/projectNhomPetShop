@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -26,6 +27,7 @@ import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 
 public class NguoiDungScreen extends AppCompatActivity {
+    ImageButton btnBack;
     private ListView lv3;
     AdapterQuanLiNguoiDung ad;
     SearchView searchView;
@@ -41,6 +43,7 @@ public class NguoiDungScreen extends AppCompatActivity {
     public void setControl(){
         lv3 = (ListView) findViewById(R.id.lvquanli);
         searchView = (SearchView)findViewById(R.id.sreach);
+        btnBack = (ImageButton)findViewById(R.id.btnBack);
     }
 
     public void setEvent(){
@@ -59,6 +62,12 @@ public class NguoiDungScreen extends AppCompatActivity {
                     //  Toast.makeText(getApplication(), "Không Có dữ liệu", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
 

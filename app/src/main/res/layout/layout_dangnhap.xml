@@ -4,25 +4,32 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Screen.Login">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:src="@drawable/pet"
-        style="@style/margintop20"></ImageView>
+    tools:context=".Screen.Login"
+    android:background="@drawable/nenlogin">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="1"
+        android:padding="50dp"
+        style="@style/canle_dangnhap">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/pet"></ImageView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
             android:orientation="vertical"
-
-            style="@style/canle_dangnhap">
+            style="@style/canle_dangnhap"
+            android:gravity="bottom">
             <EditText
                 android:id="@+id/edtTaiKhoan"
                 android:layout_width="match_parent"
@@ -39,81 +46,85 @@
                 android:hint="@string/vuilongnhapmatkhau"
                 android:drawableLeft="@drawable/ic_lock_black_24dp"
                 android:drawablePadding="10dp"></EditText>
-            <CheckBox
+            <!--<CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ghinho"
-                android:layout_marginTop="20dp"/>
-            <RadioGroup
-                android:id="@+id/rdbLuaChon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
-                <RadioButton
-                    android:textSize="10dp"
-                    android:checked="true"
-                    android:id="@+id/rdbNguoiMua"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nguoimua"/>
-                <RadioButton
-                    android:textSize="10dp"
-                    android:id="@+id/rdbNguoiBan"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nguoiban"></RadioButton>
-                <RadioButton
-                    android:textSize="10dp"
-                    android:id="@+id/rdbQuanLy"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="@string/quanly"></RadioButton>
-            </RadioGroup>
+                android:layout_marginTop="20dp"/>-->
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center|top">
+            android:gravity="center|top"
+            android:orientation="vertical"
+            style="@style/canle_dangnhap">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioGroup
+                    android:id="@+id/rdbLuaChon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:textSize="10dp"
+                        android:checked="true"
+                        android:id="@+id/rdbNguoiMua"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nguoimua"/>
+                    <RadioButton
+                        android:textSize="10dp"
+                        android:id="@+id/rdbNguoiBan"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nguoiban"></RadioButton>
+                    <RadioButton
+                        android:textSize="10dp"
+                        android:id="@+id/rdbQuanLy"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quanly"></RadioButton>
+                </RadioGroup>
+            </LinearLayout>
             <Button
                 android:layout_marginTop="20dp"
                 android:id="@+id/btnDangNhap"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/dangnhap"
                 android:background="@drawable/vienbutton"
                 style="@style/buttondangnhap1"></Button>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal">
-            <TextView
-                android:textColor="@color/Yellow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtTaoTaiKhoan"
-                android:text="@string/taotaikhoan"></TextView>
-            <TextView
-
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="|"></TextView>
-
-            <TextView
-                android:id="@+id/txtQuenMatKhau"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/quenmatkhau"
-                android:textColor="@color/Yellow"></TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:textColor="@color/Yellow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtTaoTaiKhoan"
+                    android:text="@string/taotaikhoan"></TextView>
+                <TextView
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="|"></TextView>
+                <TextView
+                    android:id="@+id/txtQuenMatKhau"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quenmatkhau"
+                    android:textColor="@color/Yellow"></TextView>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

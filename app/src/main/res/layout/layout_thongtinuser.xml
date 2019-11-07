@@ -13,12 +13,10 @@
         android:layout_weight="1"
         android:background="@color/Header"
         android:orientation="horizontal">
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"></LinearLayout>
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -43,110 +41,97 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
+        android:layout_weight="14"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/nenuser">
 
             <ImageView
                 android:id="@+id/img"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_margin="20dp"
+                android:layout_weight="2"
                 android:src="@drawable/pet" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
                 android:layout_weight="3"
+                android:layout_marginVertical="30dp"
                 android:gravity="center"
                 android:orientation="vertical">
-
                 <TextView
                     android:id="@+id/tvName"
-                    style="@style/size20denthuong"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1" />
-
+                    android:layout_weight="1"
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/tvEmail"
-                    style="@style/size20denthuong"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1" />
-
+                    android:layout_weight="1"
+                    android:textColor="@color/white"/>
                 <TextView
                     android:id="@+id/tvSDT"
-                    style="@style/size20denthuong"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:textColor="@color/white"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_margin="10dp"
                 android:gravity="center">
-
-                <Button
-                    android:id="@+id/btnFix"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/opacity"
-                    android:text="@string/chinhsua"
-                    android:textColor="@color/xanh" />
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btnFix"
+                android:layout_marginBottom="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/nen"
+                android:text="@string/chinhsua"
+                android:textColor="@color/white"/>
+            <Button
+                android:id="@+id/btnThongTin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/nen"
+                android:text="@string/about"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="left"
-                android:orientation="horizontal">
-            </LinearLayout>
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:gravity="bottom|right">
+            <Button
+                android:id="@+id/btnLogout_nguoimua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/opacity"
+                android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
+                android:drawablePadding="10dp"
+                android:text="@string/dangxuat"
+                android:layout_marginRight="10dp"/>
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="right"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnLogout_nguoimua"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/opacity"
-            android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
-            android:drawablePadding="10dp"
-            android:text="@string/dangxuat"
-            android:layout_marginRight="10dp"/>
     </LinearLayout>
 </LinearLayout>

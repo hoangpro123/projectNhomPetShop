@@ -14,6 +14,7 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/btnBack"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -67,7 +68,6 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/vien"
             android:gravity="center">
             <TextView
                 android:layout_width="0dp"
@@ -88,7 +88,6 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/vien"
             android:gravity="center">
             <TextView
                 android:layout_width="0dp"
@@ -109,7 +108,6 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/vien"
             android:gravity="center">
             <TextView
                 android:layout_width="0dp"
@@ -130,7 +128,6 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/vien"
             android:gravity="center">
             <TextView
                 android:layout_width="0dp"
@@ -164,7 +161,6 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:background="@drawable/vien"
             android:gravity="center">
             <TextView
                 android:layout_width="0dp"
@@ -192,16 +188,25 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:padding="10dp">
+        style="@style/canle_dangnhap">
         <Button
             android:id="@+id/btnYeuCauChinhSua"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/yeucauchinhsua"
+            android:textColor="@color/white"
             android:background="@drawable/vienbutton"
-            style="@style/buttonchitietthucung1"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"></Button>
+            android:layout_marginHorizontal="10dp"></Button>
+        <Button
+            android:id="@+id/btnDoiMatKhau"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/doimatkhau"
+            android:textColor="@color/white"
+            android:background="@drawable/vienbutton"
+            android:layout_marginHorizontal="10dp"></Button>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

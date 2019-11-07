@@ -13,9 +13,10 @@ import tdc.edu.vn.project.Screen.ChinhSuaScreen;
 import tdc.edu.vn.project.Screen.NguoiBanScreen;
 import tdc.edu.vn.project.Screen.NguoiDungScreen;
 import tdc.edu.vn.project.Screen.ThemNguoiBan;
+import tdc.edu.vn.project.etc.ThongTinNguoiDung;
 
 public class AdminHome extends AppCompatActivity {
-    Button nguoidung, nguoiban, chinhsua, them;
+    Button nguoidung, nguoiban, chinhsua, them, toi;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +54,7 @@ public class AdminHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     public void setControl(){

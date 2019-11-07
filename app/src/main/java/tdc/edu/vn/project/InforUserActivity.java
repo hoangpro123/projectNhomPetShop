@@ -57,9 +57,9 @@ public class InforUserActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (PetShopFireBase.TABLE_NGUOI_MUA.status_data) {
-                    SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
-                    String id = sharedPreferences.getString("id", "");
-                    NguoiMua nm = ((ArrayList<NguoiMua>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_MUA)).get(0);
+                    SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+                    String id = sharedPreferences.getString(PetShopSharedPreferences.idnm, null);
+                    NguoiMua nm = (NguoiMua) PetShopFireBase.findItem( id, PetShopFireBase.TABLE_NGUOI_MUA);
                     editName.setText(nm.getName());
                     editEmail.setText(nm.getUsername());
                     editSDT.setText(nm.getPhone());

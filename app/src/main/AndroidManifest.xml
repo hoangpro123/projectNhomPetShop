@@ -14,10 +14,12 @@
         <activity android:name=".Screen.DanhSachDenScreen"/>
         <activity android:name=".DanhSachDenNguoiBan"/>
         <activity android:name=".EditSanPhamActivity"/>
+        <activity android:name=".User.ChangePass"/>
         <activity android:name=".DanhSachThuCungActivity"/>
         <activity android:name=".ChiTietThuCungActivity"/>
         <activity android:name=".ChiTietThuCungNguoiBanActivity"/>
         <activity android:name=".ThemSanPhamActivity"/>
+        <activity android:name=".Screen.ChangePassNguoiBan"/>
         <activity android:name=".DanhSachSanPhamNguoiBanActivity"/>
         <activity android:name=".DanhMucNguoiBanActivity" />
         <activity android:name=".Screen.ChiTietDonHang" />

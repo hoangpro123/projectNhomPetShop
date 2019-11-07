@@ -37,115 +37,124 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center">
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="@string/txtName"
+                    style="@style/edittext_infor_style" />
+
+                <TextView
+                    style="@style/edittext_infor_style"
+                    android:text="@string/txtEmail" />
+
+                <TextView
+                    style="@style/edittext_infor_style"
+                    android:text="@string/txtSdt" />
+
+                <TextView
+                    style="@style/edittext_infor_style"
+                    android:text="@string/txtSex" />
+
+                <TextView
+                    style="@style/edittext_infor_style"
+                    android:text="@string/txtAddress" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/editName"
+                    android:text="@string/txtName"
+                    style="@style/edittxt_infor_style" />
+
+                <EditText
+                    style="@style/edittxt_infor_style"
+                    android:id="@+id/editEmail"
+                    android:text="@string/txtEmail" />
+
+                <EditText
+                    style="@style/edittxt_infor_style"
+                    android:id="@+id/editSDT"
+                    android:text="@string/txtSdt" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:checked="true"
+                        android:id="@+id/radNam"
+                        android:paddingHorizontal="10dp"
+                        android:text="@string/nam"
+                        style="@style/radbrn_style" />
+
+                    <RadioButton
+                        android:id="@+id/radNu"
+                        android:paddingHorizontal="10dp"
+                        android:text="@string/nu"
+                        style="@style/radbrn_style"/>
+                </RadioGroup>
+
+                <EditText
+                    style="@style/edittxt_infor_style"
+                    android:id="@+id/editAddress"
+                    android:text="@string/txtAddress" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:gravity="bottom"
+            android:layout_marginBottom="20dp">
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:textColor="#fff"
                 android:id="@+id/btnSave"
                 android:textStyle="bold"
-                android:textSize="20sp"
-                android:background="@color/none"
-                android:text="@string/btnSave"/>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:orientation="horizontal"
-        android:padding="2dp">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:text="@string/txtName"
-                style="@style/edittext_infor_style" />
-
-            <TextView
-                style="@style/edittext_infor_style"
-                android:text="@string/txtEmail" />
-
-            <TextView
-                style="@style/edittext_infor_style"
-                android:text="@string/txtSdt" />
-
-            <TextView
-                style="@style/edittext_infor_style"
-                android:text="@string/txtSex" />
-
-            <TextView
-                style="@style/edittext_infor_style"
-                android:text="@string/txtAddress" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/editName"
-                android:text="@string/txtName"
-                style="@style/edittxt_infor_style" />
-
-            <EditText
-                style="@style/edittxt_infor_style"
-                android:id="@+id/editEmail"
-                android:text="@string/txtEmail" />
-
-            <EditText
-                style="@style/edittxt_infor_style"
-                android:id="@+id/editSDT"
-                android:text="@string/txtSdt" />
-
-            <RadioGroup
-                android:id="@+id/radioGroup"
-                android:layout_width="wrap_content"
+                android:background="@drawable/vienbutton"
+                android:text="@string/btnSave"
+                android:layout_marginHorizontal="20dp"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:checked="true"
-                    android:id="@+id/radNam"
-                    android:paddingHorizontal="10dp"
-                    android:text="@string/nam"
-                    style="@style/radbrn_style" />
-
-                <RadioButton
-                    android:id="@+id/radNu"
-                    android:paddingHorizontal="10dp"
-                    android:text="@string/nu"
-                    style="@style/radbrn_style"/>
-            </RadioGroup>
-
-            <EditText
-                style="@style/edittxt_infor_style"
-                android:id="@+id/editAddress"
-                android:text="@string/txtAddress" />
+                android:id="@+id/btnChangePass"
+                android:text="@string/btnChangePass"
+                android:textColor="#fff"
+                android:background="@drawable/vienbutton"
+                android:layout_marginHorizontal="20dp"></Button>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="10dp">
-        <Button
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/btnChangePass"
-            android:text="@string/btnChangePass"
-            style="@style/buttonchitietthucung1"
-            android:background="@drawable/vienbutton"></Button>
-    </LinearLayout>
-
 </LinearLayout>
