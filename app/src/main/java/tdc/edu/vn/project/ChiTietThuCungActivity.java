@@ -31,9 +31,9 @@ import java.util.ArrayList;
 public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     Button btnThem, btnShopCart, Back;
     SanPham sanPham;
-    String idsp, idnm;
+    String idsp, idnm, idnb;
     RatingBar ratingBar;
-    private TextView tvtitle, tvdescription, tvprice, tvTenCuaHang;
+    private TextView tvtitle, tvdescription, tvprice, tvTenCuaHang, tvDiaChi, tvSDT;
     private ImageView img;
     SliderLayout sliderLayout;
 
@@ -60,8 +60,8 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
                     }
                     rating /= list_danhgia.size();
                     ratingBar.setRating(rating);
-
-
+                    tvDiaChi.setText(nguoiBan.getAddress());
+                    tvSDT.setText(nguoiBan.getPhone());
                     tvtitle.setText(sanPham.getName());
                     tvprice.setText(String.valueOf(sanPham.getPrice()));
                     tvdescription.setText(sanPham.getDescription());
@@ -98,10 +98,13 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
     private void setControl() {
         SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
         idnm = sharedPreferences.getString(PetShopSharedPreferences.idnm, null);
+        idnb = sharedPreferences.getString(PetShopSharedPreferences.idnb, null);
         Intent intent = getIntent();
         idsp = intent.getStringExtra("ID_SanPham");
         //
         ratingBar = findViewById(R.id.ratingBar);
+        tvDiaChi = (TextView) findViewById(R.id.tvDiaChi);
+        tvSDT = (TextView) findViewById(R.id.tvSDT);
         tvtitle = (TextView) findViewById(R.id.tvTenThuCung);
         tvdescription = (TextView) findViewById(R.id.tvThongTinThuCung);
         tvprice = (TextView) findViewById(R.id.tvGiaThuCung);

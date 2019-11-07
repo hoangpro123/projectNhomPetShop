@@ -43,89 +43,91 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="14"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        style="@style/canle_dangnhap">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
-            android:orientation="horizontal"
-            android:padding="20dp"
+            android:orientation="vertical"
             android:gravity="center">
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
+                android:orientation="horizontal">
                 <TextView
                     android:text="@string/txtName"
                     style="@style/edittext_infor_style" />
-
-                <TextView
-                    style="@style/edittext_infor_style"
-                    android:text="@string/txtEmail" />
-
-                <TextView
-                    style="@style/edittext_infor_style"
-                    android:text="@string/txtSdt" />
-
-                <TextView
-                    style="@style/edittext_infor_style"
-                    android:text="@string/txtSex" />
-
-                <TextView
-                    style="@style/edittext_infor_style"
-                    android:text="@string/txtAddress" />
-
+                <EditText
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/editName"
+                    style="@style/edittxt_infor_style" />
             </LinearLayout>
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:orientation="vertical">
-
+                android:orientation="horizontal">
+                <TextView
+                    android:text="@string/txtEmail"
+                    style="@style/edittext_infor_style" />
                 <EditText
-                    android:id="@+id/editName"
-                    android:text="@string/txtName"
-                    style="@style/edittxt_infor_style" />
-
-                <EditText
-                    style="@style/edittxt_infor_style"
+                    android:layout_marginLeft="20dp"
                     android:id="@+id/editEmail"
-                    android:text="@string/txtEmail" />
-
+                    style="@style/edittxt_infor_style" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="@string/txtSdt"
+                    style="@style/edittext_infor_style" />
                 <EditText
-                    style="@style/edittxt_infor_style"
+                    android:layout_marginLeft="20dp"
                     android:id="@+id/editSDT"
-                    android:text="@string/txtSdt" />
-
+                    style="@style/edittxt_infor_style" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="@string/txtSex"
+                    style="@style/edittext_infor_style" />
                 <RadioGroup
                     android:id="@+id/radioGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="bottom">
                     <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:checked="true"
                         android:id="@+id/radNam"
-                        android:paddingHorizontal="10dp"
                         android:text="@string/nam"
                         style="@style/radbrn_style" />
-
                     <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:id="@+id/radNu"
-                        android:paddingHorizontal="10dp"
                         android:text="@string/nu"
                         style="@style/radbrn_style"/>
                 </RadioGroup>
-
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:text="@string/txtAddress"
+                    style="@style/edittext_infor_style" />
                 <EditText
-                    style="@style/edittxt_infor_style"
+                    android:layout_marginLeft="20dp"
                     android:id="@+id/editAddress"
-                    android:text="@string/txtAddress" />
+                    style="@style/edittxt_infor_style" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
