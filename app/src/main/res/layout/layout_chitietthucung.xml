@@ -110,19 +110,11 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/tenchucuahang"
                                 style="@style/tenchucuahang_chitietthucung"></TextView>
-
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
+                                android:src="@drawable/star"
                                 style="@style/marginleft50"></ImageView>
-
-<!--                            <ImageView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:src="@drawable/star"-->
-<!--                                style="@style/marginleft50"></ImageView>-->
->>>>>>> origin/VoCaoThanhPhong
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -314,7 +306,6 @@
             android:background="@drawable/vienbutton"
             style="@style/buttonchitietthucung1"></Button>
         <Button
-            android:id="@+id/btnMua"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
