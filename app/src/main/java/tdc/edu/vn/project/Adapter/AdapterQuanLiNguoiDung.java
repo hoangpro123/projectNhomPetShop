@@ -41,17 +41,20 @@ public class AdapterQuanLiNguoiDung extends ArrayAdapter<NguoiMua> {
     Activity context;
     int layoutrs;
     ArrayList<NguoiMua> data;
-    ArrayList<NguoiMua> mdata = new ArrayList<>();
+    ArrayList<NguoiMua> mdata;
 
-    public AdapterQuanLiNguoiDung(@NonNull Activity context, int resource, @NonNull ArrayList<NguoiMua> objects) {
-        super(context, resource, objects);
+    public AdapterQuanLiNguoiDung(@NonNull Activity context, int resource, @NonNull ArrayList<NguoiMua> data) {
+        super(context, resource, data);
         this.context = context;
         this.layoutrs = resource;
-        this.data = objects;
-        this.mdata.addAll(data);
+        this.data = data;
+
+        mdata = new ArrayList<>();
+        mdata.addAll(data);
     }
 
-    public View getView(int position, View cView, ViewGroup parent) {
+    @NonNull
+    public View getView(int position, View cView,@NonNull ViewGroup parent) {
         View row = cView;
         CountryHolder holder;
 
@@ -69,7 +72,7 @@ public class AdapterQuanLiNguoiDung extends ArrayAdapter<NguoiMua> {
             row.setTag(holder);
         } else holder = (CountryHolder) row.getTag();
 
-        final NguoiMua item = data.get(position);
+        NguoiMua item = mdata.get(position);
         holder.txtid.setText(item.getId());
         holder.txtname.setText(item.getName());
         if (item.getImage() != null)
@@ -94,7 +97,7 @@ public class AdapterQuanLiNguoiDung extends ArrayAdapter<NguoiMua> {
             data.addAll(mdata);
         } else {
             for (NguoiMua nguoiMua : mdata) {
-                if (removeAccent(nguoiMua.getName()).toLowerCase(Locale.getDefault()).contains(charText) || removeAccent(nguoiMua.getName()).toLowerCase(Locale.getDefault()).contains(charText)) {
+                if (removeAccent(nguoiMua.getName()).toLowerCase(Locale.getDefault()).contains(removeAccent(charText))) {
                     data.add(nguoiMua);
                 }
             }

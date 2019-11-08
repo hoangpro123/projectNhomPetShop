@@ -80,10 +80,9 @@ public class NguoiDungScreen extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                ad.filter(newText);
                 return false;
             }
-
-
         });
     }
 

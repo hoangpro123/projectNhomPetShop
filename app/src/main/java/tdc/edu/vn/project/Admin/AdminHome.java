@@ -13,14 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import tdc.edu.vn.project.PetShopSharedPreferences;
 import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.Screen.ChinhSuaScreen;
-import tdc.edu.vn.project.Screen.DanhSachDenScreen;
 import tdc.edu.vn.project.Screen.Login;
 import tdc.edu.vn.project.Screen.NguoiBanScreen;
 import tdc.edu.vn.project.Screen.NguoiDungScreen;
 import tdc.edu.vn.project.Screen.ThemNguoiBan;
 
 public class AdminHome extends AppCompatActivity {
-    Button nguoidung, nguoiban, chinhsua, them, DangXuat;
+    Button nguoimua, nguoiban, chinhsua, them, DangXuat;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +29,7 @@ public class AdminHome extends AppCompatActivity {
     }
 
     private void setEvent() {
-        nguoidung.setOnClickListener(new View.OnClickListener() {
+        nguoimua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), NguoiDungScreen.class);
@@ -71,7 +70,7 @@ public class AdminHome extends AppCompatActivity {
     }
 
     public void setControl(){
-        nguoidung = (Button)findViewById(R.id.btnquanli);
+        nguoimua = (Button)findViewById(R.id.btnquanli);
         nguoiban = (Button)findViewById(R.id.btngiaodich);
         chinhsua = (Button)findViewById(R.id.btnchinhsua);
         them = (Button)findViewById(R.id.btnthem);
