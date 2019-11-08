@@ -212,4 +212,5 @@
     <string name="thong_Tin_Nguoi_Ban">Thông Tin Người Bán</string>
     <string name="dang_Tin">Đăng Tin</string>
     <string name="Price">Giá </string>
+    <string name="them_vao_danh_sach_den">Thêm vào danh sách đen</string>
 </resources>

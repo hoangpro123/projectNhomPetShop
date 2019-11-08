@@ -3,6 +3,7 @@ package tdc.edu.vn.project.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -20,14 +22,18 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.Date;
 
+import tdc.edu.vn.project.Model.DanhSachDen;
 import tdc.edu.vn.project.Model.DonHang;
 import tdc.edu.vn.project.Model.GiaoHang;
 import tdc.edu.vn.project.Model.GioHang;
 import tdc.edu.vn.project.Model.HoaHong;
+import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiGiao;
+import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.Model.TinhTrangDonHang;
 import tdc.edu.vn.project.PetShopFireBase;
+import tdc.edu.vn.project.PetShopSharedPreferences;
 import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.Screen.ChiTietDonHang;
 import tdc.edu.vn.project.Screen.ChonNguoiGiaoScreen;
@@ -37,12 +43,16 @@ public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
     private int layout;
     private ArrayList<DonHang> data;
 
+    private String idnb;
 
     public AdapterDonHangNguoiBan(Context context, int layout, ArrayList<DonHang> data) {
         super(context, layout, data);
         this.context = context;
         this.layout = layout;
         this.data = data;
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+        idnb = sharedPreferences.getString(PetShopSharedPreferences.idnb,null);
     }
 
     @NonNull
@@ -58,6 +68,7 @@ public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
             holder.tvTINH_TRANG = view.findViewById(R.id.tvTINH_TRANG);
             holder.spn = view.findViewById(R.id.spn);
             holder.btn = view.findViewById(R.id.btn);
+            holder.ckbThemDanhSachDen = view.findViewById(R.id.ckbThemDanhSachDen);
 
             view.setTag(holder);
         } else holder = (DonHangNguoiBanHolder) view.getTag();
@@ -106,6 +117,9 @@ public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 TinhTrangDonHang dangGiaoHang = (TinhTrangDonHang) PetShopFireBase.findItem("2", PetShopFireBase.TABLE_TINH_TRANG_DON_HANG);
+                TinhTrangDonHang huy = (TinhTrangDonHang) PetShopFireBase.findItem("5", PetShopFireBase.TABLE_TINH_TRANG_DON_HANG);
+                if(dsSpinner.get(i).equals(huy.getName())) holder.ckbThemDanhSachDen.setVisibility(View.VISIBLE);
+                else holder.ckbThemDanhSachDen.setVisibility(View.INVISIBLE);
                 if (dsSpinner.get(i).equals(dangGiaoHang.getName())) {
                     holder.btn.setText("Chọn");
                     holder.btn.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +165,10 @@ public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
                                     }
                                 });
                             }
+                            if (tinhTrangSelected.getId().equals("5")){
+                                if(holder.ckbThemDanhSachDen.isChecked())
+                                    PetShopFireBase.pushItem(new DanhSachDen(idnb,item.getId_nguoi_mua()), PetShopFireBase.eTable.DanhSachDen);
+                            }
                         }
                     });
                 }
@@ -169,5 +187,6 @@ public class AdapterDonHangNguoiBan extends ArrayAdapter<DonHang> {
         public TextView tvTINH_TRANG;
         public Spinner spn;
         public Button btn;
+        public CheckBox ckbThemDanhSachDen;
     }
 }

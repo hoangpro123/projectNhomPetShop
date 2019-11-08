@@ -1,9 +1,7 @@
 package tdc.edu.vn.project.Screen;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,12 +11,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import tdc.edu.vn.project.Adapter.AdapterDonHangNguoiMua;
-import tdc.edu.vn.project.BatteryInfo;
 import tdc.edu.vn.project.Model.DanhGia;
 import tdc.edu.vn.project.Model.DonHang;
 import tdc.edu.vn.project.Model.NguoiBan;
-import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;

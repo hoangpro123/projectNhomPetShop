@@ -68,12 +68,9 @@ public class DanhSachDenScreen extends AppCompatActivity {
             @Override
             public void run() {
                 if (PetShopFireBase.TABLE_DANH_SACH_DEN.status_data){
-
                     data = (ArrayList<DanhSachDen>) PetShopFireBase.TABLE_DANH_SACH_DEN.data;
                     adapter = new AdapterDanhSachDen(DanhSachDenScreen.this,R.layout.item_danh_sach_den,data);
                     lv3.setAdapter(adapter);
-                    handler.postDelayed(this, 1000);
-
                 }else handler.postDelayed(this, 1000);
             }
         });

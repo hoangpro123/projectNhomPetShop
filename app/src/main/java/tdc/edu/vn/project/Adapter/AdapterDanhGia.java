@@ -2,32 +2,20 @@ package tdc.edu.vn.project.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
-import tdc.edu.vn.project.ChiTietThuCungActivity;
 import tdc.edu.vn.project.Model.DanhGia;
-import tdc.edu.vn.project.Model.GioHang;
-import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiMua;
-import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
-import tdc.edu.vn.project.Screen.ChiTietThuCung;
-import tdc.edu.vn.project.Screen.GioHangActivity;
 
 public class AdapterDanhGia extends ArrayAdapter<DanhGia> {
     private Context context;

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import tdc.edu.vn.project.Adapter.AdapterDonHangNguoiBan;
@@ -37,7 +39,7 @@ import com.squareup.otto.Subscribe;
 public class ThongTinUser extends Fragment {
     private String idnm;
 
-    private Button btnChinhSua, btnLogout;
+    private Button btnChinhSua, btnLogout, btnTTUser;
     private TextView tvName, tvEmail, tvSDT;
     private ImageView img;
 
@@ -62,6 +64,7 @@ public class ThongTinUser extends Fragment {
         tvEmail = view.findViewById(R.id.tvEmail);
         tvSDT = view.findViewById(R.id.tvSDT);
         img = view.findViewById(R.id.img);
+        btnTTUser = view.findViewById(R.id.btnThongTin);
 
     }
 
@@ -85,8 +88,35 @@ public class ThongTinUser extends Fragment {
                 getActivity().finish();
             }
         });
+        xemThongTin();
     }
 
+
+    public void xemThongTin(){
+        btnTTUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle(getResources().getString(R.string.tb));
+                builder.setMessage("Make in VN");
+                builder.setCancelable(false);
+//                builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        Toast.makeText(getContext(), getResources().getString(R.string.koxoa), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                builder.setNegativeButton(getResources().getString(R.string.co), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                    }
+//                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+    }
     public void khoiTao() {
 
         Handler handler = new Handler();

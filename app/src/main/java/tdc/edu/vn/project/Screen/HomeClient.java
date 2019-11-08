@@ -136,7 +136,7 @@ public class HomeClient extends Fragment implements BaseSliderView.OnSliderClick
 
         sliderLayout.setCustomAnimation(new DescriptionAnimation());
 
-        sliderLayout.setDuration(3000);
+        sliderLayout.setDuration(6000);
 
         sliderLayout.addOnPageChangeListener(HomeClient.this);
 
@@ -187,11 +187,12 @@ public class HomeClient extends Fragment implements BaseSliderView.OnSliderClick
     public void AddImageUrlFormLocalRes() {
 
         HashMapForLocalRes = new HashMap<String, Integer>();
-        HashMapForLocalRes.put("Hinh1", R.drawable.meo1);
-        HashMapForLocalRes.put("Hinh2", R.drawable.meo2);
-        HashMapForLocalRes.put("Hinh3", R.drawable.meo3);
-        HashMapForLocalRes.put("Hinh4", R.drawable.meo4);
-        HashMapForLocalRes.put("Hinh5", R.drawable.meo5);
+        HashMapForLocalRes.put("Hinh1", R.drawable.hinh1);
+        HashMapForLocalRes.put("Hinh2", R.drawable.hinh6);
+        HashMapForLocalRes.put("Hinh3", R.drawable.hinh2);
+        HashMapForLocalRes.put("Hinh4", R.drawable.hinh3);
+        HashMapForLocalRes.put("Hinh5", R.drawable.hinh4);
+        HashMapForLocalRes.put("Hinh6", R.drawable.hinh5);
 
     }
 

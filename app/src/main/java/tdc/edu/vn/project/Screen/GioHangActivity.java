@@ -90,12 +90,12 @@ public class GioHangActivity extends AppCompatActivity {
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(GioHangActivity.this, "abc", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Toast.makeText(GioHangActivity.this, "abc", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     private void tinhTongTien() {

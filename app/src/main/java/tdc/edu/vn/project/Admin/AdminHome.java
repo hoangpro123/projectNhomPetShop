@@ -8,14 +8,12 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import tdc.edu.vn.project.DanhSachDen;
 import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.Screen.ChinhSuaScreen;
 import tdc.edu.vn.project.Screen.DanhSachDenScreen;
 import tdc.edu.vn.project.Screen.NguoiBanScreen;
 import tdc.edu.vn.project.Screen.NguoiDungScreen;
 import tdc.edu.vn.project.Screen.ThemNguoiBan;
-import tdc.edu.vn.project.etc.ThongTinNguoiDung;
 
 public class AdminHome extends AppCompatActivity {
     Button nguoidung, nguoiban, chinhsua, them, danhsachden;

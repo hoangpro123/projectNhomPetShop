@@ -4,18 +4,14 @@ package tdc.edu.vn.project.Adapter;
 
 import android.content.Context;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import tdc.edu.vn.project.CpuInfo;
 import tdc.edu.vn.project.DanhMucThuCungActivity;
-import tdc.edu.vn.project.DanhSachThuCungActivity;
 import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.Screen.HomeClient;
 import tdc.edu.vn.project.Screen.ThongTinUser;
-import tdc.edu.vn.project.UsageInfo;
 import tdc.edu.vn.project.fragment_donHangNguoiMua;
 
 public class FragmentAdapter extends FragmentStatePagerAdapter {

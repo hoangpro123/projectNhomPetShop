@@ -8,11 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -23,8 +20,6 @@ import tdc.edu.vn.project.Model.GioHang;
 import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
-import tdc.edu.vn.project.Screen.ChiTietThuCung;
-import tdc.edu.vn.project.Screen.GioHangActivity;
 
 public class LV_GioHangAdapter extends ArrayAdapter<GioHang> {
     private Context context;
