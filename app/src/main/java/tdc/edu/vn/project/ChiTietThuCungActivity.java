@@ -74,7 +74,6 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
                     tvTenCuaHang.setText(nguoiBan.getName());
 
                     data = (ArrayList<DanhGia>) PetShopFireBase.search("id_nguoi_bi_danh_gia",nguoiBan.getId(),PetShopFireBase.TABLE_DANH_GIA);
-                    Toast.makeText(ChiTietThuCungActivity.this, data.size()+"", Toast.LENGTH_SHORT).show();
                     adapter = new AdapterDanhGia(ChiTietThuCungActivity.this, R.layout.listview_danhgia,data);
                     lvDanhGia.setAdapter(adapter);
 //        Picasso.with(this).load(image).into(img);

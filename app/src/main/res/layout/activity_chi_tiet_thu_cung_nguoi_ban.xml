@@ -6,30 +6,26 @@
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
         android:background="@color/actionBar">
         <Button
             android:id="@+id/btnBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/back_white"/>
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ic_navigate_before_black_24dp">
+        </Button>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="5"
             android:gravity="center">
             <TextView
-
-                android:textSize="@dimen/title"
-                android:textStyle="bold"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/title"
-                android:text="@string/title_chi_tiet_thu_cung"
+                android:text="@string/chitietthucung"
                 style="@style/titleheader_chitietthucung">
             </TextView>
         </LinearLayout>
@@ -39,12 +35,12 @@
             android:layout_weight="1"
             android:gravity="center">
             <Button
-            android:id="@+id/btnRepair"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/repair"
-            />
+                android:id="@+id/btnRepair"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/repair"
+                />
             <Button
                 android:id="@+id/btnSave"
                 android:layout_width="30dp"
@@ -80,7 +76,6 @@
                         android:id="@+id/slider">
                     </com.daimajia.slider.library.SliderLayout>
                     <ImageView
-
                         android:layout_marginTop="10dp"
                         android:layout_width="250dp"
                         android:layout_height="250dp"
@@ -103,7 +98,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/ten_thu_cung"
-                            style="@style/title_chitietthucung"/>
+                            style="@style/title_tenchitietthucung"
+                            android:layout_margin="10dp"/>
                         <EditText
                             android:id="@+id/edTenThuCung"
                             android:layout_width="wrap_content"
@@ -151,32 +147,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:orientation="horizontal"
-                            android:gravity="left">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/cua_hang"
-                                style="@style/title_chitietthucung"></TextView>
-                            <TextView
-                                android:id="@+id/tvTenCuaHang"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/ten_cua_hang"
-                                android:layout_marginRight="10dp"
-                                style="@style/tenchucuahang_chitietthucung"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/shop_chi_tiet"
-                                style="@style/title_chitietthucung"/>
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <TextView
                                 android:layout_width="wrap_content"
@@ -204,7 +174,8 @@
                                     android:visibility="gone"/>
                             </LinearLayout>
                         </LinearLayout>
-                        *
+
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

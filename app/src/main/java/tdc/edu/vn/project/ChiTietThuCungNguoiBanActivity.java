@@ -80,11 +80,14 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
             } else if (data.getData() != null) {
                 list_uri.add(data.getData());
             }
-            imgThemSanPham.setImageURI(list_uri.get(0));
+
+            //imgThemSanPham.setImageURI(list_uri.get(0));
             try {
                 for (Uri uri : list_uri) {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
                     Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    Bitmap bt=Bitmap.createScaledBitmap(bitmap, 250, 250, false);
+                    imgThemSanPham.setImageBitmap(bt);
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                     byte[] bytes = byteArrayOutputStream.toByteArray();
@@ -194,6 +197,7 @@ public class ChiTietThuCungNguoiBanActivity extends AppCompatActivity implements
         edPrice = (EditText) findViewById(R.id.edGiaThuCung);
         edDescription = (EditText) findViewById(R.id.edThongTinThuCung);
         imgThemSanPham = (ImageView) findViewById(R.id.imgThemSanPham);
+        //imgThemSanPham.setBackground(getDrawable(R.drawable.ic_camera_alt_black_24dp));
         AddImagesUrlOnline();
 //        SharedPreferences sharedPreferences = getSharedPreferences("saveIDNguoiBan", Context.MODE_PRIVATE);
 //        String id_nguoi_ban = sharedPreferences.getString("id_nguoi_ban", "");

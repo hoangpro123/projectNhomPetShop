@@ -66,10 +66,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent;
                 if(id_nguoi_mua == null){
                     intent = new Intent(mContext, ChiTietThuCungNguoiBanActivity.class);
-                    Toast.makeText(mContext, "NguoiBan", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(mContext, "NguoiBan", Toast.LENGTH_SHORT).show();
                 }else{
                     intent = new Intent(mContext, ChiTietThuCungActivity.class);
-                    Toast.makeText(mContext, "NguoiMua", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(mContext, "NguoiMua", Toast.LENGTH_SHORT).show();
                 }
                 // passing data to the book activity
                 intent.putExtra("ID_SanPham", arrayList.get(position).getId());

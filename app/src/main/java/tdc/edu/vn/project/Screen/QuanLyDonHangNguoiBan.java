@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -23,6 +25,7 @@ import tdc.edu.vn.project.R;
 public class QuanLyDonHangNguoiBan extends AppCompatActivity{
     String id_nguoi_ban;
     private ListView lv;
+    ImageButton Back;
     Spinner spn;
     ArrayList<DonHang> data;
     AdapterDonHangNguoiBan adapter;
@@ -39,13 +42,19 @@ public class QuanLyDonHangNguoiBan extends AppCompatActivity{
     public void setControl() {
         SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
         id_nguoi_ban = sharedPreferences.getString(PetShopSharedPreferences.idnb,null);
-
+        Back = findViewById(R.id.btnBack);
         lv = findViewById(R.id.lv_dh);
         spn = findViewById(R.id.spn);
     }
 
     public void setEvent() {
         khoiTao();
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     public void khoiTao() {

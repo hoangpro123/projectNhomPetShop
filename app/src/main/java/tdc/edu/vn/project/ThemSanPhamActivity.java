@@ -89,16 +89,15 @@ public class ThemSanPhamActivity extends AppCompatActivity {
             } else if (data.getData() != null) {
                 list_uri.add(data.getData());
             }
-
-
-            ThemSanPham.setImageURI(list_uri.get(0));
+            //ThemSanPham.setImageURI(list_uri.get(0));
             try {
                 for (Uri uri : list_uri) {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
                     Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-
+                    Bitmap bt=Bitmap.createScaledBitmap(bitmap, 250, 250, false);
+                    ThemSanPham.setImageBitmap(bt);
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                    bt.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                     byte[] bytes = byteArrayOutputStream.toByteArray();
                     arrBytes.add(bytes);
                 }

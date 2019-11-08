@@ -17,6 +17,11 @@
         <item name="android:textColor">#000</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="title_tenchitietthucung">
+        <item name="android:textSize">35sp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
     <style name="canle_chitietthucung">
         <item name="android:layout_marginLeft">20dp</item>

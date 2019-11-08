@@ -85,7 +85,7 @@ public class AdapterDonHangNguoiMua extends ArrayAdapter<DonHang> {
     }
 
     static class CountryHolder {
-        CheckBox cbTenHang;
+        TextView cbTenHang;
         TextView txtTrangThai;
         Button btnDanhGia;
     }
