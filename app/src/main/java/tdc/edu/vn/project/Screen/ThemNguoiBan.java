@@ -40,6 +40,7 @@ import java.util.ArrayList;
 
 import tdc.edu.vn.project.Admin.AdminHome;
 import tdc.edu.vn.project.Model.NguoiBan;
+import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 
@@ -52,7 +53,7 @@ public class ThemNguoiBan extends AppCompatActivity {
     RadioGroup group;
     Button tao, ch;
     String tenhinh="";
-    public Uri imguri;
+    public Uri imguri ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,41 +78,52 @@ public class ThemNguoiBan extends AppCompatActivity {
 
     private void FileUpLoader(){
         StorageReference Ref = StoRef.child("logo"+System.currentTimeMillis());
+        if (imguri == null){
+            Toast.makeText(this, "Thieu Anh", Toast.LENGTH_SHORT).show();
+        }else {
 
-        Ref.putFile(imguri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Get a URL to the uploaded content
-                        //Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                        taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Uri> task) {
-                                tenhinh =  task.getResult().toString();
-                                if (pass.getText().toString().equals(repass.getText().toString())){
-                                    int re = group.getCheckedRadioButtonId();
-                                    gender = findViewById(re);
-                                    NguoiBan nguoiBan = new NguoiBan(ho.getText().toString(),mail.getText().toString(),pass.getText().toString(),sdt.getText().toString(),diachi.getText().toString(), tenhinh ,gender.getText().toString(),"");
-                                    PetShopFireBase.pushItem(nguoiBan, PetShopFireBase.TABLE_NGUOI_BAN);
-                                    Intent intent = new Intent(ThemNguoiBan.this, AdminHome.class);
-                                    startActivity(intent);
-                                    Toast.makeText(ThemNguoiBan.this, tenhinh, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(ThemNguoiBan.this, "Thêm Thành Công", Toast.LENGTH_SHORT).show();
+
+            Ref.putFile(imguri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // Get a URL to the uploaded content
+                            //Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                            taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    tenhinh = task.getResult().toString();
+                                    if (ho.getText().toString().equals("") == false) {
+                                        if (pass.getText().toString().equals(repass.getText().toString())) {
+                                            int re = group.getCheckedRadioButtonId();
+                                            gender = findViewById(re);
+                                            NguoiBan nguoiBan = new NguoiBan(ho.getText().toString(), mail.getText().toString(), pass.getText().toString(), sdt.getText().toString(), diachi.getText().toString(), tenhinh, gender.getText().toString(), "");
+
+
+                                            PetShopFireBase.pushItem(nguoiBan, PetShopFireBase.TABLE_NGUOI_BAN);
+                                            Intent intent = new Intent(ThemNguoiBan.this, AdminHome.class);
+                                            startActivity(intent);
+                                            Toast.makeText(ThemNguoiBan.this, tenhinh, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(ThemNguoiBan.this, "Thêm Thành Công", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }else {
+                                        Toast.makeText(ThemNguoiBan.this, "Thieu Thong Tin", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
 
 
-                        Toast.makeText(ThemNguoiBan.this, "Image Upload Suusess", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                        // ...
-                    }
-                });
+                            Toast.makeText(ThemNguoiBan.this, "Image Upload Suusess", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                            // ...
+                        }
+                    });
+        }
     }
 
     private String getExtension(Uri uri) {
@@ -133,7 +145,11 @@ public class ThemNguoiBan extends AppCompatActivity {
         tao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ArrayList<NguoiBan> results = (ArrayList<NguoiBan>) PetShopFireBase.search("username", mail.getText().toString(),PetShopFireBase.TABLE_NGUOI_BAN);
+                if(results.size() > 0){
+                    Toast.makeText(ThemNguoiBan.this, "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
+                    return;
+                }else
                 FileUpLoader();
 
             }
