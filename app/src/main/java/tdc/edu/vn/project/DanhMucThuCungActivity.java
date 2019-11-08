@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 
 
 public class DanhMucThuCungActivity extends Fragment {
-    LinearLayout llCho;
+    LinearLayout llCho, llMeo, llChim, llCa, llBoSat, llKhac;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +37,59 @@ public class DanhMucThuCungActivity extends Fragment {
     }
 
     private void setControl(View view) {
-        llCho =  (LinearLayout) view.findViewById(R.id.llCho);
+        llCho =  view.findViewById(R.id.llCho);
+        llMeo = view.findViewById(R.id.llMeo);
+        llChim = view.findViewById(R.id.llChim);
+        llBoSat = view.findViewById(R.id.llBoSat);
+        llCa = view.findViewById(R.id.llCa);
+        llKhac = view.findViewById(R.id.llKhac);
     }
     private void setEvent() {
         llCho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), DanhSachThuCungActivity.class);
+                intent.putExtra("Loại", "Cho");
+                startActivity(intent);
+            }
+        });
+        llMeo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), DanhSachThuCungActivity.class);
+                intent.putExtra("Loại", "Meo");
+                startActivity(intent);
+            }
+        });
+        llChim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), DanhSachThuCungActivity.class);
+                intent.putExtra("Loại", "Chim");
+                startActivity(intent);
+            }
+        });
+        llCa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), DanhSachThuCungActivity.class);
+                intent.putExtra("Loại", "Ca");
+                startActivity(intent);
+            }
+        });
+        llBoSat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), DanhSachThuCungActivity.class);
+                intent.putExtra("Loại", "Bo sat");
+                startActivity(intent);
+            }
+        });
+        llKhac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), DanhSachThuCungActivity.class);
+                intent.putExtra("Loại", "Khac");
                 startActivity(intent);
             }
         });
