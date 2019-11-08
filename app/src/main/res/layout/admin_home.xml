@@ -75,7 +75,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Danh Sách Yêu Cầu Chỉnh Sửa"/>
-
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Danh Sach Den"/>
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/danhsachden"
+                android:textColor="@color/cardview_light_background"
+                android:background="@drawable/btnchuachon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Danh Sách Đen"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -84,7 +84,7 @@ public class AdapterQuanLiNguoiDung extends ArrayAdapter<NguoiMua> {
         return row;
     }
 
-    /*
+
         public void filter(String charText) {
             charText = charText.toLowerCase(getDefault());
             //removeAccent(charText);
@@ -92,15 +92,15 @@ public class AdapterQuanLiNguoiDung extends ArrayAdapter<NguoiMua> {
             if(charText.length() == 0){
                 data.addAll(mdata);
             }else {
-                for (DanhSachDen danhSachDen : mdata){
-                    if(removeAccent(danhSachDen.getId_nguoi_ban()).toLowerCase(Locale.getDefault()).contains(charText) || removeAccent(danhSachDen.getId_nguoi_mua()).toLowerCase(Locale.getDefault()).contains(charText)){
-                        data.add(danhSachDen);
+                for (NguoiMua nguoiMua : mdata){
+                    if(removeAccent(nguoiMua.getName()).toLowerCase(Locale.getDefault()).contains(charText) || removeAccent(nguoiMua.getName()).toLowerCase(Locale.getDefault()).contains(charText)){
+                        data.add(nguoiMua);
                     }
                 }
             }
             notifyDataSetChanged();
         }
-    */
+
     public static String removeAccent(String s) {
 
         String temp = Normalizer.normalize(s, Normalizer.Form.NFD);

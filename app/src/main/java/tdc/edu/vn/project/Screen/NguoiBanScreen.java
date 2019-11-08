@@ -1,6 +1,11 @@
 package tdc.edu.vn.project.Screen;
 
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -17,11 +22,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import tdc.edu.vn.project.Adapter.AdapterDanhSachDen;
 import tdc.edu.vn.project.Adapter.AdapterQuanLiNguoiBan;
 import tdc.edu.vn.project.Adapter.AdapterQuanLiNguoiDung;
+import tdc.edu.vn.project.Admin.AdminHome;
 import tdc.edu.vn.project.Model.DanhSachDen;
 import tdc.edu.vn.project.Model.NguoiBan;
 import tdc.edu.vn.project.Model.NguoiMua;
@@ -32,6 +41,7 @@ public class NguoiBanScreen extends AppCompatActivity {
     private ListView lv3;
     AdapterQuanLiNguoiBan ad;
     SearchView searchView;
+    ImageButton back;
     ArrayList<NguoiBan> data;
     ImageButton btnBack;
     @Override
@@ -43,10 +53,11 @@ public class NguoiBanScreen extends AppCompatActivity {
     }
 
     public void setControl(){
+        back = (ImageButton)findViewById(R.id.backadmin);
         lv3 = (ListView) findViewById(R.id.lvquanli);
         searchView = (SearchView)findViewById(R.id.sreach);
-        btnBack = findViewById(R.id.btnBack);
     }
+
 
     public void setEvent(){
         khoiTao();
@@ -66,13 +77,25 @@ public class NguoiBanScreen extends AppCompatActivity {
 
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
+
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                onBackPressed();
+            public void onClick(View v) {
+               onBackPressed();
             }
         });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                ad.filter(newText);
+                return false;
+            }
+        });
 
     }
 

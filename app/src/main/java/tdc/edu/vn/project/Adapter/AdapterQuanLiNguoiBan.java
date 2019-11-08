@@ -44,6 +44,7 @@ public class AdapterQuanLiNguoiBan extends ArrayAdapter<NguoiBan> {
     int layoutrs;
     ArrayList<NguoiBan> data;
     ArrayList<NguoiBan> mdata = new ArrayList<>();
+    private ArrayList<NguoiBan> arrayList ;
 
     public AdapterQuanLiNguoiBan(@NonNull Activity context, int resource, @NonNull ArrayList<NguoiBan> objects) {
         super(context, resource, objects);
@@ -95,7 +96,26 @@ public class AdapterQuanLiNguoiBan extends ArrayAdapter<NguoiBan> {
 
         return row;
     }
+    public void filter(String charText) {
+        charText = charText.toLowerCase(getDefault());
+        data.clear();
+        if(charText.length() == 0){
+            data.addAll(mdata);
+        }else {
+            for (NguoiBan ngBan : mdata){
+                if(removeAccent(ngBan.getName()).toLowerCase(Locale.getDefault()).contains(charText)){
+                    data.add(ngBan);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
 
+    public static String removeAccent(String s) {
+        String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(temp).replaceAll("");
+    }
     /*
         public void filter(String charText) {
             charText = charText.toLowerCase(getDefault());
@@ -113,12 +133,7 @@ public class AdapterQuanLiNguoiBan extends ArrayAdapter<NguoiBan> {
             notifyDataSetChanged();
         }
     */
-    public static String removeAccent(String s) {
 
-        String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
-        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-        return pattern.matcher(temp).replaceAll("");
-    }
 
     static class CountryHolder {
         SearchView searchView;

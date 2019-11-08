@@ -8,15 +8,17 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import tdc.edu.vn.project.DanhSachDen;
 import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.Screen.ChinhSuaScreen;
+import tdc.edu.vn.project.Screen.DanhSachDenScreen;
 import tdc.edu.vn.project.Screen.NguoiBanScreen;
 import tdc.edu.vn.project.Screen.NguoiDungScreen;
 import tdc.edu.vn.project.Screen.ThemNguoiBan;
 import tdc.edu.vn.project.etc.ThongTinNguoiDung;
 
 public class AdminHome extends AppCompatActivity {
-    Button nguoidung, nguoiban, chinhsua, them, toi;
+    Button nguoidung, nguoiban, chinhsua, them, danhsachden;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,13 @@ public class AdminHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        danhsachden.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), DanhSachDenScreen.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void setControl(){
@@ -62,5 +70,6 @@ public class AdminHome extends AppCompatActivity {
         nguoiban = (Button)findViewById(R.id.btngiaodich);
         chinhsua = (Button)findViewById(R.id.btnchinhsua);
         them = (Button)findViewById(R.id.btnthem);
+        danhsachden = (Button)findViewById(R.id.danhsachden);
     }
 }

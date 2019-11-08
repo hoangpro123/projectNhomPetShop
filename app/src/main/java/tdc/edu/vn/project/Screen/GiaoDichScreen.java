@@ -50,14 +50,17 @@ public class GiaoDichScreen extends AppCompatActivity {
                         DonHang dh = (DonHang) PetShopFireBase.findItem(hoaHong.getId_don_hang(),PetShopFireBase.TABLE_DON_HANG);
                         SanPham sp = (SanPham) PetShopFireBase.findItem(dh.getId_san_pham(),PetShopFireBase.TABLE_SAN_PHAM);
                         NguoiBan nb = (NguoiBan) PetShopFireBase.findItem(sp.getId_nguoi_ban(),PetShopFireBase.TABLE_NGUOI_BAN);
+                            if(nb.getId().equals(idnb)){
+                                hoaHongs.add(hoaHong);
+                            }    
 
-                        if(nb.getId().equals(idnb)){
-                            hoaHongs.add(hoaHong);
-                        }
+                        
                     }
                     Toast.makeText(GiaoDichScreen.this, hoaHongs.size()+"", Toast.LENGTH_SHORT).show();
                     adapterGiaoDich = new AdapterGiaoDich(GiaoDichScreen.this,R.layout.item_quan_ly_don_hang,hoaHongs);
                     listView.setAdapter(adapterGiaoDich);
+                }else {
+                    handler.postDelayed(this, 1000);
                 }
             }
         });

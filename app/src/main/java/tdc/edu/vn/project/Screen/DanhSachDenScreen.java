@@ -2,6 +2,8 @@ package tdc.edu.vn.project.Screen;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -18,6 +20,7 @@ import tdc.edu.vn.project.R;
 public class DanhSachDenScreen extends AppCompatActivity {
     private ListView lv3;
     AdapterDanhSachDen ad;
+    ImageButton back;
     SearchView searchView;
     ArrayList<DanhSachDen> data;
     @Override
@@ -29,6 +32,7 @@ public class DanhSachDenScreen extends AppCompatActivity {
     }
 
     public void setControl(){
+        back = findViewById(R.id.backdsden);
         lv3 = (ListView) findViewById(R.id.lv3);
         searchView = (SearchView)findViewById(R.id.sreach);
     }
@@ -39,6 +43,12 @@ public class DanhSachDenScreen extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
+                back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onBackPressed();
+                    }
+                });
                 if (PetShopFireBase.TABLE_DANH_SACH_DEN.status_data){
 
                     data = (ArrayList<DanhSachDen>) PetShopFireBase.TABLE_DANH_SACH_DEN.data;

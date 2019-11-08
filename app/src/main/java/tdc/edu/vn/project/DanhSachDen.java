@@ -23,7 +23,6 @@ public class DanhSachDen extends AppCompatActivity {
     }
 
     public void setEvent(){
-        khoiTao();
         AdapterDanhSachDen ad = new AdapterDanhSachDen(this,R.layout.listview_danhsachden,data);
         lv3.setAdapter(ad);
     }

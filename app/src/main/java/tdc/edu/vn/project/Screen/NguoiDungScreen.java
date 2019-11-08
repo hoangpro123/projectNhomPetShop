@@ -1,6 +1,7 @@
 package tdc.edu.vn.project.Screen;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -21,14 +22,15 @@ import java.util.ArrayList;
 
 import tdc.edu.vn.project.Adapter.AdapterDanhSachDen;
 import tdc.edu.vn.project.Adapter.AdapterQuanLiNguoiDung;
+import tdc.edu.vn.project.Admin.AdminHome;
 import tdc.edu.vn.project.Model.DanhSachDen;
 import tdc.edu.vn.project.Model.NguoiMua;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
 
 public class NguoiDungScreen extends AppCompatActivity {
-    ImageButton btnBack;
     private ListView lv3;
+    ImageButton back;
     AdapterQuanLiNguoiDung ad;
     SearchView searchView;
     ArrayList<NguoiMua> data;
@@ -42,43 +44,49 @@ public class NguoiDungScreen extends AppCompatActivity {
 
     public void setControl(){
         lv3 = (ListView) findViewById(R.id.lvquanli);
+        back = findViewById(R.id.backadmin);
         searchView = (SearchView)findViewById(R.id.sreach);
-        btnBack = (ImageButton)findViewById(R.id.btnBack);
     }
 
-    public void setEvent(){
-        khoiTao();
+    public void setEvent() {
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if (PetShopFireBase.TABLE_NGUOI_MUA.status_data){
+                if (PetShopFireBase.TABLE_NGUOI_MUA.status_data) {
 
                     data = (ArrayList<NguoiMua>) PetShopFireBase.TABLE_NGUOI_MUA.data;
-                    ad = new AdapterQuanLiNguoiDung(NguoiDungScreen.this,R.layout.item_nguoi_dung,data);
+                    ad = new AdapterQuanLiNguoiDung(NguoiDungScreen.this, R.layout.item_nguoi_dung, data);
                     lv3.setAdapter(ad);
-                }else {
+                } else {
                     handler.postDelayed(this, 1000);
                     //  Toast.makeText(getApplication(), "Không Có dữ liệu", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                onBackPressed();
+            public void onClick(View v) {
+                Intent intent = new Intent(NguoiDungScreen.this, AdminHome.class);
+                startActivity(intent);
             }
         });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
 
 
+        });
     }
 
-    public void khoiTao(){
-        //  data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        // data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        //data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        //data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-    }
+
 
 }
