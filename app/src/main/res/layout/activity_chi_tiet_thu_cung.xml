@@ -58,8 +58,7 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="13"
-            android:fillViewport="true"
-            android:layout_marginBottom="20dp">
+            android:fillViewport="true">
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -86,7 +85,7 @@
                         android:text="@string/ten_thu_cung"
                         style="@style/title_chitietthucung"
                         android:layout_gravity="center"
-                        android:layout_margin="20dp"></TextView>
+                        android:layout_margin="10dp"></TextView>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -134,13 +133,13 @@
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="50dp">
                         <RatingBar
                             android:id="@+id/ratingBar"
                             android:isIndicator="true"
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="40dp"
                             android:numStars="5"
                             android:progressBackgroundTint="@color/gray"
                             android:progressTint="@color/yellow"
@@ -198,26 +197,18 @@
                         android:layout_height="wrap_content"
                         android:text="@string/thong_tin_chi_tiet_thu_cung"
                         style="@style/noidungchitiet_chitietthucung"/>
-                    <LinearLayout
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:orientation="horizontal"
-                        android:gravity="left">
-                        <TextView
-                            android:id="@+id/tvKhachHang"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ten_khach_hang"
-                            style="@style/title_chitietthucung"></TextView>
-                        <TextView
-                            android:id="@+id/tvDanhGiaKhachHang"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/danh_gia"
-                            style="@style/noidungchitiet_chitietthucung"></TextView>
-                    </LinearLayout>
+                        android:layout_marginVertical="5dp"
+                        android:text="@string/luotdanhgia"
+                        android:gravity="center"
+                        style="@style/title_chitietthucung"></TextView>
+                    <ListView
+                        android:id="@+id/lvDanhGia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </ListView>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

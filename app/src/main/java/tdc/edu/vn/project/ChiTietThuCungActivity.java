@@ -2,6 +2,7 @@ package tdc.edu.vn.project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import tdc.edu.vn.project.Adapter.AdapterDanhGia;
 import tdc.edu.vn.project.Model.DanhGia;
 import tdc.edu.vn.project.Model.GioHang;
 import tdc.edu.vn.project.Model.NguoiBan;
@@ -16,6 +17,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,11 +33,15 @@ import java.util.ArrayList;
 public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     Button btnThem, btnShopCart, Back;
     SanPham sanPham;
-    String idsp, idnm, idnb;
+    String idsp, idnm;
     RatingBar ratingBar;
     private TextView tvtitle, tvdescription, tvprice, tvTenCuaHang, tvDiaChi, tvSDT;
     private ImageView img;
     SliderLayout sliderLayout;
+
+    ArrayList<DanhGia> data;
+    AdapterDanhGia adapter;
+    ListView lvDanhGia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +56,7 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if (PetShopFireBase.TABLE_SAN_PHAM.status_data && PetShopFireBase.TABLE_NGUOI_BAN.status_data && PetShopFireBase.TABLE_DANH_GIA.status_data) {
+                if (PetShopFireBase.TABLE_SAN_PHAM.status_data && PetShopFireBase.TABLE_NGUOI_BAN.status_data && PetShopFireBase.TABLE_DANH_GIA.status_data && PetShopFireBase.TABLE_NGUOI_MUA.status_data) {
                     SanPham sanPham = (SanPham) PetShopFireBase.findItem(idsp, PetShopFireBase.TABLE_SAN_PHAM);
                     NguoiBan nguoiBan = (NguoiBan)PetShopFireBase.findItem(sanPham.getId_nguoi_ban(),PetShopFireBase.TABLE_NGUOI_BAN);
                     ArrayList<DanhGia> list_danhgia = (ArrayList<DanhGia>) PetShopFireBase.search("id_nguoi_bi_danh_gia",nguoiBan.getId(),PetShopFireBase.TABLE_DANH_GIA);
@@ -66,6 +72,11 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
                     tvprice.setText(String.valueOf(sanPham.getPrice()));
                     tvdescription.setText(sanPham.getDescription());
                     tvTenCuaHang.setText(nguoiBan.getName());
+
+                    data = (ArrayList<DanhGia>) PetShopFireBase.search("id_nguoi_bi_danh_gia",nguoiBan.getId(),PetShopFireBase.TABLE_DANH_GIA);
+                    Toast.makeText(ChiTietThuCungActivity.this, data.size()+"", Toast.LENGTH_SHORT).show();
+                    adapter = new AdapterDanhGia(ChiTietThuCungActivity.this, R.layout.listview_danhgia,data);
+                    lvDanhGia.setAdapter(adapter);
 //        Picasso.with(this).load(image).into(img);
                 } else handler.postDelayed(this, 1000);
 
@@ -98,7 +109,7 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
     private void setControl() {
         SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
         idnm = sharedPreferences.getString(PetShopSharedPreferences.idnm, null);
-        idnb = sharedPreferences.getString(PetShopSharedPreferences.idnb, null);
+        //idnb = sharedPreferences.getString(PetShopSharedPreferences.idnb, null);
         Intent intent = getIntent();
         idsp = intent.getStringExtra("ID_SanPham");
         //
@@ -113,6 +124,7 @@ public class ChiTietThuCungActivity extends AppCompatActivity implements BaseSli
         btnThem = findViewById(R.id.btnThem);
         btnShopCart = findViewById(R.id.btnShopCart);
         tvTenCuaHang = findViewById(R.id.tvTenCuaHang);
+        lvDanhGia = findViewById(R.id.lvDanhGia);
         AddImagesUrlOnline();
     }
 

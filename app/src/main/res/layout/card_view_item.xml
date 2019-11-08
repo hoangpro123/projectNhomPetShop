@@ -17,7 +17,7 @@
             android:layout_height="160dp"
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
-            android:background="#92DD46"
+            android:src="@drawable/pet"
             android:scaleType="centerCrop">
 
         </ImageView>
