@@ -49,167 +49,174 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:layout_margin="20dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/canhan"
-            style="@style/title_chitietthucung"></TextView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="14"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_margin="20dp">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/hoten"
-                style="@style/title_chitietthucung"
-                android:layout_marginLeft="10dp"></TextView>
-            <EditText
-                android:id="@+id/edtHoTen"
-                android:layout_width="0dp"
-                android:layout_weight="6"
-                android:layout_height="wrap_content"
-                style="@style/size20denthuong"></EditText>
+                android:text="@string/canhan"
+                style="@style/title_chitietthucung"></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:text="@string/email"
-                style="@style/title_chitietthucung"
-                android:layout_marginLeft="10dp"></TextView>
-            <EditText
-                android:id="@+id/edtEmail"
-                android:layout_width="0dp"
-                android:layout_weight="6"
-                android:layout_height="wrap_content"
-                style="@style/size20denthuong"></EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:text="@string/sdt1"
-                style="@style/title_chitietthucung"
-                android:layout_marginLeft="10dp"></TextView>
-            <EditText
-                android:id="@+id/edtSDT"
-                android:layout_width="0dp"
-                android:layout_weight="6"
-                android:layout_height="wrap_content"
-                style="@style/size20denthuong"></EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
-                android:text="@string/gioitinh"
-                style="@style/title_chitietthucung"
-                android:layout_marginLeft="10dp"></TextView>
-            <RadioGroup
-                android:id="@+id/rgGioiTinh"
-                android:layout_width="0dp"
-                android:layout_weight="6"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:id="@+id/rbNam"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nam"></RadioButton>
-                <RadioButton
-                    android:id="@+id/rbNu"
+            android:layout_weight="10"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
-                    android:text="@string/nu"></RadioButton>
-            </RadioGroup>
+                    android:text="@string/hoten"
+                    style="@style/title_chitietthucung"
+                    android:layout_marginLeft="10dp"></TextView>
+                <EditText
+                    android:id="@+id/edtHoTen"
+                    android:layout_width="0dp"
+                    android:layout_weight="6"
+                    android:layout_height="wrap_content"
+                    style="@style/size20denthuong"></EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    style="@style/title_chitietthucung"
+                    android:layout_marginLeft="10dp"></TextView>
+                <EditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="0dp"
+                    android:layout_weight="6"
+                    android:layout_height="wrap_content"
+                    style="@style/size20denthuong"></EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sdt1"
+                    style="@style/title_chitietthucung"
+                    android:layout_marginLeft="10dp"></TextView>
+                <EditText
+                    android:id="@+id/edtSDT"
+                    android:layout_width="0dp"
+                    android:layout_weight="6"
+                    android:layout_height="wrap_content"
+                    style="@style/size20denthuong"></EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gioitinh"
+                    style="@style/title_chitietthucung"
+                    android:layout_marginLeft="10dp"></TextView>
+                <RadioGroup
+                    android:id="@+id/rgGioiTinh"
+                    android:layout_width="0dp"
+                    android:layout_weight="6"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rbNam"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nam"></RadioButton>
+                    <RadioButton
+                        android:id="@+id/rbNu"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nu"></RadioButton>
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/diachi"
+                    style="@style/title_chitietthucung"
+                    android:layout_marginLeft="10dp"></TextView>
+                <EditText
+                    android:id="@+id/edtDiaChi"
+                    android:layout_width="0dp"
+                    android:layout_weight="6"
+                    android:layout_height="wrap_content"
+                    style="@style/size20denthuong"></EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
-            <TextView
+            android:gravity="center"
+            style="@style/canle_dangnhap">
+            <Button
+                android:id="@+id/btnYeuCauChinhSua"
                 android:layout_width="0dp"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/diachi"
-                style="@style/title_chitietthucung"
-                android:layout_marginLeft="10dp"></TextView>
-            <EditText
-                android:id="@+id/edtDiaChi"
+                android:text="@string/yeucauchinhsua"
+                android:textColor="@color/white"
+                android:background="@drawable/vienbutton"
+                android:layout_marginHorizontal="10dp"></Button>
+            <Button
+                android:id="@+id/btnDoiMatKhau"
                 android:layout_width="0dp"
-                android:layout_weight="6"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                style="@style/size20denthuong"></EditText>
+                android:text="@string/doimatkhau"
+                android:textColor="@color/white"
+                android:background="@drawable/vienbutton"
+                android:layout_marginHorizontal="10dp"></Button>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-        </LinearLayout>
+            android:layout_weight="1"></LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        style="@style/canle_dangnhap">
-        <Button
-            android:id="@+id/btnYeuCauChinhSua"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/yeucauchinhsua"
-            android:textColor="@color/white"
-            android:background="@drawable/vienbutton"
-            android:layout_marginHorizontal="10dp"></Button>
-        <Button
-            android:id="@+id/btnDoiMatKhau"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/doimatkhau"
-            android:textColor="@color/white"
-            android:background="@drawable/vienbutton"
-            android:layout_marginHorizontal="10dp"></Button>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"></LinearLayout>
+
 </LinearLayout>

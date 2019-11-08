@@ -164,4 +164,52 @@
         <item>Cá nhân</item>
     </string-array>
 
+    //chi tiết thú cưng
+    <string name="title_chi_tiet_thu_cung" >Chi Tiết Thú Cưng</string>
+    <string name="ten_thu_cung">Chó</string>
+    <string name="gia_thu_cung">2500000</string>
+    <string name="cua_hang">Cửa Hàng :</string>
+    <string name="ten_cua_hang">Hoàng</string>
+    <string name="shop_chi_tiet">Shop</string>
+    <string name="thong_tin_chi_tiet_thu_cung">Thông Tin Chi Tiết : </string>
+    <string name="ten_khach_hang">Hòn</string>
+    <string name="danh_gia">Thú cưng đẹp, mập mạp, ăn nhiều, tốn cơm</string>
+    <string name="them_gio_hang">Thêm Giỏ Hàng</string>
+    <string name="mua_ngay">Mua Ngay</string>
+
+    //danh muc nguoi ban
+    <string name="title_dm_ngBan">Hoàng Shop</string>
+    <string name="toi_dm_ngBan">Tôi</string>
+    <string name="add_dm_ngBan">Thêm sản phẩm</string>
+    <string name="danhsachden_dm_ngBan">Danh sách đen</string>
+    <string name="gianhang_dm_ngBan">Gian Hàng</string>
+    <string name="donhang_dm_ngBan">Đơn hàng</string>
+    <string name="dangxuat_dm_ngBan">Đăng xuất</string>
+
+    //danh muc thu cung
+    <string name="cho_danh_muc_thu_cung">Chó</string>
+    <string name="meo_danh_muc_thu_cung">Mèo</string>
+    <string name="chim_danh_muc_thu_cung">Chim</string>
+    <string name="ca_danh_muc_thu_cung">Cá</string>
+    <string name="bosat_danh_muc_thu_cung">Bò Sát</string>
+    <string name="khac_danh_muc_thu_cung">Khác</string>
+    <string name="search_danh_muc_thu_cung">Search</string>
+    <string name="trangchu_danh_muc_thu_cung">TrangChu</string>
+    <string name="shopcart_danh_muc_thu_cung">Shopcart</string>
+    <string name="title_danh_muc_thu_cung">Danh Mục</string>
+
+    //danh sach san pham
+    <string name="danhmuc_ds_sp">Danh mục</string>
+    <string name="loai_ds_sp">Loại</string>
+    <string name="gia_ds_sp">Giá</string>
+
+    //them san pham
+    <string name="title_them_San_Pham">Thêm Sản Phẩm</string>
+    <string name="titlesanpham">Tiêu đề Sản Phẩm</string>
+    <string name="title_them_Tieu_De">Thêm tiêu đề</string>
+    <string name="edit_Tieu_De">...............................</string>
+    <string name="thong_Tin_San_Pham">Thông Tin Sản Phẩm</string>
+    <string name="thong_Tin_Nguoi_Ban">Thông Tin Người Bán</string>
+    <string name="dang_Tin">Đăng Tin</string>
+    <string name="Price">Giá </string>
 </resources>

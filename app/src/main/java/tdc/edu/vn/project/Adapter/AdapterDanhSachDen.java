@@ -38,6 +38,8 @@ public class AdapterDanhSachDen extends ArrayAdapter<DanhSachDen> {
     int layoutrs;
     ArrayList<DanhSachDen> data;
     ArrayList<DanhSachDen> mdata = new ArrayList<>();
+    ArrayList<NguoiBan> nguoiban;
+    ArrayList<NguoiMua> nguoimua;
     public AdapterDanhSachDen(@NonNull Activity context, int resource, @NonNull ArrayList<DanhSachDen> objects) {
         super(context, resource, objects);
         this.context = context;
@@ -48,7 +50,7 @@ public class AdapterDanhSachDen extends ArrayAdapter<DanhSachDen> {
 
     public View getView(int position, View cView, ViewGroup parent){
        View row = cView;
-        CountryHolder holder = null;
+        CountryHolder holder;
 
         if (row == null){
             LayoutInflater inflater =  context.getLayoutInflater();
@@ -68,39 +70,25 @@ public class AdapterDanhSachDen extends ArrayAdapter<DanhSachDen> {
         }
 
         final DanhSachDen item = data.get(position);
-        if (PetShopFireBase.TABLE_NGUOI_MUA.status_data || PetShopFireBase.TABLE_NGUOI_BAN.status_data){
-            ArrayList<NguoiMua> dataNguoiMua = (ArrayList<NguoiMua>) PetShopFireBase.TABLE_NGUOI_MUA.data;
-            ArrayList<NguoiBan> dataNguoiBan = (ArrayList<NguoiBan>) PetShopFireBase.TABLE_NGUOI_BAN.data;
+        if (PetShopFireBase.TABLE_NGUOI_BAN.status_data){
+            nguoiban = (ArrayList<NguoiBan>) PetShopFireBase.TABLE_NGUOI_BAN.data;
+            for(int j = 0; j < nguoiban.size(); j++){
+                if (item.getId_nguoi_ban().toString().equals(nguoiban.get(j).getId())){
+                    holder.txtHoTen.setText(nguoiban.get(j).getName());
+                    holder.txtEmail.setText(nguoiban.get(j).getUsername());
+                    holder.txtSDT.setText(nguoiban.get(j).getPhone());
 
-            for (int i = 0; i < dataNguoiMua.size(); i++){
-                if (dataNguoiMua.get(i).getId().equals(item.getId_nguoi_mua())){
-                    holder.txtHoTen.setText(dataNguoiMua.get(i).getName());
-                    holder.txtEmail.setText(dataNguoiMua.get(i).getUsername());
-                    holder.txtSDT.setText(dataNguoiMua.get(i).getPhone());
-                    holder.Xoa.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            PetShopFireBase.removeItem(item.getId(), PetShopFireBase.eTable.DanhSachDen);
-                            Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
-                            notifyDataSetChanged();
-                        }
-                    });
                 }
-
             }
-            for (int i = 0; i < dataNguoiBan.size(); i++){
-                if (dataNguoiBan.get(i).getId().equals(item.getId_nguoi_mua())){
-                    holder.txtHoTen.setText(dataNguoiBan.get(i).getName());
-                    holder.txtEmail.setText(dataNguoiBan.get(i).getUsername());
-                    holder.txtSDT.setText(dataNguoiBan.get(i).getPhone());
-                    holder.Xoa.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            PetShopFireBase.removeItem(item.getId(), PetShopFireBase.eTable.DanhSachDen);
-                            Toast.makeText(context, "deleted", Toast.LENGTH_SHORT).show();
-                            notifyDataSetChanged();
-                        }
-                    });
+        }
+        if (PetShopFireBase.TABLE_NGUOI_MUA.status_data){
+            nguoimua = (ArrayList<NguoiMua>) PetShopFireBase.TABLE_NGUOI_MUA.data;
+            for(int j = 0; j < nguoimua.size(); j++){
+                if (item.getId_nguoi_ban().toString().equals(nguoimua.get(j).getId())){
+                    holder.txtHoTen.setText(nguoimua.get(j).getName());
+                    holder.txtEmail.setText(nguoimua.get(j).getUsername());
+                    holder.txtSDT.setText(nguoimua.get(j).getPhone());
+
                 }
             }
         }

@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -36,13 +37,13 @@ import tdc.edu.vn.project.R;
 public class HomeClient extends Fragment implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     Button btnCart;
     private SliderLayout sliderLayout;
-
+    private SearchView searchview;
     private HashMap<String, String> HashMapForURL;
 
     private HashMap<String, Integer> HashMapForLocalRes;
 
     private ArrayList<SanPham> listPet;
-
+    private RecyclerViewAdapter myAdapter;
     private RecyclerView myrv;
     private TextView textView;
 
@@ -66,12 +67,25 @@ public class HomeClient extends Fragment implements BaseSliderView.OnSliderClick
                 if (PetShopFireBase.TABLE_SAN_PHAM.status_last_id) {
                     ArrayList<SanPham> data = (ArrayList<SanPham>) PetShopFireBase.TABLE_SAN_PHAM.data;
                     listPet = data;
-                    RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getActivity(), listPet);
+                    myAdapter = new RecyclerViewAdapter(getActivity(), listPet);
 
 
                     // RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(HomeClien, 2);
                     myrv.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     myrv.setAdapter(myAdapter);
+                    searchview = view.findViewById(R.id.searchview);
+                    searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                        @Override
+                        public boolean onQueryTextSubmit(String s) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onQueryTextChange(String s) {
+                            myAdapter.filter(s);
+                            return false;
+                        }
+                    });
                 } else handler.postDelayed(this, 1000);
             }
         });

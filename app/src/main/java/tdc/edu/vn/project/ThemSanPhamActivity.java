@@ -115,13 +115,13 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         ThemSanPham = (ImageView) findViewById(R.id.imgThemSanPham);
         TieuDe = (EditText) findViewById(R.id.edTieuDe);
         ThongTinSanPham = (EditText) findViewById(R.id.edThongTinSanPham);
-        ThongTinNguoiBan = (TextView) findViewById(R.id.tvThongTinNguoiBan);
+        //ThongTinNguoiBan = (TextView) findViewById(R.id.tvThongTinNguoiBan);
         Gia = (EditText) findViewById(R.id.edPrice);
         DangTin = (Button) findViewById(R.id.btnDangTin);
         Back = (Button) findViewById(R.id.btnBack);
         Intent intent = getIntent();
         id = intent.getExtras().getString("id_nguoi_ban");
-        getFirebaseSanPham();
+        //getFirebaseSanPham();
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         if (Build.VERSION.SDK_INT >= 23) {
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 69);
@@ -137,6 +137,7 @@ public class ThemSanPhamActivity extends AppCompatActivity {
                 } else {
                     upload(arrBytes,0);
                 }
+                DangTin.setEnabled(false);
             }
         });
         Back.setOnClickListener(new View.OnClickListener() {
@@ -184,17 +185,17 @@ public class ThemSanPhamActivity extends AppCompatActivity {
         });
     }
 
-    private void getFirebaseSanPham() {
-        final Handler handler = new Handler();
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (PetShopFireBase.TABLE_NGUOI_BAN.status_data) {
-                    nguoiBan = (NguoiBan) PetShopFireBase.findItem(id, PetShopFireBase.TABLE_NGUOI_BAN);
-                    ThongTinNguoiBan.setText("Tên Shop : " + nguoiBan.getName() + "\n" + "Địa Chỉ : " + nguoiBan.getAddress() + "\n" + "SĐT : " + nguoiBan.getPhone());
-                } else handler.postDelayed(this, 1000);
-            }
-        });
-    }
+//    private void getFirebaseSanPham() {
+//        final Handler handler = new Handler();
+//        handler.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (PetShopFireBase.TABLE_NGUOI_BAN.status_data) {
+//                    nguoiBan = (NguoiBan) PetShopFireBase.findItem(id, PetShopFireBase.TABLE_NGUOI_BAN);
+//                    ThongTinNguoiBan.setText("Tên Shop : " + nguoiBan.getName() + "\n" + "Địa Chỉ : " + nguoiBan.getAddress() + "\n" + "SĐT : " + nguoiBan.getPhone());
+//                } else handler.postDelayed(this, 1000);
+//            }
+//        });
+//    }
 
 }

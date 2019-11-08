@@ -100,10 +100,10 @@ public class NguoiBanScreen extends AppCompatActivity {
     }
 
     public void khoiTao(){
-        //  data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        // data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        //data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        //data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
+        //  data.add(new DanhSachDenScreen("adapter","nhan ahihi","nhanahihi@gmail.com","0377878784"));
+        // data.add(new DanhSachDenScreen("adapter","nhan ahihi","nhanahihi@gmail.com","0377878784"));
+        //data.add(new DanhSachDenScreen("adapter","nhan ahihi","nhanahihi@gmail.com","0377878784"));
+        //data.add(new DanhSachDenScreen("adapter","nhan ahihi","nhanahihi@gmail.com","0377878784"));
     }
 
 }

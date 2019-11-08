@@ -6,13 +6,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@color/actionBar"
         android:orientation="horizontal"
         android:gravity="center">
 
         <TextView
-            android:textSize="@dimen/title"
             android:textStyle="bold"
             android:padding="5dp"
             android:layout_width="wrap_content"
@@ -24,7 +24,8 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"
         android:gravity="center"
         android:orientation="horizontal"
         android:background="#fff"
@@ -88,6 +89,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llChim"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
@@ -112,30 +114,7 @@
                     android:textSize="25sp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="100dp"
 
-                android:background="@drawable/shape_danh_muc"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/chan_meo"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/ca_danh_muc_thu_cung"
-                    android:textSize="25sp" />
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -145,6 +124,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/llBoSat"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
@@ -169,7 +149,10 @@
                     android:textSize="25sp" />
             </LinearLayout>
 
+
+
             <LinearLayout
+                android:id="@+id/llCa"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
@@ -190,39 +173,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="@string/cho_danh_muc_thu_cung"
+                    android:text="@string/ca_danh_muc_thu_cung"
                     android:textSize="25sp" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llKhac"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="30dp"
-                android:background="@drawable/shape_danh_muc"
-                android:orientation="horizontal"
-                android:padding="10dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/chan_meo"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/cho_danh_muc_thu_cung"
-                    android:textSize="25sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="100dp"
-
                 android:background="@drawable/shape_danh_muc"
                 android:orientation="horizontal"
                 android:padding="10dp">

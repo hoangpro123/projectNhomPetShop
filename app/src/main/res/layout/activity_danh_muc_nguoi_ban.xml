@@ -22,98 +22,74 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="14"
-        android:orientation="vertical"
-        style="@style/canle_dangnhap">
-        <Button
-            android:id="@+id/btnToi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_danh_muc_nguoi_ban_button"
-            android:text="@string/toi_dm_ngBan"
-            android:textSize="@dimen/text_nguoi_ban"
-            android:textColor="@color/text"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:padding="10dp"
-            />
-        <Button
-            android:id="@+id/btnThemSanPham"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_danh_muc_nguoi_ban_button"
-            android:text="@string/add_dm_ngBan"
-
-            android:textSize="@dimen/text_nguoi_ban"
-            android:layout_marginBottom="30dp"
-            android:padding="10dp"/>
-        <Button
-            android:id="@+id/btnDanhSachDen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_danh_muc_nguoi_ban_button"
-            android:text="@string/danhsachden_dm_ngBan"
-            android:textSize="@dimen/text_nguoi_ban"
-            android:layout_marginBottom="30dp"
-            android:padding="10dp"/>
-        <Button
-            android:id="@+id/btnGianHang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_danh_muc_nguoi_ban_button"
-            android:text="@string/gianhang_dm_ngBan"
-            android:textSize="@dimen/text_nguoi_ban"
-            android:layout_marginBottom="30dp"
-            android:padding="10dp"/>
-        <Button
-            android:id="@+id/btnDonHang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_danh_muc_nguoi_ban_button"
-            android:text="@string/donhang_dm_ngBan"
-
-            android:textSize="@dimen/text_nguoi_ban"
-            android:layout_marginBottom="30dp"
-            android:padding="10dp"/>
-        <Button
-            android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnDangXuat"
-            android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
-            android:text="@string/dangxuat"
-            android:background="#00FFFFFF"
-            android:textColor="@color/title_dang_xuat"
-            android:textStyle="bold"
-            android:layout_gravity="center"/>
-    </LinearLayout>
-    <!--<LinearLayout
-        android:layout_marginTop="70dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="14"
-        android:gravity="center"
-        android:orientation="horizontal">
-
+        android:layout_weight="14">
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            style="@style/canle_dangnhap">
+            <Button
+                android:id="@+id/btnToi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_danh_muc_nguoi_ban_button"
+                android:text="@string/toi_dm_ngBan"
+                android:textSize="@dimen/text_nguoi_ban"
+                android:textColor="@color/text"
+                android:layout_marginBottom="30dp"
+                android:padding="10dp"
+                />
+            <Button
+                android:id="@+id/btnThemSanPham"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_danh_muc_nguoi_ban_button"
+                android:text="@string/add_dm_ngBan"
+
+                android:textSize="@dimen/text_nguoi_ban"
+                android:layout_marginBottom="30dp"
+                android:padding="10dp"/>
+            <Button
+                android:id="@+id/btnDanhSachDen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_danh_muc_nguoi_ban_button"
+                android:text="@string/danhsachden_dm_ngBan"
+                android:textSize="@dimen/text_nguoi_ban"
+                android:layout_marginBottom="30dp"
+                android:padding="10dp"/>
+            <Button
+                android:id="@+id/btnGianHang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_danh_muc_nguoi_ban_button"
+                android:text="@string/gianhang_dm_ngBan"
+                android:textSize="@dimen/text_nguoi_ban"
+                android:layout_marginBottom="30dp"
+                android:padding="10dp"/>
+            <Button
+                android:id="@+id/btnDonHang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_danh_muc_nguoi_ban_button"
+                android:text="@string/donhang_dm_ngBan"
+
+                android:textSize="@dimen/text_nguoi_ban"
+                android:layout_marginBottom="30dp"
+                android:padding="10dp"/>
+            <Button
+                android:layout_marginTop="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
-
+                android:id="@+id/btnDangXuat"
+                android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
+                android:text="@string/dangxuat"
+                android:background="#00FFFFFF"
+                android:textColor="@color/title_dang_xuat"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
         </LinearLayout>
+    </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:orientation="vertical">
-
-
-
-        </LinearLayout>
-
-    </LinearLayout>-->
 
 </LinearLayout>

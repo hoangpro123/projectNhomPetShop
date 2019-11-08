@@ -79,10 +79,10 @@ public class ChinhSuaScreen extends AppCompatActivity {
 
     public void khoiTao(){
         btnBack = findViewById(R.id.backadmin);
-        //  data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        // data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        //data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
-        //data.add(new DanhSachDenScreen("ad","nhan ahihi","nhanahihi@gmail.com","0377878784"));
+        //  data.add(new DanhSachDenScreen("adapter","nhan ahihi","nhanahihi@gmail.com","0377878784"));
+        // data.add(new DanhSachDenScreen("adapter","nhan ahihi","nhanahihi@gmail.com","0377878784"));
+        //data.add(new DanhSachDenScreen("adapter","nhan ahihi","nhanahihi@gmail.com","0377878784"));
+        //data.add(new DanhSachDenScreen("adapter","nhan ahihi","nhanahihi@gmail.com","0377878784"));
     }
 
 }

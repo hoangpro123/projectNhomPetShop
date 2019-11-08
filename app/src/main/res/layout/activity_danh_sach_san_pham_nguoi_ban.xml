@@ -7,41 +7,42 @@
     android:orientation="vertical"
     tools:context=".ChiTietThuCungNguoiBanActivity"
     android:background="#FFFFFF">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
-        android:background="@color/actionBar"
-        >
+        android:background="@color/Header">
         <Button
             android:id="@+id/btnBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/back_white"/>
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ic_navigate_before_black_24dp"/>
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
             android:gravity="center">
             <TextView
-                android:layout_marginTop="5dp"
-                android:textSize="@dimen/title"
-                android:textStyle="bold"
-                android:layout_marginLeft="-40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gianhang_dm_ngBan"
-                android:textColor="@color/title"/>
+                style="@style/titleheader_chitietthucung">
+            </TextView>
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+        </LinearLayout>
     </LinearLayout>
-
     <androidx.recyclerview.widget.RecyclerView
-        android:paddingLeft="30dp"
-        android:layout_marginTop="30dp"
+        android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"
         android:layout_gravity="center"
         android:id="@+id/recyclerview"
         />
