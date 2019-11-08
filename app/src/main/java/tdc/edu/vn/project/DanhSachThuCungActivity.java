@@ -58,7 +58,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
         Intent intent = getIntent();
         loai = intent.getStringExtra("Loại");
         setSpinner(stringGia, spGia);
-        setSpinner(stringDanhMuc, spDanhMuc);
+
         getFirebaseSanPham();
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +137,7 @@ public class DanhSachThuCungActivity extends AppCompatActivity {
                     myAdapter = new RecyclerViewAdapter(DanhSachThuCungActivity.this,data);
                     myrv.setLayoutManager(new GridLayoutManager(DanhSachThuCungActivity.this,2));
                     myrv.setAdapter(myAdapter);
-
+                    setSpinner(stringDanhMuc, spDanhMuc);
                     for(int i = 0; i < stringDanhMuc.length; i++){
                         String s1 = removeAccent(stringDanhMuc[i]).toLowerCase(Locale.getDefault());
                         String s2 = removeAccent(loai).toLowerCase(Locale.getDefault());

@@ -36,12 +36,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<SanPham> arrayList ;
     String id_nguoi_mua;
     String id_nguoi_ban;
-    FirebaseStorage storage = FirebaseStorage.getInstance();
 
     public RecyclerViewAdapter(Context mContext, ArrayList<SanPham> mData) {
         this.mContext = mContext;
         this.mData = mData;
-        this.arrayList = new ArrayList<SanPham>();
+        this.arrayList = new ArrayList<>();
         this.arrayList.addAll(mData);
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
         this.id_nguoi_mua = sharedPreferences.getString(PetShopSharedPreferences.idnm, null);
@@ -58,9 +57,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.tv_pet_title.setText(mData.get(position).getName());
-        holder.tv_price.setText(String.valueOf(mData.get(position).getPrice()));
-        Picasso.with(mContext).load(Uri.parse(mData.get(position).getImages_list().get(0))).into(holder.img_pet);
+        holder.tv_pet_title.setText(arrayList.get(position).getName());
+        holder.tv_price.setText(String.valueOf(arrayList.get(position).getPrice()));
+        Picasso.with(mContext).load(Uri.parse(arrayList.get(position).getImages_list().get(0))).into(holder.img_pet);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,12 +72,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     Toast.makeText(mContext, "NguoiMua", Toast.LENGTH_SHORT).show();
                 }
                 // passing data to the book activity
-                intent.putExtra("ID_SanPham", mData.get(position).getId());
+                intent.putExtra("ID_SanPham", arrayList.get(position).getId());
                 intent.putExtra("IDNGMUA", id_nguoi_mua);
-                intent.putExtra("Title",mData.get(position).getName());
-                intent.putExtra("Price", mData.get(position).getPrice().toString());
-                intent.putExtra("Description",mData.get(position).getDescription());
-                intent.putExtra("Thumbnail",mData.get(position).getImages_list());
+                intent.putExtra("Title",arrayList.get(position).getName());
+                intent.putExtra("Price", arrayList.get(position).getPrice().toString());
+                intent.putExtra("Description",arrayList.get(position).getDescription());
+                intent.putExtra("Thumbnail",arrayList.get(position).getImages_list());
                 // start the activity
                 mContext.startActivity(intent);
             }
@@ -87,11 +86,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return arrayList.size();
     }
 
     public void filter(String charText) {
         charText = charText.toLowerCase(getDefault());
+        arrayList.clear();
+        if(charText.length() == 0){
+            arrayList.addAll(mData);
+        }else {
+            for (SanPham sanPham : mData){
+                if(removeAccent(sanPham.getName()).toLowerCase(Locale.getDefault()).contains(removeAccent(charText))){
+                    arrayList.add(sanPham);
+                }
+            }
+        }
+        notifyDataSetChanged();
+        //
+        /*charText = charText.toLowerCase(getDefault());
         mData.clear();
         if(charText.length() == 0){
             mData.addAll(arrayList);
@@ -102,7 +114,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 }
             }
         }
-        notifyDataSetChanged();
+        notifyDataSetChanged();*/
     }
     public void DanhMuc(String s){
         s = s.toLowerCase(getDefault());
@@ -126,7 +138,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-
         TextView tv_pet_title;
         ImageView img_pet;
         CardView cardView ;

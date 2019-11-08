@@ -49,7 +49,7 @@ public class DanhMucThuCungActivity extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), DanhSachThuCungActivity.class);
-                intent.putExtra("Loại", "Cho");
+                intent.putExtra("Loại", "Chó");
                 startActivity(intent);
             }
         });
@@ -57,7 +57,7 @@ public class DanhMucThuCungActivity extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), DanhSachThuCungActivity.class);
-                intent.putExtra("Loại", "Meo");
+                intent.putExtra("Loại", "Mèo");
                 startActivity(intent);
             }
         });
@@ -73,7 +73,7 @@ public class DanhMucThuCungActivity extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), DanhSachThuCungActivity.class);
-                intent.putExtra("Loại", "Ca");
+                intent.putExtra("Loại", "Cá");
                 startActivity(intent);
             }
         });
@@ -81,7 +81,7 @@ public class DanhMucThuCungActivity extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), DanhSachThuCungActivity.class);
-                intent.putExtra("Loại", "Bo sat");
+                intent.putExtra("Loại", "Bò sát");
                 startActivity(intent);
             }
         });
@@ -89,7 +89,7 @@ public class DanhMucThuCungActivity extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), DanhSachThuCungActivity.class);
-                intent.putExtra("Loại", "Khac");
+                intent.putExtra("Loại", "Khác");
                 startActivity(intent);
             }
         });
