@@ -14,19 +14,18 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@drawable/ic_navigate_before_black_24dp">
-        </ImageButton>
+            android:background="@drawable/ic_navigate_before_black_24dp"/>
         <TextView
             android:layout_width="0dp"
             android:layout_weight="4"
             android:layout_height="match_parent"
             android:text="Tạo Tài Khoản"
             android:gravity="center"
-            style="@style/titleheader_chitietthucung"></TextView>
+            style="@style/titleheader_chitietthucung"/>
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent"></TextView>
+            android:layout_height="match_parent"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,7 +48,7 @@
                 android:hint="@string/ho"
                 android:background="@drawable/vien"
                 android:padding="10dp"
-                android:layout_marginRight="10dp"></EditText>
+                android:layout_marginRight="10dp"/>
             <EditText
                 android:id="@+id/edTen"
                 android:layout_width="0dp"
@@ -57,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/ten"
                 android:background="@drawable/vien"
-                android:padding="10dp"></EditText>
+                android:padding="10dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/mail"
                 android:background="@drawable/vien"
-                android:padding="10dp"></EditText>
+                android:padding="10dp"/>
             <EditText
                 android:inputType="textPassword"
                 android:id="@+id/edpass"
@@ -82,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/pass"
                 android:background="@drawable/vien"
-                android:padding="10dp"></EditText>
+                android:padding="10dp"/>
             <EditText
                 android:inputType="textPassword"
                 android:id="@+id/edRepass"
@@ -91,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/repass"
                 android:background="@drawable/vien"
-                android:padding="10dp"></EditText>
+                android:padding="10dp"/>
             <EditText
                 android:inputType="number"
                 android:id="@+id/edSDT"
@@ -100,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/sdt"
                 android:background="@drawable/vien"
-                android:padding="10dp"></EditText>
+                android:padding="10dp"/>
             <EditText
                 android:id="@+id/edDC"
                 android:layout_marginTop="15dp"
@@ -108,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/diachi"
                 android:background="@drawable/vien"
-                android:padding="10dp"></EditText>
+                android:padding="10dp"/>
             <RadioGroup
                 android:layout_marginTop="15dp"
                 android:id="@+id/gr"
@@ -120,20 +119,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/gioitinh"></TextView>
+                    android:text="@string/gioitinh"/>
                 <RadioButton
                     android:checked="true"
                     android:id="@+id/nam"
                     android:layout_marginRight="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nam"></RadioButton>
+                    android:text="@string/nam"/>
                 <RadioButton
                     android:id="@+id/nu"
                     android:layout_marginRight="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nu"></RadioButton>
+                    android:text="@string/nu"/>
             </RadioGroup>
         </LinearLayout>
     </LinearLayout>
@@ -153,9 +152,7 @@
             android:layout_height="match_parent"
             style="@style/buttonchitietthucung1"
             android:background="@drawable/vienbutton"
-            android:text="@string/tao"></Button>
+            android:text="@string/tao"/>
     </LinearLayout>
-
-
 
 </LinearLayout>

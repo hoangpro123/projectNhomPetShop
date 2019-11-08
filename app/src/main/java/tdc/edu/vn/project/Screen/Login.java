@@ -104,7 +104,6 @@ public class Login extends AppCompatActivity {
                             case R.id.rdbQuanLy:
                                 btnDangNhap.setClickable(false);
 
-
                                 if (PetShopFireBase.TABLE_QUAN_LY.status_data) {
                                     ArrayList<QuanLy> data = (ArrayList<QuanLy>) PetShopFireBase.TABLE_QUAN_LY.data;
                                     for (int i = 0; i < data.size(); i++) {

@@ -1,7 +1,7 @@
 package tdc.edu.vn.project.Model;
 
 public class NguoiBan extends PetShopModel{
-    String name, username, password, phone, address, image, gender, id_hoa_hong;
+    String name, username, password, phone, address, image, gender;
 
     public NguoiBan(String name, String username, String password, String phone, String address, String image, String gender, String id_hoa_hong) {
         this.name = name;
@@ -11,7 +11,6 @@ public class NguoiBan extends PetShopModel{
         this.address = address;
         this.image = image;
         this.gender = gender;
-        this.id_hoa_hong = id_hoa_hong;
     }
 
     public NguoiBan() {
@@ -71,13 +70,5 @@ public class NguoiBan extends PetShopModel{
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getId_hoa_hong() {
-        return id_hoa_hong;
-    }
-
-    public void setId_hoa_hong(String id_hoa_hong) {
-        this.id_hoa_hong = id_hoa_hong;
     }
 }

@@ -2,7 +2,7 @@ package tdc.edu.vn.project.Adapter;
 
 import android.app.Activity;
 
-import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +11,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.squareup.picasso.Picasso;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -23,105 +26,85 @@ import java.util.regex.Pattern;
 
 import tdc.edu.vn.project.Model.DanhSachDen;
 import tdc.edu.vn.project.Model.NguoiBan;
-import tdc.edu.vn.project.Model.NguoiGiao;
 import tdc.edu.vn.project.Model.NguoiMua;
-import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
-import tdc.edu.vn.project.Screen.DanhSachDenScreen;
 
 import static java.util.Locale.getDefault;
 
 public class AdapterDanhSachDen extends ArrayAdapter<DanhSachDen> {
-
     Activity context;
-    int layoutrs;
+    private int layoutrs;
     ArrayList<DanhSachDen> data;
-    ArrayList<DanhSachDen> mdata = new ArrayList<>();
-    ArrayList<NguoiBan> nguoiban;
-    ArrayList<NguoiMua> nguoimua;
-    public AdapterDanhSachDen(@NonNull Activity context, int resource, @NonNull ArrayList<DanhSachDen> objects) {
-        super(context, resource, objects);
+    private ArrayList<DanhSachDen> mdata;
+
+    public AdapterDanhSachDen(@NonNull Activity context, int resource, @NonNull ArrayList<DanhSachDen> data) {
+        super(context, resource, data);
         this.context = context;
         this.layoutrs = resource;
-        this.data = objects;
-        this.mdata.addAll(data);
+        this.data = data;
+        mdata = new ArrayList<>();
+        mdata.addAll(data);
     }
 
-    public View getView(int position, View cView, ViewGroup parent){
-       View row = cView;
-        CountryHolder holder;
+    @NonNull
+    public View getView(int position, View view, @NonNull ViewGroup parent) {
+        DanhSachDenHolder holder;
+        if (view == null) {
+            LayoutInflater inflater = context.getLayoutInflater();
+            view = inflater.inflate(layoutrs, parent, false);
+            holder = new DanhSachDenHolder();
+            holder.ivHinh = (ImageView) view.findViewById(R.id.ivHinh);
+            holder.txtHoTen = (TextView) view.findViewById(R.id.txtHoTen);
 
-        if (row == null){
-            LayoutInflater inflater =  context.getLayoutInflater();
-            row = inflater.inflate(layoutrs,parent,false);
-            holder = new CountryHolder();
-            holder.ivHinh = (ImageView) row.findViewById(R.id.ivHinh);
-            holder.txtHoTen = (TextView) row.findViewById(R.id.txtHoTen);
+            holder.txtEmail = (TextView) view.findViewById(R.id.txtEmail);
+            holder.txtSDT = (TextView) view.findViewById(R.id.txtSDT);
+            holder.Xoa = (Button) view.findViewById(R.id.btnXoa);
+            view.setTag(holder);
+        } else holder = (DanhSachDenHolder) view.getTag();
 
-            holder.txtEmail = (TextView) row.findViewById(R.id.txtEmail);
-            holder.txtSDT = (TextView) row.findViewById(R.id.txtSDT);
-            holder.Xoa = (Button)row.findViewById(R.id.btnXoa);
-            row.setTag(holder);
-        }
-        else
-        {
-            holder = (CountryHolder)row.getTag();
-        }
-
-        final DanhSachDen item = data.get(position);
-        if (PetShopFireBase.TABLE_NGUOI_BAN.status_data){
-            nguoiban = (ArrayList<NguoiBan>) PetShopFireBase.TABLE_NGUOI_BAN.data;
-            for(int j = 0; j < nguoiban.size(); j++){
-                if (item.getId_nguoi_ban().toString().equals(nguoiban.get(j).getId())){
-                    holder.txtHoTen.setText(nguoiban.get(j).getName());
-                    holder.txtEmail.setText(nguoiban.get(j).getUsername());
-                    holder.txtSDT.setText(nguoiban.get(j).getPhone());
-
-                }
+        DanhSachDen item = data.get(position);
+        NguoiMua nguoiMua = (NguoiMua) PetShopFireBase.findItem(item.getId_nguoi_mua(), PetShopFireBase.TABLE_NGUOI_MUA);
+        holder.txtHoTen.setText(nguoiMua.getName());
+        holder.txtEmail.setText(nguoiMua.getUsername());
+        holder.txtSDT.setText(nguoiMua.getPhone());
+        if (nguoiMua.getImage() != null)
+            Picasso.with(context).load(Uri.parse(nguoiMua.getImage())).into(holder.ivHinh);
+        holder.Xoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.Xoa.setVisibility(View.INVISIBLE);
+                PetShopFireBase.removeItem(item.getId(),PetShopFireBase.TABLE_DANH_SACH_DEN);
             }
-        }
-        if (PetShopFireBase.TABLE_NGUOI_MUA.status_data){
-            nguoimua = (ArrayList<NguoiMua>) PetShopFireBase.TABLE_NGUOI_MUA.data;
-            for(int j = 0; j < nguoimua.size(); j++){
-                if (item.getId_nguoi_ban().toString().equals(nguoimua.get(j).getId())){
-                    holder.txtHoTen.setText(nguoimua.get(j).getName());
-                    holder.txtEmail.setText(nguoimua.get(j).getUsername());
-                    holder.txtSDT.setText(nguoimua.get(j).getPhone());
+        });
 
-                }
-            }
-        }
-        holder.ivHinh.setImageResource(R.drawable.meo1);
-
-
-        return row;
+        return view;
     }
 
     public void filter(String charText) {
         charText = charText.toLowerCase(getDefault());
         //removeAccent(charText);
-        data.clear();
-        if(charText.length() == 0){
-            data.addAll(mdata);
-        }else {
-            for (DanhSachDen danhSachDen : mdata){
-                if(removeAccent(danhSachDen.getId_nguoi_ban()).toLowerCase(Locale.getDefault()).contains(charText) || removeAccent(danhSachDen.getId_nguoi_mua()).toLowerCase(Locale.getDefault()).contains(charText)){
-                    data.add(danhSachDen);
+        mdata.clear();
+        if (charText.length() == 0) {
+            mdata.addAll(data);
+        } else {
+            for (DanhSachDen danhSachDen : data) {
+                if (removeAccent(danhSachDen.getId_nguoi_ban()).toLowerCase(Locale.getDefault()).contains(charText) || removeAccent(danhSachDen.getId_nguoi_mua()).toLowerCase(Locale.getDefault()).contains(charText)) {
+                    mdata.add(danhSachDen);
                 }
             }
         }
         notifyDataSetChanged();
     }
 
-    public static String removeAccent(String s) {
+    private static String removeAccent(String s) {
 
         String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(temp).replaceAll("");
     }
 
-    static class CountryHolder{
+    static class DanhSachDenHolder {
         SearchView searchView;
         ImageView ivHinh;
         TextView txtHoTen;

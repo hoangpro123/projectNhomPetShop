@@ -2,98 +2,80 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:background="@drawable/btnchon"
-    android:textSize="25sp"
-    android:textColor="@color/white"
-    android:text="HOME"
-    android:padding="10dp"/>
     <LinearLayout
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quản lí người Dùng"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@color/Header">
         <LinearLayout
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/btnquanli"
-                android:textColor="@color/cardview_light_background"
-                android:background="@drawable/btnchuachon"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Người Mua"/>
-            <Button
-                android:id="@+id/btngiaodich"
-                android:textColor="@color/cardview_light_background"
-                android:background="@drawable/btnchuachon"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Người Bán"/>
-            <Button
-                android:id="@+id/btnthem"
-                android:textColor="@color/cardview_light_background"
-                android:background="@drawable/btnchuachon"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thêm người bán"/>
+                android:text="@string/title_home"
+                style="@style/titleheader_chitietthucung">
+            </TextView>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quản lí thông tin người bán"/>
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="14"
+        android:orientation="vertical"
+        style="@style/canle_dangnhap">
+        <Button
+            android:id="@+id/btnquanli"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/btnchinhsua"
-                android:textColor="@color/cardview_light_background"
-                android:background="@drawable/btnchuachon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Danh Sách Yêu Cầu Chỉnh Sửa"/>
-        </LinearLayout>
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Danh Sach Den"/>
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_danh_muc_nguoi_ban_button"
+            android:text="@string/nguoimua"
+            android:textSize="@dimen/text_nguoi_ban"
+            android:textColor="@color/text"
+            android:layout_marginBottom="30dp"
+            android:padding="10dp"/>
+        <Button
+            android:id="@+id/btngiaodich"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/danhsachden"
-                android:textColor="@color/cardview_light_background"
-                android:background="@drawable/btnchuachon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Danh Sách Đen"/>
-        </LinearLayout>
+            android:background="@drawable/shape_danh_muc_nguoi_ban_button"
+            android:text="@string/nguoiban"
+            android:textSize="@dimen/text_nguoi_ban"
+            android:textColor="@color/text"
+            android:layout_marginBottom="30dp"
+            android:padding="10dp"/>
+        <Button
+            android:id="@+id/btnthem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_danh_muc_nguoi_ban_button"
+            android:text="@string/themnguoiban"
+            android:textSize="@dimen/text_nguoi_ban"
+            android:textColor="@color/text"
+            android:layout_marginBottom="30dp"
+            android:padding="10dp"/>
+        <Button
+            android:id="@+id/btnchinhsua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_danh_muc_nguoi_ban_button"
+            android:text="@string/danhsachyeucauchinhsua"
+            android:textSize="@dimen/text_nguoi_ban"
+            android:textColor="@color/text"
+            android:layout_marginBottom="30dp"
+            android:padding="10dp"/>
+        <Button
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnDangXuat"
+            android:drawableLeft="@drawable/ic_exit_to_app_black_24dp"
+            android:text="@string/dangxuat"
+            android:background="#00FFFFFF"
+            android:textColor="@color/title_dang_xuat"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
     </LinearLayout>
 </LinearLayout>

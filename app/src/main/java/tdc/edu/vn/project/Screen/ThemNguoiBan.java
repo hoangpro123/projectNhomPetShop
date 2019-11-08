@@ -50,7 +50,7 @@ public class ThemNguoiBan extends AppCompatActivity {
     ImageView img;
     StorageReference StoRef;
     RadioGroup group;
-    Button tao, up, ch;
+    Button tao, ch;
     String tenhinh="";
     public Uri imguri;
     @Override
@@ -60,11 +60,6 @@ public class ThemNguoiBan extends AppCompatActivity {
         AnhXa();
         SetEvent();
         StoRef = FirebaseStorage.getInstance().getReference("Images");
-        up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
         ch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,7 +161,6 @@ public class ThemNguoiBan extends AppCompatActivity {
         img = findViewById(R.id.imgup);
         btnback = findViewById(R.id.btnBackad);
         tao = findViewById(R.id.btnTaoNgBan);
-        up = findViewById(R.id.upimg);
         ch = findViewById(R.id.choose);
     }
 }

@@ -72,7 +72,8 @@ public class AdapterQuanLiNguoiDung extends ArrayAdapter<NguoiMua> {
         final NguoiMua item = data.get(position);
         holder.txtid.setText(item.getId());
         holder.txtname.setText(item.getName());
-        Picasso.with(context).load(Uri.parse(item.getImage())).into(holder.ivHinh);
+        if (item.getImage() != null)
+            Picasso.with(context).load(Uri.parse(item.getImage())).into(holder.ivHinh);
         holder.txtEmail.setText(item.getUsername());
         holder.Xoa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,21 +86,21 @@ public class AdapterQuanLiNguoiDung extends ArrayAdapter<NguoiMua> {
     }
 
 
-        public void filter(String charText) {
-            charText = charText.toLowerCase(getDefault());
-            //removeAccent(charText);
-            data.clear();
-            if(charText.length() == 0){
-                data.addAll(mdata);
-            }else {
-                for (NguoiMua nguoiMua : mdata){
-                    if(removeAccent(nguoiMua.getName()).toLowerCase(Locale.getDefault()).contains(charText) || removeAccent(nguoiMua.getName()).toLowerCase(Locale.getDefault()).contains(charText)){
-                        data.add(nguoiMua);
-                    }
+    public void filter(String charText) {
+        charText = charText.toLowerCase(getDefault());
+        //removeAccent(charText);
+        data.clear();
+        if (charText.length() == 0) {
+            data.addAll(mdata);
+        } else {
+            for (NguoiMua nguoiMua : mdata) {
+                if (removeAccent(nguoiMua.getName()).toLowerCase(Locale.getDefault()).contains(charText) || removeAccent(nguoiMua.getName()).toLowerCase(Locale.getDefault()).contains(charText)) {
+                    data.add(nguoiMua);
                 }
             }
-            notifyDataSetChanged();
         }
+        notifyDataSetChanged();
+    }
 
     public static String removeAccent(String s) {
 
@@ -117,19 +118,19 @@ public class AdapterQuanLiNguoiDung extends ArrayAdapter<NguoiMua> {
         Button Xoa;
     }
 
-    private void dialognguoimua(final NguoiMua item){
+    private void dialognguoimua(final NguoiMua item) {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_nguoi_dung);
         TextView id, name, user, pass, phone, adress, gender;
         ImageView img;
-        id = (TextView)dialog.findViewById(R.id.txtid);
-        name = (TextView)dialog.findViewById(R.id.txtname);
-        user = (TextView)dialog.findViewById(R.id.txusername);
-        pass = (TextView)dialog.findViewById(R.id.txpass);
-        phone = (TextView)dialog.findViewById(R.id.txdienthoai);
-        adress = (TextView)dialog.findViewById(R.id.txdiachi);
-        gender = (TextView)dialog.findViewById(R.id.txgioitinh);
-        img = (ImageView)dialog.findViewById(R.id.imgnguoi);
+        id = (TextView) dialog.findViewById(R.id.txtid);
+        name = (TextView) dialog.findViewById(R.id.txtname);
+        user = (TextView) dialog.findViewById(R.id.txusername);
+        pass = (TextView) dialog.findViewById(R.id.txpass);
+        phone = (TextView) dialog.findViewById(R.id.txdienthoai);
+        adress = (TextView) dialog.findViewById(R.id.txdiachi);
+        gender = (TextView) dialog.findViewById(R.id.txgioitinh);
+        img = (ImageView) dialog.findViewById(R.id.imgnguoi);
         id.setText(item.getId());
         name.setText(item.getName());
         user.setText(item.getUsername());
@@ -137,19 +138,21 @@ public class AdapterQuanLiNguoiDung extends ArrayAdapter<NguoiMua> {
         phone.setText(item.getPhone());
         adress.setText(item.getAddress());
         gender.setText(item.getGender());
-        Picasso.with(context).load(Uri.parse(item.getImage())).into(img);
-        Button XacNhan = (Button)dialog.findViewById(R.id.xacnhan);
+        if (item.getImage() != null)
+            Picasso.with(context).load(Uri.parse(item.getImage())).into(img);
+        Button XacNhan = (Button) dialog.findViewById(R.id.xacnhan);
         XacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.cancel();
             }
         });
-        Button xoa = (Button)dialog.findViewById(R.id.xoa);
+        Button xoa = (Button) dialog.findViewById(R.id.xoa);
         xoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PetShopFireBase.removeItem(item.getId(),PetShopFireBase.TABLE_NGUOI_MUA);
+                PetShopFireBase.removeItem(item.getId(), PetShopFireBase.TABLE_NGUOI_MUA);
+                xoa.setVisibility(View.INVISIBLE);
                 notifyDataSetChanged();
             }
         });

@@ -49,17 +49,14 @@ public class DangKi  extends AppCompatActivity {
                         if (sdt.length() == 10) {
                             int re = group.getCheckedRadioButtonId();
                             gender = findViewById(re);
-                            String Name = "";
-                            Name += ho.getText();
-                            Name += ten.getText();
-
+                            String Name = ho.getText().toString() + " " + ten.getText().toString();
                             ArrayList<NguoiMua> results = (ArrayList<NguoiMua>) PetShopFireBase.search("username", mail.getText().toString(),PetShopFireBase.TABLE_NGUOI_MUA);
                             if(results.size() > 0){
                                 Toast.makeText(DangKi.this, "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
                                 return;
                             }
 
-                            NguoiMua nm = new NguoiMua(Name, mail.getText().toString(), pass.getText().toString(), sdt.getText().toString(), diachi.getText().toString(), " ", gender.getText().toString());
+                            NguoiMua nm = new NguoiMua(Name, mail.getText().toString(), pass.getText().toString(), sdt.getText().toString(), diachi.getText().toString(), null, gender.getText().toString());
                             PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
                             dialog();
                             Toast.makeText(DangKi.this, "dktc", Toast.LENGTH_LONG).show();

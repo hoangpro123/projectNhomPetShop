@@ -1,6 +1,8 @@
 package tdc.edu.vn.project.Admin;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,15 +10,17 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import tdc.edu.vn.project.PetShopSharedPreferences;
 import tdc.edu.vn.project.R;
 import tdc.edu.vn.project.Screen.ChinhSuaScreen;
 import tdc.edu.vn.project.Screen.DanhSachDenScreen;
+import tdc.edu.vn.project.Screen.Login;
 import tdc.edu.vn.project.Screen.NguoiBanScreen;
 import tdc.edu.vn.project.Screen.NguoiDungScreen;
 import tdc.edu.vn.project.Screen.ThemNguoiBan;
 
 public class AdminHome extends AppCompatActivity {
-    Button nguoidung, nguoiban, chinhsua, them, danhsachden;
+    Button nguoidung, nguoiban, chinhsua, them, DangXuat;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +58,14 @@ public class AdminHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        danhsachden.setOnClickListener(new View.OnClickListener() {
+
+        DangXuat.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), DanhSachDenScreen.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+                sharedPreferences.edit().putString(PetShopSharedPreferences.idql, null).apply();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
             }
         });
     }
@@ -68,6 +75,6 @@ public class AdminHome extends AppCompatActivity {
         nguoiban = (Button)findViewById(R.id.btngiaodich);
         chinhsua = (Button)findViewById(R.id.btnchinhsua);
         them = (Button)findViewById(R.id.btnthem);
-        danhsachden = (Button)findViewById(R.id.danhsachden);
+        DangXuat = findViewById(R.id.btnDangXuat);
     }
 }
