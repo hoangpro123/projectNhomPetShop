@@ -22,6 +22,7 @@ import tdc.edu.vn.project.Model.SanPham;
 import tdc.edu.vn.project.Model.TinhTrangDonHang;
 import tdc.edu.vn.project.PetShopFireBase;
 import tdc.edu.vn.project.R;
+import tdc.edu.vn.project.Screen.ChiTietDonHang;
 import tdc.edu.vn.project.Screen.DanhGiaActivity;
 
 public class AdapterDonHangNguoiMua extends ArrayAdapter<DonHang> {
@@ -77,10 +78,19 @@ public class AdapterDonHangNguoiMua extends ArrayAdapter<DonHang> {
                             getContext().startActivity(intent);
                         }
                     });
+
+
                 }else handler.postDelayed(this,1000);
             }
         });
-
+        holder.cbTenHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ChiTietDonHang.class);
+                intent.putExtra("iddh", donHang.getId());
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
 
