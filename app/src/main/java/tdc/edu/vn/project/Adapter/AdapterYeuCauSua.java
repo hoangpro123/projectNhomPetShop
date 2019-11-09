@@ -162,7 +162,7 @@ public class AdapterYeuCauSua extends ArrayAdapter<NguoiBan> {
         xoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PetShopFireBase.removeItem(item.getId(),PetShopFireBase.TABLE_NGUOI_BAN);
+                PetShopFireBase.removeItem(item.getId(),PetShopFireBase.TABLE_YEU_CAU_CHINH_SUA);
                 notifyDataSetChanged();
                 dialog.cancel();
 

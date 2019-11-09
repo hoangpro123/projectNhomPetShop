@@ -98,14 +98,14 @@ public class ThongTinUser extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle(getResources().getString(R.string.tb));
-                builder.setMessage("Make in VN");
-                builder.setCancelable(false);
-//                builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        Toast.makeText(getContext(), getResources().getString(R.string.koxoa), Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+                builder.setMessage("PetShop version 1.0.1");
+                builder.setCancelable(true);
+                builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        return;
+                   }
+                });
 //                builder.setNegativeButton(getResources().getString(R.string.co), new DialogInterface.OnClickListener() {
 //                    @Override
 //                    public void onClick(DialogInterface dialogInterface, int i) {
