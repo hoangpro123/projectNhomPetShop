@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class AdapterDonHangNguoiMua extends ArrayAdapter<DonHang> {
             holder.cbTenHang =  view.findViewById(R.id.cbTenHang);
             holder.txtTrangThai = view.findViewById(R.id.txtTrangThai);
             holder.btnDanhGia = view.findViewById(R.id.btnDanhGia);
+            holder.llClick = view.findViewById(R.id.llClick);
 
             view.setTag(holder);
         } else holder = (CountryHolder) view.getTag();
@@ -83,7 +85,7 @@ public class AdapterDonHangNguoiMua extends ArrayAdapter<DonHang> {
                 }else handler.postDelayed(this,1000);
             }
         });
-        holder.cbTenHang.setOnClickListener(new View.OnClickListener() {
+        holder.llClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChiTietDonHang.class);
@@ -98,5 +100,6 @@ public class AdapterDonHangNguoiMua extends ArrayAdapter<DonHang> {
         TextView cbTenHang;
         TextView txtTrangThai;
         Button btnDanhGia;
+        LinearLayout llClick;
     }
 }

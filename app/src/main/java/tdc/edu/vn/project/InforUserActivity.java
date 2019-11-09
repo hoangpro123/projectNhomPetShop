@@ -76,8 +76,8 @@ public class InforUserActivity extends AppCompatActivity {
     }
 
     public void LuuInfor() {
-        SharedPreferences sharedPreferences = getSharedPreferences("SaveId", Context.MODE_PRIVATE);
-        final String id = sharedPreferences.getString("id", "");
+        SharedPreferences sharedPreferences = getSharedPreferences(PetShopSharedPreferences.file_name, Context.MODE_PRIVATE);
+        final String idnm = sharedPreferences.getString(PetShopSharedPreferences.idnm, null);
         final Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
@@ -99,7 +99,7 @@ public class InforUserActivity extends AppCompatActivity {
                             builder.setNegativeButton(getResources().getString(R.string.co), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    NguoiMua nm = ((ArrayList<NguoiMua>) PetShopFireBase.search("id", id, PetShopFireBase.TABLE_NGUOI_MUA)).get(0);
+                                    NguoiMua nm = (NguoiMua) PetShopFireBase.findItem(idnm,PetShopFireBase.TABLE_NGUOI_MUA);
                                     nm.setName(editName.getText().toString());
                                     nm.setUsername(editEmail.getText().toString());
                                     nm.setAddress(editAddress.getText().toString());
@@ -115,6 +115,7 @@ public class InforUserActivity extends AppCompatActivity {
         //                            }
                                     PetShopFireBase.pushItem(nm, PetShopFireBase.TABLE_NGUOI_MUA);
                                     Toast.makeText(InforUserActivity.this, getResources().getString(R.string.luutc), Toast.LENGTH_SHORT).show();
+                                    onBackPressed();
                                 }
                             });
                             AlertDialog alertDialog = builder.create();
