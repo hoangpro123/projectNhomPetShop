@@ -46,6 +46,7 @@
         <activity android:name=".Screen.NguoiBanScreen" />
         <activity android:name=".Screen.ThemNguoiBan" />
         <activity android:name=".Screen.ChinhSuaScreen" />
+        <activity android:name=".Screen.GiaoDichScreen" />
 
     </application>
 

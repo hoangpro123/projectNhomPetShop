@@ -131,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:text="choose"/>
             <ImageView
+                android:src="@drawable/logo_pet_shops"
                 android:layout_marginHorizontal="30dp"
                 android:id="@+id/imgup"
                 android:layout_width="50dp"
