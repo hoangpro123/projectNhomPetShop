@@ -102,19 +102,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         }
         notifyDataSetChanged();
-        //
-        /*charText = charText.toLowerCase(getDefault());
-        mData.clear();
-        if(charText.length() == 0){
-            mData.addAll(arrayList);
-        }else {
-            for (SanPham sanPham : arrayList){
-                if(removeAccent(sanPham.getName()).toLowerCase(Locale.getDefault()).contains(removeAccent(charText))){
-                    mData.add(sanPham);
-                }
-            }
-        }
-        notifyDataSetChanged();*/
+       
     }
     public void DanhMuc(String s){
         s = s.toLowerCase(getDefault());
